@@ -159,7 +159,7 @@ li.trmList {
 
 /* unvisited link */
 li.trmList a:link {
-    color: yellow;
+    color: blue;
 }
 
 /* visited link */
@@ -169,7 +169,7 @@ li.trmList a:visited {
 
 /* mouse over link */
 li.trmList a:hover {
-    color: hotpink;
+    color: blue;
 }
 
 /* selected link */
