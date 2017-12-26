@@ -16,42 +16,10 @@ p {
 	color: black;	
 }
 
-/* Settings for the navigation bar */
-
-ul.nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    top: 0px;
-    width: 100%;
-}
-
-li.nav {
-    float: left;
-}
-
-li.nav a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-family:  Helvetica, verdana ; 
-    font-weight: lighter ;
-    font-size: 18px ;
-}
-
-li.nav a:hover:not(.active) {
-    background-color: #111;
-}
-
-.nav-active {
-    background-color: #4CAF50;
-}
-
+/* trmContent1 are fields with lightgray backgound */
+/* trmContent2 are fields with white backgound */
+/* We should alter between them, so the top of the page (title) is always trmContent1  */
+/* the next field is trmContent2, then the next is trmContent1 etc.  */
 
 #trmContent1 {
 	margin-left: auto; 
@@ -93,25 +61,13 @@ h2.trmHeader {
     color: black;
 }
 
-h3.trmText {
+h3.trmHeader {
 	font-family: Arial ;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: normal;
 }
 
-
-#trmProjects {
-	text-align: left;
-}
-
-#trmGallery {
-	text-align: left;
-}
-
-#trmPubs {
-	text-align: left;
-}
-
+/* trmNavLnk is the style class for the navigation links at the top of index.html */
 a.trmNavLnk {
 	font-family: Arial;
 	color: black ;
@@ -122,6 +78,26 @@ a.trmNavLnk {
 	text-transform: uppercase;
 }
 
+/* Here we define different styles for links if they've been visited, if they are active etc. */
+/* unvisited link */
+li.trmLnk a:link {
+    color: blue;
+}
+/* visited link */
+li.trmLnk a:visited {
+    color: red;
+}
+/* mouse over link */
+li.trmLnk a:hover {
+    color: blue;
+}
+/* selected link */
+li.trmLnk a:active {
+    color: blue;
+}
+
+
+/* for the TRACMASS logo on top on index.html. Should float right, i.e. be to the right side of text */
 img.trmLogo{
 	float: right;
 	width: 100px;
@@ -130,16 +106,7 @@ img.trmLogo{
 code.trmCode {
 }
 
-#code {
-	color: black;
-	padding: .2em 1em;
-	text-align:left;
-    font-weight:bold;
-    background:#ebebeb;
-    margin-bottom: 60px;
-    width: 75%;
-    float: center; 
-}
+/* Styles for lists, e.g. publication lists */
 
 ul.trmList {
 	list-style-type: none; 
@@ -157,30 +124,11 @@ li.trmList {
 	padding-bottom: 1em;
 }
 
-/* unvisited link */
-li.trmList a:link {
-    color: blue;
-}
-
-/* visited link */
-li.trmList a:visited {
-    color: red;
-}
-
-/* mouse over link */
-li.trmList a:hover {
-    color: blue;
-}
-
-/* selected link */
-li.trmList a:active {
-    color: blue;
-}
-
 HR.hLine {
 	width: 75%;
 }
 
+/* Style for the images in the Gallery */
 img.trmGallery {
 	width: auto ;
 	height: 300px ;
