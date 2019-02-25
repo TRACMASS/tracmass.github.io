@@ -1,0 +1,126 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Where and when to seed particles &#8212; TRACMASS 6.0a1 documentation</title>
+    <link rel="stylesheet" href="_static/readable.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '6.0a1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Environmental Variables" href="envvar.html" />
+    <link rel="prev" title="Time Conventions" href="time.html" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="envvar.html" title="Environmental Variables"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="time.html" title="Time Conventions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TRACMASS 6.0a1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="where-and-when-to-seed-particles">
+<h1>Where and when to seed particles<a class="headerlink" href="#where-and-when-to-seed-particles" title="Permalink to this headline">¶</a></h1>
+<p>The seeding of particles in TRACMASS can be controlled in two
+different ways. 1) By defining a region of grid cells and time steps
+(variables ist1, ist2, jst1, jst2, kst1, kst2, tst1, tst2), e.g. seed
+particles every time step during one year at 30S latitude line.</p>
+<p>2) Simulate surface drifters by seeding at given positions and times, e.g. one particle at (x,y) at 15m depth at 2 Jan 1992 at 6am.
+Then there are a number of combinations of the above, e.g. define a list of grid boxes along a coastline and seed every 4th time step.</p>
+<p>I introduced four variables to TRACMASS to handle at least a few different kinds of seeding.
+This was done when simulating surface drifters in the Baltic, so some of these options may only be available for RCO or BaltiX data and the rco_run.in provides some description of the set up.</p>
+<p>seedPos sets whether seed positions is an interval read in the run.in namelist or from a text file.
+seedTime sets whether seed time is an interval read in run.in namelist of from a text file.
+seedAll sets whether each seed time in the text file is for just one particle or all of them.
+seedType sets whether the seed positions in the text file is grid box indices (integers) or exact positions in model coordinates (floats).</p>
+<p>So seeding as in example 1) above would be done by setting seedPos = 1 and seedTime = 1.
+Seeding three surface drifters at different positions and time would
+be done by seedPos = 2, seedTime = 2, seedAll = 1, seedType = 1 and
+the seed text file would look like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">177</span>       <span class="mi">137</span>        <span class="mi">38</span>     <span class="mi">4</span>     <span class="mi">0</span>  <span class="mi">1962071500</span>
+<span class="mi">165</span>       <span class="mi">143</span>        <span class="mi">38</span>     <span class="mi">4</span>     <span class="mi">0</span>  <span class="mi">1962072518</span>
+<span class="mi">174</span>       <span class="mi">149</span>        <span class="mi">38</span>     <span class="mi">4</span>     <span class="mi">0</span>  <span class="mi">1962080506</span>
+</pre></div>
+</div>
+<p>The first three columns are i,j,k indices for the grid box in which to seed the drifter, the fourth column is isec = 4 (seed in center of grid box) and the fifth column is idir = 0 (allow particle to travel in any direction). The sixth column are the times in year-month-day-hour format which must coincide with model time steps (in this case 6 hours).
+If seedAll = 2 all three particles above would be seeded each time step so that we would get nine seeds instead of three.</p>
+<p>So you might be able to set up a list of grid boxes in a text file and seed them all for time steps also given in a text file (seedPos = 2, seedTime = 2, seedAll = 2, seedType = 1).</p>
+<p>This kind of seeding might leave TRACMASS to be running although the time is not yet right to seed any particles. So if seedTime = 2 TRACMASS will run until some trajectories have been seeded and ended, while in all other cases TRACMASS stops whenever the number of active trajectories is 0.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation index</a><ul>
+      <li>Previous: <a href="time.html" title="previous chapter">Time Conventions</a></li>
+      <li>Next: <a href="envvar.html" title="next chapter">Environmental Variables</a></li>
+  </ul></li>
+</ul>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/fileformats.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2014, The TRACMASS team.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+  </div>
+  
+  </body>
+</html>

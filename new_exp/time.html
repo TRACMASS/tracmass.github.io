@@ -1,0 +1,134 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Time Conventions &#8212; TRACMASS 6.0a1 documentation</title>
+    <link rel="stylesheet" href="_static/readable.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '6.0a1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Where and when to seed particles" href="fileformats.html" />
+    <link rel="prev" title="Welcome to the TRACMASS documentation" href="index.html" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="fileformats.html" title="Where and when to seed particles"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to the TRACMASS documentation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TRACMASS 6.0a1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="time-conventions">
+<h1>Time Conventions<a class="headerlink" href="#time-conventions" title="Permalink to this headline">¶</a></h1>
+<p>TRACMASS uses a number of different time definitions, which can easily be confusing. Thre are three main clocks that are more or less run in parallell: switching velocity fields (<code class="xref f f-var docutils literal"><span class="pre">modtime/ints</span></code>), the interpolated advetion of particles (<code class="xref f f-var docutils literal"><span class="pre">modtime/tt</span></code>), and an inverse time used tofind the solution associated with sub-time interpolation (<code class="xref f f-var docutils literal"><span class="pre">modtime/dt</span></code>). There are also absolute “real time” variables available to simplify reading velocity fields and post processing results.</p>
+<div class="section" id="the-discrete-gcm-timestep-ints">
+<h2>The discrete GCM timestep (ints)<a class="headerlink" href="#the-discrete-gcm-timestep-ints" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref f f-var docutils literal"><span class="pre">modtime/ints</span></code> is an integer starting at the beginning of the run and increased with one each time a new velocity field is read. It is possible to convert ints to time units using <code class="xref f f-var docutils literal"><span class="pre">modtime/ngcm</span></code>. This timestep also controls seeding since particles are potentially seeded with each new velocity field. The extent of seeding is also set in this unit.</p>
+</div>
+<div class="section" id="the-internal-interpolated-timestep-tt">
+<h2>The internal interpolated timestep (tt)<a class="headerlink" href="#the-internal-interpolated-timestep-tt" title="Permalink to this headline">¶</a></h2>
+<p>TRACMASS instrnal clock is mainly used as the time reference for interpolated particle postions between ints steps. tt is defined as seconds</p>
+</div>
+<div class="section" id="absolute-time">
+<h2>Absolute time<a class="headerlink" href="#absolute-time" title="Permalink to this headline">¶</a></h2>
+<p>Absolute time can be acces both as Julian Dates (JD) and as calendar dates (year, month, day, hour, seconds). The associated avriables are not updated automatically since that would require a substanitial CPU overhead. Call the function <code class="xref f f-subr docutils literal"><span class="pre">mod_time/updateclock()</span></code> to set the variables to current model time. There are two sets of absolute time variables:</p>
+<blockquote>
+<div><code class="xref f f-var docutils literal"><span class="pre">modtime/curryear</span></code>, <code class="xref f f-var docutils literal"><span class="pre">modtime/currmon</span></code>,
+<code class="xref f f-var docutils literal"><span class="pre">modtime/currday</span></code>, <code class="xref f f-var docutils literal"><span class="pre">modtime/currmin</span></code>,
+<code class="xref f f-var docutils literal"><span class="pre">modtime/currsec</span></code>, <code class="xref f f-var docutils literal"><span class="pre">modtime/currtime</span></code></div></blockquote>
+<p>These variables follow the simulated model time with the help of  <code class="xref f f-var docutils literal"><span class="pre">modtime/tt</span></code>,  <code class="xref f f-var docutils literal"><span class="pre">modtime/ints</span></code>, and  <code class="xref f f-var docutils literal"><span class="pre">modtime/ngcm</span></code>. They continue to increase even if the velocity fields are looped.</p>
+<blockquote>
+<div><code class="xref f f-var docutils literal"><span class="pre">modtime/loopyear</span></code>, <code class="xref f f-var docutils literal"><span class="pre">modtime/loopmon</span></code>,
+<code class="xref f f-var docutils literal"><span class="pre">modtime/loopday</span></code>, <code class="xref f f-var docutils literal"><span class="pre">modtime/loopmin</span></code>,
+<code class="xref f f-var docutils literal"><span class="pre">modtime/loopsec</span></code>, <code class="xref f f-var docutils literal"><span class="pre">modtime/looptime</span></code></div></blockquote>
+<p>These variables are are reset each time intmax or maxvelJD are reached. Use them to create the correct filename in readfield.f95 if you want to have the vability to loop velocity fields. This is useful so that particles can be advect for longer times than available GCM runs. <code class="xref f f-var docutils literal"><span class="pre">modtime/loopints</span></code> is provided as an alternative to <code class="xref f f-var docutils literal"><span class="pre">modtime/ints</span></code> for old code. Use the absolute time variables when setting up new projects.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Time Conventions</a><ul>
+<li><a class="reference internal" href="#the-discrete-gcm-timestep-ints">The discrete GCM timestep (ints)</a></li>
+<li><a class="reference internal" href="#the-internal-interpolated-timestep-tt">The internal interpolated timestep (tt)</a></li>
+<li><a class="reference internal" href="#absolute-time">Absolute time</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation index</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to the TRACMASS documentation</a></li>
+      <li>Next: <a href="fileformats.html" title="next chapter">Where and when to seed particles</a></li>
+  </ul></li>
+</ul>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/time.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2014, The TRACMASS team.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+  </div>
+  
+  </body>
+</html>

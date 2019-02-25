@@ -1,0 +1,345 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Project Makefile options &#8212; TRACMASS 6.0a1 documentation</title>
+    <link rel="stylesheet" href="_static/readable.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '6.0a1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Namelist options" href="namelist.html" />
+    <link rel="prev" title="Environmental Variables" href="envvar.html" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="namelist.html" title="Namelist options"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="envvar.html" title="Environmental Variables"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TRACMASS 6.0a1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="project-makefile-options">
+<h1>Project Makefile options<a class="headerlink" href="#project-makefile-options" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="variables-set-from-command-line">
+<h2>Variables set from command line<a class="headerlink" href="#variables-set-from-command-line" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="var">
+<dt id="var-INPUT_INT1">
+<code class="descname">INPUT_INT1</code><a class="headerlink" href="#var-INPUT_INT1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define first Variable set from command line. Use ‘dummy’ if not
+used.</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var-INPUT_INT2">
+<code class="descname">INPUT_INT2</code><a class="headerlink" href="#var-INPUT_INT2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define second Variable set from command line. Use ‘dummy’ if not
+used.</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="time-interpolation">
+<h2>Time interpolation<a class="headerlink" href="#time-interpolation" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="var">
+<dt id="var--Dtimestep">
+<code class="descname">-Dtimestep</code><a class="headerlink" href="#var--Dtimestep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time steps with analytical stationary scheme differential Eqs.</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dtimeanalyt">
+<code class="descname">-Dtimeanalyt</code><a class="headerlink" href="#var--Dtimeanalyt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analytical time scheme used to solve the</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dregulardt">
+<code class="descname">-Dregulardt</code><a class="headerlink" href="#var--Dregulardt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regular time steps to be used with -Dtimestep</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="output-formats">
+<span id="makeoutput"></span><h2>Output formats<a class="headerlink" href="#output-formats" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="var">
+<dt id="var--Dtextwrite">
+<code class="descname">-Dtextwrite</code><a class="headerlink" href="#var--Dtextwrite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write results to textfile</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dcsvwrite">
+<code class="descname">-Dcsvwrite</code><a class="headerlink" href="#var--Dcsvwrite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write results to comma-separated file</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dbinwrite">
+<code class="descname">-Dbinwrite</code><a class="headerlink" href="#var--Dbinwrite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write results to binaryfile</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dmysqlwrite">
+<code class="descname">-Dmysqlwrite</code><a class="headerlink" href="#var--Dmysqlwrite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write results to mysql</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="stream-functions">
+<h2>Stream functions<a class="headerlink" href="#stream-functions" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="var">
+<dt id="var--Dstreamxy">
+<code class="descname">-Dstreamxy</code><a class="headerlink" href="#var--Dstreamxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the barotropic stream function.</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dstreamr">
+<code class="descname">-Dstreamr</code><a class="headerlink" href="#var--Dstreamr" title="Permalink to this definition">¶</a></dt>
+<dd><p>vertical stream function, z=density</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dstreamts">
+<code class="descname">-Dstreamts</code><a class="headerlink" href="#var--Dstreamts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lagrangian thermohaline/hydrothermal stream function</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dstreamv">
+<code class="descname">-Dstreamv</code><a class="headerlink" href="#var--Dstreamv" title="Permalink to this definition">¶</a></dt>
+<dd><p>vertical stream function, z=depth</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Drerun">
+<code class="descname">-Drerun</code><a class="headerlink" href="#var--Drerun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores the Lagrangian stream functions as a function of the end
+positions that has been calculated in an identical previous run.</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dinitxyt">
+<code class="descname">-Dinitxyt</code><a class="headerlink" href="#var--Dinitxyt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start trajectories at given positions and times</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="vertical-advection">
+<h2>Vertical advection<a class="headerlink" href="#vertical-advection" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="var">
+<dt id="var--Dtwodim">
+<code class="descname">-Dtwodim</code><a class="headerlink" href="#var--Dtwodim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn off vertical velocities.</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dfull_wflux">
+<code class="descname">-Dfull_wflux</code><a class="headerlink" href="#var--Dfull_wflux" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use a full 3D wflux field.</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dexplicit_w">
+<code class="descname">-Dexplicit_w</code><a class="headerlink" href="#var--Dexplicit_w" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use a given vertical velocity.</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="grid-shape">
+<h2>Grid shape<a class="headerlink" href="#grid-shape" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="var">
+<dt id="var--Dvarbottombox">
+<code class="descname">-Dvarbottombox</code><a class="headerlink" href="#var--Dvarbottombox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Variable bottom box to match actual depth</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dfreesurface">
+<code class="descname">-Dfreesurface</code><a class="headerlink" href="#var--Dfreesurface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Variable bottom box to match actual depth</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dzgrid1D">
+<code class="descname">-Dzgrid1D</code><a class="headerlink" href="#var--Dzgrid1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cell depths defined as individual column vector for z-coordinates</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dzgrid3D">
+<code class="descname">-Dzgrid3D</code><a class="headerlink" href="#var--Dzgrid3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cell depths defined as 3D grid (for sigma)</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dzgrid3Dt">
+<code class="descname">-Dzgrid3Dt</code><a class="headerlink" href="#var--Dzgrid3Dt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cell depths 3D and time interp. (for atm)</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="diffusion">
+<h2>Diffusion<a class="headerlink" href="#diffusion" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="var">
+<dt id="var--Dturb">
+<code class="descname">-Dturb</code><a class="headerlink" href="#var--Dturb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds subgrid turbulent velocities</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Ddiffusion">
+<code class="descname">-Ddiffusion</code><a class="headerlink" href="#var--Ddiffusion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a diffusion on trajectory</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Danisodiffusion">
+<code class="descname">-Danisodiffusion</code><a class="headerlink" href="#var--Danisodiffusion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an anisotropic diffusion on trajectory</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="special-functions">
+<h2>Special functions<a class="headerlink" href="#special-functions" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="var">
+<dt id="var--Dtempsalt">
+<code class="descname">-Dtempsalt</code><a class="headerlink" href="#var--Dtempsalt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Include temp and salt</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dtracer">
+<code class="descname">-Dtracer</code><a class="headerlink" href="#var--Dtracer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores a simulated tracer</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dsediment">
+<code class="descname">-Dsediment</code><a class="headerlink" href="#var--Dsediment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sediment code developed for RCO</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Dorca025">
+<code class="descname">-Dorca025</code><a class="headerlink" href="#var--Dorca025" title="Permalink to this definition">¶</a></dt>
+<dd><p>orca1 or orca025 or orca025l75h6</p>
+</dd></dl>
+
+<dl class="var">
+<dt id="var--Ddrifter">
+<code class="descname">-Ddrifter</code><a class="headerlink" href="#var--Ddrifter" title="Permalink to this definition">¶</a></dt>
+<dd><p>surface drifter depth average of uflux/vflux</p>
+</dd></dl>
+
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Project Makefile options</a><ul>
+<li><a class="reference internal" href="#variables-set-from-command-line">Variables set from command line</a></li>
+<li><a class="reference internal" href="#time-interpolation">Time interpolation</a></li>
+<li><a class="reference internal" href="#output-formats">Output formats</a></li>
+<li><a class="reference internal" href="#stream-functions">Stream functions</a></li>
+<li><a class="reference internal" href="#vertical-advection">Vertical advection</a></li>
+<li><a class="reference internal" href="#grid-shape">Grid shape</a></li>
+<li><a class="reference internal" href="#diffusion">Diffusion</a></li>
+<li><a class="reference internal" href="#special-functions">Special functions</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation index</a><ul>
+      <li>Previous: <a href="envvar.html" title="previous chapter">Environmental Variables</a></li>
+      <li>Next: <a href="namelist.html" title="next chapter">Namelist options</a></li>
+  </ul></li>
+</ul>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/makefile.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2014, The TRACMASS team.
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+  </div>
+  
+  </body>
+</html>
