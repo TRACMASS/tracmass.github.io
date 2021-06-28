@@ -411,7 +411,7 @@
 
 <hr />
 <h2 id="mod_diffusionf90">mod_diffusion.F90</h2>
-<p>The module <strong>mod_diffusion</strong> adds a random displacement to a trajectory. Diffusion is activated by setting <strong>l_diffusion</strong> to TRUE. This module contains two subroutines: <strong>diffuse</strong> and <strong>displacement</strong>.</p>
+<p>The module <strong>mod_diffusion</strong> adds a random displacement to a trajectory. Diffusion is activated by setting <strong>l_diffusion</strong> to TRUE. This module contains three subroutines: <strong>diffuse</strong>, <strong>displacement</strong> and <strong>kill_zones_diffusion</strong>.</p>
 
 <div class="important">
 	&#9888; <strong>Warning:</strong> <br />
@@ -434,8 +434,15 @@
 <script type="math/tex; mode=display">x_d = \sqrt{-4 A_h dt \log(1-q_1)} \cos(2\pi q_2) \\
    y_d = \sqrt{-4 A_h dt \log(1-q_1)} \sin(2\pi q_2) \\
    z_d = \sqrt{-4 A_v dt \log(1-q_3)} \cos(2\pi q_4) \\</script>
+<ul>
+  <ul>
+  <p>where <script type="math/tex">q_n</script> represent random numbers defined between zero and one.</p>
+  </ul>
 
-<p>where <script type="math/tex">q_n</script> represent random numbers defined between zero and one.</p>
+  <li>
+  <p>The subroutine <strong>kill_zones_diffusion</strong> guarantees that if a trajectory's new position reaches across the geographical boundary conditions defined in <strong>kill_zones.F90</strong>, the position is corrected to be just at the boundary position.</p>
+  </li>
+</ul>
 
 <hr />
 <h2 id="mod_divergencef90">mod_divergence.F90</h2>
@@ -984,6 +991,14 @@ $$
   <img width="80%" src="../../../images/fig_nqua.png" />
 </p>
 
+<div class="note">
+		<strong>Note :</strong> <br />
+    For the case <strong>nqua=2</strong>, the value of <strong>partQuant</strong> represents the maximum transport a trajectory can carry. In the example below, the green histogram describes the distribution of the trajectories if one trajectory would be seeded per gridcell. By initialising the same setup but with <strong>nqua=2</strong> and <strong>partQuant=2</strong> the number of trajectories changes as well as the distribution (blue histogram). No trajectory in this setup has a volume transport larger than <strong>partQuant=2</strong>.
+    <p align="center">
+	  <img width="50%" src="../../../images/fig_nqua_2.png" />
+    </p>
+</div>
+
 <p>4 - The grid is split in equal parts using the private subroutine <strong>split_grid</strong>. If <strong>num</strong> is a square number the grid cell is divided in equal squares, if <strong>num</strong> is a prime number the grid is split in equal rectangles along one axis (see figure below). For other cases, <strong>split_grid</strong> will divide the square in equal rectangles with similar side lengths.</p>
 
 <p align="center">
@@ -1153,6 +1168,16 @@ The subdomain is only defined in the longitude-latitude space.
 <p align="center">
   <img width="70%" src="../../../images/fig_subdomain_2.png" />
 </p>
+
+<div class="note">
+	<strong>Note :</strong> <br />
+  <strong>Periodic band</strong>: for the case where all the zonal indexes are chosen and the east-west boundary condition is activated (<strong>iperio=1</strong>) the killing zones 9 and 10 are not activated.<br />
+
+  <strong>North Hemispheric cap</strong>: for the case where all the zonal indexes are chosen, the east-west boundary condition is activated (<strong>iperio=1</strong>) and <strong> jmaxdom = JMT </strong>, the killing zones 8, 9 and 10 are not activated.<br />
+
+  <strong>South Hemispheric cap</strong>: for the case where all the zonal indexes are chosen, the east-west boundary condition is activated (<strong>iperio=1</strong>) and <strong> jmindom = 1 </strong>, the killing zones 7, 9 and 10 are not activated.
+
+</div>
 
 <ul>
   <li>The subroutine <strong>update_subindex</strong> updates the subindexes before trajectories are seeded. The indexes are updated using <strong>imindom</strong> and <strong>jmindom</strong> as referenced. There is an special case for the <em>Split box</em> case.</li>
