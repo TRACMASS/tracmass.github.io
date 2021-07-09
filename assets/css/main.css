@@ -1709,3 +1709,22 @@ textarea {
 .palette-violet #docs-section-items .docs-item-link:hover {
   border-color: #8e2de2;
   color: #8e2de2; }
+
+
+<!-- New classes -->
+
+.badge{color:#fff; background-color:#333;font-size:2}
+
+.badge-ocean{color:#fff; background-color:#337ab7; border-color:#2e6da4;font-size:2}
+
+.badge-air{color:#fff; background-color:#F58819; border-color:#2e6da4;font-size:2}
+
+.badge-bio{color:#fff; background-color:#0DA344; border-color:#2e6da4;font-size: 2}
+
+.badge-other{color:#fff; background-color:#93948d; border-color:#2e6da4;font-size: 2}
+
+.badge-lg{padding: 4px 4px; line-height: 1.3333333; border-radius: 6px; font-size:12px}
+
+.reference{
+   display: list-item;
+  }

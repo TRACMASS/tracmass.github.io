@@ -210,32 +210,129 @@
     </header>
     <div class="inner-md outer">
       <div class="post-content">
-        <p>Dey, D., and Döös, K. (2020). Atmospheric Freshwater Transport From the Atlantic to the Pacific Ocean: A Lagrangian Analysis. Geophysical Research Letters, 47(6), e2019GL086176. <a class="trmLnk" href="https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2019GL086176" target="_blank">Link</a></p>
 
-<p>Berglund, S., Döös, K., and Nycander, J. (2017). Lagrangian tracing of the water–mass transformations in the Atlantic Ocean. Tellus A: Dynamic Meteorology and Oceanography, 69(1), 1306311. <a class="trmLnk" href="https://www.tandfonline.com/doi/pdf/10.1080/16000870.2017.1306311" target="_blank">Link</a></p>
+        <script>
+function search_publication() {
+    let input = document.getElementById('searchbar').value
+    input=input.toLowerCase();
+    let x = document.getElementsByClassName('reference');
 
-<p>Döös, K., J. Kjellsson, and B. F. Jönsson (2013), TRACMASS - A Lagrangian Trajectory Model, in Preventive Methods for Coastal Protection, edited by T. Soomere and E. Quak, Springer International Publishing.
-<a class="trmLnk" href="https://link.springer.com/chapter/10.1007/978-3-319-00440-2_7" target="_blank">Link</a></p>
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display="none";
+        }
+        else {
+            x[i].style.display="list-item";
+        }
+    }
+}
+</script>
 
-<p>Kjellsson, J., K. Döös, and T. Soomere (2013), Evaluation and Tuning of Model Trajectories and Spreading Rates in the Baltic Sea using Surface Drifter Observations, in Preventive Methods for Coastal Protection, edited by T. Soomere and E. Quak, Springer International Publishing.
-<a class="trmLink" href="https://link.springer.com/chapter/10.1007/978-3-319-00440-2_8" target="_blank">Link</a></p>
+<input id="searchbar" onkeyup="search_publication()" type="text"
+        name="search" placeholder="Search by publication or category ...">
 
-<p>Kjellsson, J., and K. Döös (2012a), Lagrangian decomposition of the Hadley and Ferrel Cells, Geophys. Res. Lett., 39(L15807)
-<a class="trmLnk" href="http://onlinelibrary.wiley.com/doi/10.1029/2012GL052420/full" target="_blank">Link</a></p>
+<br>
 
-<p>Kjellsson, J., and K. Döös (2012b), Surface drifters and model trajectories in the Baltic Sea, Boreal Environment Research, 17, 447–459.
-<a class="trmLnk" href="https://www.diva-portal.org/smash/get/diva2:563137/FULLTEXT01.pdf" target="_blank">Link</a></p>
+ <ul id="myUL" style="list-style-type:none;">
+   <li class="reference"> Dey, D., and Döös, K. (2020). Atmospheric Freshwater Transport From the Atlantic to the Pacific Ocean: A Lagrangian Analysis. Geophysical Research Letters, 47(6), e2019GL086176. <a class="trmLnk" href="https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2019GL086176" target="_blank">Link</a>  <br>  <em>Categories:</em> <span class="badge badge-air badge-lg">Atmosphere</span> <span class="badge badge-air badge-lg">Atmospheric water</span> </li>
+   <br>
+   <li class="reference"> Liang, L., Xue, H. (2020). The reversal indian ocean waters. Geophysical Research Letters, 47, e2020GL088269. <a class="trmLnk" href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2020GL088269" target="_blank">Link</a>  <br>  <em>Categories:</em> <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Jonsson, PR, Moksnes, P-O, Corell, H, Bonsdorff, E, Nilsson Jacobi, M. (2020). Ecological coherence of Marine Protected Areas: New tools applied to the Baltic Sea network. Aquatic Conserv: Mar Freshw Ecosyst. 30: 743– 760. <a class="trmLnk" href="https://onlinelibrary.wiley.com/doi/10.1002/aqc.3286" target="_blank">Link</a>  <br>  <em>Categories:</em> <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Ecology</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Cimatoribus, A.A., Lemmin, U. and Barry, D.A. (2019). Tracking Lagrangian transport in Lake Geneva: A 3D numerical modeling investigation. Limnol Oceanogr, 64: 1252-1269. <a class="trmLnk" href="https://aslopubs.onlinelibrary.wiley.com/doi/10.1002/lno.11111" target="_blank">Link</a>  <br>  <em>Categories:</em> <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Magne Simonsen, Hans-Christian Teien, Ole Christian Lind, Øyvind Saetra, Jon Albretsen, Brit Salbu (2019). Modeling key processes affecting Al speciation and transport in estuaries, Science of The Total Environment, Volume 687, Pages 1147-1163. <a class="trmLnk" href="https://www.sciencedirect.com/science/article/pii/S0048969719323654?via%3Dihub" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Ecology</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Liang, L., Xue, H., & Shu, Y. (2019). The Indonesian throughflow and the circulation in the Banda Sea: A modeling study. Journal of Geophysical Research: Oceans, 124, 3089– 3106.  <a class="trmLnk" href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2018JC014926" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Villarino, E., Watson, J.R., Jönsson, B. et al (2018). Large-scale ocean connectivity and planktonic body size. Nat Commun 9, 142. <a class="trmLnk" href="https://www.nature.com/articles/s41467-017-02535-8" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Biology</span> </li>
+   <br>
+   <li class="reference"> Berglund, S., Döös, K., and Nycander, J. (2017). Lagrangian tracing of the water–mass transformations in the Atlantic Ocean. Tellus A: Dynamic Meteorology and Oceanography, 69(1), 1306311. <a class="trmLnk" href="https://www.tandfonline.com/doi/pdf/10.1080/16000870.2017.1306311" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span></li>
+   <br>
+   <li class="reference"> Jönsson, B., Watson, J. (2016). The timescales of global surface-ocean connectivity. Nat Commun 7, 11239. <a class="trmLnk" href="https://www.nature.com/articles/ncomms11239" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> </li>
+   <br>
+   <li class="reference"> Colleen M. Petrik, Janet T. Duffy-Anderson, Frederic Castruccio, Enrique N. Curchitser, Seth L. Danielson, Katherine Hedstrom, Franz Mueter (2016). Modelled connectivity between Walleye Pollock (Gadus chalcogrammus) spawning and age-0 nursery areas in warm and cold years with implications for juvenile survival, ICES Journal of Marine Science, Volume 73, Issue 7, July 2016, Pages 1890–1900. <a class="trmLnk" href="https://academic.oup.com/icesjms/article/73/7/1890/2458227" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Biology</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Jönsson, B. F., and Salisbury, J. E. (2016), Episodicity in phytoplankton dynamics in a coastal region, Geophys. Res. Lett., 43, 5821– 5828. <a class="trmLnk" href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016GL068683" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Biology</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Kleypas, J.A., Thompson, D.M., Castruccio, F.S., Curchitser, E.N., Pinsky, M. and Watson, J.R. (2016). Larval connectivity across temperature gradients and its potential effect on heat tolerance in coral populations. Glob Change Biol, 22: 3539-3549. <a class="trmLnk" href="https://onlinelibrary.wiley.com/doi/10.1111/gcb.13347" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Biology</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Viikmäe, B., T. Soomere, (2016). Temporal scales for nearshore hits of current-driven pollution in the Gulf of Finland. Marine Pollution Bulletin, Volume 106, Issues 1–2, pages 77-86. <a class="trmLnk" href="https://www.sciencedirect.com/science/article/pii/S092479631300153X?via%3Dihub" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Pollution control</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Colleen M. Petrik, Janet T. Duffy-Anderson, Franz Mueter, Katherine Hedstrom, Enrique N. Curchitser (2015). Biophysical transport model suggests climate variability determines distribution of Walleye Pollock early life stages in the eastern Bering Sea through effects on spawning, Progress in Oceanography, Volume 138, Part B, Pages 459-474. <a class="trmLnk" href="https://www.sciencedirect.com/science/article/pii/S0079661114001128?via%3Dihub" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Biology</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Rothäusler, E., Corell, H. and Jormalainen, V. (2015). Abundance and dispersal trajectories of floating Fucus vesiculosus in the Northern Baltic Sea. Limnol. Oceanogr., 60: 2173-2184. <a class="trmLnk" href="https://aslopubs.onlinelibrary.wiley.com/doi/10.1002/lno.10195" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Biology</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Viikmäe, B., T. Soomere, (2014). Spatial pattern of current-driven hits to the nearshore from a major marine fairway in the Gulf of Finland. Journal of Marine Systems, Volume 129, pages 106-117. <a class="trmLnk" href="https://www.sciencedirect.com/science/article/pii/S0025326X16301540?via%3Dihub" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Moksnes, Per-Olav, Corell, Hanna, Tryman, Kentaroo, Hordoir, Robinson, Jonsson, Per R., (2014). Larval behavior and dispersal mechanisms in shore crab larvae (Carcinus maenas): Local adaptations to different tidal environments?, Limnology and Oceanography, 59. <a class="trmLnk" href="https://aslopubs.onlinelibrary.wiley.com/action/showCitFormats?doi=10.4319%2Flo.2014.59.2.0588" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Biology</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Nilsson, J.A.U., K. Döös, P. Ruti, V. Artale, A. Coward, L. Brodeau (2013). Observed and modeled global-ocean turbulence regimes as deduced from surface trajectory data. J. Phys. Oceanogr. <a class="trmLnk" href="https://journals.ametsoc.org/view/journals/phoc/43/11/jpo-d-12-0193.1.xml" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span></li>
+   <br>
+   <li class="reference"> Delpeche–Ellmann, N., Soomere T. (2013). Using Lagrangian models to assist in maritime management of Coastal and Marine Protected Areas. Journal of Coastal Research, 65(sp1), 36-41. <a class="trmLnk" href="https://bioone.org/journals/journal-of-coastal-research/volume-65/issue-sp1/SI65-007.1/Using-Lagrangian-models-to-assist-in-maritime-management-of-Coastal/10.2112/SI65-007.1.full" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Pollution control</span> <span class="badge badge-bio badge-lg">Ecology</span> <span class="badge badge-other badge-lg">Regional</span></li>
+   <br>
+   <li class="reference"> Viikmäe, B., Torsvik, T. & Soomere, T. (2013). Impact of horizontal eddy diffusivity on Lagrangian statistics for coastal pollution from a major marine fairway. Ocean Dynamics 63, 589–597 <a class="trmLnk" href="https://link.springer.com/article/10.1007%2Fs10236-013-0615-3" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Pollution control</span> <span class="badge badge-other badge-lg">Regional</span></li>
+   <br>
+   <li class="reference"> Corell, H., Döös, K. (2013). Difference in Particle Transport Between Two Coastal Areas in the Baltic Sea Investigated with High-Resolution Trajectory Modeling. AMBIO 42, 455–463. <a class="trmLnk" href="https://link.springer.com/article/10.1007%2Fs13280-013-0397-3" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Sediments</span> <span class="badge badge-other badge-lg">Regional</span></li>
+   <br>
+   <li class="reference"> Kjellsson, J., K. Döös, T. Soomere (2013) Preventive Methods for Coastal Pollution: towards the Use of Ocean Dynamics for Pollution Control. Book Chapter 8: Evaluation and Tuning of Model Trajectories and Spreading Rates in the Baltic Sea using Surface-drifter Observations. Springer International Publishing.
+   <a class="trmLnk" href="https://link.springer.com/chapter/10.1007/978-3-319-00440-2_8" target="_blank">Link</a> <br>  <em>Categories:</em>   <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Döös, K., J. Kjellsson, and B. F. Jönsson (2013), TRACMASS - A Lagrangian Trajectory Model, in Preventive Methods for Coastal Protection, edited by T. Soomere and E. Quak, Springer International Publishing.
+   <a class="trmLnk" href="https://link.springer.com/chapter/10.1007/978-3-319-00440-2_7" target="_blank">Link</a> <br>  <em>Categories:</em> <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Corell H., P.O. Moksnes, A. Engqvist, K. Döös, P. R. Jonsson, (2012): Depth distribution of larvae critically affects their dispersal and the efficiency of marine protected areas, Marine Ecology Progress Series, 467:29-46. <a class="trmLnk" href="https://www.int-res.com/abstracts/meps/v467/p29-46/" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Biology</span> <span class="badge badge-other badge-lg">Regional</span></li>
+   <br>
+   <li class="reference"> Kjellsson, J., and K. Döös (2012a), Lagrangian decomposition of the Hadley and Ferrel Cells, Geophys. Res. Lett., 39(L15807)
+   <a class="trmLnk" href="http://onlinelibrary.wiley.com/doi/10.1029/2012GL052420/full" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-air badge-lg">Atmosphere</span>  </li>
+   <br>
+   <li class="reference"> Kjellsson, J., and K. Döös (2012b), Surface drifters and model trajectories in the Baltic Sea, Boreal Environment Research, 17, 447–459.
+   <a class="trmLnk" href="https://www.diva-portal.org/smash/get/diva2:563137/FULLTEXT01.pdf" target="_blank">Link</a><br>  <em>Categories:</em> <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Döös, K., Nilsson, J., Nycander, J., Brodeau, L., & Ballarotta, M. (2012). The World Ocean Thermohaline Circulation, Journal of Physical Oceanography, 42(9), 1445-1460.
+   <a class="trmLnk" href="https://journals.ametsoc.org/view/journals/phoc/42/9/jpo-d-11-0163.1.xml" target="_blank">Link</a><br>  <em>Categories:</em> <span class="badge badge-ocean badge-lg">Ocean</span> </li>
+   <br>
+   <li class="reference"> Jacobi, M., André, C., Döös, K., & Jonsson, P. (2012). Identification of subpopulations from connectivity matrices. Ecography, 35(11).
+   <a class="trmLnk" href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/j.1600-0587.2012.07281.x" target="_blank">Link</a><br>  <em>Categories:</em> <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Soomere, T., Delpeche, N., Viikmäe, B., Quak, E., Meier, H. E. M. and Döös (2011). K. Patterns of current-induced transport in the surface layer of the Gulf of Finland. Boreal Env. Res., 16 (suppl. a): 49-63.    <a class="trmLnk" href="http://www.borenv.net/BER/archive/pdfs/ber16/ber16A-049.pdf" target="_blank">Link</a><br>  <em>Categories:</em> <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Döös K., V. Rupolo, L. Brodeau (2011). Dispersion of surface drifters and model-simulated trajectories. Ocean Modelling. Volume 39, Issues 3-4, 2011, Pages 301-310,
+   <a class="trmLnk" href="https://www.sciencedirect.com/science/article/pii/S1463500311000989" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span>  <span class="badge badge-other badge-lg">Theoretical</span>  </li>
+   <br>
+   <li class="reference"> Jönsson B, K. Döös , P. Lundberg , K. Myrberg (2011). A Lagrangian-trajectory study of a gradually mixed estuary. Continental Shelf Research 31, 1811-1817
+   <a class="trmLnk" href="https://www.sciencedirect.com/science/article/pii/S0278434311002500" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span>  <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Döös, K., J. Nycander, and A. C. Coward (2008), Lagrangian decomposition of the Deacon Cell, J. Geophys. Res., 113, C07028.
+   <a class="trmLnk" href="http://onlinelibrary.wiley.com/doi/10.1029/2007JC004351/abstract" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span>  <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Döös K., A. Engqvist, (2007) Assessment of water exchange between a discharge region and the open sea - A comparison of different methodological concepts. Estuarine, Coastal and Shelf Science. Es- tuarine, Coastal and Shelf Science 74 (2007) 585-597.
+   <a class="trmLnk" href="https://www.sciencedirect.com/science/article/pii/S027277140700159X" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span>  <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Engqvist A., K. Döös and O. Andrejev, (2006). Modeling Water Exchange and Contaminant Transport through a Baltic Coastal Region. Ambio Vol. 35, No. 8.
+   <a class="trmLnk" href="https://bioone.org/journals/ambio-a-journal-of-the-human-environment/volume-35/issue-8/0044-7447(2006)35[435:MWEACT]2.0.CO;2/Modeling-Water-Exchange-and-Contaminant-Transport-through-a-Baltic-Coastal/10.1579/0044-7447(2006)35[435:MWEACT]2.0.CO;2.full" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span>  <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference"> Drijfhout S., P. De Vries, K. Döös, A. Coward (2003). Impact of eddy-induced transport of the Lagrangian structure of the upper branch of the thermohaline circulation. J. Phys. Oceanogr. 33,3. 2141-2155.
+   <a class="trmLnk" href="https://journals.ametsoc.org/view/journals/phoc/33/10/1520-0485_2003_033_2141_ioetot_2.0.co_2.xml?tab_body=pdf" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> </li>
+   <br>
+   <li class="reference"> Nycander J., K Döös and A. C. Coward (2002). Chaotic and regular trajectories in the Antarctic Circumpolar. Tellus - Series A, Vol. 54, issue 1, p.99-106.
+   <a class="trmLnk" href="https://www.tandfonline.com/doi/abs/10.3402/tellusa.v54i1.12118" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span>  <span class="badge badge-other badge-lg">Regional</span></li>
+   <br>
+   <li class="reference"> Vries, P. de and K. Döös (2001). Calculating Lagrangian trajectories using time-dependent velocity fields. J. Atmos. Oceanic Technology. Vol. 18, No. 6, 1092-1101.
+   <a class="trmLnk" href="https://journals.ametsoc.org/view/journals/atot/18/6/1520-0426_2001_018_1092_cltutd_2_0_co_2.xml" target="_blank">Link</a> <br>  <em>Categories:</em>   <span class="badge badge-other badge-lg">Theoretical</span></li>
+   <br>
+   <li class="reference"> Kimura S, Döös K, Coward AC (1999) Numerical simulation to resolve the issue of downstream migration of the Japanese eel. Marine Ecology Progress Series, Vol. 186, p. 303-306.
+   <a class="trmLnk" href="https://www.int-res.com/articles/meps/186/m186p303.pdf" target="_blank">Link</a> <br>  <em>Categories:</em>   <span class="badge badge-ocean badge-lg">Ocean</span> <span class="badge badge-bio badge-lg">Biology</span>  <span class="badge badge-other badge-lg">Regional</span> </li>
+   <br>
+   <li class="reference">Döös, K. (1995), Interocean exchange of water masses, J. Geophys. Res., 100, 13,499–13,514.
+   <a class="trmLnk" href="http://onlinelibrary.wiley.com/doi/10.1029/95JC00337/abstract" target="_blank">Link</a> <br>  <em>Categories:</em>  <span class="badge badge-ocean badge-lg">Ocean</span> </li>
 
-<p>Döös, K., J. Nycander, and A. C. Coward (2008), Lagrangian decomposi-
-tion of the Deacon Cell, J. Geophys. Res., 113, C07028, doi:10.1029/
-2007JC004351.
-<a class="trmLnk" href="http://onlinelibrary.wiley.com/doi/10.1029/2007JC004351/abstract" target="_blank">Link</a></p>
-
-<p>Döös, K. (1995), Interocean exchange of water masses, J. Geophys. Res., 100, 13,499–13,514.
-<a class="trmLnk" href="http://onlinelibrary.wiley.com/doi/10.1029/95JC00337/abstract" target="_blank">Link</a></p>
+ </ul>
 
       </div>
     </div><!-- .inner-md -->
+
   </article><!-- .post -->
 
   </main><!-- .site-content -->
