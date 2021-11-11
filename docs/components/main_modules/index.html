@@ -1437,6 +1437,10 @@ The time format of the output files can also be adjusted with <strong>timeformat
 	The format in which the output is written is controlled by <strong>write_form</strong>. The default value is <strong>zero</strong> which writes the output with two decimals. By setting <strong>write_form</strong> to <strong>one</strong> the output is written with five decimals.
 <br />
 <br />
+<strong>Note :</strong> <br />
+If the <em>*_run.csv</em> file exceeds 2GB, TRACMASS will compress the file into <em>*_run.csv.gzip</em>.
+<br />
+<br />
 <strong>Important:</strong> <br />
  If TRACMASS is run with the stream function flag this module also writes the resulting stream functions in the files: <em>_psixy.csv</em> for the barotropic case, <em>_psiyz.csv</em> for the meridional case, <em>_psiyr.csv</em> for the latitude-tracer case, and <em>_psirr.csv</em> for the tracer-tracer stream functions. Besides, the subroutine <strong>read_rerun</strong> will be used to read the trajectories that will be run and the flag corresponding to the kill zones.
 <br />
