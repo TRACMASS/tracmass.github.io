@@ -21,7 +21,7 @@
 <body class="palette-navy">
 
   <div id="page" class="site">
-    
+
     {% include header.html pre_link="../../../"%}
 
     <main id="content" class="site-content">
@@ -34,13 +34,15 @@
             <div class="post-inside">
 
               <header class="post-header">
-                <h1 class="post-title line-left">How to set an experiment</h1>
+                <h1 class="post-title line-left">How to set up an experiment</h1>
               </header><!-- .post-header -->
 
               <div class="post-content">
+                <!-- 
                 <p>We recommend testing that TRACMASS was properly compiled by letting PROJECT and CASE be
                   <strong>“Theoretical”</strong> in the <em>Makefile</em> (which is the default). In this case, TRACMASS
-                  will use a simple oscillating velocity field to trace trajectories.</p>
+                  will use a simple oscillating velocity field to trace trajectories.
+                </p>
 
                 <ol>
                   <li>
@@ -135,8 +137,8 @@
                     <p>You can rerun the code by modifying the <em>namelist.in</em> in the main directory.</p>
                   </li>
                 </ol>
-
                 <hr />
+                -->
                 <h2 id="how-to-configure-a-customised-experiment">How to configure a customised experiment</h2>
                 <p>This is a basic guidance on how to implement a new setup from a GCM with a grid that does not exist
                   in the present <strong>TRACMASS</strong> projects list. This requires good knowledge in the numerical
@@ -184,7 +186,8 @@
                     <p>Modify and adapt the files under <em>/projects/mymodel</em>, which are <em>setup_grid.F90</em>,
                       <em>read_field.F90</em>, and <em>kill_zones.F90</em>. Find more information about the subroutines
                       <em>setup_grid.F90</em> and <em>read_field.F90</em> <a
-                        href="../components/project/index.html">here</a>.</p>
+                        href="../components/project/index.html">here</a>.
+                    </p>
                   </li>
                   <li>
                     <p>Adapt the <em>Makefile.prj</em> to adjust the compiling flags. The list of possible flags can be
@@ -195,6 +198,8 @@
                     </p>
                   </li>
                 </ol>
+
+                <p>For more detailed examples refer to <a href="../../tutorials/example1/index.html">TRACMASS Tutorials</a></p>
 
               </div><!-- .post-content -->
             </div><!-- .post-inside -->
