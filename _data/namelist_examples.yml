@@ -1,0 +1,144 @@
+# File with examples for the namelist file. Just to make it a little bit more tidy
+# To add a snippet, simply add the variable with name var_name here and in the file you want to show it, ad the following line:
+
+#   {{ site.data.namelist_examples.var_name }}
+
+# and at the top of the file in which you add the line above, at the very top you need to add two lines of triple dashes, as such (with no hashtag)
+
+#---
+#---
+
+init_grid_description: |
+ <pre class='highlight'><code> &INIT_GRID_DESCRIPTION
+        ! Describe filenames
+        physDataDir = 'projects/NEMO/setup_data/',
+        physPrefixForm = 'NEMO-data-',
+        dateformat = 'YYYYMMDD',
+
+        ! Name of Tgrid, Ugrid, Vgrid (can be left empty as well)
+        tGridName = '-T',
+        uGridName = '-U',
+        vGridName = '-V',
+
+        ! suffix of files, e.g. ".nc"
+        fileSuffix     = '.nc',
+
+        ! Describe variable name
+        hs_name = 'ssh'         ! Sea surface height
+        ueul_name = 'uo',       ! name of resolved zonal velocity
+        veul_name = 'vo',       ! ---- " -------   meridional
+        usgs_name = '',         ! name of unresolved zonal velocity
+        vsgs_name = '',         ! ---- " ---------   meridional
+ /</code></pre>
+
+init_grid_description_file: |
+  <pre class='highlight'><code> fieldFile = str(physDataDir)+str(physPrefixForm)+str(dateprefix)+str(tGridName)+str(fileSuffix)</code></pre>
+
+
+init_grid_time: | 
+ <pre class='highlight'><code> &INIT_GRID_TIME
+     ngcm_step      = 6, 
+     ngcm_unit      = 3, 
+     iter           = 12,
+ /</code></pre>
+
+init_tracers: |
+ <pre class='highlight'><code> &INIT_TRACERS
+      ! Enables tracer calculations
+      l_tracers = .TRUE.
+
+      ! Tracer name (description)
+      tracername = 'To','S', 'sigma0'
+      ! Tracer unit (description)
+      tracerunit = 'degC','PSU', 'kg/m^3'
+
+      ! Name of the variable in the netcdf (if it's read)
+      tracervarname = 'thetao','so', 
+
+      ! Action (read or compute)
+      traceraction = 'read','read','compute'
+
+      ! Dimension of the tracer
+      tracerdimension = 2D, 3D, 2D,
+
+      ! Minimum and maximum value of the binning
+      tracermin = -3, 32, 1,
+      tracermax = 33, 38, 40,
+ /</code></pre>
+
+init_killzones_box: |
+ <pre class='highlight'><code> INIT_KILLZONES
+      ! Maximum time for which trajectories will run
+      timax = 75000 ! time limit for traj [days]
+
+      ! Set up an exitType as a box of kill zones
+      exitType = 1
+      
+      !       1st box   2nd box
+      ! west indices of killzones
+      ienw =  200,      50  
+      ! east indices of killzones
+      iene =  300,      250	    
+      ! south indices of killzones
+      jens =  150,      350
+      ! north indices of killzones
+      jenn =  150,      450
+ /</code></pre>
+
+quick_start_tracmass_output: |
+ <pre class="highlight"><code>
+ ===============================================================================
+              TRACMASS Lagrangian off-line particle tracking
+ ===============================================================================
+
+ Start date  : 2020-06-30
+ Start time  : 20:57:55
+ -------------------------------------------------------------------------------
+
+ Model information:
+ Project code  : Theoretical
+ Case name     : Theoretical
+ Namelist file : projects/Theoretical/namelist_Theoretical.in
+ -------------------------------------------------------------------------------
+
+ Output information:
+ Directory for output files : /Users/user/Tracmass_output
+ Prefix for output files    : test
+ -------------------------------------------------------------------------------
+
+ Configuration options:
+  - Two-dimensional trajectories, no change in depth
+ -------------------------------------------------------------------------------
+
+ Start date in model-time     : 2000-01-01 12:00
+ End date in model-time       : 2000-01-01 21:00
+ Length of run in timesteps   :     10
+ Number of seeding timesteps  :      1
+ Steps between two GCM fields :    100
+
+ -------------------------------------------------------------------------------
+ t-step        run        out        err        tot                 model date
+ -------------------------------------------------------------------------------
+      1 |        1 |        0 |        0 |        1 |   2000-01-01    12:00:00
+      2 |        1 |        0 |        0 |        1 |   2000-01-01    13:00:00
+      3 |        1 |        0 |        0 |        1 |   2000-01-01    14:00:00
+      4 |        1 |        0 |        0 |        1 |   2000-01-01    15:00:00
+      5 |        1 |        0 |        0 |        1 |   2000-01-01    16:00:00
+      6 |        1 |        0 |        0 |        1 |   2000-01-01    17:00:00
+      7 |        1 |        0 |        0 |        1 |   2000-01-01    18:00:00
+      8 |        1 |        0 |        0 |        1 |   2000-01-01    19:00:00
+      9 |        1 |        0 |        0 |        1 |   2000-01-01    20:00:00
+     10 |        1 |        0 |        0 |        1 |   2000-01-01    21:00:00
+ ===============================================================================
+           1  particles calculated
+           0  particles exited the space and time domain
+           0  particles flagged with errors
+           1  particles in domain
+ -------------------------------------------------------------------------------
+
+ ===============================================================================
+ End date  : 2020-06-30
+ End time  : 20:57:55
+ ===============================================================================
+ </code></pre>
+
