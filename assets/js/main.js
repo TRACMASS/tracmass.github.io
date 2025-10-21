@@ -109,8 +109,9 @@ window.addPageNavLinks = function() {
     }
 
     
-    // Scroll to anchors if not main modules
-    if (!window.location.pathname.includes('docs/components/main_modules/index.html')){
+    // Scroll to anchors if not main modules and namelist, because I don't like it, takes too much time
+    if (!window.location.pathname.includes('docs/components/main_modules/index.html') ||
+        !window.location.pathname.includes('docs/components/namelist/index.html')){
       let scroll = new SmoothScroll('[data-scroll]');
       let hash = window.decodeURI(location.hash.replace('#', ''));
       if (hash !== '') {
