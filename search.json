@@ -1,0 +1,56 @@
+---
+layout: none
+---
+[
+  {% for post in site.pages %}
+    {
+      "title"    : "{{ post.title | escape }}",
+      "category" : "{{ post.category }}",
+      "keywords" : "{{ post.keywords | join: ', ' }}",
+      "url"      : "{{ site.baseurl }}{{ post.url }}",
+      "content"  : "{{ post.content | strip_html 
+                                  | strip_newlines 
+                                  | escape
+                                  | rstrip
+                                  | remove: "   "
+                                  | remove: '{% include header.html pre_link=' 
+                                  | remove: '..' 
+                                  | remove: '/'
+                                  | remove: '{% include footer.html' 
+                                  | remove: '&amp;' 
+                                  | remove: '&quot;'
+                                  | remove: '{% include doc_navigation.html pre_link= '
+                                  | remove: '&#39;'
+                                  | remove: '#9888'
+                                  | remove: '#================================================================#TRACMASS MAKEFILE#================================================================# Project and case definitionPROJECT	 = TheoreticalCASE	 = TheoreticalRUNFILE 	  = runtracmassARCH  =NETCDFLIBS  = none#================================================================'
+                                  | remove: '——–——'
+                                  | replace: '\', ''
+                                  | replace: '‘', ''
+                                  | replace: '’', ''
+                                  | replace: '”', ''
+                                  | replace: '“', ''
+                                  | remove: '{'
+                                  | replace: '%', ''
+                                  | remove: ';'
+                                  | remove: '^'
+                                  | remove: '<'
+                                  | remove: '>'
+                                  | remove: '{{'
+                                  | remove: ':'
+                                  | remove: 'Stackbit. All rights reserved. This Jamstack site was originally created by Stackbit and modified by the TRACMASS team.'
+                                  | url_encode
+                                  | remove: '%7D'
+                                  | remove: '%2C'
+                                  | remove: '%28'
+                                  | remove: '%29'
+                                  | remove: '%3D'
+                                  | replace: '++', '+'
+                                  | replace: '+', ' '
+                                  | truncate: 500
+                                  | remove: 'Open Menu HomeDocumentation Publications Examples Sub-menu PublicationsExample GalleryContact FAQNews GitHub'
+                                  
+                                  }}"
+    } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  
+]

@@ -26,7 +26,7 @@ function submenuToggleHandler(e) {
   this.parentNode.classList.toggle('active');
 }
 
-window.addMainNavigationHandlers = function() {
+window.addMainNavigationHandlers = function () {
   const menuToggle = document.querySelectorAll('.menu-toggle');
   if (menuToggle) {
     for (let i = 0; i < menuToggle.length; i++) {
@@ -42,7 +42,7 @@ window.addMainNavigationHandlers = function() {
   }
 };
 
-window.removeMainNavigationHandlers = function() {
+window.removeMainNavigationHandlers = function () {
   // Remove nav related classes on page load
   document.body.classList.remove('menu--opened');
 
@@ -61,7 +61,7 @@ window.removeMainNavigationHandlers = function() {
   }
 };
 
-window.addDocsNavigationHandlers = function() {
+window.addDocsNavigationHandlers = function () {
   const docsNavToggle = document.getElementById('docs-nav-toggle');
   if (docsNavToggle) {
     docsNavToggle.addEventListener('click', docsNavToggleHandler, false);
@@ -75,7 +75,7 @@ window.addDocsNavigationHandlers = function() {
   }
 };
 
-window.removeDocsNavigationHandlers = function() {
+window.removeDocsNavigationHandlers = function () {
   // Remove docs nav related classes on page load
   document.body.classList.remove('docs-menu--opened');
 
@@ -92,7 +92,7 @@ window.removeDocsNavigationHandlers = function() {
   }
 };
 
-window.addPageNavLinks = function() {
+window.addPageNavLinks = function () {
   const pageToc = document.getElementById('page-nav-inside');
   const pageTocContainer = document.getElementById('page-nav-link-container');
 
@@ -108,14 +108,16 @@ window.addPageNavLinks = function() {
       renderHeaderLinks(pageTocContainer, headerLinks);
     }
 
-    
-    // Scroll to anchors if not main modules and namelist, because I don't like it, takes too much time
-    if (!window.location.pathname.includes('docs/components/main_modules/index.html') ||
-        !window.location.pathname.includes('docs/components/namelist/index.html')){
+
+    // Scroll to anchors if not main modules , because I don't like it, takes too much time
+    if (
+      !(window.location.pathname.includes('main_modules/index.html') ||
+        window.location.pathname.includes('namelist/index.html'))
+    ) {
       let scroll = new SmoothScroll('[data-scroll]');
       let hash = window.decodeURI(location.hash.replace('#', ''));
       if (hash !== '') {
-        window.setTimeout( function(){
+        window.setTimeout(function () {
           let anchor = document.getElementById(hash);
           if (anchor) {
             scroll.animateScroll(anchor);
@@ -144,15 +146,15 @@ window.addPageNavLinks = function() {
 
     // Copy link url
     let clipboard = new ClipboardJS('.hash-link', {
-      text: function(trigger) {
-        return window.location.href.replace(window.location.hash,"") + trigger.getAttribute('href');
+      text: function (trigger) {
+        return window.location.href.replace(window.location.hash, "") + trigger.getAttribute('href');
       }
     });
   }
 }
 
 
-window.removePageNavLinks = function() {
+window.removePageNavLinks = function () {
   const pageToc = document.getElementById('page-nav-inside');
   const pageTocContainer = document.getElementById('page-nav-link-container');
 
@@ -265,6 +267,7 @@ function anchorForId(id) {
   anchor.innerHTML = '<span class="screen-reader-text">Copy</span>';
   return anchor;
 }
+
 
 // Syntax Highlighter
 // Prism.highlightAll();

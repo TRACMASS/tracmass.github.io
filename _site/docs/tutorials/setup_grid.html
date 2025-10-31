@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>Grid Setup</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="shortcut icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="palette-navy">
+
+  <div id="page" class="site">
+
+    <header id="masthead" class="site-header outer">
+  <div class="inner">
+    <div class="site-header-inside">
+
+      <div class="site-branding">
+        <p class="site-logo"><a href="../../../index.html">
+            <img src="../../../images/headers_footer/fig_tracmass.png" alt="TRACMASS logo" /></a></p>
+      </div><!-- .site-branding -->
+
+      <nav id="main-navigation" class="site-navigation" aria-label="Main Navigation">
+        <div class="site-nav-inside">
+
+          <button id="menu-close" class="menu-toggle">
+            <span class="screen-reader-text">Open Menu</span>
+            <span class="icon-close" aria-hidden="true"></span>
+          </button>
+
+          <ul class="menu">
+            <li class="menu-item ">
+              <a href="../../../index.html" class=""> Home </a>
+            </li>
+
+            <li class="menu-item  current active ">
+              <a href="../../../docs.html" class="">Documentation</a>
+            </li>
+
+
+            <li class="menu-item
+                          has-children">
+              <a href="../../../index.html" class="">Publications & Examples</a>
+              <button class="submenu-toggle">
+                <span class="icon-angle-right" aria-hidden="true"></span>
+                <span class="screen-reader-text">Sub-menu</span>
+              </button>
+
+              <ul class="submenu">
+                <li class="menu-item ">
+                  <a href="../../../publications.html" class="">Publications </a>
+                </li>
+
+                <li class="menu-item ">
+                  <a href="../../../examples.html" class="">Example Gallery </a>
+                </li>
+
+              </ul>
+            </li>
+
+            <li class="menu-item ">
+              <a href="../../../contact.html" class="">Contact & FAQ </a>
+            </li>
+
+            <li class="menu-item ">
+              <a href="../../../news.html" class="">News</a>
+            </li>
+
+            <li class="menu-item menu-button">
+              <a href="https://github.com/TRACMASS/tracmass" class="button button-icon">
+                <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                </svg>
+                <span class="screen-reader-text">GitHub</span>
+              </a>
+            </li>
+
+            <li class="menu-item search-bar">
+              <form id="form" action="search-results.html" role="search" method="GET">
+                <!-- Search query input field-->
+                <input type="text" id="query" name="search-phrase" placeholder="Search..." aria-label="Search through site content">
+
+                <!-- button to submit and redirect to the search page -->
+                <button id="search-button">
+                  <svg class="icon" viewBox="0 0 1024 1024">
+                    <path class="path1"
+                      d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
+                    </path>
+                  </svg>
+                </button>
+
+              </form>
+            </li>
+
+          </ul>
+        </div>
+      </nav><!--.site-navigation -->
+    </div><!-- .site-header-inside -->
+  </div><!-- .inner -->
+</header><!-- .site-header -->
+
+    <main id="content" class="site-content">
+      <div class="inner outer">
+        <div class="docs-content">
+
+          <nav id="docs-nav" class="docs-nav">
+  <div id="docs-nav-inside" class="docs-nav-inside sticky">
+
+    <button id="docs-nav-toggle" class="docs-nav-toggle">Navigate Docs<span class="icon-angle-right"
+        aria-hidden="true"></span></button>
+    <div class="docs-nav-menu">
+      
+      <!-- Here the navigation part starts-->
+      <ul id="docs-menu" class="docs-menu">
+        
+        <!-- Welcome to TRACMASS' documentation -->
+        <li class="docs-menu-item ">
+          <a href="../../../docs.html">Welcome to TRACMASS' documentation</a>
+        </li>
+        
+        <!-- About -->
+        <li class="docs-menu-item ">
+          <a href="../../about/index.html">About</a>
+        </li>
+
+        <!-- Configuration (submenu) -->
+        <li class="docs-menu-item
+                   
+                   has-children">
+          <a href="../../configuration/index.html">Configuration</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+            <!-- Installation -->
+            <li class="docs-menu-item ">
+              <a href="../../configuration/installation/index.html">Installation and Theoretical Run</a>
+            </li>
+
+            <!-- How to set up an experiment -->
+            <li class="docs-menu-item ">
+              <a href="../../configuration/quick-start/index.html">How to set up an experiment</a>
+            </li>
+
+
+            <!-- Setting up NetCDF -->
+            <li class="docs-menu-item ">
+              <a href="../../configuration/netcdf-setup/index.html">NetCDF set up</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- TRACMASS Components (submenu) -->
+        <li class="docs-menu-item
+                   
+                   has-children">
+          <a href="../../components/index.html">TRACMASS Components</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!-- Main Program -->
+            <li class="docs-menu-item ">
+              <a href="../../components/main_program/index.html">Main program</a>
+            </li>
+
+            <!-- Main modules -->
+            <li class="docs-menu-item ">
+              <a href="../../components/main_modules/index.html">Main modules</a>
+            </li>
+
+            <!-- Namelist -->
+            <li class="docs-menu-item ">
+              <a href="../../components/namelist/index.html">Namelist</a>
+            </li>
+
+            <!-- The projects folder -->
+            <li class="docs-menu-item ">
+              <a href="../../components/project/index.html">The <em>Projects </em>folder</a>
+            </li>
+
+          </ul>
+        </li>
+        
+        <!-- TRACMASS Tutorials -->
+        <li class="docs-menu-item
+                    current active 
+                   has-children">
+          <a href="../../tutorials/index.html">TRACMASS Tutorials</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../tutorials/custom_tracers.html">Adding Custom Tracers</a>
+            </li>
+            
+            <!--  -->
+            <li class="docs-menu-item  current active ">
+              <a href="../../tutorials/setup_grid.html">Grid Setup</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../tutorials/kill_zones.html">Killing Trajectories</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../tutorials/read_field.html">Reading in Variables</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../tutorials/seeding_file.html">Seeding Locations</a>
+            </li>
+
+             <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../tutorials/seeding_types.html">Seeding Types</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../tutorials/streamfunctions.html">Streamfunctions</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- TRACMASS output -->
+        <li class="docs-menu-item ">
+          <a href="../../output/index.html">TRACMASS output</a>
+        </li>
+
+        <!-- Tools (Submenu) -->
+        <li class="docs-menu-item 
+                   
+                   has-children">
+          <a href="../../tools/index.html">Tools</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!-- In situ postprocessing -->
+            <li class="docs-menu-item ">
+              <a href="../../tools/insitu/index.html"><em>In situ</em> postprocessing</a>
+            </li>
+
+            <!-- pyTRAJ -->
+            <li class="docs-menu-item ">
+              <a href="../../tools/pytraj/index.html">pyTRAJ</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- References -->
+        <li class="docs-menu-item ">
+          <a href="../../references/index.html">References</a>
+        </li>
+
+      </ul><!-- .docs-menu -->
+    </div><!-- .docs-nav-menu -->
+  </div><!-- .docs-nav-inside -->
+</nav><!-- .docs-nav -->
+
+          <article class="post type-docs">
+            <div class="post-inside">
+
+              <header class="post-header">
+                <h1 class="post-title line-left">Grid Setup (UNDER CONSTRUCTION - outline)</h1>
+              </header><!-- .post-header -->
+
+              <div class="post-content">
+                <!-- For mathematical equations -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default"></script>
+
+                <h2 id="Introduction">Introduction</h2>
+
+                <p>In this section we are going to present how to set up the grid for Tracmass and how to transfrom them
+                  from typically used grids in climate modelling. It is essential to set up the grid correctly, thus
+                  great care needs to be taken into this. </p>
+
+                <h2 id="TRACMASS grid">TRACMASS grid</h2>
+
+                <p>TRACMASS is built on Arakawa C-grid, which keeps the
+                  tracer values, such as temperature, salinity, oxygen concentration in the center of the grid cell,
+                  while the velocity values are set in the center of the cell's faces. The east-west velocities,
+                  typically denoted u are located on the east and west faces of the cell. Etc, for the rest of the
+                  velocities. Right below is an ilustration in 3D of Arakawa-C grid setup.</p>
+
+                <img width="100%" src="../../../images/tutorials/fig_tutorial_arakawa-c.png" />
+
+                <p>The algorithm for setting up the grid is located in the <em>project's</em> folder in the file
+                  <em>setup_grid.F90</em>. The default projects present various method's for setting up the grid for
+                  various options. Thus, it is recommended to modify (if necessary) the grid setup algorithm that most
+                  closeley resembles the needed grid setup.
+                </p>
+
+                <h2 id="Transforming between Arakawa grids">Transforming between Arakawa grids</h2>
+
+                <p>Conceptually, transforming from one grid to another is simple procedure if the original data's grid
+                  is known; however, it can be confusing to do it in an efficient way and correctly. Because of this,
+                  the more comon transformations from different grids is provided. In the figure below are presented
+                  Arakawa-A and B grid layout in 2D.</p>
+
+                <img width="100%" src="../../../images/tutorials/fig_tutorial_arakawa-ab.png" />
+
+                <p>It is recommended that vertical velocity is calculated by TRACMASS itself; however, it is possible to
+                  assign explicitly the values, which would require to read them in as well. It would be necessary to
+                  transform them in the same manner as the horizontal velocity values. Thus, here we present the
+                  mathematical expression for transforming the tracers and the horizontal velocity onto the C-grid.</p>
+
+                <h3 id="Transformation from A to C grid">Transformation from A to C grid</h3>
+
+                <p>This is how we do the tracers: </p>
+
+                <script
+                  type="math/tex; mode=display">T_{(i,j,k)} = \frac{1}{8}\left[T_{(i,j,k)} + T_{(i+1,j,k)} + T_{(i,j+1,k)} + T_{(i+1,j+1,k)}+\\
+                                                      \quad + T_{(i,j,k+1)} + T_{(i+1,j,k+1)} + T_{(i,j+1,k+1)} + T_{(i+1,j+1,k+1)}  \right]</script>
+
+                <p>This is how we do the horizontal velocity values:</p>
+
+                <script
+                  type="math/tex; mode=display">u_{(i,j,k)} = 0.25\left[u_{(i,j,k)} + u_{(i,j+1,k)} + u_{(i,j,k+1)} + u_{(i,j+1,k+1)}\right] \\
+                                                      v_{(i,j,k)} = 0.25\left[v_{(i,j,k)} + v_{(i+1,j,k)} + v_{(i,j,k+1)} + v_{(i+1,j,k+1)}\right]</script>
+
+
+                <h3 id="Transformation from B to C grid">Transformation from B to C grid</h3>
+
+                <p>First step is to transform the tracers from the cell's corners to the cell's centers, which means we
+                  need to find the average value of all the cell's corner tracers. Mathematically, in 3D this would be
+                  done like this:</p>
+
+                <script
+                  type="math/tex; mode=display">T_{(i,j,k)} = \frac{1}{8}\left[T_{(i,j,k)} + T_{(i+1,j,k)} + T_{(i,j+1,k)} + T_{(i+1,j+1,k)}+\\
+                                                      \quad + T_{(i,j,k+1)} + T_{(i+1,j,k+1)} + T_{(i,j+1,k+1)} + T_{(i+1,j+1,k+1)}  \right]</script>
+
+                <p>Next, we need to transform the horizontal velocity field, which is located in the center of the cell
+                  in Arakawa
+                  B-grid. </p>
+
+                <script type="math/tex; mode=display">u_{(i,j,k)} = 0.5\left[u_{(i,j,k)} + u_{(i+1,j,k)}\right] \\
+                                                v_{(i,j,k)} = 0.5\left[v_{(i,j,k)} + v_{(i,j+1,k)}\right]</script>
+
+
+
+                <h2 id="grid setup in projects">Grid setup in projects</h2>
+
+                <p>In the following subsections the various project's grid
+                  setups are looked at in more detail. In general, these three are mandatory to populate:
+                <ul>
+                  <li><em>dxdy</em> - Area of horizontal cell-walls.</li>
+                  <li><em>dzt</em> - Height of k-cells in 4 dim.</li>
+                  <li><em>kmt</em> - Number of k-cells from surface to seafloor.</li>
+                  <li><em>dyu</em> - length of dy for u flux calculations</li>
+                  <li><em>dxv</em> - length of dx for v flux calculations</li>
+                </ul>
+                while the rest of the variables might be needed. On what basis this works, I am not sure.
+                </p>
+
+                <p>The following project exaples are ordered from the most basic to the most complex to get a better
+                  idea of grid building process. Instead of writing the code from scrathc, it is recomended to find the
+                  grid setup that most closeley resembles your model grid setup and use that project as a basis. Make
+                  necessary modification and you should be good. </p>
+
+                <h3 id="Theoretical">Theoretical</h3>
+
+                <p>The simplest grid setup is for the Theoretical case. Each of the grid cell's has the size of 250m in
+                  horizontal direction (dx, dy) and have a vertical resolution of 10m (dzt). From the grid cell
+                  dimensions it is possible to calculate the horizontal grid cell's wall area. FInally, we apply a mask
+                  and enable all the points in the grid as avialable for trajectories. </p>
+
+                <h3 id="AVISO">AVISO</h3>
+
+                <p>Here we manually create the grid with a quarter degree resolution, no bathymetry data is used, I
+                  think. We have these variables:
+                <ul>
+                  <li><em>!kmu</em></li>
+                  <li><em>!kmv</em></li>
+                  <li><em>dx</em> - length of a cell in x direction</li>
+                  <li><em>dy</em> - length of a cell in y directio </li>
+                  <li><em>dxv</em>(needed) - length of each v-gridcell in x direction</li>
+                  <li><em>dyu</em>(needed) - lenfth of each u-gridcell in y direction</li>
+                  <li><em>dxdy</em>(needed) - horizontal area of the cell walls</li>
+                  <li><em>dzt</em>(needed) - depth or thickness of the vertical cell</li>
+                </ul>
+                </p>
+
+                <p>We define the grid with quarter degree resolution in horizontal plane (dlon=0.25, dlat=0.25) and we
+                  fill in the <em>dxv</em> and <em>dyu</em>, which are used for mass transport calculatoins later on.
+                </p>
+
+                <h3 id="IFS">IFS (In Progress)</h3>
+
+                <p>The procedure is nearly identical to the AVISO project grid setup, with a slight difference, that we
+                  read in some additional aa and bb variable data, that is later on used for calculatiosn.
+                </p>
+
+                <h3 id="ROMS">ROMS</h3>
+
+                <p>In this case, most of the grid data is read into TRACMASS. These are the variables that are being
+                  populated:
+                <ul>
+                  <li>mask from kmt_name</li>
+                  <li>dy_t from dy_name</li>
+                  <li>dx_t from dx_name</li>
+                  <li>dxdy = dx_t*dy_t</li>
+                  <li>dyu = dy_t</li>
+                  <li>dxv = (dx_t*dy_t + dx_t*dy_t)/(dy_t+dy_t) with weird shifts</li>
+                  <li>depth from dep_name</li>
+                </ul>
+                </p>
+
+                <h3 id="NEMO">NEMO</h3>
+
+                <p>In this case all of the data about the grid is read into TRACMASS. </p>
+
+
+                <h2 id="Other grid setups">Other grid setups</h2>
+
+                <p>UNDER CONSTRUCTION</p>
+
+              </div><!-- .post-content -->
+
+            </div><!-- .post-inside -->
+          </article><!-- .post -->
+          <nav id="page-nav" class="page-nav">
+            <div id="page-nav-inside" class="page-nav-inside sticky">
+              <h2 class="page-nav-title">Jump to Section</h2>
+              <div id="page-nav-link-container"></div>
+            </div><!-- .page-nav-inside -->
+          </nav><!-- .page-nav -->
+        </div><!-- .docs-content -->
+      </div><!-- .inner-->
+
+    </main><!-- .site-content -->
+
+    <footer id="colophon" class="site-footer outer">
+  <div class="inner">
+    <div class="site-footer-inside">
+
+      <p class="site-info">
+        <span class="copyright">&copy; Stackbit. All rights reserved. This Jamstack site was originally created by
+          Stackbit and modified by the TRACMASS team.</span>
+      </p>
+
+      <div class="social-links">
+
+      </div><!-- .social-links -->
+
+    </div><!-- .site-footer-inside -->
+  </div><!-- .inner -->
+</footer><!-- .site-footer -->
+
+<!-- Scripts -->
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/page-load.js"></script>
+
+  </div><!-- .site -->
+
+</body>
+
+</html>

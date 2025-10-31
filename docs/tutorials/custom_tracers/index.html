@@ -1,0 +1,199 @@
+---
+title: Custom Tracers
+keywords: tracers
+category: basics
+url: index.html
+---
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>Custom Tracers</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="shortcut icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="palette-navy">
+
+  <div id="page" class="site">
+
+    {% include header.html pre_link="../../../"%}
+
+    <main id="content" class="site-content">
+      <div class="inner outer">
+        <div class="docs-content">
+
+          {% include doc_navigation.html pre_link="../" %}
+
+          <article class="post type-docs">
+            <div class="post-inside">
+
+              <header class="post-header">
+                <h1 class="post-title line-left">Adding Custom Tracers (UNDER CONSTRUCTION - spelling and grammar check)</h1>
+              </header><!-- .post-header -->
+
+              <div class="post-content">
+                <!-- For mathematical equations -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default"></script>
+
+                <h2 id="Introduction">Introduction</h2>
+
+                <p>Besides calculating the trajectory a parcel will take in space and time, TRACMASS can also calculate
+                  the characteristic values of its trajectories, which are known as <em>tracers</em>. This allows to see
+                  how a trajectory's tracer values, such as temperature and salinity, change along the way. For more
+                  detailed information on tracers themsevles refer to the documentation <a
+                    href="../../../docs/components/main_modules/index.html#mod_tracersf90">here</a>.
+                </p>
+
+                <p>In this example we present the procedure of adding an additional tracer that is calulated from
+                  already presented variables. We will have potential temperature (<em>To</em>) and salinity
+                  (<em>S</em>) as input data, and we will write a tracer function that converts temperature from Celsius
+                  to Kelvin degrees. Even though this example is a primitive unit conversion, the aim of this is to
+                  bring attention to the procedure of adding additional custom tracers in the code itself.
+                </p>
+
+                <h2 id="Adding extra tracer function">Adding extra tracer function</h2>
+
+                <p>There are two files that would be necessary to modify to add an additional tracer:
+                <ul>
+                  <li><strong>mod_tracerf.F90</strong> - contains the main functions responsible for tracer
+                    initiaization, interpolation and management</li>
+                  <li><strong>mod_tracers.F90</strong> - contains support functions for a specific tracer's
+                    calculations, for example, a function for density calculations</li>
+                </ul>
+                Of course, there are many ways how to implement additional tracers into the code, but this method is
+                recommended, as it seamessly integrates into the already existing source code.
+                </p>
+
+                <p>
+                  First we will write a function that will convert from Celsius to Kelvin degrees, after which we will
+                  add a few extra lines in another function so that our tracer can be callable. Finally, we will add
+                  out newly created tracer category in the namelist and test if it is working correctly.
+                </p>
+
+                <h3 id="Setting up mod_tracerf.F90">Setting up <em>mod_tracerf.F90</em></h3>
+
+                <p>
+                  First we will create a function that carries out the calculations of converting from Celsius to Kevlin
+                  degrees. Mathemtaically, very simple operation, done the following way:</p>
+
+                <script type="math/tex; mode=display">\textbf{T}[degK] = \textbf{T}[degC] + 273.15</script>
+
+                <p>We will call the function <em>celsius2kelvin</em> and we will send one variable over to the function,
+                  when we call it. The function itself needs to declare any varibales we might be using, in this case,
+                  we have
+                <ul>
+                  <li> <em>T</em> - input temperature in Celsius, which we want to convert to Kelvin degrees </li>
+                  <li> <em>celsius2kelvin</em> - output variable holding temperature in Kelvin degrees</li>
+                  <li> <em>nx, ny, nz</em> - variables to hold the input array's <em>T</em> shape in <em>x, y, z</em>
+                    dirrectoin accordingly</li>
+                </ul>
+                We create the array <em>celsius2kelvin</em> to have the same shape as the input array <em>T</em> with
+                the function <em>ALLOCATE</em>. Finally, we carry out the transofrmation from Celsius to Kelvin degrees.
+                The function written in Fortran is in the following code segment:
+                </p>
+
+                {{ site.data.tutorial_examples.custom_tracers_tracerf_function }}
+
+                <p>This function needs to be added in the <em>mod_tracerf.F90</em> file, at the end of the file, but
+                  <strong>before</strong> the final line of:
+
+                <pre class='highlight'>END MODULE mod_tracerf</code></pre>
+                </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  It is good practice to document your code with adding a commented section with a short description of
+                  the function's purpose and the method used. Furthermore, it is good to write readable code, or at the
+                  very least, adding comments to your code when the various <em>functions</em>, <em>loops</em> and
+                  <em>if</em>-statements start growing in complexity. The future you will thank you for it later when
+                  you review your code.
+                </div>
+
+
+                <h3 id="Setting up mod_tracers.F90">Setting up <em>mod_tracers.F90</em></h3>
+
+                <p>Next step is adding a few lines in the <em>mod_tracers.F90</em> file. Find the <em>SUBROUTINE</em>
+                  called
+                  <strong>compute_tracers(tracname, var3d)</strong>. This function is responsible for redirecting
+                  tracer to the correct function for it to be calculated. In our case, we will call our tracer
+                  '<strong>c2k</strong>', so we add an additional IF-ELSE branch to the IF-ELSE structure, which is the
+                  last branch in the code below:
+                </p>
+
+                {{ site.data.tutorial_examples.custom_tracers_tracers_compute }}
+
+                <p>Notice that the tracer value will be saved in array <em>var3d</em>. It is necessary, as the
+                  <em>var3d</em> variable will be assigned as the new value for the tracer.
+                </p>
+
+                <p>
+                  Below is a more detailed breakdown of the line that calls the function for tracer calculations.</p>
+
+                {{ site.data.tutorial_examples.custom_tracers_tracers_breakdown }}
+
+                In general, tracer data has 4-dimensions (x, y, z, t) with two possible time steps -
+                <strong>1</strong> is for the past and <strong>2</strong> is for current time step. Depending on the
+                tracer, there may be variations in which time step is chosen for other tracer calculations, but in
+                general, the current data (<strong>2</strong>) is used to calculate other derivative tracers.
+                </p>
+
+                <p>After the code has been modified, attempt to compile the code and run a test simulation without
+                  making changes to the namelist file. If everythinging has been set up correctly, there should be no
+                  error and no changes to the output data. </p>
+
+                <h2 id="Setting up the namelist">Setting up the namelist</h2>
+
+                <p>Finally, now that we have set up the code and tested it, we can make changes to the <em>namelist</em>
+                  file. As we mentioned previously, we have titled our tracer as '<em>c2k</em>', and now we will add it
+                  in our namelist. The procedure is the same as setting up any other tracer and the namelist section
+                  that needs to be modified is presented in the code below.
+                </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  It is recomended to keep the potential temperature (<em>To</em>) and salinity (<em>S</em>) tracers in
+                  the first and second index
+                  position. Some in-built functions rely on them being in these position, so, to not cause extra
+                  problems and ensure that the calculatiosn are correct, do not remove or replace them.
+                </div>
+
+                {{ site.data.tutorial_examples.custom_tracers_namelist }}
+
+                <p>With these instructions, the newly added tracer should work correctly. If there are any problems,
+                  either try to debug the code or carefully go through these instructions again. Using this as a guide,
+                  it is possible to add various other tracers to TRACMASS. </p>
+
+                
+
+              </div><!-- .post-content -->
+
+            </div><!-- .post-inside -->
+          </article><!-- .post -->
+          <nav id="page-nav" class="page-nav">
+            <div id="page-nav-inside" class="page-nav-inside sticky">
+              <h2 class="page-nav-title">Jump to Section</h2>
+              <div id="page-nav-link-container"></div>
+            </div><!-- .page-nav-inside -->
+          </nav><!-- .page-nav -->
+        </div><!-- .docs-content -->
+      </div><!-- .inner-->
+
+    </main><!-- .site-content -->
+
+    {% include footer.html%}
+
+  </div><!-- .site -->
+
+</body>
+
+</html>

@@ -1,0 +1,364 @@
+[
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/404.html",
+      "content"  : " Error 404  404 Page not found "
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/blog/aviso.html",
+      "content"  : " AVISO satellite altimetry data  AVISO satellite altimetry data 2D datasetsThe AVISO data is stored on a Arakawas B-grid while TRACMASS is defined on a Arakawas C-grid. Therefore both zonal and meridional fluxes are computed interpolating the velocity fields on the TRACMASS grid. This is done on the read_field subroutine. The default setup of this project initialises trajectories south of the Mozambique Channel only for southward fluxes marked in red in the figure. The seeding takes place eve..."
+    } ,
+  
+    {
+      "title"    : "Contact Information",
+      "category" : "basics",
+      "keywords" : "contacts, information, faq, developers",
+      "url"      : "/contact.html",
+      "content"  : " Contact FAQ   Contact FAQContact Kristofer D%C3%B6%C3%B6s doos-at-misu.su.se Aitor Aldama Campino Joakin Kjellsson Bror J%C3%B6nsson Sara BerglundFAQ  "
+    } ,
+  
+    {
+      "title"    : "Custom Tracers",
+      "category" : "basics",
+      "keywords" : "tracers",
+      "url"      : "/docs/tutorials/custom_tracers.html",
+      "content"  : " Custom Tracers  Adding Custom Tracers UNDER CONSTRUCTION - spelling and grammar check Introduction Besides calculating the trajectory a parcel will take in space and time TRACMASS can also calculatethe characteristic values of its trajectories which are known as tracers. This allows to seehow a trajectorys tracer values such as temperature and salinity change along the way. For moredetailed information on tracers themsevles refer to the documentation here. In this example we present the proc..."
+    } ,
+  
+    {
+      "title"    : "Documentation",
+      "category" : "basics",
+      "keywords" : "documentation, instructions",
+      "url"      : "/docs.html",
+      "content"  : " TRACMASS documentation  Navigate DocsWelcome to TRACMASS documentation About Configuration SubmenuInstallation and Theoretical Run How to set an experimentNetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials Submenu Adding Custom TracersGrid SetupKilling TrajectoriesReading in VariablesSeeding LocationsSeeding TypesStreamfunctions TRACMASS output Tools SubmenuIn situ postprocessing pyTRAJ References Welcome to TRACMASS documentati..."
+    } ,
+  
+    {
+      "title"    : "TRACMASS Examples",
+      "category" : "basics",
+      "keywords" : "videos, NEMO, AVISO, IFS, examples, ROMS",
+      "url"      : "/examples.html",
+      "content"  : " Example Gallery  Example gallery Video and Image galleries of different results computed with TRACMASS Video Gallery Some trajectory examples computed using TRACMASS Conveyor belt Particles in the Agulhas current system. Image gallery Includes examples of different TRACMASS features Theoretical case The theoretical is the default project of TRACMASS and describes the flow on a spatial homogeneous and time dependent two dimensional velocity field. See gallery AVISO satellite altimetry data Th..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/blog/ifs.html",
+      "content"  : " IFS-ECMWF  IFS-ECMWF 3D datasetsThe IFS data is stored on a Arakawas A-grid while TRACMASS is defined on a Arakawas C-grid. Therefore both zonal and meridional fluxes are computed interpolating the velocity fields on the TRACMASS grid. This is done on the read_field subroutine. The default setup of this project initialises trajectories in an area that covers south Asia. The seeding takes place every six hours during a month. TRACMASS features seeding trajectories using a mask maskFileThe see..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/kill_zones/",
+      "content"  : " Killing trajectories  Killing trajectories UNDER CONSTRUCTION - spelling and grammar check Introduction In TRACMASS there are 4 types of terminating or killing trajectories. Here we will breifly presenthow to set them up. In general trajectory killing is done by file kill_zones.F90 but inmost cases no modifications need to be made there. The only exception is whenexitType4 in which case the user needs to write FORTRAN code inkill_zones.F90 that will terminate trajectories in some locations. ..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/setup_grid/",
+      "content"  : " Grid Setup  Grid Setup UNDER CONSTRUCTION - outline Introduction In this section we are going to present how to set up the grid for Tracmass and how to transfrom themfrom typically used grids in climate modelling. It is essential to set up the grid correctly thusgreat care needs to be taken into this. TRACMASS grid TRACMASS is built on Arakawa C-grid which keeps thetracer values such as temperature salinity oxygen concentration in the center of the grid cellwhile the velocity values are set ..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/streamfunctions/",
+      "content"  : " Streamfunctions   Streamfunctions UNDER CONSTRUCTION - outline Introduction Streamfunctions are a powerfull tool of TRACMASS that has high utility. in determining overall image of water flow through the oceans. Setting up streamfunctions Info about the namelist with explanations how to set them up.Jump to Section"
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/read_field/",
+      "content"  : " Reading in Variables  Reading in Variables UNDER CONSTRUCTION - draft Introduction TRACMASS can read in various variables such as various levels of velocity field resoluiton andtracers variables like temperature and salinity. The function to read in variables is called everyglobal loop timestep intrun. However the user has high flexability avilable whenit comes to input data frequency reading in. In this chapter we will ilustrate the basics of file reading and the general logic behind it. Al..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/seeding_types/",
+      "content"  : " Seeding  Seeding Types UNDER CONSTRUCTION - outline Introduction A chapter about initilizing a different number of trajectories not the spatial and temporalconditions. Jump to Section "
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/seeding_file/",
+      "content"  : " Seeding  Seeding Locations UNDER CONSTRUCTION - spelling and grammar check Introduction In this chapter we will take a closer look at how trajectory seeding initilization is done inTRACMASS. Two types of seeding are possible - from boxes defined in the namelist file andfrom seeding files. It is recomended to first try out seeding from the namelist file to getan idea of how it works before starting with the seeding files. In these example we will be considering a case where only a single traj..."
+    } ,
+  
+    {
+      "title"    : "Custom Tracers",
+      "category" : "basics",
+      "keywords" : "tracers",
+      "url"      : "/docs/tutorials/custom_tracers/",
+      "content"  : " Custom Tracers  Adding Custom Tracers UNDER CONSTRUCTION - spelling and grammar check Introduction Besides calculating the trajectory a parcel will take in space and time TRACMASS can also calculatethe characteristic values of its trajectories which are known as tracers. This allows to seehow a trajectorys tracer values such as temperature and salinity change along the way. For moredetailed information on tracers themsevles refer to the documentation here. In this example we present the proc..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/",
+      "content"  : " TRACMASS Tutorials  TRACMASS Tutorials Under constructionHere are the articles in this section Adding Custom Tracers Grid Setup Killing trajectories Reading in Variables Seeding Locations Seeding Types StreamfunctionsJump to Section "
+    } ,
+  
+    {
+      "title"    : "About TRACMASS Documentation",
+      "category" : "documentation",
+      "keywords" : "about, documentaiton",
+      "url"      : "/docs/about/",
+      "content"  : " About  About The original feature of the TRACMASS method is that it solves the trajectory paththrough each grid cell with an analytical solution of a differential equation which depends on the velocities on the gridbox walls. The scheme was originally developed by Do%CC%88o%CC%88s 1995 and Blanke andRaynaud 1997 for stationary velocity fields and hereafter further developed by Vries and Do%CC%88o%CC%88s2001 for time-dependent fields by solving a linear interpolation of the velocity field bot..."
+    } ,
+  
+    {
+      "title"    : "Namelist",
+      "category" : "documentation",
+      "keywords" : "namelist",
+      "url"      : "/docs/components/namelist/",
+      "content"  : " Namelist  NamelistMany variables at TRACMASS can be modified using the namelist without the need to recompile theprogram. Each project has a namelist_CASE.in in the project folder. When TRACMASS is compileda copy of the namelist namelist.in can be found in the main TRACMASS directory. This is a list of all the variables that can be changed in the namelist and their correspondinggroup. Not all of these variables must be defined in the namelist. INIT_GRID_DESCRIPTION Here you can set the paths..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/components/main_program/",
+      "content"  : " Main program  Main program The present chapter describes the main program TRACMASS and the different running options. TRACMASS.F90 This is how the TRACMASS main program works1 - First the namelist is read init_namelist and the tracers are initialisedinit_tracer.2 - Then the subdomain is defined init_subdomain and all the arrays are allocatedinit_alloc.3 - If norun is false the main subroutinesto compute trajectories are called. 3.1 - The grid variables are defined setup_gridthecalendar init_..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/components/project/",
+      "content"  : " The Projects folder  The Projects folderThe present chapter will introduce all the files in the projects folder. Currently fourprojects are available Theoretical NEMO AVISO IFS ROMS. setup_grid.F90 This subroutine defines all the variables linked to the grid such as the horizontal resolution or thegrid area. The following variables are initialised in this subroutinedxdy %5Bmandatory%5D the area of horizontal cell-walls. dxv size of the zonal wall computed in V points. dyu size of the meridio..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/components/main_modules/",
+      "content"  : " Main modules  Main modulesThe present chapter will introduce all the modules in the src directory. The modules areorganised in alphabetical order. mod_calendar.F90 The module mod_calendar contains all the subroutines that initialise and update thecalendar of the simulation. This module contains five subroutines init_calendarprevious_calendar update_calendar end_calendarand tt_calendar.The subroutine init_calendar defines the starting date of the calendar as well as the time step of the simul..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/components/",
+      "content"  : " TRACMASS Components  TRACMASS ComponentsIn this chapter we present TRACMASS components. In the Main program section we brieflydescribe the overall structure of TRACMASS. In Main modules we take a closer look at all themodules avialable their functionallity and set up. In the Namelist section all the variablesavialable are described and some basic examples are shown. Finally in the The Projects folder we take a closer look at the contents of a project folder describe their functionallityand h..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/references/",
+      "content"  : " References   References Berloff P McWilliams J 2002 Material transport in oceanic gyres. Part II Hierarchy of stochasticmodels. Journal of Physical Oceanography 32797%E2%80%93830. Berloff P McWilliams J Bracco A 2002 Material transport in oceanic gyres. Part I Phenomenology.Journal of Physical Oceanography 32764%E2%80%93796. Blanke B and Raynaud S 1997. Kinematics of the Pacific Equatorial Undercurrent a Eulerian andLagrangian approach from GCM results. J. Phys. Oceanogr. 27 1038- 1053. Blan..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/output/",
+      "content"  : " TRACMASS output  TRACMASS output The present chapter will describe the output from TRACMASS. Output terminal The amount of information printed by TRACMASS can be modified by increasing thelog_level. The default value of verbose provides a short summary of the initialconfiguration. At every time step TRACMASS prints a summary of the number of trajectories. Output files Depending on the initial configuration of the run different files will be created. This is a summaryof the output files of TR..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/configuration/installation/",
+      "content"  : " Installation  Installation and Theoretical Run Technical note TRACMASS is written in FORTRAN 90 with modules and runs on UNIX platforms such as MACOS X and Linux. For certain configurations netCDF libraries are also required. 1. Download the code git clone httpsgithub.comTRACMASSTracmass.git 2. Enter the TRACMASS directory cd Tracmass 3. Modify the Makefile.proj to fit your system. You will need tosetARCH which is the name of your system. If you are running simulations on aHigh-Performance C..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/configuration/quick-start/",
+      "content"  : " How to set an experiment  How to set up an experimentHow to configure a customised experiment This is a basic guidance on how to implement a new setup from a GCM with a grid that does not existin the present TRACMASS projects list. This requires good knowledge in the numericaldiscretisation of your GCM and of Fortran programming.Make a new %C2%ABproject%C2%BB which we call mymodel here. Copy the directory from an existing project that has a similar grid AB or C-grid or has a similar format n..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/configuration/netcdf-setup/",
+      "content"  : " NetCDF setup  NetCDF Setup UNDER CONSTRUCTION NetCDF is tricky to ste up so here is a short guide. Last time this was updated was in October of2025 so things might have changed since then. Linux MacOS HPCJump to Section "
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/configuration/",
+      "content"  : " Configuration include header.html pre_link  Configuration The present chapter will present how to configure and run the TRACMASS Lagrangiantrajectory model as well as how to configure a customised experiment. Here are the articles in this section Installation and Theoretical RunHow to set up an experimentNetCDF Set upJump to Section "
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tools/insitu/",
+      "content"  : " In situ postprocessing   In situ postprocessingJump to Section "
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tools/pytraj/",
+      "content"  : " pyTRAJ  pyTRAJJump to Section "
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tools/",
+      "content"  : " Tools  Tools In this section different tools to analyse and postprocess TRACMASS output data aredescribed. Here are the articles in this section In situ postprocessingpyTRAJ Jump to Section "
+    } ,
+  
+    {
+      "title"    : "Homepage",
+      "category" : "basics",
+      "keywords" : "about",
+      "url"      : "/",
+      "content"  : " TRACMASS  TRACMASS TRACMASS is a Lagrangian trajectory code for ocean and atmospheric general circulationmodels. The code makes it possible to estimate water paths Lagrangian stream functions barotropicoverturning etc. exchange times etc. Get code Documentation Learn about how to set up TRACMASS. how to design your own experiment. how the different components of TRACMASS work. how to postprocess your TRACMASS output data. Get StartedExamples Check our gallery with different TRACMASS results ..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/kill_zones.html",
+      "content"  : " Killing trajectories  Killing trajectories UNDER CONSTRUCTION - spelling and grammar check Introduction In TRACMASS there are 4 types of terminating or killing trajectories. Here we will breifly presenthow to set them up. In general trajectory killing is done by file kill_zones.F90 but inmost cases no modifications need to be made there. The only exception is whenexitType4 in which case the user needs to write FORTRAN code inkill_zones.F90 that will terminate trajectories in some locations. ..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/blog/nemo.html",
+      "content"  : " NEMO-ORCA1  NEMO-ORCA1 3D datasetsThe NEMO data is defined on the same grid as the TRACMASS grid. Therefore there is no need to interpolate velocities or tracer on the TRACMASS grid. The default setup of this project initialises trajectories in the North Atlantic Ocean only for southward fluxes marked in black in the figure. The seeding takes place every month 24 seeding steps and one trajectory is initialised in the location. Trajectories are terminated based on geographical conditions soli..."
+    } ,
+  
+    {
+      "title"    : "News",
+      "category" : "basics",
+      "keywords" : "news, updates",
+      "url"      : "/news.html",
+      "content"  : " TRACMASS news updates   TRACMASS news updatesTRACMASS version renaming20102021 For simplifying the different version numbers of TRACMASS from now the different versions will be a combination of the year and the month when the changes were committed vYYYY.MM Version 7.0 will be known as v2020.12.Version 7.1 will be known as v2021.10.Any future version will be described using the new style. Release of version 7.018122020 A new version of TRACMASS v7.0-beta is now available. This version includ..."
+    } ,
+  
+    {
+      "title"    : "Publications",
+      "category" : "basics",
+      "keywords" : "research papers, publications, literature",
+      "url"      : "/publications.html",
+      "content"  : " TRACMASS publications   TRACMASS publications a non-exhaustive list Meng Z. Ji Q. Chen H. and Lv G. 2025. Quantification of multi-source contributions to volume transport in the Tsushima Strait. Ocean Modelling page 102597. Link Categories Ocean Regional Chafik L. Eisbrenner E. and D%C3%B6%C3%B6s K. 2025. Lagrangian View of Atlantic Water Pathways toward the North Sea. Tellus A Dynamic Meteorology and Oceanography 771 pages 151%E2%80%93159. Link Categories Ocean Regional Dey D. Marsh R. Drij..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/read_field.html",
+      "content"  : " Reading in Variables  Reading in Variables UNDER CONSTRUCTION - draft Introduction TRACMASS can read in various variables such as various levels of velocity field resoluiton andtracers variables like temperature and salinity. The function to read in variables is called everyglobal loop timestep intrun. However the user has high flexability avilable whenit comes to input data frequency reading in. In this chapter we will ilustrate the basics of file reading and the general logic behind it. Al..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/blog/roms.html",
+      "content"  : " ROMS  ROMS 3D datasetsThe ROMS data is defined on the same grid as the TRACMASS grid. Therefore there is no need to interpolate velocities or tracer on the TRACMASS grid. However ghosts u and v points are defined around the frame to adjust to the TRACMASS grid. The default setup of this project initialises trajectories west of Sri Lanka only for northward fluxes solid blue line. The seeding takes place every month 12 seeding steps and one trajectory is initialised in the location. Trajectori..."
+    } ,
+  
+    {
+      "title"    : "Search Results",
+      "category" : "basics",
+      "keywords" : "search",
+      "url"      : "/search-results.html",
+      "content"  : " Search Results   Search our WebsiteSearch results "
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/assets/js/search-script.js",
+      "content"  : "function  Function to get the URL parameter omitted for brevity function getUrlParamname  const params new URLSearchParamswindow.location.search return params.getname const searchPhrase getUrlParamsearch-phrase const searchInput document.getElementByIdquery-in-page const resultsContainer document.getElementByIdresults-container if %21searchInput %7C%7C %21resultsContainer  console.errorSimpleJekyllSearch Required HTML elements not found. return  const options  searchInput searchInputresultsCo..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/search.json",
+      "content"  : "%5B  for post in site.pages title  post.title %7C escape category  post.category keywords  post.keywords %7C join  url site.baseurl post.url content  post.content %7C strip_html %7C strip_newlines %7C escape %7C rstrip %7C remove %7C remove  %7C remove  %7C remove %7C remove  %7C remove amp %7C remove quot %7C remove %7C remove %2339 %7C remove %7C remove %7C remove %7C replace  %7C replace  %7C replace  %7C replace  %7C replace  %7C remove %7C replace  %7C remove %7C remove %7C remove %7C re..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/seeding_file.html",
+      "content"  : " Seeding  Seeding Locations UNDER CONSTRUCTION - spelling and grammar check Introduction In this chapter we will take a closer look at how trajectory seeding initilization is done inTRACMASS. Two types of seeding are possible - from boxes defined in the namelist file andfrom seeding files. It is recomended to first try out seeding from the namelist file to getan idea of how it works before starting with the seeding files. In these example we will be considering a case where only a single traj..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/seeding_types.html",
+      "content"  : " Seeding  Seeding Types UNDER CONSTRUCTION - outline Introduction A chapter about initilizing a different number of trajectories not the spatial and temporalconditions. Jump to Section "
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/setup_grid.html",
+      "content"  : " Grid Setup  Grid Setup UNDER CONSTRUCTION - outline Introduction In this section we are going to present how to set up the grid for Tracmass and how to transfrom themfrom typically used grids in climate modelling. It is essential to set up the grid correctly thusgreat care needs to be taken into this. TRACMASS grid TRACMASS is built on Arakawa C-grid which keeps thetracer values such as temperature salinity oxygen concentration in the center of the grid cellwhile the velocity values are set ..."
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/docs/tutorials/streamfunctions.html",
+      "content"  : " Streamfunctions   Streamfunctions UNDER CONSTRUCTION - outline Introduction Streamfunctions are a powerfull tool of TRACMASS that has high utility. in determining overall image of water flow through the oceans. Setting up streamfunctions Info about the namelist with explanations how to set them up.Jump to Section"
+    } ,
+  
+    {
+      "title"    : "",
+      "category" : "",
+      "keywords" : "",
+      "url"      : "/blog/theoretical.html",
+      "content"  : " Theoretical case  Theoretical caseThe theoretical is the default project of TRACMASS and describes the flow on a spatial homogeneous and time dependent two dimensional velocity field. The velocities are described byWe used the same coefficients as Fabbroni 2009 with0.3 ms0.04 ms and a damping time2.89 days and28.9 days. The latitude was set to N. The velocities are read into TRACMASS every hour. TRACMASS was integrated forward in time using the time step method with intermediate steps so tha..."
+    } 
+  
+  
+]

@@ -1,0 +1,125 @@
+---
+---
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>Seeding</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="shortcut icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="palette-navy">
+
+  <div id="page" class="site">
+
+    {% include header.html pre_link="../../../"%}
+
+    <main id="content" class="site-content">
+      <div class="inner outer">
+        <div class="docs-content">
+
+          {% include doc_navigation.html pre_link="../" %}
+
+          <article class="post type-docs">
+            <div class="post-inside">
+
+              <header class="post-header">
+                <h1 class="post-title line-left">Seeding Locations (UNDER CONSTRUCTION - spelling and grammar check)</h1>
+              </header><!-- .post-header -->
+
+              <div class="post-content">
+
+                <h2 id="Introduction">Introduction</h2>
+
+                <p>In this chapter we will take a closer look at how trajectory seeding (initilization) is done in
+                  TRACMASS. Two types of seeding are possible - from boxes defined in the <em>namelist</em> file and
+                  from seeding files. It is recomended to first try out seeding from the <em>namelist</em> file, to get
+                  an idea of how it works, before starting with the seeding files.</p>
+
+                <p>In these example we will be considering a case where only a single trajectory is initilized from
+                  each grid-cell (<strong>nqua=1</strong> and <strong>partquant=1</strong>) and only the trajectories
+                  with positive flux (<strong>idir=1</strong>), forward in time (<strong>nff</strong>), and on
+                  meridional (<strong>isec=2</strong>) grid cell's face. </p>
+
+                <h2 id="Seeding from namelist boxes">Seeding from namelist boxes</h2>
+
+                <p>In this example, the namelist has set up seeding location as three boxes.</p>
+
+                {{ site.data.tutorial_examples.seed_file_first_type }}
+
+                <h2 id="Seeding from a file">Seeding from a file</h2>
+
+                <p>A personal preference of the author is to keep the files relating to a simulation in the project's
+                  folder. In this case, my project is called <em>global_model</em> in which I have a folder called
+                  <em>seed_dir</em> with two files:
+                <ul>
+                  <li><em>seed_condition.txt</em> - contains the position, cell's wall and direction of the seeding
+                    trajectory</li>
+                  <li><em>seed_time.txt</em> - contains the time when trajectory seeding takes place</li>
+                </ul>
+                The setup of the namelist can be found in the code sample below.
+                </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  The <em>.txt</em> extension has been tested and work for the model as seeding input files. Other
+                  formats, such as <em>.csv</em>, <em>.nc</em>, etc., might work as well.
+                </div>
+
+                {{ site.data.tutorial_examples.seed_file_second_type }}
+
+                <h3 id="File seed_condition.txt">File <em>seed_condition.txt</em></h3>
+
+                <p>The seeding file contains sets up the seeding condition with three parts:
+                <ul>
+                  <li>1st, 2nd, 3rd column - grid cell's location in the form of model index in x, y, and z direction
+                  </li>
+                  <li>4th collumn - which grid wall is used for seeding (<strong>isec</strong>)</li>
+                  <li>5th column - flux direction (<strong>idir</strong>)</li>
+                </ul>
+                For more information on the <strong>isec</strong> and <strong>idir</strong> parameters refer to the
+                namelist documentation <a href="/docs/components/namelist/index.html">here</a>. An example on how the
+                seeding file is formatted is in the code snippet below.</p>
+
+                {{ site.data.tutorial_examples.seed_file_seed_conditions }}
+
+
+                <h3 id="File seed_time.txt">File <em>seed_time.txt</em></h3>
+
+                <p>For the time file, there is only one column present and it determines in which global iterations
+                  (<strong>intrun</strong>) seeding should take place. The time steps need to be organized in a column,
+                  similarly to the seeding condition input file.
+                </p>
+
+              </div><!-- .post-content -->
+
+            </div><!-- .post-inside -->
+          </article><!-- .post -->
+          <nav id="page-nav" class="page-nav">
+            <div id="page-nav-inside" class="page-nav-inside sticky">
+              <h2 class="page-nav-title">Jump to Section</h2>
+              <div id="page-nav-link-container"></div>
+            </div><!-- .page-nav-inside -->
+          </nav><!-- .page-nav -->
+        </div><!-- .docs-content -->
+      </div><!-- .inner-->
+
+    </main><!-- .site-content -->
+
+    {% include footer.html%}
+
+  </div><!-- .site -->
+
+</body>
+
+</html>

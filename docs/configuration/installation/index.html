@@ -72,14 +72,10 @@
                 </p>
 
                 <p> Make sure in <strong>Makefile</strong> both <strong>PROJECT</strong> and <strong>CASE</strong> are
-                  set
-                  to <em>'Theoretical'</em>. In this case, TRACMASS will use a simple oscillating velocity field to
-                  trace
-                  trajectories, which is recomended for the first run to ensure the model downloaded sucessfully. Once
-                  all the changes
-                  have been made, the first few lines of <strong>Makefile.prj</strong> should look like this on Linux
-                  type operating
-                  system:</p>
+                  set to <em>'Theoretical'</em>. In this case, TRACMASS will use a simple oscillating velocity field to
+                  trace trajectories, which is recomended for the first run to ensure the model downloaded sucessfully.
+                  Once all the changes have been made, the first few lines of <strong>Makefile.prj</strong> should look
+                  like this on Linux type operating system:</p>
                 <pre class="highlight"><code>#================================================================
 #                     TRACMASS MAKEFILE
 #================================================================
@@ -89,7 +85,7 @@ PROJECT	          = Theoretical
 CASE	          = Theoretical
 RUNFILE 	  = runtracmass
 ARCH              =
-NETCDFLIBS        = automatic-44
+NETCDFLIBS        = none
 #================================================================
 </code></pre>
                 <div class="note">
@@ -183,9 +179,11 @@ cp projects/Theoretical/namelist_Theoretical.in namelist.in
  End time  : 20:57:55
  ===============================================================================
 </code></pre>
+
                     <p>After this, you can try to make changes by yourself in the namelist file or jump into one of our
-                      <a href="../../tutorials/example1/index.html">TRACMASS Tutorials</a> to better learn the hang of
-                      the software!</p>
+                      <a href="../../tutorials/index.html">TRACMASS Tutorials</a> to better learn the hang of
+                      the software!
+                    </p>
 
 
                   </div><!-- .post-content -->
@@ -206,10 +204,6 @@ cp projects/Theoretical/namelist_Theoretical.in namelist.in
 
   </div><!-- .site -->
 
-  <!-- Scripts -->
-  <script src="../../../assets/js/plugins.js"></script>
-  <script src="../../../assets/js/main.js"></script>
-  <script src="../../../assets/js/page-load.js"></script>
 </body>
 
 </html>

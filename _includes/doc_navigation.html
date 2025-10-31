@@ -38,6 +38,12 @@
               <a href="{{include.pre_link}}../configuration/quick-start/index.html">How to set up an experiment</a>
             </li>
 
+
+            <!-- Setting up NetCDF -->
+            <li class="docs-menu-item {%if page.url contains 'netcdf-setup' %} current active {% endif %}">
+              <a href="{{include.pre_link}}../configuration/netcdf-setup/index.html">NetCDF set up</a>
+            </li>
+
           </ul>
         </li>
 
@@ -74,8 +80,55 @@
 
           </ul>
         </li>
-
         
+        <!-- TRACMASS Tutorials -->
+        <li class="docs-menu-item
+                   {%if page.url contains 'tutorials' %} current active {% endif %}
+                   has-children">
+          <a href="{{include.pre_link}}../tutorials/index.html">TRACMASS Tutorials</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!--  -->
+            <li class="docs-menu-item {%if page.url contains 'custom_tracers' %} current active {% endif %}">
+              <a href="{{include.pre_link}}../tutorials/custom_tracers.html">Adding Custom Tracers</a>
+            </li>
+            
+            <!--  -->
+            <li class="docs-menu-item {%if page.url contains 'setup_grid' %} current active {% endif %}">
+              <a href="{{include.pre_link}}../tutorials/setup_grid.html">Grid Setup</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item {%if page.url contains 'kill_zones' %} current active {% endif %}">
+              <a href="{{include.pre_link}}../tutorials/kill_zones.html">Killing Trajectories</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item {%if page.url contains 'read_field' %} current active {% endif %}">
+              <a href="{{include.pre_link}}../tutorials/read_field.html">Reading in Variables</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item {%if page.url contains 'seeding_file' %} current active {% endif %}">
+              <a href="{{include.pre_link}}../tutorials/seeding_file.html">Seeding Locations</a>
+            </li>
+
+             <!--  -->
+            <li class="docs-menu-item {%if page.url contains 'seeding_types' %} current active {% endif %}">
+              <a href="{{include.pre_link}}../tutorials/seeding_types.html">Seeding Types</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item {%if page.url contains 'streamfunctions' %} current active {% endif %}">
+              <a href="{{include.pre_link}}../tutorials/streamfunctions.html">Streamfunctions</a>
+            </li>
+
+          </ul>
+        </li>
 
         <!-- TRACMASS output -->
         <li class="docs-menu-item {%if page.url contains 'output' %} current active {% endif %}">

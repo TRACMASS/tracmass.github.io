@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>Custom Tracers</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="shortcut icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="palette-navy">
+
+  <div id="page" class="site">
+
+    <header id="masthead" class="site-header outer">
+  <div class="inner">
+    <div class="site-header-inside">
+
+      <div class="site-branding">
+        <p class="site-logo"><a href="../../../index.html">
+            <img src="../../../images/headers_footer/fig_tracmass.png" alt="TRACMASS logo" /></a></p>
+      </div><!-- .site-branding -->
+
+      <nav id="main-navigation" class="site-navigation" aria-label="Main Navigation">
+        <div class="site-nav-inside">
+
+          <button id="menu-close" class="menu-toggle">
+            <span class="screen-reader-text">Open Menu</span>
+            <span class="icon-close" aria-hidden="true"></span>
+          </button>
+
+          <ul class="menu">
+            <li class="menu-item ">
+              <a href="../../../index.html" class=""> Home </a>
+            </li>
+
+            <li class="menu-item  current active ">
+              <a href="../../../docs.html" class="">Documentation</a>
+            </li>
+
+
+            <li class="menu-item
+                          has-children">
+              <a href="../../../index.html" class="">Publications & Examples</a>
+              <button class="submenu-toggle">
+                <span class="icon-angle-right" aria-hidden="true"></span>
+                <span class="screen-reader-text">Sub-menu</span>
+              </button>
+
+              <ul class="submenu">
+                <li class="menu-item ">
+                  <a href="../../../publications.html" class="">Publications </a>
+                </li>
+
+                <li class="menu-item ">
+                  <a href="../../../examples.html" class="">Example Gallery </a>
+                </li>
+
+              </ul>
+            </li>
+
+            <li class="menu-item ">
+              <a href="../../../contact.html" class="">Contact & FAQ </a>
+            </li>
+
+            <li class="menu-item ">
+              <a href="../../../news.html" class="">News</a>
+            </li>
+
+            <li class="menu-item menu-button">
+              <a href="https://github.com/TRACMASS/tracmass" class="button button-icon">
+                <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                </svg>
+                <span class="screen-reader-text">GitHub</span>
+              </a>
+            </li>
+
+            <li class="menu-item search-bar">
+              <form id="form" action="search-results.html" role="search" method="GET">
+                <!-- Search query input field-->
+                <input type="text" id="query" name="search-phrase" placeholder="Search..." aria-label="Search through site content">
+
+                <!-- button to submit and redirect to the search page -->
+                <button id="search-button">
+                  <svg class="icon" viewBox="0 0 1024 1024">
+                    <path class="path1"
+                      d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
+                    </path>
+                  </svg>
+                </button>
+
+              </form>
+            </li>
+
+          </ul>
+        </div>
+      </nav><!--.site-navigation -->
+    </div><!-- .site-header-inside -->
+  </div><!-- .inner -->
+</header><!-- .site-header -->
+
+    <main id="content" class="site-content">
+      <div class="inner outer">
+        <div class="docs-content">
+
+          <nav id="docs-nav" class="docs-nav">
+  <div id="docs-nav-inside" class="docs-nav-inside sticky">
+
+    <button id="docs-nav-toggle" class="docs-nav-toggle">Navigate Docs<span class="icon-angle-right"
+        aria-hidden="true"></span></button>
+    <div class="docs-nav-menu">
+      
+      <!-- Here the navigation part starts-->
+      <ul id="docs-menu" class="docs-menu">
+        
+        <!-- Welcome to TRACMASS' documentation -->
+        <li class="docs-menu-item ">
+          <a href="../../../docs.html">Welcome to TRACMASS' documentation</a>
+        </li>
+        
+        <!-- About -->
+        <li class="docs-menu-item ">
+          <a href="../../about/index.html">About</a>
+        </li>
+
+        <!-- Configuration (submenu) -->
+        <li class="docs-menu-item
+                   
+                   has-children">
+          <a href="../../configuration/index.html">Configuration</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+            <!-- Installation -->
+            <li class="docs-menu-item ">
+              <a href="../../configuration/installation/index.html">Installation and Theoretical Run</a>
+            </li>
+
+            <!-- How to set up an experiment -->
+            <li class="docs-menu-item ">
+              <a href="../../configuration/quick-start/index.html">How to set up an experiment</a>
+            </li>
+
+
+            <!-- Setting up NetCDF -->
+            <li class="docs-menu-item ">
+              <a href="../../configuration/netcdf-setup/index.html">NetCDF set up</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- TRACMASS Components (submenu) -->
+        <li class="docs-menu-item
+                   
+                   has-children">
+          <a href="../../components/index.html">TRACMASS Components</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!-- Main Program -->
+            <li class="docs-menu-item ">
+              <a href="../../components/main_program/index.html">Main program</a>
+            </li>
+
+            <!-- Main modules -->
+            <li class="docs-menu-item ">
+              <a href="../../components/main_modules/index.html">Main modules</a>
+            </li>
+
+            <!-- Namelist -->
+            <li class="docs-menu-item ">
+              <a href="../../components/namelist/index.html">Namelist</a>
+            </li>
+
+            <!-- The projects folder -->
+            <li class="docs-menu-item ">
+              <a href="../../components/project/index.html">The <em>Projects </em>folder</a>
+            </li>
+
+          </ul>
+        </li>
+        
+        <!-- TRACMASS Tutorials -->
+        <li class="docs-menu-item
+                    current active 
+                   has-children">
+          <a href="../../tutorials/index.html">TRACMASS Tutorials</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!--  -->
+            <li class="docs-menu-item  current active ">
+              <a href="../../tutorials/custom_tracers.html">Adding Custom Tracers</a>
+            </li>
+            
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../tutorials/setup_grid.html">Grid Setup</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../tutorials/kill_zones.html">Killing Trajectories</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../tutorials/read_field.html">Reading in Variables</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../tutorials/seeding_file.html">Seeding Locations</a>
+            </li>
+
+             <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../tutorials/seeding_types.html">Seeding Types</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../tutorials/streamfunctions.html">Streamfunctions</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- TRACMASS output -->
+        <li class="docs-menu-item ">
+          <a href="../../output/index.html">TRACMASS output</a>
+        </li>
+
+        <!-- Tools (Submenu) -->
+        <li class="docs-menu-item 
+                   
+                   has-children">
+          <a href="../../tools/index.html">Tools</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!-- In situ postprocessing -->
+            <li class="docs-menu-item ">
+              <a href="../../tools/insitu/index.html"><em>In situ</em> postprocessing</a>
+            </li>
+
+            <!-- pyTRAJ -->
+            <li class="docs-menu-item ">
+              <a href="../../tools/pytraj/index.html">pyTRAJ</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- References -->
+        <li class="docs-menu-item ">
+          <a href="../../references/index.html">References</a>
+        </li>
+
+      </ul><!-- .docs-menu -->
+    </div><!-- .docs-nav-menu -->
+  </div><!-- .docs-nav-inside -->
+</nav><!-- .docs-nav -->
+
+          <article class="post type-docs">
+            <div class="post-inside">
+
+              <header class="post-header">
+                <h1 class="post-title line-left">Adding Custom Tracers (UNDER CONSTRUCTION - spelling and grammar check)</h1>
+              </header><!-- .post-header -->
+
+              <div class="post-content">
+                <!-- For mathematical equations -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default"></script>
+
+                <h2 id="Introduction">Introduction</h2>
+
+                <p>Besides calculating the trajectory a parcel will take in space and time, TRACMASS can also calculate
+                  the characteristic values of its trajectories, which are known as <em>tracers</em>. This allows to see
+                  how a trajectory's tracer values, such as temperature and salinity, change along the way. For more
+                  detailed information on tracers themsevles refer to the documentation <a
+                    href="../../../docs/components/main_modules/index.html#mod_tracersf90">here</a>.
+                </p>
+
+                <p>In this example we present the procedure of adding an additional tracer that is calulated from
+                  already presented variables. We will have potential temperature (<em>To</em>) and salinity
+                  (<em>S</em>) as input data, and we will write a tracer function that converts temperature from Celsius
+                  to Kelvin degrees. Even though this example is a primitive unit conversion, the aim of this is to
+                  bring attention to the procedure of adding additional custom tracers in the code itself.
+                </p>
+
+                <h2 id="Adding extra tracer function">Adding extra tracer function</h2>
+
+                <p>There are two files that would be necessary to modify to add an additional tracer:
+                <ul>
+                  <li><strong>mod_tracerf.F90</strong> - contains the main functions responsible for tracer
+                    initiaization, interpolation and management</li>
+                  <li><strong>mod_tracers.F90</strong> - contains support functions for a specific tracer's
+                    calculations, for example, a function for density calculations</li>
+                </ul>
+                Of course, there are many ways how to implement additional tracers into the code, but this method is
+                recommended, as it seamessly integrates into the already existing source code.
+                </p>
+
+                <p>
+                  First we will write a function that will convert from Celsius to Kelvin degrees, after which we will
+                  add a few extra lines in another function so that our tracer can be callable. Finally, we will add
+                  out newly created tracer category in the namelist and test if it is working correctly.
+                </p>
+
+                <h3 id="Setting up mod_tracerf.F90">Setting up <em>mod_tracerf.F90</em></h3>
+
+                <p>
+                  First we will create a function that carries out the calculations of converting from Celsius to Kevlin
+                  degrees. Mathemtaically, very simple operation, done the following way:</p>
+
+                <script type="math/tex; mode=display">\textbf{T}[degK] = \textbf{T}[degC] + 273.15</script>
+
+                <p>We will call the function <em>celsius2kelvin</em> and we will send one variable over to the function,
+                  when we call it. The function itself needs to declare any varibales we might be using, in this case,
+                  we have
+                <ul>
+                  <li> <em>T</em> - input temperature in Celsius, which we want to convert to Kelvin degrees </li>
+                  <li> <em>celsius2kelvin</em> - output variable holding temperature in Kelvin degrees</li>
+                  <li> <em>nx, ny, nz</em> - variables to hold the input array's <em>T</em> shape in <em>x, y, z</em>
+                    dirrectoin accordingly</li>
+                </ul>
+                We create the array <em>celsius2kelvin</em> to have the same shape as the input array <em>T</em> with
+                the function <em>ALLOCATE</em>. Finally, we carry out the transofrmation from Celsius to Kelvin degrees.
+                The function written in Fortran is in the following code segment:
+                </p>
+
+                <pre class='highlight'><code>FUNCTION celsius2kelvin(T)
+ ! --------------------------------------------------
+ !
+ ! Purpose:
+ ! Transform temperature from Celsius to Kelvin units
+ !
+ ! Method:
+ ! T(K) = T(C) + 273.15
+ !
+ ! --------------------------------------------------
+     IMPLICIT NONE
+
+     ! Input data, Temperature [degC]
+     REAL, INTENT(IN)                         :: T(:,:,:)
+
+     ! Output data, Temperature [degK]
+     REAL, ALLOCATABLE, DIMENSION (:,:,:)     :: celsius2kelvin
+     ! Dimensions of the Temperature array
+     INTEGER                                  :: nx, ny, nz
+
+     ! Assigne dimension sizes
+     nx = SIZE(T,1); ny = SIZE(T,2); nz = SIZE(T,3);
+
+     ! Create the array with the correct shape
+     ALLOCATE(celsius2kelvin(nx,ny,nz))
+
+     ! Carry out calculations
+     celsius2kelvin(:,:,:) = T(:,:,:) + 273.15
+
+ END FUNCTION celsius2kelvin</code></pre>
+
+
+                <p>This function needs to be added in the <em>mod_tracerf.F90</em> file, at the end of the file, but
+                  <strong>before</strong> the final line of:
+
+                <pre class='highlight'>END MODULE mod_tracerf</code></pre>
+                </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  It is good practice to document your code with adding a commented section with a short description of
+                  the function's purpose and the method used. Furthermore, it is good to write readable code, or at the
+                  very least, adding comments to your code when the various <em>functions</em>, <em>loops</em> and
+                  <em>if</em>-statements start growing in complexity. The future you will thank you for it later when
+                  you review your code.
+                </div>
+
+
+                <h3 id="Setting up mod_tracers.F90">Setting up <em>mod_tracers.F90</em></h3>
+
+                <p>Next step is adding a few lines in the <em>mod_tracers.F90</em> file. Find the <em>SUBROUTINE</em>
+                  called
+                  <strong>compute_tracers(tracname, var3d)</strong>. This function is responsible for redirecting
+                  tracer to the correct function for it to be calculated. In our case, we will call our tracer
+                  '<strong>c2k</strong>', so we add an additional IF-ELSE branch to the IF-ELSE structure, which is the
+                  last branch in the code below:
+                </p>
+
+                <pre class='highlight'><code>SUBROUTINE compute_tracer(tracname, var3d)
+  ! --------------------------------------------------
+  !
+  ! Purpose:
+  ! Compute tracer according to different functions
+  !
+  ! --------------------------------------------------
+
+  CHARACTER(len=100)          :: tracname
+  REAL(DP), DIMENSION(:,:,:)  :: var3d
+
+  ! Sigma 0 calculation (using T (degC) and S(g/kg))
+  IF (TRIM(tracname) == 'sigma0') THEN
+     var3d = REAL(thermo_dens0(... , ...),8)
+     var3d = var3d - 1000.d0
+
+  ! Sigma 0 calculation (using T (K) and S(g/kg))
+  ELSE IF (TRIM(tracname) == 'sigma0_K') THEN
+     var3d = REAL(thermo_dens0(..., ...),8)
+     var3d = var3d - 1000.d0
+
+  ! Conservative temperatue (CTo) calculation 
+  ! (using T (degC) and S(g/kg))
+  ELSE IF (TRIM(tracname) == 'CTo') THEN
+     var3d = REAL(thermo_pt2ct(..., ...),8)
+
+  ! Function we added, from degC to degK
+  ELSE IF (TRIM(tracname) == 'c2k') THEN
+     var3d = REAL(celsius2kelvin(REAL(tracers(1)%data(:,:,:,2),4)), 8)
+
+  END IF
+
+END SUBROUTINE compute_tracer</code></pre>
+
+
+                <p>Notice that the tracer value will be saved in array <em>var3d</em>. It is necessary, as the
+                  <em>var3d</em> variable will be assigned as the new value for the tracer.
+                </p>
+
+                <p>
+                  Below is a more detailed breakdown of the line that calls the function for tracer calculations.</p>
+
+                <pre class='highlight'><code> Format of the output tracer (double precision)
+         |   Function, for tracer calculations
+         |          |    Format of input variable (single precision)
+         |          |          |      Input variable (T, degC)
+         |          |          |              |
+var3d = REAL( celsius2kelvin( REAL( tracers(1)%data(:,:,:,2) ,4) ), 8)
+</code></pre>
+
+
+                In general, tracer data has 4-dimensions (x, y, z, t) with two possible time steps -
+                <strong>1</strong> is for the past and <strong>2</strong> is for current time step. Depending on the
+                tracer, there may be variations in which time step is chosen for other tracer calculations, but in
+                general, the current data (<strong>2</strong>) is used to calculate other derivative tracers.
+                </p>
+
+                <p>After the code has been modified, attempt to compile the code and run a test simulation without
+                  making changes to the namelist file. If everythinging has been set up correctly, there should be no
+                  error and no changes to the output data. </p>
+
+                <h2 id="Setting up the namelist">Setting up the namelist</h2>
+
+                <p>Finally, now that we have set up the code and tested it, we can make changes to the <em>namelist</em>
+                  file. As we mentioned previously, we have titled our tracer as '<em>c2k</em>', and now we will add it
+                  in our namelist. The procedure is the same as setting up any other tracer and the namelist section
+                  that needs to be modified is presented in the code below.
+                </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  It is recomended to keep the potential temperature (<em>To</em>) and salinity (<em>S</em>) tracers in
+                  the first and second index
+                  position. Some in-built functions rely on them being in these position, so, to not cause extra
+                  problems and ensure that the calculatiosn are correct, do not remove or replace them.
+                </div>
+
+                <pre class='highlight'><code>&INIT_TRACERS
+     ! Should we evaluate tracers along the trajectories?
+     l_tracers = .TRUE.               
+
+     !      Temperature(C),       Salinity,    Temperature(K)
+     ! Tracer name (description)
+     tracername =    'To',        'S',          'c2k'
+     
+     ! Tracer unit (description)
+     tracerunit =    'degC',      'PSU',        'degK'
+
+     ! Name of the variable in the netcdf (if it's read)
+     tracervarname = 'thetao',    'so',         ' ',
+
+     ! Action (read or compute)
+     traceraction =  'read',      'read',       'compute'
+
+     ! Dimension of the tracer
+     tracerdimension = 3D,        3D,           3D,
+
+     ! Minimum and maximum value of the binning
+     tracermin =      -3,         32,           250,
+     tracermax =      33,         38,           330,
+/</code></pre>
+
+
+                <p>With these instructions, the newly added tracer should work correctly. If there are any problems,
+                  either try to debug the code or carefully go through these instructions again. Using this as a guide,
+                  it is possible to add various other tracers to TRACMASS. </p>
+
+                
+
+              </div><!-- .post-content -->
+
+            </div><!-- .post-inside -->
+          </article><!-- .post -->
+          <nav id="page-nav" class="page-nav">
+            <div id="page-nav-inside" class="page-nav-inside sticky">
+              <h2 class="page-nav-title">Jump to Section</h2>
+              <div id="page-nav-link-container"></div>
+            </div><!-- .page-nav-inside -->
+          </nav><!-- .page-nav -->
+        </div><!-- .docs-content -->
+      </div><!-- .inner-->
+
+    </main><!-- .site-content -->
+
+    <footer id="colophon" class="site-footer outer">
+  <div class="inner">
+    <div class="site-footer-inside">
+
+      <p class="site-info">
+        <span class="copyright">&copy; Stackbit. All rights reserved. This Jamstack site was originally created by
+          Stackbit and modified by the TRACMASS team.</span>
+      </p>
+
+      <div class="social-links">
+
+      </div><!-- .social-links -->
+
+    </div><!-- .site-footer-inside -->
+  </div><!-- .inner -->
+</footer><!-- .site-footer -->
+
+<!-- Scripts -->
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/page-load.js"></script>
+
+  </div><!-- .site -->
+
+</body>
+
+</html>
