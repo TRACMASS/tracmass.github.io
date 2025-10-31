@@ -42,29 +42,14 @@ category: basics
                 <div class="inner-md outer">
                     <div class="post-content">
 
-                        <h2 id="contact">Search results</h2>
+                        <h2>Search:</h2>
+                                                                                                                                                   
+                        <input type="search" id="search-input-page" placeholder="Search our website.." autofocus>
 
-                        <!-- HTML elements for search -->
-                        <input type="text" id="search-input" placeholder="Search blog posts..">
+                        <h4>Search Results:</h4>
+
                         <ul id="results-container"></ul>
 
-                        <!-- or without installing anything -->
-                        <script
-                            src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
-                        <script>
-                            var sjs = SimpleJekyllSearch({
-                                searchInput: document.getElementById('search-input'),
-                                resultsContainer: document.getElementById('results-container'),
-                                json: '/search.json',
-                                searchResultTemplate: '<li><a href="{{ site.url }}{url}">{title}</a></li>'
-                            })
-                        </script>
-                        <!---
-                        <div id="search-container">
-                            <input type="text" id="query-in-page" placeholder="Text goes here" autofocus>
-                            <ul id="results-container"> </ul>
-                        </div>
-                        -->
                     </div>
                 </div><!-- .inner-md -->
             </article><!-- .post -->

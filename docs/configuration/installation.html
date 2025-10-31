@@ -1,0 +1,213 @@
+---
+title: Installation
+keywords: 
+category: documentation
+url: installation.html
+---
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>Installation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="shortcut icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="palette-navy">
+
+  <div id="page" class="site">
+
+    {% include header.html pre_link="../../../"%}
+
+    <main id="content" class="site-content">
+      <div class="inner outer">
+        <div class="docs-content">
+
+          {% include doc_navigation.html %}
+
+          <article class="post type-docs">
+            <div class="post-inside">
+              <header class="post-header">
+                <h1 class="post-title line-left">Installation and Theoretical Run</h1>
+              </header><!-- .post-header -->
+              <div class="post-content">
+                <div class="note">
+                  <strong>Technical note:</strong> <br />
+                  <strong>TRACMASS</strong> is written in FORTRAN 90 with modules and runs on UNIX platforms such as MAC
+                  OS X and Linux. For certain configurations netCDF libraries are also required.
+                </div>
+
+                <p><strong>1.</strong> Download the code </p>
+
+                <div class="highlighter-rouge">
+                  <div class="highlight">
+                    <pre class="highlight"><code>git clone https://github.com/TRACMASS/Tracmass.git
+</code></pre>
+                  </div>
+                </div>
+
+                <p><strong>2.</strong> Enter the TRACMASS directory </p>
+
+                <div class="highlighter-rouge">
+                  <div class="highlight">
+                    <pre class="highlight"><code>cd Tracmass
+</code></pre>
+                  </div>
+                </div>
+
+                <p><strong>3.</strong> Modify the <strong>Makefile.proj</strong> to fit your system. You will need to
+                  set
+                  <strong>ARCH</strong>, which is the name of your system. If you are running simulations on a
+                  High-Performance Computing
+                  (HPC) system, such as tetralith, <strong>ARCH</strong> needs to be set to <em>'tetralith'</em>. For
+                  other operating systems,
+                  such as Windows, macOS and general Linux, leave it blank. You will also need to configure how TRACMASS
+                  should find the netCDF libraries, if at all. For most systems, we recommend the option
+                  <em>'automatic-44'</em>.
+                </p>
+
+                <p> Make sure in <strong>Makefile</strong> both <strong>PROJECT</strong> and <strong>CASE</strong> are
+                  set to <em>'Theoretical'</em>. In this case, TRACMASS will use a simple oscillating velocity field to
+                  trace trajectories, which is recomended for the first run to ensure the model downloaded sucessfully.
+                  Once all the changes have been made, the first few lines of <strong>Makefile.prj</strong> should look
+                  like this on Linux type operating system:</p>
+                <pre class="highlight"><code>#================================================================
+#                     TRACMASS MAKEFILE
+#================================================================
+
+# Project and case definition
+PROJECT	          = Theoretical
+CASE	          = Theoretical
+RUNFILE 	  = runtracmass
+ARCH              =
+NETCDFLIBS        = none
+#================================================================
+</code></pre>
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  <p>The <strong>Makefile.prj</strong> does not need quatation marks (" ") or apastrohpies (' ') for
+                    setting its variables. </p>
+                </div>
+
+                <p><strong>4.</strong> Then you can run the make command in the terminal where the
+                  <strong>Makefile.prj</strong> is located.
+                </p>
+
+                <div class="highlighter-rouge">
+                  <div class="highlight">
+                    <pre class="highlight"><code>make
+</code></pre>
+                  </div>
+                </div>
+
+                <p>This will compile the TRACMASS code and the final line of the terminal output should be:</p>
+                <pre class="highlight"><code>...
+cp projects/Theoretical/namelist_Theoretical.in namelist.in
+</code></pre>
+                <p> This indicates that the compilation has been sucessful.</p>
+
+                <p><strong>5.</strong> Finally, you can run the code </p>
+
+                <div class="highlighter-rouge">
+                  <div class="highlight">
+                    <pre class="highlight"><code>./runtracmass
+</code></pre>
+                  </div>
+                </div>
+
+                <p>If everything went without an error, you will get the following output in the terminal:</p>
+
+                <div class="highlighter-rouge">
+                  <div class="highlight">
+                    <pre class="highlight"><code>
+ ===============================================================================
+              TRACMASS Lagrangian off-line particle tracking
+ ===============================================================================
+
+ Start date  : 2020-06-30
+ Start time  : 20:57:55
+ -------------------------------------------------------------------------------
+
+ Model information:
+ Project code  : Theoretical
+ Case name     : Theoretical
+ Namelist file : projects/Theoretical/namelist_Theoretical.in
+ -------------------------------------------------------------------------------
+
+ Output information:
+ Directory for output files : /Users/user/Tracmass_output
+ Prefix for output files    : test
+ -------------------------------------------------------------------------------
+
+ Configuration options:
+  - Two-dimensional trajectories, no change in depth
+ -------------------------------------------------------------------------------
+
+ Start date in model-time     : 2000-01-01 12:00
+ End date in model-time       : 2000-01-01 21:00
+ Length of run in timesteps   :     10
+ Number of seeding timesteps  :      1
+ Steps between two GCM fields :    100
+
+ -------------------------------------------------------------------------------
+ t-step        run        out        err        tot                 model date
+ -------------------------------------------------------------------------------
+      1 |        1 |        0 |        0 |        1 |   2000-01-01    12:00:00
+      2 |        1 |        0 |        0 |        1 |   2000-01-01    13:00:00
+      3 |        1 |        0 |        0 |        1 |   2000-01-01    14:00:00
+      4 |        1 |        0 |        0 |        1 |   2000-01-01    15:00:00
+      5 |        1 |        0 |        0 |        1 |   2000-01-01    16:00:00
+      6 |        1 |        0 |        0 |        1 |   2000-01-01    17:00:00
+      7 |        1 |        0 |        0 |        1 |   2000-01-01    18:00:00
+      8 |        1 |        0 |        0 |        1 |   2000-01-01    19:00:00
+      9 |        1 |        0 |        0 |        1 |   2000-01-01    20:00:00
+     10 |        1 |        0 |        0 |        1 |   2000-01-01    21:00:00
+ ===============================================================================
+           1  particles calculated
+           0  particles exited the space and time domain
+           0  particles flagged with errors
+           1  particles in domain
+ -------------------------------------------------------------------------------
+
+ ===============================================================================
+ End date  : 2020-06-30
+ End time  : 20:57:55
+ ===============================================================================
+</code></pre>
+
+                    <p>After this, you can try to make changes by yourself in the namelist file or jump into one of our
+                      <a href="../../docs/tutorials/tutorials.html">TRACMASS Tutorials</a> to better learn the hang of
+                      the software!
+                    </p>
+
+
+                  </div><!-- .post-content -->
+                </div><!-- .post-inside -->
+          </article><!-- .post -->
+          <nav id="page-nav" class="page-nav">
+            <div id="page-nav-inside" class="page-nav-inside sticky">
+              <h2 class="page-nav-title">Jump to Section</h2>
+              <div id="page-nav-link-container"></div>
+            </div><!-- .page-nav-inside -->
+          </nav><!-- .page-nav -->
+        </div><!-- .docs-content -->
+      </div><!-- .inner-->
+
+    </main><!-- .site-content -->
+
+    {% include footer.html%}
+
+  </div><!-- .site -->
+
+</body>
+
+</html>

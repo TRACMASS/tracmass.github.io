@@ -1,0 +1,130 @@
+---
+title: Configuration
+keywords: 
+category: documentation
+url: main_program.html
+---
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>Main program</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="lorem-ipsum" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="shortcut icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="palette-navy">
+
+  <div id="page" class="site">
+    
+    {% include header.html pre_link="../../../"%}
+
+    <main id="content" class="site-content">
+      <div class="inner outer">
+        <div class="docs-content">
+
+          {% include doc_navigation.html %}
+
+          <article class="post type-docs">
+            <div class="post-inside">
+              <header class="post-header">
+                <h1 class="post-title line-left">Main program</h1>
+              </header><!-- .post-header -->
+              <div class="post-content">
+                <p>The present chapter describes the main program TRACMASS and the different running options.</p>
+
+                <hr />
+                <h2 id="tracmassf90">TRACMASS.F90</h2>
+
+                <p>This is how the TRACMASS main program works:
+                  <br /><br />
+
+                  1 - First the namelist is read (<strong>init_namelist</strong>) and the tracers are initialised
+                  (<strong>init_tracer</strong>).<br /><br />
+                  2 - Then the subdomain is defined (<strong>init_subdomain</strong>) and all the arrays are allocated
+                  (<strong>init_alloc</strong>).<br /><br />3 - If <strong>norun</strong> is false the main subroutines
+                  to compute trajectories are called.
+                </p>
+                <p style="margin-left: 20px;">3.1 - The grid variables are defined (<strong>setup_grid</strong>),the
+                  calendar (<strong>init_calendar</strong>) and the seeding are initialised
+                  (<strong>init_seed</strong>).
+
+                  <br /><br />3.2 - If online stream function are activated, the fluxes are allocated
+                  (<strong>init_stream</strong>).
+
+                  <br /><br />3.3 - The main loop is called where the trajectories are computed (<strong>loop</strong>).
+                </p>
+
+                <p>4 - Then, the output is postprocessed.</p>
+
+                <p style="margin-left: 20px;">
+                  4.1 - If a summary is computed the the subroutine <strong>postprocessing</strong> is
+                  called.<br /><br />
+                  4.2 - If only offline streamfunctions are computed (no summary), the subroutine
+                  <strong>compute_stream</strong> is called.</p>
+
+                <hr />
+                <h2 id="runtracmass-running-arguments"><em>./runtracmass</em> running arguments</h2>
+                <p>TRACMASS can be run with different arguments that can be combined:</p>
+
+                <ul>
+                  <li>
+                    <p><strong>rerun</strong>: rerun TRACMASS by seeding only the trajectories that are stored in the
+                      <em>rerun</em> file. The model will crash if no <em>rerun</em> file can be found.</p>
+                  </li>
+                  <li>
+                    <p><strong>norun</strong>: run TRACMASS without the computation of trajectories. This argument is
+                      useful to compute offline stream functions from output files.</p>
+                  </li>
+                  <li>
+                    <p><strong>summary</strong>: include a more detailed summary of the trajectories and their transport
+                      at the end of the run.</p>
+                  </li>
+                </ul>
+
+                <hr />
+                <h2 id="tracmass-unix-file-tree">TRACMASS unix file tree</h2>
+
+                <p align="center">
+                  <img width="100%" src="../../../images/fig_tracmass_tree.png" />
+                </p>
+
+
+
+
+
+
+
+
+
+
+              </div><!-- .post-content -->
+            </div><!-- .post-inside -->
+          </article><!-- .post -->
+          <nav id="page-nav" class="page-nav">
+            <div id="page-nav-inside" class="page-nav-inside sticky">
+              <h2 class="page-nav-title">Jump to Section</h2>
+              <div id="page-nav-link-container"></div>
+            </div><!-- .page-nav-inside -->
+          </nav><!-- .page-nav -->
+        </div><!-- .docs-content -->
+      </div><!-- .inner-->
+
+    </main><!-- .site-content -->
+
+    {% include footer.html%}
+
+  </div><!-- .site -->
+
+</body>
+
+</html>

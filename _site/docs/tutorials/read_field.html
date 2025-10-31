@@ -86,11 +86,18 @@
             </li>
 
             <li class="menu-item search-bar">
-              <form id="form" action="search-results.html" role="search" method="GET">
-                <!-- Search query input field-->
+              <a href="../../../search-results.html" class="">Search</a>
+              <svg class="icon" viewBox="0 0 1024 1024">
+                <path class="path1"
+                  d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
+                </path>
+              </svg>
+            </li>
+            <!--
+            <li class="menu-item search-bar">
+              <form id="form" action="../../../search-results.html" role="search" method="GET">
                 <input type="text" id="query" name="search-phrase" placeholder="Search..." aria-label="Search through site content">
 
-                <!-- button to submit and redirect to the search page -->
                 <button id="search-button">
                   <svg class="icon" viewBox="0 0 1024 1024">
                     <path class="path1"
@@ -101,7 +108,7 @@
 
               </form>
             </li>
-
+            -->
           </ul>
         </div>
       </nav><!--.site-navigation -->
@@ -125,19 +132,19 @@
         
         <!-- Welcome to TRACMASS' documentation -->
         <li class="docs-menu-item ">
-          <a href="../../../docs.html">Welcome to TRACMASS' documentation</a>
+          <a href="../../../../docs.html">Welcome to TRACMASS' documentation</a>
         </li>
         
         <!-- About -->
         <li class="docs-menu-item ">
-          <a href="../../about/index.html">About</a>
+          <a href="../../docs/about/about.html">About</a>
         </li>
 
         <!-- Configuration (submenu) -->
         <li class="docs-menu-item
                    
                    has-children">
-          <a href="../../configuration/index.html">Configuration</a>
+          <a href="../../../docs/configuration/configuration.html">Configuration</a>
 
           <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
               class="icon-angle-right" aria-hidden="true"></span></button>
@@ -145,18 +152,18 @@
           <ul class="docs-submenu">
             <!-- Installation -->
             <li class="docs-menu-item ">
-              <a href="../../configuration/installation/index.html">Installation and Theoretical Run</a>
+              <a href="../../../docs/configuration/installation.html">Installation and Theoretical Run</a>
             </li>
 
             <!-- How to set up an experiment -->
             <li class="docs-menu-item ">
-              <a href="../../configuration/quick-start/index.html">How to set up an experiment</a>
+              <a href="../../../docs/configuration/quick-start.html">How to set up an experiment</a>
             </li>
 
 
             <!-- Setting up NetCDF -->
             <li class="docs-menu-item ">
-              <a href="../../configuration/netcdf-setup/index.html">NetCDF set up</a>
+              <a href="../../../docs/configuration/netcdf-setup.html">NetCDF set up</a>
             </li>
 
           </ul>
@@ -166,7 +173,7 @@
         <li class="docs-menu-item
                    
                    has-children">
-          <a href="../../components/index.html">TRACMASS Components</a>
+          <a href="../../../docs/components/components.html">TRACMASS Components</a>
 
           <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
               class="icon-angle-right" aria-hidden="true"></span></button>
@@ -175,22 +182,22 @@
 
             <!-- Main Program -->
             <li class="docs-menu-item ">
-              <a href="../../components/main_program/index.html">Main program</a>
+              <a href="../../../docs/components/main_program.html">Main program</a>
             </li>
 
             <!-- Main modules -->
             <li class="docs-menu-item ">
-              <a href="../../components/main_modules/index.html">Main modules</a>
+              <a href="../../../docs/components/main_modules.html">Main modules</a>
             </li>
 
             <!-- Namelist -->
             <li class="docs-menu-item ">
-              <a href="../../components/namelist/index.html">Namelist</a>
+              <a href="../../../docs/components/namelist.html">Namelist</a>
             </li>
 
             <!-- The projects folder -->
             <li class="docs-menu-item ">
-              <a href="../../components/project/index.html">The <em>Projects </em>folder</a>
+              <a href="../../../docs/components/project.html">The <em>Projects </em>folder</a>
             </li>
 
           </ul>
@@ -200,7 +207,7 @@
         <li class="docs-menu-item
                     current active 
                    has-children">
-          <a href="../../tutorials/index.html">TRACMASS Tutorials</a>
+          <a href="../../../docs/tutorials/tutorials.html">TRACMASS Tutorials</a>
 
           <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
               class="icon-angle-right" aria-hidden="true"></span></button>
@@ -209,37 +216,37 @@
 
             <!--  -->
             <li class="docs-menu-item ">
-              <a href="../../tutorials/custom_tracers.html">Adding Custom Tracers</a>
+              <a href="../../../docs/tutorials/custom_tracers.html">Adding Custom Tracers</a>
             </li>
             
             <!--  -->
             <li class="docs-menu-item ">
-              <a href="../../tutorials/setup_grid.html">Grid Setup</a>
+              <a href="../../../docs/tutorials/setup_grid.html">Grid Setup</a>
             </li>
 
             <!--  -->
             <li class="docs-menu-item ">
-              <a href="../../tutorials/kill_zones.html">Killing Trajectories</a>
+              <a href="../../../docs/tutorials/kill_zones.html">Killing Trajectories</a>
             </li>
 
             <!--  -->
             <li class="docs-menu-item  current active ">
-              <a href="../../tutorials/read_field.html">Reading in Variables</a>
+              <a href="../../../docs/tutorials/read_field.html">Reading in Variables</a>
             </li>
 
             <!--  -->
             <li class="docs-menu-item ">
-              <a href="../../tutorials/seeding_file.html">Seeding Locations</a>
+              <a href="../../../docs/tutorials/seeding_file.html">Seeding Locations</a>
             </li>
 
              <!--  -->
             <li class="docs-menu-item ">
-              <a href="../../tutorials/seeding_types.html">Seeding Types</a>
+              <a href="../../../docs/tutorials/seeding_types.html">Seeding Types</a>
             </li>
 
             <!--  -->
             <li class="docs-menu-item ">
-              <a href="../../tutorials/streamfunctions.html">Streamfunctions</a>
+              <a href="../../../docs/tutorials/streamfunctions.html">Streamfunctions</a>
             </li>
 
           </ul>
@@ -247,14 +254,14 @@
 
         <!-- TRACMASS output -->
         <li class="docs-menu-item ">
-          <a href="../../output/index.html">TRACMASS output</a>
+          <a href="../../../docs/output/output.html">TRACMASS output</a>
         </li>
 
         <!-- Tools (Submenu) -->
         <li class="docs-menu-item 
                    
                    has-children">
-          <a href="../../tools/index.html">Tools</a>
+          <a href="../../../docs/tools/tools.html">Tools</a>
 
           <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
               class="icon-angle-right" aria-hidden="true"></span></button>
@@ -263,12 +270,12 @@
 
             <!-- In situ postprocessing -->
             <li class="docs-menu-item ">
-              <a href="../../tools/insitu/index.html"><em>In situ</em> postprocessing</a>
+              <a href="../../../docs/tools/insitu.html"><em>In situ</em> postprocessing</a>
             </li>
 
             <!-- pyTRAJ -->
             <li class="docs-menu-item ">
-              <a href="../../tools/pytraj/index.html">pyTRAJ</a>
+              <a href="../../../docs/tools/pytraj.html">pyTRAJ</a>
             </li>
 
           </ul>
@@ -276,7 +283,7 @@
 
         <!-- References -->
         <li class="docs-menu-item ">
-          <a href="../../references/index.html">References</a>
+          <a href="../../../docs/references/index.html">References</a>
         </li>
 
       </ul><!-- .docs-menu -->
@@ -304,7 +311,7 @@
                 <p>In this chapter we will ilustrate the basics of file reading and the general logic behind it. All of
                   these actions are done in the <em>read_field.F90</em> file, which is located in
                   the project folder (read more about the project folder <a
-                    href="../../../docs/components/project/index.html">here</a>). Furthermore, instead of writing the
+                    href="../../../docs/components/project.html">here</a>). Furthermore, instead of writing the
                   file yourself from scrathc, it is recommended to use one of the files provided and modify it to your
                   needs. This way you will save time and sanity.
                 </p>
@@ -393,7 +400,7 @@ get2DfieldNC(fieldFile ,varName, start2D, count2D, stcase)
                     y, z, t]</li>
                   <li><strong>count2D/count3D</strong> - the number of indexes to read 4 dimensions [x, y, z, t]</li>
                   <li><strong>stcase</strong> - format in which the array is saved, refer to the <a
-                      href="docs/components/main_modules/index.html#mod_getfilef90">documentation</a></li>
+                      href="docs/components/main_modules.html#mod_getfilef90">documentation</a></li>
                 </ul>
                 </p>
 
@@ -502,9 +509,9 @@ vvel(1:imt,1:jmt,1:km) = get3DfieldNC(fieldFile, veul_name, [imindom,jmindom,1,1
 </footer><!-- .site-footer -->
 
 <!-- Scripts -->
-<script src="assets/js/plugins.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/page-load.js"></script>
+<script src="../../../assets/js/plugins.js"></script>
+<script src="../../../assets/js/main.js"></script>
+<script src="../../../assets/js/page-load.js"></script>
 
   </div><!-- .site -->
 

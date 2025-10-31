@@ -3,6 +3,7 @@ layout: none
 ---
 [
   {% for post in site.pages %}
+  {% unless post.url contains "404.html" or post.url contains "search.json" or post.url contains "serach-script.js" %}
     {
       "title"    : "{{ post.title | escape }}",
       "category" : "{{ post.category }}",
@@ -51,6 +52,7 @@ layout: none
                                   
                                   }}"
     } {% unless forloop.last %},{% endunless %}
+    {% endunless %}
   {% endfor %}
   
 ]

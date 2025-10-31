@@ -509,6 +509,12 @@ textarea {
   padding: 0.5em;
   width: 100%;
 }
+input[type="search"]{
+  background:#e9e9ec;
+  color: #2c3444 !important;
+  border-color:#e9e9ec;
+  border-radius: 10px;
+}
 
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -1110,13 +1116,19 @@ textarea:focus {
   }
 
   .menu-item.search-bar {
-    display: inline-block;
-    margin: 0 0 0 1.25em;
+    display: flex;
+    background-color: #dde0e7 !important;
+    border-radius: 5px;
+    width: 100px;
+    height: 25px;
+    align-items: center;
+    border-color: #313847;
+    /*margin: 0 0 0 1.25em;
     padding-bottom: 0.15em;
     padding-top: 0.15em;
-    padding-top: center;
+    padding-top: relative;*/
 
-    form {
+    /*form {
       width: 200px;
       height: 35px;
       border-radius: 5px;
@@ -1125,7 +1137,6 @@ textarea:focus {
       align-items: center;
       background-color:#dde0e7;
     }
-
     button {
       all: unset !important;
       cursor: pointer;
@@ -1136,21 +1147,30 @@ textarea:focus {
       height: 100%;
       color: inherit;
       fill: inherit;
-      /* Optional: Use flex to center the SVG within the button area */
       display: flex; 
       align-items: center;
       justify-content: center;
-      z-index: 2; /* Ensure it is above the input field */
-      background-color: inherit;
+      z-index: 2; 
+      background-color: #424b5f !important;
       border-color: #fff !important;
+    }*/
+    a{
+      position: absolute;
+      right: 47px;
+      top:-2px;
+      color: rgb(66, 75, 95) !important;
+    }
+    a:not(.button) :hover{
+      color: rgb(66, 75, 95) !important;
     }
 
     svg {
-      fill:#919db8;
+      fill:#565f74;
       width: 15px;
       height: 15px;
-      padding-right: 6px;
-      padding-top: 10px
+      padding-left: 80px;
+      padding-top: 4px
+      
     }
 
     input {
