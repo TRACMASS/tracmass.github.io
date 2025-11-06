@@ -342,6 +342,45 @@ ul {
   list-style: disc;
   padding: 0 0 0 1.125em;
 }
+/* Styling for the overall search result list */
+.search-result-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    list-style: none; /* Remove default list bullet */
+}
+
+/* Styling for the result title */
+.result-title {
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+    color: #007bff; /* Use your primary link color */
+}
+
+/* Styling for the URL to make it discreet */
+.result-url {
+    display: block;
+    font-size: 0.8em;
+    color: #6c757d;
+    margin-bottom: 8px;
+}
+
+/* CRITICAL: CSS to visually truncate the content snippet */
+.result-snippet {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit text to 3 lines (approx. 20-30 words) */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9em;
+    color: #495057;
+}
+
+/* Highlighted Text Style (from previous step) */
+#results-container mark {
+    background-color: #ffcc00; 
+    font-weight: bold;
+    padding: 0 2px;
+}
 
 ol {
   list-style: decimal;
@@ -514,6 +553,7 @@ input[type="search"]{
   color: #2c3444 !important;
   border-color:#e9e9ec;
   border-radius: 10px;
+
 }
 
 input[type="text"]:focus,

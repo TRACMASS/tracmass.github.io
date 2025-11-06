@@ -85,6 +85,17 @@
               </a>
             </li>
 
+            <li class="menu-item ">
+              <a href="../../../search-results.html" class="button button-icon">Search&nbsp;
+                <svg class="icon" viewBox="0 0 1024 1024">
+                  <path class="path1"
+                    d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
+                  </path>
+                </svg>
+              </a>
+            </li>
+
+            <!--
             <li class="menu-item search-bar">
               <a href="../../../search-results.html" class="">Search</a>
               <svg class="icon" viewBox="0 0 1024 1024">
@@ -93,7 +104,7 @@
                 </path>
               </svg>
             </li>
-            <!--
+            
             <li class="menu-item search-bar">
               <form id="form" action="../../../search-results.html" role="search" method="GET">
                 <input type="text" id="query" name="search-phrase" placeholder="Search..." aria-label="Search through site content">
@@ -303,7 +314,7 @@
                   organised in alphabetical order.</p>
 
                 <hr />
-                <h2 id="mod_calendarf90">mod_calendar.F90</h2>
+                <h3 id="mod_calendarf90">mod_calendar.F90</h3>
                 <p>The module <strong>mod_calendar</strong> contains all the subroutines that initialise and update the
                   calendar of the simulation. This module contains five subroutines: <strong>init_calendar</strong>,
                   <strong>previous_calendar</strong>, <strong>update_calendar</strong>, <strong>end_calendar</strong>
@@ -350,7 +361,7 @@
                 </ul>
 
                 <hr />
-                <h2 id="mod_clockf90">mod_clock.F90</h2>
+                <h3 id="mod_clockf90">mod_clock.F90</h3>
                 <p>The module <strong>mod_clock</strong> calculates the new time step referenced to the initial time
                   step. This module contains one subroutine <strong>update_time</strong>.</p>
                 <p align="center">
@@ -375,7 +386,7 @@
                   <strong>intrpb</strong> and <strong>intrpr</strong> are computed.</p>
 
                 <hr />
-                <h2 id="mod_diffusionf90">mod_diffusion.F90</h2>
+                <h3 id="mod_diffusionf90">mod_diffusion.F90</h3>
                 <p>The module <strong>mod_diffusion</strong> adds a random displacement to a trajectory. Diffusion is
                   activated by setting <strong>l_diffusion</strong> to TRUE. This module contains three subroutines:
                   <strong>diffuse</strong>, <strong>displacement</strong> and <strong>kill_zones_diffusion</strong>.</p>
@@ -428,7 +439,7 @@
                 </ul>
 
                 <hr />
-                <h2 id="mod_divergencef90">mod_divergence.F90</h2>
+                <h3 id="mod_divergencef90">mod_divergence.F90</h3>
                 <p>The module <strong>mod_divergence</strong> computes divergence/convergence of all the tracers defined
                   in the namelist. This module will be activated if both <strong>l_tracer</strong> and
                   <strong>l_divergence</strong> are <strong>TRUE</strong>.</p>
@@ -475,7 +486,7 @@
                 </div>
 
                 <hr />
-                <h2 id="mod_errorf90">mod_error.F90</h2>
+                <h3 id="mod_errorf90">mod_error.F90</h3>
                 <p>The module <strong>mod_error</strong> check for possible errors in the simulation. If any error is
                   found a diagnostic file with a summary of the error is created. This module contains two subroutines
                   and two private function: <strong>errorCheck</strong>, <strong>write_error</strong>,
@@ -567,7 +578,7 @@
                 </ul>
 
                 <hr />
-                <h2 id="mod_getfilef90">mod_getfile.F90</h2>
+                <h3 id="mod_getfilef90">mod_getfile.F90</h3>
                 <p>The module <strong>mod_getfile</strong> consists on five functions: <strong>filledFileName</strong>
                   which updates the dateprefix according to the calendar, <strong>getScalarNC</strong> to extract
                   scalars, <strong>get1DfieldNC</strong> to extract 1D data fields, <strong>get2DfieldNC</strong> to
@@ -625,7 +636,7 @@
                 </div>
 
                 <hr />
-                <h2 id="mod_initf90">mod_init.F90</h2>
+                <h3 id="mod_initf90">mod_init.F90</h3>
                 <p>The module <strong>mod_init</strong> consists of two subroutines: <strong>init_namelist</strong> that
                   reads the namelist, and <strong>init_alloc</strong> that allocates all the allocatable arrays. More
                   information about the namelist can be found in the <em>Namelist</em> chapter.</p>
@@ -634,7 +645,7 @@
                   TRACMASS reference system.</p>
 
                 <hr />
-                <h2 id="mod_loopf90">mod_loop.F90</h2>
+                <h3 id="mod_loopf90">mod_loop.F90</h3>
                 <p>The module <strong>mod_loop</strong> is the core module of TRACMASS. This module contains the big
                   loop that updates the calendar, the clock and the position of the trajectories.</p>
 
@@ -666,7 +677,7 @@
                 </div>
 
                 <hr />
-                <h2 id="mod_pos_tstepf90--mod_pos_tanalyticalf90">mod_pos_tstep.F90 / mod_pos_tanalytical.F90</h2>
+                <h3 id="mod_pos_tstepf90--mod_pos_tanalyticalf90">mod_pos_tstep.F90 / mod_pos_tanalytical.F90</h3>
                 <p>Both modules <strong>mod_pos_tstep.F90</strong> and <strong>mod_pos_tanalytical.F90</strong>
                   calculate the new position of a trajectory and the time it will take to cross a wall in the gridbox.
                   However, each of these modules computes the crossing time using different schemes. Currently two
@@ -1051,7 +1062,7 @@
                 </div>
 
                 <hr />
-                <h2 id="mod_postprocessf90">mod_postprocess.F90</h2>
+                <h3 id="mod_postprocessf90">mod_postprocess.F90</h3>
                 <p>The module <strong>mod_postprocess</strong> reads the output files, computes offline streamfunctions,
                   tracer divergence map, and a more detailed summary of the TRACMASS run.</p>
 
@@ -1078,13 +1089,13 @@
                 </ul>
 
                 <hr />
-                <h2 id="mod_printf90">mod_print.F90</h2>
+                <h3 id="mod_printf90">mod_print.F90</h3>
                 <p>The module <strong>mod_print</strong> is responsible for printing the basic information about the run
                   which includes a short summary of the model configuration, the number of trajectories run and a final
                   summary of the number trajectories that are still running, have been deactivated or have errors.</p>
 
                 <hr />
-                <h2 id="mod_seedf90">mod_seed.F90</h2>
+                <h3 id="mod_seedf90">mod_seed.F90</h3>
                 <p>The module <strong>mod_seed</strong> defines all the variables and arrays neccesary for the seeding
                   of particles. This modules contains two public subroutines (<strong>init_seed</strong> and
                   <strong>seed</strong>) and three private subroutines (<strong>split_grid</strong> ,
@@ -1209,7 +1220,7 @@
                   system.</p>
 
                 <hr />
-                <h2 id="mod_streamf90">mod_stream.F90</h2>
+                <h3 id="mod_streamf90">mod_stream.F90</h3>
                 <p>The module <strong>mod_stream.F90</strong> is responsible for computing volume/mass fluxes and
                   compute different stream functions. This module contains four subroutines
                   <strong>compute_stream</strong>, <strong>init_stream</strong>, <strong>update_fluxes</strong> (online
@@ -1345,7 +1356,7 @@
                 </div>
 
                 <hr />
-                <h2 id="mod_subdomainf90">mod_subdomain.F90</h2>
+                <h3 id="mod_subdomainf90">mod_subdomain.F90</h3>
                 <p>The module <strong>mod_subdomain.F90</strong> is responsible for defining a subdomain and updating
                   the indexes according to the new domain. Defining a subdomain is useful to run TRACMASS with high
                   resolution data especially if the area of study does not cover the whole original domain. Two types of
@@ -1450,14 +1461,14 @@
                 </table>
 
                 <hr />
-                <h2 id="mod_swapf90">mod_swap.F90</h2>
+                <h3 id="mod_swapf90">mod_swap.F90</h3>
                 <p>The module <strong>mod_swap.F90</strong> is responsible for updating the time indexes for those
                   variables that are time dependent (for more information check the description of
                   <strong>read_field.F90</strong>) and reversing the fluxes if the trajectories are run backward in
                   time.</p>
 
                 <hr />
-                <h2 id="mod_tracersf90">mod_tracers.F90</h2>
+                <h3 id="mod_tracersf90">mod_tracers.F90</h3>
                 <p>If TRACMASS is run with tracers (<strong>l_tracers</strong> is true), the module
                   <strong>mod_tracers.F90</strong> contains all the subroutines needed to initialise, allocate, compute
                   and update tracers.</p>
@@ -1615,7 +1626,7 @@
                   type="math/tex; mode=display">tracerbin = \frac{tracervalue - min(tracervalue)}{\Delta tracervalue}</script>
 
                 <hr />
-                <h2 id="mod_varsf90">mod_vars.F90</h2>
+                <h3 id="mod_varsf90">mod_vars.F90</h3>
                 <p><strong>mod_vars.F90</strong> is a collection of different modules that define the required variables
                   for the different components of TRACMASS. This file contains 10 modules:</p>
 
@@ -1684,7 +1695,7 @@
                 </ul>
 
                 <hr />
-                <h2 id="mod_vertvelf90">mod_vertvel.F90</h2>
+                <h3 id="mod_vertvelf90">mod_vertvel.F90</h3>
                 <p>The module <strong>mod_vertvel</strong> computes the vertical volume/mass fluxes. If TRACMASS is
                   setup for two dimensional fields, or the vertical velocity is part of the dataset this module is not
                   activated.</p>
@@ -1699,7 +1710,7 @@
                   <strong>ka</strong>.</p>
 
                 <hr />
-                <h2 id="mod_writef90">mod_write.F90</h2>
+                <h3 id="mod_writef90">mod_write.F90</h3>
                 <p>The module <strong>mod_write</strong> creates the outfiles where the information of the trajectories
                   is stored. This module is responsible for writing four important files: <em>_ini.csv</em> where the
                   initial positions are stored, <em>_out.csv</em> where the final positions are stored,

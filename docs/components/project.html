@@ -1,6 +1,11 @@
 ---
 title: The Projects folder
-keywords: 
+keywords: break projects folder break
+          setup_grid.F90 setup_grid break
+          read_field.F90 read_field break
+          kill_zones.F90 kill_zones break
+          Makefile.prj makefile prj break
+          namelist break
 category: documentation
 url: project.html
 ---
@@ -46,7 +51,7 @@ url: project.html
                   projects are available: <strong>Theoretical, NEMO, AVISO, IFS, ROMS</strong>.</p>
 
                 <hr />
-                <h2 id="setup_gridf90">setup_grid.F90</h2>
+                <h3 id="setup_gridf90">setup_grid.F90</h3>
                 <p>This subroutine defines all the variables linked to the grid such as the horizontal resolution or the
                   grid area. The following variables are initialised in this subroutine:</p>
 
@@ -80,7 +85,7 @@ url: project.html
                   <strong>setup_grid.F90</strong> or in <strong>read_field.F90</strong>.
                 </div>
                 <hr />
-                <h2 id="read_fieldf90">read_field.F90</h2>
+                <h3 id="read_fieldf90">read_field.F90</h3>
                 <p>This subroutine reads velocities and optionally some tracers from netCDF files and computes the
                   mass/volume fluxes for TRACMASS.</p>
 
@@ -138,7 +143,7 @@ url: project.html
                 </ul>
 
                 <hr />
-                <h2 id="kill_zonesf90">kill_zones.F90</h2>
+                <h3 id="kill_zonesf90">kill_zones.F90</h3>
                 <p>This subroutine defines the limits of the domain. If a trajectory is outside the domain the
                   subroutine will identify it with a flag (<strong>nend</strong>). <strong>nend</strong> = 0 is reserved
                   to the time exceeding case and <strong>nend</strong> = 1 is reserved to the trajectories reach the
@@ -170,7 +175,7 @@ url: project.html
                 </ul>
 
                 <hr />
-                <h2 id="makefileprj">Makefile.prj</h2>
+                <h3 id="makefileprj">Makefile.prj</h3>
                 <p>This makefile sets the chosen pre-processing options. Before compiling the main program make sure to
                   check the pre-processing options.</p>
 
@@ -222,7 +227,7 @@ url: project.html
                 </table>
 
                 <hr />
-                <h2 id="namelist">Namelist</h2>
+                <h3 id="namelist">Namelist</h3>
                 <p>Many variables at TRACMASS can be modified using the namelist without the need to recompile the
                   program. Each project has a <em>namelist_CASE.in</em> in the project folder. When TRACMASS is compiled
                   a copy of the namelist (<em>namelist.in</em>) can be found in the main TRACMASS directory.</p>

@@ -1,368 +1,1000 @@
 [
   
   
-  
-  
-    {
-      "title"    : "About TRACMASS Documentation",
-      "category" : "documentation",
-      "keywords" : "about, documentaiton",
-      "url"      : "/docs/about/about.html",
-      "content"  : " About Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Types Streamfuncti..."
-    } ,
+    
     
   
   
-    {
-      "title"    : "AVISO Case Example",
-      "category" : "examples",
-      "keywords" : "",
-      "url"      : "/blog/aviso.html",
-      "content"  : " AVISO satellite altimetry data  Search AVISO satellite altimetry data 2D datasetsThe AVISO data is stored on a Arakawas B-grid while TRACMASS is defined on a Arakawas C-grid. Therefore both zonal and meridional fluxes are computed interpolating the velocity fields on the TRACMASS grid. This is done on the read_field subroutine. The default setup of this project initialises trajectories..."
-    } ,
+    
+    
+
+      
+      {
+            "title"    : "About TRACMASS Documentation",
+            "category" : "documentation",
+            "keywords" : "about, documentaiton",
+            "url"      : "/docs/about/about.html",
+            "content"  : "The original feature of the TRACMASS method is that it solves the trajectory paththrough each grid cell with an analytical solution of a differential equation which depends on the velocities on the gridbox walls. The scheme was originally developed by Döös1995and Blanke andRaynaud1997for stationary velocity fields and hereafter further developed by Vries and Döös 2001for time-dependent fields by solving a linear interpolation of the velocity field both intime and in space over each grid box. This is in contrast to the time schemes such as simple Eulerforward or more advanced fourth order Runge-Kutta methodsButcher2008Fabbroni2009where thetrajectories are integrated forward in time with as short time steps as possible.The Lagrangian trajectory approach has many similarities with the Eulerian tracer approach but at thesame time many differences. The two approaches are often confused due to their similarities. Theyare both advected passively by the velocity fields of the GCMwhich makes it possible to tracewater air masses or substances such as pollutants as they are carried with the ocean currents orwinds. The tracer equation generally needs to be integrated ‘on-line’ with the GCM while theLagrangian trajectories can be both ‘on-line’ and ‘off-line’. The ‘off-line’ calculation of Lagrangiantrajectories is by far the most rapid way since one only needs to read the already simulated velocityfields in order to calculate the trajectories.The TRACMASS code has been further developed over the years and used in many studiesof the global oceanDöös and Coward1997Drijfhout et al.2003Döös et al.2008Berglund etal. 2017and regional ones for the Mediterranean and Baltic SeasDöös et al.2004Jönsson etal.2004Engqvist et al. 2006Soomere et al.2011as well as the large scale atmosphericcirculationKjellsson and Döös2012 .The code was originally written in Fortran 77 for the FRAM ocean model at the Institute ofOceanographic SciencesDeacon LaboratoryIOSDLin WormleyUK in the early 90’s. The nameTRACMASS comes from the EU project with the same namewhere it served together withthe similar trajectory code Ariane by Blanke and Raynaud1997 . The present code is written inFortran 90 and can be driven by velocity fields from most GCMs based on finite differences. TheTRACMASS code is continuously upgraded and adapted. "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "AVISO (satellite altimetry data)",
+            "category" : "examples",
+            "keywords" : "",
+            "url"      : "/blog/aviso.html",
+            "content"  : " 2D datasetsThe AVISO data is stored on a Arakawa’s B-grid while TRACMASS is defined on a Arakawa’s C-grid.Thereforeboth zonal and meridional fluxes are computed interpolating the velocity fields on the TRACMASSgrid. This is done on the read_field subroutine. The default setup of this projectinitialises trajectories south of the Mozambique Channel only for southward fluxesmarked in red in thefigure . The seeding takes place every day and ten trajectories are initialised in the location.TRACMASS featureskilling zonesexitType==1 Four killing zones have been imposed to this runtwo zonal boundaries at each side of the southern tipof Africaand two meridional boundariessee figure below . By doing sowe can filter trajectories basedon which boundary they are terminated. This information is stored in the _rerun.csv file. Pleaseremember that nend = 0 is reserved to trajectories which have exceeded the time limit andnend = 1 is reserved to those trajectories that reach the surface.TRACMASS featuresstream functions I psixy - barotropic If stream function calculationl_psiis activateda stream function will becalculated to each of the killing zones. This way one is able to separate the total lagrangian barotropicstream function into the different components depending of the killing zone. All the stream functionsshowed in the figure below are computed offline and with dirpsi equal to one.ImportantThe Lagrangian stream function may differ from the Eulerian stream function if the number of trajectoriesis not large enough.TRACMASS featuresdzt choice for 2-DsimulationsThe size of dzt in 2-D simulationsw_2dimdoes not affect thecalculation of trajectories in TRACMASSsee figure below . Howeverit will affect the volume masstransport of the trajectories. Note that some trajectories may not be completely identicalbut the meanpaths are unaltered. Previous gallerynbsp nbsp nbspnbsp nbsp nbspNext gallery "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "TRACMASS Components",
+            "category" : "documentation",
+            "keywords" : "",
+            "url"      : "/docs/components/components.html",
+            "content"  : " In this chapter we present TRACMASS components. In the Main program section we brieflydescribe the overall structure of TRACMASS. In Main modules we take a closer look at all themodules avialabletheir functionallity and set up. In the Namelist section all the variablesavialable are described and some basic examples are shown. Finallyin the The Projectsfolder we take a closer look at the contents of a project folderdescribe their functionallityand how it relates back to the rest of the TRACMASS source code.Here are the articles in this section MainprogramMainmodulesNamelistThe Projects folder "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "Configuration",
+            "category" : "documentation",
+            "keywords" : "",
+            "url"      : "/docs/configuration/configuration.html",
+            "content"  : "The present chapter will present how to configure and run the TRACMASS Lagrangiantrajectory modelas well as how to configure a customised experiment.Here are the articles in this section Installation and Theoretical RunHow to set up anexperimentNetCDF Set up "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "Contact FAQ",
+            "category" : "basics",
+            "keywords" : "contacts, information, faq, developers",
+            "url"      : "/contact.html",
+            "content"  : "Contact Kristofer Döösdoos-at-misu.su.se Aitor Aldama CampinoJoakim KjellssonBror JönssonSara BerglundFAQ "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "Adding Custom Tracers",
+            "category" : "tutorials",
+            "keywords" : "tracers",
+            "url"      : "/docs/tutorials/custom_tracers.html",
+            "content"  : "UNDER CONSTRUCTION - spelling and grammar check Besides calculating the trajectory a parcel will take in space and timeTRACMASS can also calculatethe characteristic values of its trajectorieswhich are known as tracers. This allows to seehow a trajectory s tracer valuessuch as temperature and salinitychange along the way. For moredetailed information on tracers themsevles refer to the documentation here.In this example we present the procedure of adding an additional tracer that is calulated fromalready presented variables. We will have potential temperatureToand salinity Sas input dataand we will write a tracer function that converts temperature from Celsiusto Kelvin degrees. Even though this example is a primitive unit conversionthe aim of this is tobring attention to the procedure of adding additional custom tracers in the code itself.Adding extra tracer functionThere are two files that would be necessary to modify to add an additional tracer mod_tracerf.F90 - contains the main functions responsible for tracerinitiaizationinterpolation and managementmod_tracers.F90 - contains support functions for a specific tracer scalculationsfor examplea function for density calculationsOf coursethere are many ways how to implement additional tracers into the codebut this method isrecommendedas it seamessly integrates into the already existing source code.First we will write a function that will convert from Celsius to Kelvin degreesafter which we willadd a few extra lines in another function so that our tracer can be callable. Finallywe will addout newly created tracer category in the namelist and test if it is working correctly.Setting up mod_tracerf.F90First we will create a function that carries out the calculations of converting from Celsius to Kevlindegrees. Mathemtaicallyvery simple operationdone the following way We will call the function celsius2kelvin and we will send one variable over to the function when we call it. The function itself needs to declare any varibales we might be usingin this case we have T - input temperature in Celsiuswhich we want to convert to Kelvin degreescelsius2kelvin - output variable holding temperature in Kelvin degrees nxnynz - variables to hold the input array s T shape in xyzdirrectoin accordinglyWe create the array celsius2kelvin to have the same shape as the input array T withthe function ALLOCATE. Finallywe carry out the transofrmation from Celsius to Kelvin degrees.The function written in Fortran is in the following code segment FUNCTION celsius2kelvin T-------------------------------------------------- PurposeTransform temperature from Celsius to Kelvin units MethodT K= T C273.15 -------------------------------------------------- IMPLICIT NONE Input dataTemperaturedegCREALINTENT IN TOutput dataTemperaturedegKREALALLOCATABLEDIMENSIONcelsius2kelvin Dimensions of the Temperature array INTEGER nxnynz Assigne dimension sizes nx = SIZE T 1 ny = SIZE T 2 nz = SIZE T 3 Create the array with the correct shape ALLOCATE celsius2kelvin nx ny nz Carry out calculations celsius2kelvin= T273.15 END FUNCTION celsius2kelvinThis function needs to be added in the mod_tracerf.F90 fileat the end of the filebutbefore the final line of END MODULE mod_tracerfNoteIt is good practice to document your code with adding a commented section with a short description ofthe function s purpose and the method used. Furthermoreit is good to write readable codeor at thevery leastadding comments to your code when the various functionsloops andif-statements start growing in complexity. The future you will thank you for it later whenyou review your code.Setting up mod_tracers.F90Next step is adding a few lines in the mod_tracers.F90 file. Find the SUBROUTINEcalledcompute_tracers tracnamevar3d . This function is responsible for redirectingtracer to the correct function for it to be calculated. In our casewe will call our tracer c2k so we add an additional IF-ELSE branch to the IF-ELSE structurewhich is thelast branch in the code below SUBROUTINE compute_tracer tracnamevar3d -------------------------------------------------- Purpose Compute tracer according to different functions --------------------------------------------------CHARACTER len=100tracnameREAL DP DIMENSIONvar3dSigma 0 calculationusing TdegCand S g kgIFTRIM tracname==sigma0 THEN var3d = REAL thermo_dens0 . .8var3d = var3d - 1000.d0Sigma 0 calculationusing TKand S g kgELSE IFTRIM tracname==sigma0_K THEN var3d = REAL thermo_dens0 8var3d = var3d - 1000.d0Conservative temperatueCTocalculationusing TdegCand S g kgELSE IFTRIM tracname==CTo THEN var3d = REAL thermo_pt2ct 8 Function we addedfrom degC to degKELSE IFTRIM tracname==c2k THEN var3d = REAL celsius2kelvin REAL tracers 1data 248 END IFEND SUBROUTINE compute_tracerNotice that the tracer value will be saved in array var3d. It is necessaryas thevar3d variable will be assigned as the new value for the tracer.Below is a more detailed breakdown of the line that calls the function for tracer calculations. Format of the output tracerdouble precision| Functionfor tracer calculations ||Format of input variablesingle precision|||Input variableTdegC||||var3d = REALcelsius2kelvinREALtracers 1data 2 4 8 In generaltracer data has 4-dimensionsxyztwith two possible time steps -1 is for the past and 2 is for current time step. Depending on thetracerthere may be variations in which time step is chosen for other tracer calculationsbut ingeneralthe current data2is used to calculate other derivative tracers.After the code has been modifiedattempt to compile the code and run a test simulation withoutmaking changes to the namelist file. If everythinging has been set up correctlythere should be noerror and no changes to the output data. Setting up the namelistFinallynow that we have set up the code and tested itwe can make changes to the namelistfile. As we mentioned previouslywe have titled our tracer asc2k and now we will add itin our namelist. The procedure is the same as setting up any other tracer and the namelist sectionthat needs to be modified is presented in the code below.NoteIt is recomended to keep the potential temperatureToand salinityStracers inthe first and second indexposition. Some in-built functions rely on them being in these positionsoto not cause extraproblems and ensure that the calculatiosn are correctdo not remove or replace them. INIT_TRACERS Should we evaluate tracers along the trajectoriesl_tracers = .TRUE. Temperature C Salinity Temperature KTracer namedescriptiontracername = To S c2k Tracer unitdescriptiontracerunit = degC PSU degKName of the variable in the netcdfif it s readtracervarname =thetao soActionread or computetraceraction = read readcomputeDimension of the tracer tracerdimension = 3D 3D3DMinimum and maximum value of the binning tracermin =-332250tracermax =3338330With these instructionsthe newly added tracer should work correctly. If there are any problems either try to debug the code or carefully go through these instructions again. Using this as a guide it is possible to add various other tracers to TRACMASS.  "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "Documentation",
+            "category" : "basics",
+            "keywords" : "documentation, instructions",
+            "url"      : "/docs.html",
+            "content"  : "TRACMASS is a Lagrangian trajectory code for ocean and atmospheric generalcirculation models. The code makes it possible to estimate water pathsLagrangian stream functions barotropicoverturningetc. exchange timesetc. TRACMASS has been used instudies of the global ocean circulationof sea circulation in the Baltic Seathe Mediterranean Seaand in coastal regions.The code is written in FORTRAN 90 with modules and runs on UNIX platforms such as MAC OS X and Linux.TRACMASS has been set up to run with velocities integrated with models such as NEMO or IFS-ECMWFofsatellite datasets such as AVISO.What’s new in version 2022.01The current version of TRACMASSv2022.01includes the following new features The code has been thoroughly cleaned upSupported test cases from Ocean circulation models NEMOMOM5ROMSSatellite ocean current dataAVISOAtmospheric circulation model dataIFSERA-InterimEC-Earth Any tracer can be followed e.g. biogeochemical tracers or chemical compounds in the atmosphere.A new quick-start guide and a comprehensive documentation.NoteYou can find previous versions of TRACMASS here Get older version here Cite this version asJönssonB.K. Döösand J. Kjellsson2015 TRACMASSLagrangian trajectory code doi 10.5281 zenodo.34157 Reference paperDöösK.B. Jönssonand J. Kjellsson2017 Evaluation of oceanic and atmospheric trajectoryschemes in the TRACMASS trajectory model v6.0Geoscientific Model Development10 4 1733--1749 10.5194 gmd-10-1733-2017.Link "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "Example gallery",
+            "category" : "basics",
+            "keywords" : "videos, NEMO, AVISO, IFS, examples, ROMS",
+            "url"      : "/examples.html",
+            "content"  : "Video and Image galleries of different results computed with TRACMASSVideo GallerySome trajectory examples computed using TRACMASSConveyor beltParticles in the Agulhas current system.Image galleryIncludes examples of different TRACMASS featuresTheoretical caseThe theoretical is the default project of TRACMASS and describes the flow on a spatialhomogeneous and time dependent two dimensional velocity field.See galleryAVISOsatellite altimetry data The AVISO data is stored on a Arakawa’s B-grid while TRACMASS is defined on a Arakawa’s C-grid.Thereforeboth zonal and meridional fluxes are computed interpolating the velocity fields on theTRACMASS grid. This is done on the read_field subroutine.See galleryNEMOThe NEMO data is defined on the same grid as the TRACMASS grid. Thereforethere is no need tointerpolate velocities or tracer on the TRACMASS grid.See galleryROMSThe ROMS data is defined on the same grid as the TRACMASS grid. Thereforethere is no need tointerpolate velocities or tracer on the TRACMASS grid. Howeverghosts u and v points are definedaround the frame to adjust to the TRACMASS grid.See galleryIFS-ECMWFThe IFS data is stored on a Arakawa’s A-grid while TRACMASS is defined on a Arakawa’s C-grid.Thereforeboth zonal and meridional fluxes are computed interpolating the velocity fields on theTRACMASS grid. This is done on the read_field subroutine.See gallery "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "IFS-ECMWF",
+            "category" : "examples",
+            "keywords" : "",
+            "url"      : "/blog/ifs.html",
+            "content"  : "3D datasetsThe IFS data is stored on a Arakawa’s A-grid while TRACMASS is defined on a Arakawa’s C-grid. Therefore both zonal and meridional fluxes are computed interpolating the velocity fields on the TRACMASS grid. Thisis done on the read_field subroutine. The default setup of this project initialisestrajectories in an area that covers south Asia. The seeding takes place every six hours during a month.TRACMASS featuresseedingtrajectories using a maskmaskFile The seeding can be restricted using a mask file. The maskFile is only read ifseedType=1The seeding domain is described by the red rectangle in both figures below.If no mask is applied all grid points in the defined area can initialise a trajectory. The blue dotsrepresent grid cells where trajectories are seeded. The figure on the right shows if a mask is applied tothe seeding. The mask is given by the gray filled contour and the seeded trajectories are given in orange.As expected only trajectories that are within the mask and the seeding domain are initialisednote thatthe mask in this case is also defined outside the seeding domain .TRACMASS featuresfluxamptracertrajectoriesl_swtraj TRACMASS allows to compute a special case of trajectories that combine tracers and mass volume fluxes.This option is useful to follow water trajectories in the atmosphereor salt in the ocean. Ifl_swtraj TRUEthe mass volume fluxes are multiplied by the tracer chosen in the firstposition. The figure below shows trajectory densities computed using the default setup of the project anda seeding mask. The figure on the left shows the trajectory density for the default caseairtrajectorieswhile the figure on the right shows trajectories computed by multiplying the fluxes byhumiditywater trajectories . Previous gallerynbsp nbsp nbsp"
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "Homepage",
+            "category" : "basics",
+            "keywords" : "about",
+            "url"      : "/",
+            "content"  : "TRACMASS  is a Lagrangian trajectory code for ocean and atmospheric general circulationmodels. The code makes it possible to estimate water pathsLagrangian stream functionsbarotropic overturningetc. exchange timesetc.Get codeDocumentationLearn about how to set up TRACMASS.how to design your own experiment.how the different components of TRACMASS work.how to postprocess your TRACMASS output data.Get StartedExamplesCheck our gallery with different TRACMASS results for different datasets andexamples on how the TRACMASS features work.View GalleryContact FAQCheck our FAQ and contact information in case you have any problem or comment aboutTRACMASSLearn MoreQuickstart1. - Download the code git clone https github.com TRACMASS Tracmass.git 2. - Modify the Makefile to fit your system. 3. - Then you can run the make commandmake 4. - Run TRACMASS by typing. runtracmass View DocumentationCite as Cite as Aldama-CampinoAitorDöösKristoferKjellssonJoakimJönsson Bror.2020December 17 . TRACMASSFormal release of version 7.0Version v7.0-beta . Zenodo.http doi.org 10.5281 zenodo.4337926Link to Zenodo "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "In situ postprocessing",
+            "category" : "documentation",
+            "keywords" : "",
+            "url"      : "/docs/tools/insitu.html",
+            "content"  : " "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "Installation and Theoretical Run",
+            "category" : "documentation",
+            "keywords" : "",
+            "url"      : "/docs/configuration/installation.html",
+            "content"  : "Technical noteTRACMASS is written in FORTRAN 90 with modules and runs on UNIX platforms such as MACOS X and Linux. For certain configurations netCDF libraries are also required.1. Download the code git clone https github.com TRACMASS Tracmass.git2. Enter the TRACMASS directory cd Tracmass3. Modify the Makefile.proj to fit your system. You will need tosetARCHwhich is the name of your system. If you are running simulations on aHigh-Performance Computing HPCsystemsuch as tetralithARCH needs to be set totetralith . Forother operating systems such as WindowsmacOS and general Linuxleave it blank. You will also need to configure how TRACMASSshould find the netCDF librariesif at all. For most systemswe recommend the option automatic-44 . Make sure in Makefile both PROJECT and CASE areset toTheoretical . In this caseTRACMASS will use a simple oscillating velocity field totrace trajectorieswhich is recomended for the first run to ensure the model downloaded sucessfully.Once all the changes have been madethe first few lines of Makefile.prj should looklike this on Linux type operating system ================================================================ TRACMASS MAKEFILE================================================================ Project and case definitionPROJECT = TheoreticalCASE = TheoreticalRUNFILE= runtracmassARCH=NETCDFLIBS= none================================================================NoteThe Makefile.prj does not need quatation marks or apastrohpies forsetting its variables. 4. Then you can run the make command in the terminal where theMakefile.prj is located.makeThis will compile the TRACMASS code and the final line of the terminal output should be .cp projects Theoretical namelist_Theoretical.in namelist.in This indicates that the compilation has been sucessful.5. Finallyyou can run the code . runtracmassIf everything went without an erroryou will get the following output in the terminal===============================================================================TRACMASS Lagrangian off-line particle tracking =============================================================================== Start date2020-06-30 Start time20 57 55 ------------------------------------------------------------------------------- Model informationProject codeTheoretical Case name Theoretical Namelist file projects Theoretical namelist_Theoretical.in ------------------------------------------------------------------------------- Output informationDirectory for output filesUsers user Tracmass_output Prefix for output filestest ------------------------------------------------------------------------------- Configuration options - Two-dimensional trajectoriesno change in depth ------------------------------------------------------------------------------- Start date in model-time 2000-01-01 12 00 End date in model-time 2000-01-01 21 00 Length of run in timesteps 10 Number of seeding timesteps 1 Steps between two GCM fields100 ------------------------------------------------------------------------------- t-steprunouterrtot model date -------------------------------------------------------------------------------1 |1 |0 |0 |1 | 2000-01-0112 00 002 |1 |0 |0 |1 | 2000-01-0113 00 003 |1 |0 |0 |1 | 2000-01-0114 00 004 |1 |0 |0 |1 | 2000-01-0115 00 005 |1 |0 |0 |1 | 2000-01-0116 00 006 |1 |0 |0 |1 | 2000-01-0117 00 007 |1 |0 |0 |1 | 2000-01-0118 00 008 |1 |0 |0 |1 | 2000-01-0119 00 009 |1 |0 |0 |1 | 2000-01-0120 00 00 10 |1 |0 |0 |1 | 2000-01-0121 00 00 =============================================================================== 1particles calculated 0particles exited the space and time domain 0particles flagged with errors 1particles in domain ------------------------------------------------------------------------------- =============================================================================== End date2020-06-30 End time20 57 55 ===============================================================================After thisyou can try to make changes by yourself in the namelist file or jump into one of ourTRACMASS Tutorials to better learn the hang ofthe software  "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "Killing trajectories",
+            "category" : "tutorials",
+            "keywords" : "",
+            "url"      : "/docs/tutorials/kill_zones.html",
+            "content"  : "UNDER CONSTRUCTION - spelling and grammar check In TRACMASSthere are 4 types of terminating or killing trajectories. Here we will breifly presenthow to set them up. In generaltrajectory killing is done by file kill_zones.F90but inmost casesno modifications need to be made there. The only exception is whenexitType=4in which case the user needs to write FORTRAN code inkill_zones.F90 that will terminate trajectories in some locations. The file itself is locatedin the project s folderwhich you can read more about here.Various exit typesexitType exitType=1BOXThis trajectory killer is the simplest to implementas it requires only the coordinates of the boxthat would reperesent the killzone.Here is shown an example of how to set up kill zones withexitType=1which is aregular box. Similarly as with tracer set upa maximum of 10 killzone boxes can be set with thisoption. Here we have set up 2 boxesfirst acting as a line and the second as a rectangular box. Thefirst box has the dimensions from 200-th to 300-th index in the west-east directionand is set to 150-th index in the north-south direction. Looking form a bird eye view thatwould be a horizontal line across the grid. The second killzone box is truly a box with size from50-th to 250-th index in west-east direction and from 350-th to450-th index in the north-south direction. Once the box line is crossedthe trajectory isterminatedit does not matter from which side the trajectory crosses. INIT_KILLZONES Maximum time for which trajectories will run timax = 75000 time limit for trajdaysSet up an exitType as a box of kill zones exitType = 11st box 2nd box west indices of killzones ienw =200 50 east indices of killzones iene =300 250south indices of killzones jens =150 350 north indices of killzones jenn =150 450 NoteThe kill zone box is implemented in all model levelsit is not possible to specify in which heightsthe termination should occur.exitType=2TRACER VALUEThis exit type kills trajectories once a maximum or minimum value has been reached by a tracer thatis measured along the trajectory. In this example we will implement two tracers that will be used toterminate the trajectories - temperature and salinity. Firstit is necessary to enable tracers otherwisewhen running TRACMASS an error will appear saying thatFortran runtime errorIndex 1of dimension 1 of arraytracervalueabove upper bound of 0which means that there are notracers available fro TRACMASS. Thusthe tracers need to be set up as usualsome of the valuesmgight be different for your casesuch as the tracervarname.Nextthe kill zones need to be set uphere we enable both temperature and salinity values of thetracers to kill trajectories. In this casewe set up so that the temperature of tracers does notexceed 25 degreesthis is done by setting the variable maxormin=1. To set up aminimum value that tracers need to bemaxormin must be set to -1 as shown with salinity - it has been set to have a minimum value of 35 PSU. If any of the trajectoriesreach a value that is lower than 35 PSUit will be terminated. INIT_TRACERS l_tracers = .TRUE. Tracer namedescriptiontracername =ToS Tracer unitdescriptiontracerunit =degCPSU Name of the variable in the netcdfif it s readtracervarname = votempervosaline Actionread or computetraceraction =readread Minimum and maximum value of the binning tracermin =-332tracermax =3338Dimension of the tracer tracerdimension = 3D 3D INIT_KILLZONES timax = 75000 time limit for trajdaysexitType = 2 Choose which tracers will beused for kill zoneshere we havetemperature salinity tracerchoice = 1 2 tracere= 2535 maxormin =1-1NoteTracers must be enabled and provided for the modelOtherwiseit won t work exitType=3BOX TRACER VALUEIn this casea kill zone is defined with a geographic location and the tracer values. For thisthenamelist code presented in the other two sections needs to be used. It is essentially the samebutwith a possability to have more restraining and precise kill zone definitions.exitType=4HARD CODEDUNDER CONSTRUCTION Maximum Trajectory runtimeIt is also possible to set a maximum time for trajectories to run in namelist withtimax. This sets the maximum trajectory runtime in days and it will terminate thesimulation itselfonce all the trajectories are terminated. The simulation will be terminatedevenif in the future timesteps more trajectories will be added.9888WarningIf the simulation runs out of trajectorieseven though more trajectories will be added in the futuretimestepsthe simulation will terminate  "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+                "title"    : "Main modules",
+                "category" : "documentation",
+                "keywords" : " main modules module ",
+                "url"      : "/docs/components/main_modules.html",
+                "content"  : "MainmodulesMainmodulesThepresentchapterwillintroduceallthemodulesinthesrcdirectory.Themodulesareorganisedinalphabeticalorder."
+
+              },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_calendarf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_calendar.F90 calendar ",
+                  "url"      : "/docs/components/main_modules.html#mod_calendarf90",
+                  "content"  : " The module mod_calendar contains all the subroutines that initialise and update thecalendar of the simulation. This module contains five subroutinesinit_calendar previous_calendarupdate_calendarend_calendarand tt_calendar.The subroutine init_calendar defines the starting date of the calendar as wellas the time step of the simulation tseas.update_calendar updated the calendar using the given time step and the initialdate. The calendar is computed for both forward and backward simulations in time. Let us considera simulation forward in timewhere the start yearStartYearis set to 2000 andthe current yearcurrYearis 2004. The variable iyeardescribes the number of simulation years. If loopYears is activatedafterreaching the year set as loopEndYear2010 in this casethe calendar is set backto the loopStartYear2000 . iyear is not altered by thiscorrection. 9888WarningNote than in backward simulations in timeloopStartYear gt loopEndYear. The startyear StartYearis always larger or equal to the current yearcurrYear- unless loopYears is activated. IfloopYears is activatedthe calendar is corrected in similar way to the forwardsimulationssee Figure above .end_calendar computes the final date of simulation defined by the time stepintrunwhile previous_calendar computes the date previous tothe starting date. The latter is required when loopYears is activated.tt_calendar uses the starting date as a reference and translates the time steptt into a dateyearmonthdayand timehourminutesecond ."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_clockf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_clock.F90 clock ",
+                  "url"      : "/docs/components/main_modules.html#mod_clockf90",
+                  "content"  : " The module mod_clock calculates the new time step referenced to the initial timestep. This module contains one subroutine update_time.The subroutine updates tt and ts based on the value ofds. This is transform to a time step in seconds dt by multiplyingds with the volume dxyz. The subroutine chooses between the smallestof three different time steps 1 - dtmin which is the time step between two time subcycles where iter is thenumber of subcycles.2 - dtreg which is the time step to the next time subcycle.3 - And the time step corresponding to the smallest wall crossing time computed withcross_time.After updating the values of tt and tsthe new values ofintrpb and intrpr are computed."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_diffusionf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_diffusion.F90 diffusion ",
+                  "url"      : "/docs/components/main_modules.html#mod_diffusionf90",
+                  "content"  : " The module mod_diffusion adds a random displacement to a trajectory. Diffusion isactivated by setting l_diffusion to TRUE. This module contains three subroutines diffusedisplacement and kill_zones_diffusion. 9888WarningBy activating diffusion the calculation of stream functions is deactivated unless they are computedoffline and write_frecis set to one or two.The subroutine diffuse works as followsthe new position of the trajectorycalculated by update_traj is stored in a temporary position value tmpX tmpYtmpZ. The subroutine calls displacement to compute a randomdisplacement. This displacement is add to tmpXtmpYtmpZ. The subroutinecorrects the position if jperio or iperio are different fromzero. The subroutine tries to find a suitable new position. If the new position is outside thedomaina new random displacement is calculated. The subroutine computes a maximum of 100kiterationsif no suitable positions are found by thenno displacement is added.The subroutine displacement computes a random displacement coordinatesxdydzd from the time step dtand the values of thehorizontal Ah and vertical Av diffusivity. The displacement arecomputed as follows where represent random numbers defined between zero and one.The subroutine kill_zones_diffusion guarantees that if a trajectory s newposition reaches across the geographical boundary conditions defined inkill_zones.F90the position is corrected to be just at the boundary position."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_divergencef90",
+                  "category" : "documentation",
+                  "keywords" : " mod_divergence.F90 divergence ",
+                  "url"      : "/docs/components/main_modules.html#mod_divergencef90",
+                  "content"  : " The module mod_divergence computes divergence convergence of all the tracers definedin the namelist. This module will be activated if both l_tracer andl_divergence are TRUE.The subroutine init_divergence initialises and allocates the variabletracerdiv. This variable is a two dimensional variable in spacex-ycoordinates and is computed for all the tracersnumtracersand number ofkilling zones.Variable nameDimensionstracerdivimt x jmt x 20 x numtracersThe tracer divergence is computed in the subroutine compute_divergence. Onlytrajectories that have reached a killing zone are considered to compute the divergences. Thedivergence field is updated when a trajectory crosses a gridwall. The value of the tracer at thewall times the mass volum flux of the trajectory is added to the gridbox where the trajectory isentering. The same value is substracted to the gridbox that the trajectory exited.NoteThe tracerdiv is divided by the area of the gridbox and multiple the constantdescribed by divconst. A different constant value can be assigned per tracer."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_errorf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_error.F90 error ",
+                  "url"      : "/docs/components/main_modules.html#mod_errorf90",
+                  "content"  : " The module mod_error check for possible errors in the simulation. If any error isfound a diagnostic file with a summary of the error is created. This module contains two subroutinesand two private functionerrorCheckwrite_error errorTypeand reverse.errorCheck check for a possible error defined by teststr. Thepossible errors are listed below teststrerrCodeDescriptioninfLoopError1Trajectory trapped in an infinite loopdxyzError2The volume of the gridbox is zero or negativeboundError3Trajectory leaving the domainlandError4Trajectory hits a land pointcoordboxError5 6 7Trajectory placed in the wrong boxdsCrossError8No available pathways for the trajectoryNoteA infinite loop is defined when a trajectory is iterated more than 30000 timessince last time it crossed a wall or started a time subcycle.If an error is found in a trajectorythe last position and time step will be stored in a_err.csv file. The module write_error besides writing the number of thetrajectory ntracthe last position x1y1z1the volume masstransport subvol and the time stepit also gives a short description of theerror.NoteThe positions are given referenced to the original dataset reference system.errorType is a private function that gives a short description of the errorgiven by errorCode. This output is used by write_error.reverse updates the indexes if the original data’s grid does not correspond tothe TRACMASS grid set up."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_getfilef90",
+                  "category" : "documentation",
+                  "keywords" : " mod_getfile.F90 getfile get file ",
+                  "url"      : "/docs/components/main_modules.html#mod_getfilef90",
+                  "content"  : " The module mod_getfile consists on five functionsfilledFileNamewhich updates the dateprefix according to the calendargetScalarNC to extractscalarsget1DfieldNC to extract 1D data fieldsget2DfieldNC toextract 2D data fieldsand get3DfieldNC to extract 3D data fields.The function filledFileName has four argumentsfiledPattern a string that contains the dateprefixand inyearinmon andinday representing the yearmonth and day of the calendar. The function will find thestring YYYYMMDD and replace it with the corresponding yearmonth or and day.The function getScalarNC has two argumentsfieldFile the path to thenetCDF fileand varName name of the variable to be extracted.The function get1DfieldNC has four argumentsfieldFile the path to thenetCDF filevarName name of the variable to be extractedstart1D a 4D arraythat describes the starting indexesand count1D a 4D array that describes how manyindexes are read.The function get2DfieldNC has five argumentsfieldFile the path to thenetCDF filevarName name of the variable to be extractedstart2D a 4D arraythat describes the starting indexesand count2D a 4D array that describes how manyindexes are read. The last index stcase describes the order in which the data is storedin the netCDF file – ‘st’ xytime– ‘st_r’ yxtime The function get3DfieldNC has five argumentsfieldFile the path to thenetCDF filevarName name of the variable to be extractedstart3D a 4D arraythat describes the starting indexescount3D a 4D array that describes how many indexesare readand stcase describes the order data is stored in the netCDF file – ‘ts’ timexyz– ‘st’ xyztime– ‘ts_r’ timezyx– ‘st_r’ zyxtime NoteIf the original data is reduced to a subdomainboth functions will only extract data in the selectedsubdomain. For the case where the subdomain crosses the zonal limit of the original domainthefunction will read separately the two subdomains and then join them into a unique subdomainbluedomain ."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_initf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_init.F90 init ",
+                  "url"      : "/docs/components/main_modules.html#mod_initf90",
+                  "content"  : " The module mod_init consists of two subroutinesinit_namelist thatreads the namelistand init_alloc that allocates all the allocatable arrays. Moreinformation about the namelist can be found in the Namelist chapter.It contains an internal subroutine reverse to adapt the meridional indexes to theTRACMASS reference system."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_loopf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_loop.F90 ",
+                  "url"      : "/docs/components/main_modules.html#mod_loopf90",
+                  "content"  : " The module mod_loop is the core module of TRACMASS. This module contains the bigloop that updates the calendarthe clock and the position of the trajectories.This is how the module works 1 - First the fields are updated according to the value of ints.2 - Thenif the time step corresponds to a seeding timethe subrotuine seed iscalled.3 - Then the loop checks all the possible trajectories given by ntrac. If thetrajectory is not activated the module while skip it.4 - If a trajectory is activated it will be iterated several times where its position will be updated update_traj .5 - If the trajectory exceedes the limit time timaxit will be deactivated.6 - After each iteration the calendar is updated.NoteIf all the trajectories are deactivated the simulation will be stopped even if the corresponding timestep is not the final one set by intrun."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_pos_tstepf90--mod_pos_tanalyticalf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_pos_tstep.F90 mod_pos_tanalytical.F90 analytical timestep time analytical scheme regular time step scheme ",
+                  "url"      : "/docs/components/main_modules.html#mod_pos_tstepf90--mod_pos_tanalyticalf90",
+                  "content"  : " Both modules mod_pos_tstep.F90 and mod_pos_tanalytical.F90calculate the new position of a trajectory and the time it will take to cross a wall in the gridbox.Howevereach of these modules computes the crossing time using different schemes. Currently twodifferent schemes are availableregular time step schemedefault caseand the time analyticalschemewhich can be activated in the project Makefile . Each of these modules contains three publicsubroutinescross_timecalc_posand update_traj.Only the subroutine update_traj is common in both schemes.The subroutine update_traj updates the position of the trajectory after a timestep given by ds and computes the new values for x1 y1and z1. It also updates the value ofboxface which is zero if the trajectory remains inside the box or is assignedwith a value between 1-6 if it crosses one of the walls. The subroutines check ifany of the crossing values given by cross_time corresponds to the value ofds to determine the new position.dsib jb kbCrossing wallboxface dseia 1 ja kaEastern1 dswia - 1 ja kaWestern2 dsnia ja 1 kaNorthern3 dssia ja - 1 kaSouthern4 dsuia ja ka 1Upper wall5 dsdia ja ka - 1Lower wall6 If ds is smaller than any of the crossing times and equal to the time steppingorif the trajectory is inside a convergence zone where all the crossing times areUNDEF. The trajectory remains inside the box.Note By default trajectories can reach the last vertical level km and will be flagged withthe exit flag one. Howeverby activating l_nosurface trajectoriesare prevented from reaching the surface. Insteadthey are placed back in the middle of the last gridboxka = km .NoteIf stream functions are computed onlinel_offline is false this subroutine will transferthe required information to compute geographical streamfunctions.ImportantThe north foldjperiois an important feature for original grids that are not basedon latitude longitude such as the ORCA grids. The current version includes two possible corrections tothe north foldno correction0 and correction for ORCA grids1 ."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - regular-time-step-scheme",
+                  "category" : "documentation",
+                  "keywords" : " mod_postprocess.F90 post processing ",
+                  "url"      : "/docs/components/main_modules.html#regular-time-step-scheme",
+                  "content"  : " The subroutine cross_time computes the time it will take to cross any of thefaces determined by the variable ijk. The possible values of ijkare1for the east west faces 2for the north south facesand3for the up down faces. Forsimplicitylet us consider the case of ijk =1 with an eastward zonal flowuflux.This is how the module works - Firstthe interpolated values of the zonal flowuflux in the east walluuand in the west wall umare computed. A linear interpolation is used to obtained the values foruu and um $$U_i t=fract-t_0U_i t_1 t_1-tU_i t_0 t_1-t_0 quadtext where quad t_0le t le t_1.$$In this caset_0andt_1represent the n and n 1 timestep.- If uu is positive the subroutine computes thecrossing time through the eastern wall t_E sp .- If uu =um the time it willtake to the trajectory to cross the east wall is $$t_ E=frac x_E-xU_i t.$$- If uuneq umthevelocity field inside the box is linearly interpolated $$U x=x-x_WU x_E -U x_W U x_W quadtext where quad x_Wle xle x_E $$where iam represents the index for the western wallx_Wandia represents the eastern wallx_E . If U xgt 0 at the startingposition of the particlethe time to reach the eastern wall is given by $$t_ E=frac 1U x_W -U x_E log leftfrac U x U_E right $$-If none of the above conditions is fulfilled the subroutinereturns the value UNDEF for sp.- Following a similar procedurethe subroutine computes the crossing time through the westernwallsn .NoteThe equations used to compute the crossing time considers a different spatial interpolation ofU xfor sn. The crossing time through the western wall is given by the followingequation t_ W=frac 1U x_W -U x_E log leftfrac U x U_W right .The subroutine calc_pos computes the new position of the trajectory after timeds in the direction given by ijk. This subroutine works in thefollowing waylet us consider the same case as in the previous example forcross_time- Firstthe interpolated values of the zonal flowuflux in the east walluuand in the west wall umare computed. A linear interpolation is used to obtained the values foruu and um.- If uu = umthe new position ofthe trajectory is given by $$x_1 = x_0 U x_E ds$$- On the other handif uuneq um the new position is $$x_1 =left x_0 - x_Wfrac U x_W U x_E -U x_Wrighte U x_E -U x_Wdsx_W - frac U x_W U x_E -U x_W$$. 9888WarningIf the trajectory is placed at U x =0 in a divergent fieldcalc_pos is not ableto determine the new positionunstable equilibrium ."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - time-analytical-scheme",
+                  "category" : "documentation",
+                  "keywords" : " mod_print.F90 print ",
+                  "url"      : "/docs/components/main_modules.html#time-analytical-scheme",
+                  "content"  : " The subroutine cross_time computes the time it will take to cross any of thefaces determined by the variable ijk. The possible values of ijkare1for the east west faces 2for the north south facesand3for the up down faces. Forsimplicitylet us consider the case of ijk =1.This is how the module works - Firstthe volume mass flux values are computed at the nearestgridwallsx_E and x_Wand at the nearest time stepst_0 and t_1$$U x_E t_0=textbf uu quad U x_W t_0=textbf um U x_E t_1=textbf vv quad U x_W t_1=textbf vm $$In this caset_0andt_1represent the n and n 1 timestep.- Thenthe coefficientalpha is computed $$ alpha = -textbf vv - textbf vm - textbf uu textbf um.$$Depending on the value ofalpha three different subroutines are called to calculate thecrossing time apos alpha gt 0 aneg alpha lt 0 andazer alpha=0 .-The subroutines aposanegandazer compute the crossing time as well as identify the crossing wall. This is doneby finding the roots of the equationr s_w- r_w = 0 numericallywhere requiv xDeltax represents the position indexess_w is the volume normalised timeand r_w is one ofthe exit walls.The subroutines try first to calculate the crossing time through the eastern wallnorthern wall forijk=2and uppwe wall for ijk=3 . Four different cases may arise - Fluxes at ia are positive between the timesteps n and n 1- Fluxes at ia change from positive to negativeat some time between the time steps n and n 1- Fluxes at ia change from negative to positiveat some time between the time steps n and n 1- Fluxes at ia are negative between the timesteps n and n 1These cases are illustrated in the figure above. Except for the fourth casesthe other threecases may have a crossing time across the eastern wall. If the crossing time exceeds the maximumtime given byt_1 the output will be UNDEF.If there is no crossing through the eastern wall or if there is a possibility that the time tocross the western wall is smallerthe subroutine reconsiders again the four conditions describedbefore.The roots to solve the equation are computed using a bisection method that guarantees aconvergence towards the root.Note For a more detailed description of the time analytical method check Döös et al. 2017- Finallydepending on the crossing wall index the value ofdse and dsw are updated. r_w cross wall indexdse dsn dsudsw dss dsdias_w-s_0 UNDEFiamUNDEFs_w-s_0-99UNDEFUNDEFwhere s_w and s_0 are the crossing time and the initial timevolume normalisedrespectively.The subroutine calc_pos computes the new position of the trajectory after timeds in the direction given by ijk. This subroutine works in thefollowing waylet us consider the same case as in the previous example forcross_time- Firstthe volume mass flux values are computed at the nearestgridwallsx_E and x_Wand at the nearest time stepst_0 and t_1 .- Thenthe coefficientsalpha alfa beta beta gamma gammadelta deltaare computed $$ begin eqnarray alphaamp = amp-frac 1 Delta s textbf vv - textbf vm - textbf uu textbf umbetaamp = amptextbf um - textbf uu -alpha cdot textbf sm gammaamp = amp-frac 1 Delta s textbf vm - textbf um -alpha cdot textbf iamdeltaamp = amp- textbf um textbf iamcdottextbf uu - textbf um - gamma cdot textbf sm . end eqnarray $$whereDelta sdstep is the volume normalised time stepandsm corresponds to sn-1 .- Depending on the valuealpha different trajectories paths areavailable alphagt0For this casewe define the time-likevariablexi = betaalpha cdot s sqrt 2 alphaand r_0 = r s0 where s_0 isthe initial time. The new position of the trajectory is given by $$r s=left r_0fracgamma alpharighte xi_0 2- xi 2-fracgamma alphafracbeta gamma - alpha delta alphasqrtfrac 2 alpha Dxi -e xi_0 2- xi 2 Dxi_0$$where Dxiis the Dawson s integral.alphalt0For this casewe define the time-likevariablezeta = betaalpha cdot s sqrt -2 alphaand r_0 = r s0 where s_0is the initial time. The new position of the trajectory is given by $$r s=left r_0fracgamma alpharighte zeta 2- zeta_0 2-fracgamma alpha- fracbeta gamma - alpha delta alphasqrtfracpi-2 alphae zeta 2 textrm erf zeta - textrm erf zeta_0$$wheretextrm erf zetais the error function.alpha = 0which would normally not occur in istic GCM $$r s=left r_0fracdelta betarighte- beta s-s_0 -fracdelta betafracgamma beta 21 -beta s beta s_0 -1 e- beta s-s_0 $$Note The Dawson s integral are computed following the subroutine describe herefunction dawin the module . The error function and the complementary error function are computed following this subroutinesfunctionsfun_erf and fun_erfc in the moduleinstead of using the intrisicERF and ERFC functions."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_postprocessf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_seed.F90 seed seeding ",
+                  "url"      : "/docs/components/main_modules.html#mod_postprocessf90",
+                  "content"  : " The module mod_postprocess reads the output filescomputes offline streamfunctions tracer divergence mapand a more detailed summary of the TRACMASS run.The subroutine postprocessing reads the output files and stores the requireinformation to compute a summary or offline streamfunctions divergence calculation. The followinginformation is readthe initial number of trajectories and total transportfrom_ini.csv the number of trajectories that left the domain or exceeded the time limit andthe total tranportfrom _out.csv and the position indexes and the tracer valuesfrom_run.csv if offline streamfunctions or divergences are computed .init_alloc_postprocessing allocates and initialises the required arrays tocompute offline streamfunctions and or to compute tracer divergence.print_summary prints a short summary of the total number of trajectories thatare initialised and the ones that left the domainorganised by the different killing zones . Italso prints a summary of the transports. This subroutine is only called if the main program is runwith the summary argument onsee chapters Configuration and Mainprogram ."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_printf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_stream.F90 streamfunctions ",
+                  "url"      : "/docs/components/main_modules.html#mod_printf90",
+                  "content"  : " The module mod_print is responsible for printing the basic information about the runwhich includes a short summary of the model configurationthe number of trajectories run and a finalsummary of the number trajectories that are still runninghave been deactivated or have errors."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_seedf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_subdomain.F90 subdomain ",
+                  "url"      : "/docs/components/main_modules.html#mod_seedf90",
+                  "content"  : " The module mod_seed defines all the variables and arrays neccesary for the seedingof particles. This modules contains two public subroutinesinit_seed andseedand three private subroutinessplit_gridread_maskand reverse The subroutine init_seed defines the grid points and the time steps where theparticles are going to be initialisedthe wall of the grid where they are going to be placed isec and their directionidir . There are three options forisec 1on the east wall of the grid cell 2on the north wall of the grid cell and3on the top wall of the grid cell. idir selects the initial direction of the trajectorieseastward northward upwardidir = 1or westward southward downwardidir =-1 .Note If the simulation is backward in timenff = -1 idir represents the last directionof the trajectory to follow. For examplelet us consider a eastward flow field. A simulation withnff = -1 and idir = 1 will follow trajectories back in time thatinitially are moving eastward.The initial seeding locationtimeand direction can be defined directly in the namelist or readfrom a file. This is control by seedType and seedTime.seedType 1the seeding location is defined by the grid points within thevolume described byist2-ist1 1 x jst2-jst1 1 x kst2-kst1 1 all thesetrajectories will shared the idir and isec defined in thenamelist 2the seeding location and the direction is read from an external fileseedDir seedfile.Important The mask file only will be read if seedType is set to one. The maskarray is two dimensional and has the dimensions imt x jmt. If a mask file is provided maskFile only the values where mask=1marked in orange in thefigurewill be selected for seeding. The reading of the mask file is done by the internal subroutine read_mask. Theindexes in the mask file are in the original file reference system.seedTime 1the seeding happens in the time interval defined betweentst2 and tst1or2it is read from a external fileseedDir timeFile.The seed subroutine populates the trajectory array that containsthe position of the trajectories as well as their corresponding volume mass transport. This moduleworks this way 1 - The subroutine checks if the current time ntime corresponds to a seeding time.2 - The corresponding flux is chosen according to the value of isec. If thedirection does not correspond to the value of idir the trajectory is not activated.3 - numthe number of trajectories per grid pointis defined. There are differentoptions based on nqua 1the number of trajectories is defined bypartQuantor2the particles transport a specific volume mass transport defined bypartQuantthe number of particles in the grid is then defined dividing the totalvolume mass transport by partQuant.Note For the case nqua=2the value of partQuant represents the maximumtransport a trajectory can carry. In the example belowthe green histogram describes the distributionof the trajectories if one trajectory would be seeded per gridcell. By initialising the same setup butwith nqua=2 and partQuant=2 the number of trajectories changes aswell as the distributionblue histogram . No trajectory in this setup has a volume transport largerthan partQuant=2.4 - The grid is split in equal parts using the private subroutine split_grid. Ifnum is a square number the grid cell is divided in equal squaresifnum is a prime number the grid is split in equal rectangles along one axisseefigure below . For other casessplit_grid will divide the square in equal rectangleswith similar side lengths.5 - The specific volume mass transport of a trajectory subvol is computed fromnum.6 - The trajectories are placed in the middle of each of the rectangles. This initial position isgiven by x1y1z1.Important x1y1z1 are computed using the gridbox as a reference.7 - If TRACMASS is rerun or run to compute streamfunctionsonly the trajectories that exit through akill zone will be activated.Besidesif l_tracers is truethe trajectories outside the tracer limitstracer0min and tracer0max will be deactivated.8 - The position of the trajectory in the gridbox reference systemthe trajectory numberntracthe corresponding position index and the mass volume transported by it isstored in the array trajectories.The private subroutine reverse adjust the seeding indexes to the TRACMASS referencesystem."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_streamf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_swap.F90 swap swap_time swap_sign ",
+                  "url"      : "/docs/components/main_modules.html#mod_streamf90",
+                  "content"  : " The module mod_stream.F90 is responsible for computing volume mass fluxes andcompute different stream functions. This module contains four subroutinescompute_streaminit_streamupdate_fluxesonlinecomputation of streamfunctionsand compute_streamoffline computation ofstreamfunctions .The subroutine init_stream initialises and allocates all the fluxes fluxes_and streamfunctionpsi_arrays.Flux typel_offline = TRUEl_offline = FALSEBarotropicx-yimtjmt21imtjmtntractot Zonalx-zimtkm21imtkmntractot Meridionaly-zjmtkm21jmtkmntractot Longitude-tracerx-rimtmr21numtracersimtmrntractotnumtracers Latitude-tracery-rjmtmr21numtracersjmtmrntractotnumtracers Tracer-tracerr-r mrmr21numtracers mrmrntractotnumtracers Note The last three cases are only computed if l_tracer is TRUEwhere mr is thetracer space resolution501 by defaultand numtracers is the number of tracers.If streamfunctions are computed onlinel_offline is false the subrotuineupdate_fluxes is responsible to update the fluxes and filter them according to thetrajectory number. This subroutine has six argumentsindex1index2 represent theindexes of the two coordinates of the streamfunctiondir is the direction of thetrajectoryin the stream function coordinate reference system psicase indicatesthe type of streamfunction that is computed xy barotropic xz zonal streamfunction yz meridional stream function xr longitude-tracer streamfunction yr latitude-tracer stream functionandrr tracer-tracer streamfunction . The fifth argument is optionalindt1and it is used whenever a yrstreamfunction is used to represent the different tracer choice.$$Ftextbf index1 index2 textbf indt1= Ftextbf index1 index2 textbf indt1dir cdottextbf subvol $$If psicase isrr index1index2 are linked to thepresent and past time step of the first tracerand indt1indt2 are the presentand past time step of the second tracer. The computation of the fluxes in this case is moregeneralised $$Ftextbf indm1 indm2 =textbf subvol $$where textbf indm1 = index1 index2 and textbf indm2 =indt1 slope cdottextbf indm1 -index1. The slope is given by indt2-indt1 index2-index1.If streamfunctions are computed offlinel_offline is true the subrotuinecompute_fluxes is responsible to update the fluxes and filter them according tothe killing zones. If write_frec is 3stored everytime it crosses a wallor 4saveeverytime the fluxes are computed when the stored index corresponds to a zonal wallbarotropic or to a meridional wallmeridional or latitude-tracer . The tracer-tracer fluxes are computed asin the online case. For other write_frec all the fluxes are computed using the method tocompute the tracer-tracer fluxessee the online case .The subroutine compute_stream integrates the fluxes computed byupdate_fluxes or compute_fluxes to compute the stream functions.In the case of online calculation of stream functionthe subroutine filters only thentracs that exited through the killing zones. The integration direction is defined bydirpsi.Note This is an example of how a stream function is computed. Consider two trajectoriesAwith the samevolume mass transport. The computed fluxes are shown inBwhere blue represents positive fluxes andorange negative fluxes. Notice that the region where both trajectories cross the same wall theresulting flux is zero as they cancel each other. The resulting stream functionCis computedintegrating in a downward direction."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_subdomainf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_tracers.F90 tracers ",
+                  "url"      : "/docs/components/main_modules.html#mod_subdomainf90",
+                  "content"  : " The module mod_subdomain.F90 is responsible for defining a subdomain and updatingthe indexes according to the new domain. Defining a subdomain is useful to run TRACMASS with highresolution data especially if the area of study does not cover the whole original domain. Two types ofsubdomain can be declareda regular boximindomltimaxdomanda split boximaxdomltimindom .Note The subdomain is only defined in the longitude-latitude space.It consists of two subroutines init_subdomain and update_subindex The subroutine init_subdomain defines the size of the new subdomain. If asubdomain is chosenl_subdomain is truethe new size of the domain is definedas Subdomain typezonal dimensionimt meridional dimensionjmt Regular boximaxdom - imindom 1jmaxdom - jmindom 1Split boximtdom imaxdom - imindom 1jmaxdom - jmindom 1Besidesonce the subdomain is declared a kill zone is imposed around the boundaries of thesubdomain. To avoid problems with the possible kill zones defined by the user inkill_zones.F90 the subdomain kill zones are declared for the indexes 7 8 9 and10.Note Periodic bandfor the case where all the zonal indexes are chosen and the east-westboundary condition is activatediperio=1the killing zones 9 and 10 are notactivated.North Hemispheric capfor the case where all the zonal indexes are chosentheeast-west boundary condition is activatediperio=1andjmaxdom = JMTthe killing zones 89 and 10 are not activated.South Hemispheric capfor the case where all the zonal indexes are chosentheeast-west boundary condition is activatediperio=1andjmindom = 1the killing zones 79 and 10 are not activated.The subroutine update_subindex updates the subindexes before trajectories areseeded. The indexes are updated using imindom and jmindom asreferenced. There is an special case for the Split box case.Subdomain typezonal indexji meridional indexjj Regular boxji - imindom 1jj - jmindom 1Split boxji - imindom 1nbsp nbspifimindomlt = jijj - jmindom 1ji - imtdom -imindom 1otherwise "
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_swapf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_vars.F90 vars variables ",
+                  "url"      : "/docs/components/main_modules.html#mod_swapf90",
+                  "content"  : " The module mod_swap.F90 is responsible for updating the time indexes for thosevariables that are time dependentfor more information check the description ofread_field.F90and reversing the fluxes if the trajectories are run backward intime."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_tracersf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_vertvel.F90 vertical velocity ",
+                  "url"      : "/docs/components/main_modules.html#mod_tracersf90",
+                  "content"  : " If TRACMASS is run with tracersl_tracers is true the modulemod_tracers.F90 contains all the subroutines needed to initialiseallocatecomputeand update tracers.init_tracer initialise the tracers array from the informationprovided in the namelist. This information consists of a short description of the tracer name unitswhether the tracer is read from an input fileaction ==’read’or computed in TRACMASS action =’compute’ . Ifthe tracer is readthe name of the variable in the input file is given by varnameand the number of dimension-s.Important To compute stream functions it is important to define the lowerminimumand theuppermaximumlimit of the tracer coordinate.If action is computethe subroutine compute_tracer willcalculate the tracer from other tracers read from input files.tracernameDescriptionExternal functionArgument 1Argument 2sigma0sigma-0 densitythermo_dens0TemperatureSalinityupdate_tracers updates the value of the tracer in the new positioncomputed byupdate_traj . The tracers are updated using the nearest point approach wheretrajectory stores the value of the tracer in the nearest T point. If the trajectory crosses a gridwall the tracer value is the mean value between the two nearest T points. A time interpolation iscomputed before the spatial interpolation.The private subroutine tracers_default assigns default values to thetracers array for the most common tracers. The tracers included in thissubroutine are nameunitminimummaximumactionvarnameDescripitionTodegC-333readTTemperatureOcean TaK173223readTTemperatureAtmosphere TpK173223readTpPotential temperatureSg kg-13238readSSalinityqg kg-1025readqSpecific humiditysigma0kg m-31929compute Sea water densitysigma0 sigma0_Kkg m-31929compute ——–——T in K phPa01100compute Atmospheric pressureThe function tracerbin translates the tracervalue to an index in the tracerspace "
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_varsf90",
+                  "category" : "documentation",
+                  "keywords" : " mod_write.F90  write writing ",
+                  "url"      : "/docs/components/main_modules.html#mod_varsf90",
+                  "content"  : " mod_vars.F90 is a collection of different modules that define the required variablesfor the different components of TRACMASS. This file contains 10 modules mod_precdefdefines the precisions of the REAL variables.mod_logdefines the verbose variables.mod_paramthe general parameters of TRACMASS are defined here.mod_seedvarsthe variables used in mod_seed are defined here.mod_trajdefthe derived TYPE trajectory is defined in thismodule.mod_loopvarsthe variables used in mod_loop are defined here.mod_trajthe variables to describe a trajectory are defined here.mod_gridthe grid variablesand the boundary conditions are defined here.mod_timedefines the variables used by mod_calendar andmod_clock.mod_domaindefines the variables to describe the limits of the domain where thetrajectory is activated.mod_velthe volume mass fluxes both horizontal and vertical are defined here.mod_trajdefthe derived TYPE tracers is defined in thismodule.mod_tracervarsthe variables to describe tracers are defined here.mod_psidefines the variables to describe the stream functions.mod_postprocessvarsthe variables part of the postprocessing are defined here.mod_activevarsthe variables part of the lagrangian diffusion scheme aredefined here.mod_divvarsthe variables part of the tracer divergence calculation are definedhere."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_vertvelf90",
+                  "category" : "documentation",
+                  "keywords" : "",
+                  "url"      : "/docs/components/main_modules.html#mod_vertvelf90",
+                  "content"  : " The module mod_vertvel computes the vertical volume mass fluxes. If TRACMASS issetup for two dimensional fieldsor the vertical velocity is part of the dataset this module is notactivated.This module contains a single subroutine vertvel that computes the vertical fluxusing the following equation This equation is integrated from the bottomoceanor the TOAatmosphereto the levelka."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Main modules - mod_writef90",
+                  "category" : "documentation",
+                  "keywords" : "",
+                  "url"      : "/docs/components/main_modules.html#mod_writef90",
+                  "content"  : " The module mod_write creates the outfiles where the information of the trajectoriesis stored. This module is responsible for writing four important files_ini.csv where theinitial positions are stored_out.csv where the final positions are stored _run.csv where the new positions of the trajectory are storedand _rerun.csv wherethe trajectory number and the flag corresponding to the kill zone is stored. The output data is storedin the directory given by outDataDir and the output files start with the prefix givenby outDataFile. If those values are not specifiedthe current working directorybecomes the default output directory.9888Warning If a particle is not terminated it willnot be stored in the _rerun.csv file. The initial and the final information of the trajectories are always stored. Howeverthe frequencyat which data is stored in the _run.csv is controlled by write_frec 1 only at GCM time steps 2only at GCM and subcycle time steps 3only when a trajectory crosses awall 4all time stepsand5no data stored.The time format of the output files can also be adjusted with timeformat 0 tt is stored 1ts is stored 2the time is saved in YYYY-MM-DDHH format.Note The format in which the output is written is controlled by write_form. The defaultvalue is zero which writes the output with two decimals. By settingwrite_form to one the output is written with five decimals.ImportantIf TRACMASS is run with the stream function flag this module also writes the resulting streamfunctions in the files_psixy.csv for the barotropic case_psiyz.csv for themeridional case_psiyr.csv for the latitude-tracer caseand _psirr.csv for thetracer-tracer stream functions. Besidesthe subroutine read_rerun will be used toread the trajectories that will be run and the flag corresponding to the kill zones.ImportantIf TRACMASS is run with tracer divergence computationthis module also writes the results in thefile_div.csv. "
+
+                } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "Configuration",
+            "category" : "documentation",
+            "keywords" : "",
+            "url"      : "/docs/components/main_program.html",
+            "content"  : "Main program Main programThe present chapter describes the main program TRACMASS and the different running options.TRACMASS.F90This is how the TRACMASS main program works 1 - First the namelist is readinit_namelistand the tracers are initialised init_tracer .2 - Then the subdomain is definedinit_subdomainand all the arrays are allocated init_alloc .3 - If norun is false the main subroutinesto compute trajectories are called.3.1 - The grid variables are definedsetup_gridthecalendarinit_calendarand the seeding are initialised init_seed .3.2 - If online stream function are activatedthe fluxes are allocated init_stream .3.3 - The main loop is called where the trajectories are computedloop .4 - Thenthe output is postprocessed.4.1 - If a summary is computed the the subroutine postprocessing iscalled.4.2 - If only offline streamfunctions are computedno summary the subroutinecompute_stream is called runtracmass running argumentsTRACMASS can be run with different arguments that can be combined rerunrerun TRACMASS by seeding only the trajectories that are stored in thererun file. The model will crash if no rerun file can be found.norunrun TRACMASS without the computation of trajectories. This argument isuseful to compute offline stream functions from output files.summaryinclude a more detailed summary of the trajectories and their transportat the end of the run.TRACMASS unix file tree "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+                "title"    : "Namelist",
+                "category" : "documentation",
+                "keywords" : " namelist ",
+                "url"      : "/docs/components/namelist.html",
+                "content"  : "NamelistNamelistManyvariablesatTRACMASScanbemodifiedusingthenamelistwithouttheneedtorecompiletheprogram.Eachprojecthasanamelist_CASE.inintheprojectfolder.WhenTRACMASSiscompiledacopyofthenamelistnamelist.incanbefoundinthemainTRACMASSdirectory.Thisisalistofallthevariablesthatcanbechangedinthenamelistandtheircorrespondinggroup.Notallofthesevariablesmustbedefinedinthenamelist."
+
+              },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_grid_description",
+                  "category" : "documentation",
+                  "keywords" : " griddir zeroindex trunit l_onestep physDataDir physPrefixForm dateFormat tGridName uGridName vGridName wGridName fileSuffix hs_name ueul_name veul_name usgs_name vsgs_name usub_name vsub_name w_name ",
+                  "url"      : "/docs/components/namelist.html#init_grid_description",
+                  "content"  : " Here you can set the paths and variable names to define the volume mass fluxes.griddir the direction of the input data indexesreferenced to the TRACMASS reference system. It’s a three element arraythe first elementcorresponds to the zonal directionthe second one to the meridional direction and the third oneto the vertical direction. Two possible values are possible1eastward northward upward or-1 westward southward downward. The default values are1 1 1 .zeroindx the first index in the original dataset is given byzero instead of one. The default value is FALSE.trunit constant to scale the TRACMASS transports.l_onestep read one time step per input file. The defaultvalue is FALSE.physDataDir path to the input data directory in referencetothe TRACMASS root directoryTracmass .NoteTRACMASS reads the data in reference to it s root directoryTracmassif only the relativepath is definedin thebegining of path is not present . If is in the begining of the path TRACMASSunderstand it as an absolute paththusstarting from the system s root directory.physPrefixForm prefix of the input data file name.dateFormat part of the input data name that will becorrected by the subroutine filledFileName. Availabal date formats are thefollowingwith D-dayM-monthY-year tGridName the suffix for T grid files.uGridName the suffix for U grid files.vGridName the suffix for V grid files.wGridName the suffix for W grid files.fileSuffix describes the file format of the input filessuch as ‘nc’ or ‘nc4’.hs_name variable name for surface height pressureetc.ueul_name variable name for zonal velocity.veul_name variable name for meridional velocity.usgs_name variable name for subgrid zonal velocity. Thedefault value is ” “. vsgs_name variable name for subgrid meridional velocity.The default value is ” “. usub_name variable name for secondary subgrid zonalvelocity. The default value is set to ” “.vsub_name variable name for secondary subgrid meridionalvelocity. The default value is set to ” “.w_name variable name for vertical velocity. The defaultvalue is set to ” “ and will be overriden if the simulation is set to 2D.There are various options of setting up the grid databut here is a simple example toilustrate the basis of how TRACMASS creates a path to a file to read it in. In this examplegridfiles are located in folder projects NEMO setup_data. Herethe relative pathis used with the assumption . Nextthe input file format is defined withphysPrefixForm dateformatfileSuffix and one of the grid names -tGridName uGridNamevGridName. Any of these can be left empty depending onthefile formathoweverin this case the tracer valuesand zonal and meridional velocity fields are allinseperate files and let s assume that date is 20251014YYYYMMDDaccordinglyNEMO-data-20251014-T.nc in which we have hs_name= sshNEMO-data-20251014-U.nc in which we have ueul_name= uoNEMO-data-20251014-V.nc in which we have veul_name= vo Assuming that the input data are daily averagedTRACMASS automatically reformats thedateformatvalues so that the next day file is correctly read into the software. This data can me dailymonthly yearlyorany variation of those.INIT_GRID_DESCRIPTION Describe filenames physDataDir =projects NEMO setup_dataphysPrefixForm =NEMO-data- dateformat =YYYYMMDD Name of TgridUgridVgridcan be left empty as welltGridName =-T uGridName =-U vGridName =-V suffix of filese.g. .nc fileSuffix =.nc Describe variable name hs_name =sshSea surface height ueul_name =uo name of resolved zonal velocity veul_name =vo ----------- meridional usgs_name = name of unresolved zonal velocity vsgs_name = ------------- meridional "
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_grid_size",
+                  "category" : "documentation",
+                  "keywords" : " imt jmt km iperio jperio topoDataDir hgridFile dy_name dyu_name dx_name dxv_name zgridFile dzt_name dzu_name dzv_name dep_name bathyFile kmt_name ",
+                  "url"      : "/docs/components/namelist.html#init_grid_size",
+                  "content"  : " Here you can set the paths to the files that contain the mesh grid as well as defined the size or thedomain or the type of boundary conditions. The file formatting process is nearly identical toINIT_GRID_DESCRIPTION.imtinteger number of global i points.jmtinteger number of global j points.kminteger number of global k points.iperiointeger cyclic zonal boundary conditions. Two possiblevalues 0no cyclic zonal boundary condition or1cyclic zonal boundary conditions is on.The default values is 0.jperiointeger cyclic meridional boundary conditions. Two possiblevalues 0no cyclic meridional boundary condition or1cyclic meridional condition is on.The default value is 0.topoDataDir path to the directory that contains mesh ortopography data. Relative path to the Tracmass root directory or system s absolute path can beusedfor more information refer to the note in INIT_GRID_DESCRIPTION.hgridFile name of the file that contains variables linkedto horizontal grid data.dy_name variable name for dy in T points.dyu_name variable name for dy in U points.dx_name variable name for dx in T points.dxv_name variable name for dx in V points.zgridFile name of the file that contains variables linkedto vertical grid data.dzt_name variable name for dz in T points.dzu_name variable name for dz in U points.dzv_name variable name for dz in V points.dep_name variable name for total depth in physical units.bathyFile name of the file that contains variables linkedto bathymetry topography.kmt_name variable name for bathymetry in model levles not physical units."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_grid_subdomain",
+                  "category" : "documentation",
+                  "keywords" : " l_subdom imindom imaxdom jmindom jmaxdom ",
+                  "url"      : "/docs/components/namelist.html#init_grid_subdomain",
+                  "content"  : " Here you can activate and define a subdomain in TRACMASSmore info can be foundhere .l_subdom activate a subdomain which will be used forcalculationsexcluding the rest of the data. The rest of the indexessuch asdomain size seeding locations and kill zones are in reference to this subdomainnot the original one.Default value is FALSE.imindominteger index that represents the western boundary of thesubdomain.imaxdominteger index that represents the eastern boundary of thesubdomain.jmindominteger index that represents the southern boundary of thesubdomain.jmaxdominteger index that represents the northern boundary of thesubdomain."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_grid_time",
+                  "category" : "documentation",
+                  "keywords" : " ngcm_step ngcm_unit iter ",
+                  "url"      : "/docs/components/namelist.html#init_grid_time",
+                  "content"  : " Here you can set the time step and unit at which the input data is storedas well as define thenumber of subcycles use in TRACMASS.ngcm_stepinteger number of time steps between two time levels.Typically set to be equal tothe velocity field data time step.ngcm_unitinteger unit of the time step ngcm_step1seconds 2minutes3hours 4days 5monthsand6years.iterinteger number of subcycles between two time levels ngcm_step .Here is an example of setting up the model to have hour as the time unit ngcm_unit that has 2 units of the time step ngcm_step. Thissets the model to have 2 hour global time step. The variable iter determineshow many subcycles or sub-timesteps the model will take between twoglobal time stepsngcm_step . In this caseiter=12 indicating 12 time steps. This would translate to 10 min subcycles ngcm_step iter = 2h 12 = 10 min .This is how it would look in the namelist.in file INIT_GRID_TIMEngcm_step= 6ngcm_unit= 3iter = 12"
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_start_date",
+                  "category" : "documentation",
+                  "keywords" : " startSec startMin startHour startDay startMonth startYear noleap mon30day ",
+                  "url"      : "/docs/components/namelist.html#init_start_date",
+                  "content"  : " Here you can define the starting date of the simulation.startSecinteger starting second.startMininteger starting minute.startHourinteger starting hour.startDayinteger starting day.startMonthinteger starting month.startYearinteger starting year.noleap if FALSE a calendar with leap yearsis used. Defaultvalue is TRUE.mon30day if TRUE a calendar with 360 daysis used30 daysper month . Default value is FALSE."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_run_time",
+                  "category" : "documentation",
+                  "keywords" : " loopYears loopStartYear loopEndYear log_level intrun ",
+                  "url"      : "/docs/components/namelist.html#init_run_time",
+                  "content"  : " Here you can define the total number of time steps that TRACMASS will be run and the frequency ofdata saving.A loop between two dates can be set here as wellmore info can be found here . loopYears make a loop over two dates to run. Default valueis FALSE. loopStartYearinteger starting year of the loop.loopEndYearinteger last year of the loop.log_levelinteger level of verbose output in terminal while runningmodel. Minimal output with basic information0more descriptive setup0 ltlog_level lt3 descriptive setup and every time stepadditional information of ongoing processes 3 lt=log_level lt5 descriptive setup with detailed information at each timestep5 lt=log_level .For typical uselog_level=0 recommendedfor debugging - other values.intruninteger number of total global time steps ngcm_stepto run."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_write_traj",
+                  "category" : "documentation",
+                  "keywords" : " write_frec write_form outDataDir outDataFile timeformat l_compress ",
+                  "url"      : "/docs/components/namelist.html#init_write_traj",
+                  "content"  : " Here you can define all the parameters and paths linked to the output datamore info can be found here .write_frecinteger output writing frequency 1write at timeintervals of gcm datasetseach ngcm_step2write at each time iteration each subcylce iteration iter3write each spatial grid-crossing 4 write at all time stepsand5write only start and end positions.write_forminteger output writing format 0two decimals 1fivedecimals. Default values is zero.outDataDir path to the directory where the output filesare stored. If field left empty or not definedoutput files are saved in the root TRACMASSdirectory. outDataFile prefix of the output file. Default value is TRACMASS timeformatinteger format of the time array 0seconds from thestarting date 1time fractionor2date and time formatYYYYMMDDHH .l_compress Copresses the output files if they are largerthan 2GiB in seperate zip folders. At the end of the runthey are merged into one zip folder.Defualt value is FALSE."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_seeding",
+                  "category" : "documentation",
+                  "keywords" : " nff isec idir nqua partQuant loneparticle SeedType ist1 ist2 jst1 jst2 kst1 kst2 seeddir seedfile maskfile seedTime tst1 tst2 timeFile ",
+                  "url"      : "/docs/components/namelist.html#init_seeding",
+                  "content"  : " Here you can define all the parameters to seed trajectories in TRACMASSmore info can be found here .nffinteger time arrow of TRACMASS 1run trajectories forward intime and -1backward in time.isecinteger seeding section1zonal wall in eastern direction2meridional wall in northern direction and3vertical wall in upward direction.idirinteger direction of initial fluxes 1only positive fluxesare seededand-1only negative fluxes are seeded.nquainteger defines how many particles are initiliased per gridcellnqua=1constant number set by partQuantnqua=2all trajectories reflect the sametransport set by partQuant.partQuantinteger number of trajectories per grid cellifnqua=1 or the mass volume transport per trajectoryif nqua=2 .loneparticleinteger if set to 1runs a lonely trajectory.The default value is set to zerorun all trajectories . Typically used for debugging.SeedTypeinteger defines the seeding type1using a seeding boxdefined by ist jst kstor2using indexes from a file.ist1 and ist2integer define the first and lastzonal index of the seeding boxseedType=1 jst1 and jst2integer define the first and lastmeridional index of the seeding boxseedType=1 kst1 and kst2integer define the first and lastvertical index of the seeding boxseedType=1 seeddir path to the directory where the seeding file isstoredseedType=2 .seedfile name of the seeding fileseedType=2 .maskfile name of the masking fileseedType=1 .seedTimeinteger defines the time seeding type1using a timerangeor2using indexes from a file.tst1 and tst2integer defines the first and lasttime steps to seed trajectoriesseedTime=1 .timeFile name of the time seeding fileseedTime=2 ."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_tracers",
+                  "category" : "documentation",
+                  "keywords" : " l_tracers l_swtraj tracertrajscale tracername tracershift tracerscale tracerunit tracervarname traceraction tracerdimension tracermin tracermax ",
+                  "url"      : "/docs/components/namelist.html#init_tracers",
+                  "content"  : " Here you can activate tracersdefine their names and propertiesas well as set some modifications more info can be found here .l_tracers activate tracers. Default value isFALSE.l_swtraj activate salt water trajectories. Default value isFALSE.tracertrajscale scale factor applied on the tracer which isused to compute salt water trajectories. Default value is one. If l_swtraj is setto FALSEthentracertrajscale is set to 1.tracernamearray max 10name of the tracersmaximum 10tracers.tracershiftarray max 10add a shift value to the tracerarray.Default values is zero.tracerscalearray max 10multiple the tracer value by a scalefactor.Default values is one.tracerunitarray max 10tracer units.tracervarnamearray max 10variable name of the tracerif it is read in from a file.traceractionarray max 10action associated to thevariableeither ‘read’ and data is read froma file or ‘compute’ in which case TRACMASS carriesout tracer calcultions while running simulation.tracerdimensionarray max 10defines the number ofdimensions ofthe tracer‘2D’ or ‘3D’.tracerminarray max 10minimum value of the tracer used todefine the tracer coordinate space when stream functions are computed.tracermaxarray max 10maximum value of the tracer used todefine the tracer coordinate space when stream functions are computed.Important to note that only up to 10 tracers can be declared. An example of setting up 3 differenttracers is presented in the nextcode sample. All of the tracers are set up with the same index across the different variablessuchthatif a potential temperatureis declared the 5th tracer for variable tracernamethen for all other variables tracershifttracerunit traceractionetc.will also be the 5th in thir according arrays. For example seawater salinity S is declared as the 2ndtracer in tracername arraythusit will need to be 2nd variable in all the rest ofthe arrays. Accordingly salinity unit is defined as PSUwith a variable name sowhich isreadin from anexternal file and has a3Darray dimensions.Finallyif streamfunctions are being calculatedit is possible to set the min and max values forwhich the streamfunctions will be calculated in this examplethe salinity range has been set to min=32 and max=38.INIT_TRACERS Enables tracer calculations l_tracers = .TRUE. Tracer namedescriptiontracername =To Ssigma0Tracer unitdescriptiontracerunit =degC PSUkg m 3Name of the variable in the netcdfif it s readtracervarname =thetao soActionread or computetraceraction =read read computeDimension of the tracer tracerdimension = 2D3D2DMinimum and maximum value of the binning tracermin = -3321tracermax = 333840Alongside adding manually some tracer definitionsTRACMASS provides a couple of frequently usedtracer definitions. More information can befound here."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_tracers_seeding",
+                  "category" : "documentation",
+                  "keywords" : " tracer0min tracer0max ",
+                  "url"      : "/docs/components/namelist.html#init_tracers_seeding",
+                  "content"  : " Here you can define the maximum and mimimum tracer values when particles are seededan example canbe found here .tracer0minarray max 10minimum value of the tracer to beseeded. Thedefault values is -9999. Can be left undeclared.tracer0maxarray max 10maximum value of the tracer to beseeded. Thedefault values is 9999. Can be left undeclared."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_killzones",
+                  "category" : "documentation",
+                  "keywords" : " timax l_nosurface exitType ienw iene jens jenn tracerchoice tracere maxormin ",
+                  "url"      : "/docs/components/namelist.html#init_killzones",
+                  "content"  : " Here you can define the maximum time limitas well as define the regions where trajectories areterminatedsome examples are shown here and here . For a detail description on how the kill zones work checkthe projets folder section.timax time limit before trajectories are terminatedcalculatedin days.l_nosurface prevent trajectories from reaching the lastvertical levelsea surfaceland surface . If set to .TRUE.once a trajectoryreaches sea surfaceland surfacetrajectory is put back in the middle of the cell in depthdirection.Default value is .FALSE..exitTypeinteger selects the type of killing zones1defined by aregular box 2defined by a tracer value 3a combined tracer-geographical zoneand4hardcoded killing zone.ienw and iene max 10define thewestern and eastern index of the killing zoneif exitType=1 .jens and jenn max 10define thesouthern and northern index of the killing zoneif exitType=1 .tracerchoice max 10defines the tracers that areused to define the killing zoneif exitType=2 or exitType=3 . The index is given by the orderof the tracer in tracername.tracerearray max 10value of the tracer that defines thekillingzone with tracerchoiceif exitType=2 orexitType=3 .maxormin sets the value of tracereto a1maximum or-1minimum value. Here is shown an example of how to set up kill zones with exitType=1which is aregular box. Similarly as with tracer set upa maximum of 10 killzone boxes can be set with thisoption. Here we have set up 2 boxesfirst acting as a line and the second as a rectangular box. Thefirst box has the dimensions from 200-th to 300-th index in the west-east directionand is set to 150-th index in the north-south direction. Looking form a bird eye view thatwould be a horizontal line across the grid. The second killzone box is truly a box with size from50-th to 250-th index in west-east direction and from 350-th to450-th index in the north-south direction. Once the box line is crossedthe trajectory isterminatedit does not matter from which side the trajectory crosses. INIT_KILLZONES Maximum time for which trajectories will run timax = 75000 time limit for trajdaysSet up an exitType as a box of kill zones exitType = 11st box 2nd box west indices of killzones ienw =200 50 east indices of killzones iene =300 250south indices of killzones jens =150 350 north indices of killzones jenn =150 450Examples of the other exitTypes is shown in "
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_postprocess",
+                  "category" : "documentation",
+                  "keywords" : " l_psi l_offline dirpsi xyflux l_divergence divconst ",
+                  "url"      : "/docs/components/namelist.html#init_postprocess",
+                  "content"  : " Here you can activate the stream function and or the tracer divergence calculationsome examples areshown here and here . Fora detail description on how the stream functions are computed check the mod_stream.F90section. Forinformation about the divergence calculation check mod_divergence.F90sectioninstead.l_psi activate stream function calculation.l_offline compute the stream functions offline. Defaultvalue is TRUE.dirpsi max 21direction of integration ofstreamfunctions1intigration is in the positive direction -1integration in the negative direction. Defaultvalue set to1.xyfluxinteger compute barotropic fluxes usinguflux1or vflux2 . Default value is 1.l_divergence activate the calculation tracer divergence.divconstarray max 10constants applied to the tracerdivergence. Defaultvalue set to 1."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "Namelist - init_active",
+                  "category" : "documentation",
+                  "keywords" : " l_diffusion ah av ",
+                  "url"      : "/docs/components/namelist.html#init_active",
+                  "content"  : " Here you can activate the Lagrangian diffusion schemefor more information check here .l_diffusion activates the addition of a random displacementto trajectories. Default values is FALSE.ah horizontal diffusion constant. Default value set to0.av vertical diffusion constant. Default value set to0. "
+
+                } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "NEMO-ORCA1",
+            "category" : "examples",
+            "keywords" : "",
+            "url"      : "/blog/nemo.html",
+            "content"  : "3D datasetsThe NEMO data is defined on the same grid as the TRACMASS grid. Thereforethere is no need tointerpolate velocities or tracer on the TRACMASS grid. The default setup of this project initialisestrajectories in the North Atlantic Ocean only for southward fluxesmarked in black in the figure . Theseeding takes place every month24 seeding stepsand one trajectory is initialised in the location.Trajectories are terminated based on geographical conditionssolid and dashed black lines the maximumtime for trajectories is 200 years.TRACMASS featuresinitialisationwith tracermin0 and tracermax0Trajectories can be initialised using a tracer value criteria by defining the minimum tracermin0and the maximumtracermax0value of the tracers. In thisexampleonly waters with temperatures between and salinity between 34.9-35.0 PSU are selectedredtrajectories . This reduces the number of trajectories that are started compared to the default casebluetrajectories . This is seen better on a T-S diagram.TRACMASS featureskilling zones II exitType=2 and exitType=3 Trajectories can be terminated using different conditions set by exitType. By settingexitType to onetrajectories are terminated based on a geographical conditionsolid anddashed black lines . By setting exitType to twoa value of tracer is used to terminatetrajectories. This is harder to see in the geographical projection of trajectoriesbut it is easily seenin the tracer space. In the example below we impose a killing zone along the isothermred trajectories . exitType=3 is acombination of both trajectory and tracer conditionsgreen trajectories .TRACMASS featuresstream functions II psiyz - meridional If stream function calculationl_psiis activateda stream function will becalculated to each of the killing zones. This way one is able to separate the total Lagrangian meridionalstream function into the different components depending of the killing zone. All the stream functionsshowed in the figure below are computed offline and with dirpsi equal to minus one.Trajectories are starting both in the northern and southern boundary.ImportantThe Lagrangian stream function may differ from the Eulerian stream function if the number of trajectoriesis not large enough.TRACMASS featuresstreamfunctions IIpsixy - barotropic xyflux dirpsi The barotropic streamfunction can be computed using uflux-esxyflux=1where the integration is done along the j meridional indexesor usingvflux-esxyflux =2where the integration is done alongi zonal indexes. The resulting stream function may differ depending on the choice ofxyflux and dirpsi. The figure below represents four different barotropicstream fucntions computed from trajectories that started in the north boundaryblack solid lineand endin the south boundaryblack dashed line . The arrows represent the direction of integration dirpsi .For this setup where there are land boundaries in the zonal direction is recommended to usexyflux = 2. The choice of dirpsi does not play a difference in this caseas land points can be found in both sied. For xyflux = 1 howeverthe stream functioncalculation creates artificial cells as a result of the open boundary in the meridional direction.TRACMASS featuresuse of subdomains l_subdom Activating a subdomainl_subdomis useful especially for high resolution data and whenthere is no need to read the whole domain. The figure below shows an example of the use of a subdomain.The default case describes a group of trajectories that starts at the surface in the area near capeAghulas. A geographical condition is imposed to terminate the trajectoriessolid blue line . The dashedblack line represents the limit the original domainthe setup includes zonal cyclic boundariesiperio=1 . The centre panel represents a regular box imindom lt imaxdomand the right one a split boximaxdom lt imindom .The subdomain is represented by the red solid line while the new killing zones are represented by the reddashed lines.TRACMASS featuresdiffusionl_diffusion Random displacement can be introduced in TRACMASS by activating diffusionl_diffusion .This can be helpful if the input data is too coarse to include some subgrid processes. The example belowshows the evolution of hundred trajectories initialised in the same grid point in the North Atlantic. Thered line represents the mean path of all trajectories. For simplicity this example only includeshorizontal diffusion. For the default case the trajectories are quite coherent and little dispersion isobservedas the value of Ah increments the dispersion is more notorious. Previous gallerynbsp nbsp nbspnbsp nbsp nbspNext gallery "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "NetCDF setup",
+            "category" : "documentation",
+            "keywords" : "",
+            "url"      : "/docs/configuration/netcdf-setup.html",
+            "content"  : "UNDER CONSTRUCTION NetCDF is tricky to ste upso here is a short guide. Last time this was updated was in October of2025so things might have changed since then. LinuxMacOSHPC "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "TRACMASS news updates",
+            "category" : "basics",
+            "keywords" : "news, updates",
+            "url"      : "/news.html",
+            "content"  : "TRACMASS version renaming20 10 2021For simplifying the different version numbers of TRACMASSfrom now the differentversionswill be a combination of the year and the month when the changes were committed vYYYY.MMVersion 7.0 will be known as v2020.12. Version 7.1 will be known as v2021.10.Any future version will be described using the new style.Release of version 7.018 12 2020A new version of TRACMASSv7.0-betais now available. This version includes thefollowing new features The code has been thoroughly cleaned upSupported test cases from Ocean circulation modelsNEMOMOM5ROMSSatellite ocean current data AVISOAtmospheric circulation model data IFSERA-InterimEC-Earth Any tracer can be followed e.g. biogeochemical tracers or chemical compounds in the atmosphere.A new quick-start guide and a comprehensive documentation. "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "TRACMASS output",
+            "category" : "documentation",
+            "keywords" : "",
+            "url"      : "/docs/output/output.html",
+            "content"  : "The present chapter will describe the output from TRACMASS.Outputterminal The amount of information printed by TRACMASS can be modified by increasing thelog_level. The default value of verbose provides a short summary of the initialconfiguration. At every time step TRACMASS prints a summary of the number of trajectories.Output filesDepending on the initial configuration of the rundifferent files will be created. This is a summaryof the output files of TRACMASS and the information they contain.inirunand out filesThese three files contain information regarding the trajectory ini contains information of the seeding position and time of all trajectories.run contains all the positions of all the trajectoriesout contains information of the last position and time when it leaves a domain or thetime exceeded.The number of columns depends on both the time formattimeformatand the number oftracersnumtracers . These are the variables stored in any of the three files Column 1trajectory numberntrac Column 2position in the zonal directionx Column 3position in the meridional directiony Column 4position in the vertical directionz Column 5transport of the trajectorysubvol Column 6seconds from the beginning of the simulationtimeformat = 0 or timefraction of the simulationtimeformat = 1 .Column 7label linked to the boxface of the gridboxboxface Column 8 tracer value at the position of the trajectoryif l_tracer is TRUE .ImportantIf timeformat= 2 columns 6-9 are reserved to dateYeardateMon dateDay and dateHour. The boxface can be found at column 10and tracervalues can be found from column 11 onward.rerun fileThe rerun file contains information about the trajectories that exited through the domains defined bykill_zones.F90. This file is read to rerun the code or to compute offlinestreamfunctions. It consists of three columns Column 1trajectory numberntrac .Column 2kill zone flag0 for time exceeded1 for trajectories reaching surface2 - for thecriterias defined in kill_zones.F90 .Column 3number of times information of the trajectory has been saved in an output file.psixypsiyzpsiyrandpsirr filesIf stream functions are computedsix filesthree if l_tracer is deactivatedarecreated where the output is stored.CaseNumber of columnsNumber of rowspsixyimtjmt x 21psixzimtkm x 21psiyzjmtkm x 21psixrimtmr x 21 x numtracerspsiyrjmtmr x 21 x numtracerspsirrmrmr x 21where mr is the number of bins in the tracer spaceby default set to 501 .div fileIf tracer divergences are computedl_divergence is activateda single file iscreated where all the divergence fields are stored.Number of columnsNumber of rowsimtjmt x 20 x numtracers "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+                "title"    : "The Projects folder",
+                "category" : "documentation",
+                "keywords" : " projects folder ",
+                "url"      : "/docs/components/project.html",
+                "content"  : "TheProjectsfolderTheProjectsfolderThepresentchapterwillintroduceallthefilesintheprojectsfolder.CurrentlyfourprojectsareavailableTheoreticalNEMOAVISOIFSROMS."
+
+              },
+            
+          
+
+            
+                {
+                  "title"    : "The Projects folder - setup_gridf90",
+                  "category" : "documentation",
+                  "keywords" : " setup_grid.F90 setup_grid ",
+                  "url"      : "/docs/components/project.html#setup_gridf90",
+                  "content"  : " This subroutine defines all the variables linked to the grid such as the horizontal resolution or thegrid area. The following variables are initialised in this subroutine dxdymandatory the area of horizontal cell-walls.dxvsize of the zonal wall computed in V points.dyusize of the meridional wall computed in U points.kmtnumber of vertical level from surface to bottom topography.dzusize of the vertical wall computed in U points.dzvsize of the vertical wall computed in V points.dztmandatory size of the vertical wall computed in T points. 9888Warningdzt is a mandatory variable that needs to be defined either insetup_grid.F90 or in read_field.F90."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "The Projects folder - read_fieldf90",
+                  "category" : "documentation",
+                  "keywords" : " read_field.F90 read_field ",
+                  "url"      : "/docs/components/project.html#read_fieldf90",
+                  "content"  : " This subroutine reads velocities and optionally some tracers from netCDF files and computes themass volume fluxes for TRACMASS.There are two kind of variables that are stored at different time steps2-step variables and 3-stepvariables The 2-step variables are those used to compute the time interpolation in between two time steps.These variables include all the mass volume fluxestracer valuesgrid mass volume tendeciesorscale factors. These variables have two time steps that representthe “previous” time step1andthe “current” time step2 . The data is read and stored in index 2in thefollowing time step the subroutine swap_time will reassign the former “current”time step into the new “previous” time step.The 3-step variables are those used to compute the mass volume change dzdt. Thesevariables include the size of the vertical grid dztsurface boundaryhsor the tracer value tracertraj. These variables have theretime steps that representthe “previous” time step-1 the “current” time step0 and the“next” time step1 . The data is read and stored in index 1in the following timestep the subroutine swap_time will reassign the former “current” time step into thenew “previous” time stepand the former “next” into the new “current” time step. In the firstiteration of TRACMASSints equals to zerothe three time steps are read.The following variables are initialised in this subroutine ufluxmandatory2-step variable zonal volume mass flux.vfluxmandatory2-step variable meridional volume mass flux.dztmandatorysee warning in setup_grid3-stepvariable size of the vertical wall computed in T points.dzdt2-step variable time derivate of the vertical grid.tracersdata2-step variableand tracertraj3-stepvariable tracer values if l_tracers is TRUE."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "The Projects folder - kill_zonesf90",
+                  "category" : "documentation",
+                  "keywords" : " kill_zones.F90 kill_zones ",
+                  "url"      : "/docs/components/project.html#kill_zonesf90",
+                  "content"  : " This subroutine defines the limits of the domain. If a trajectory is outside the domain thesubroutine will identify it with a flagnend . nend = 0 is reservedto the time exceeding case and nend = 1 is reserved to the trajectories reach thesurfacez1 == km .There are four types of killing zones defined by exitTypeexitType=1 killing zone defined by a geographical domain given byieneienwxjensjenn. If a trajectory is within thoseindexes it will be terminated.exitType=2 killing zone defined by a tracer value tracere. Ifmaxormin = 1-1the isoline is the maximumminimumvalue of the tracer.exitType=3 killing zone defined by both a geographical domain and tracerisolines.exitType=4 the killing zone is hard coded by the user."
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "The Projects folder - makefileprj",
+                  "category" : "documentation",
+                  "keywords" : " Makefile.prj makefile prj ",
+                  "url"      : "/docs/components/project.html#makefileprj",
+                  "content"  : " This makefile sets the chosen pre-processing options. Before compiling the main program make sure tocheck the pre-processing options.This is a list of the current pre-processing options Compilation flag time_analyticalTurn on time analytical schemew_2dimTurn off vertical fluxesw_3dimCompute 3D vertical velocitiesw_explicitRead 3D vertical velocities from input filesno_netcdfRun TRACMASS without netcdf librariesA_gridOriginal dataset on a A grid"
+
+                },
+            
+          
+
+            
+                {
+                  "title"    : "The Projects folder - namelist",
+                  "category" : "documentation",
+                  "keywords" : " namelist ",
+                  "url"      : "/docs/components/project.html#namelist",
+                  "content"  : " Many variables at TRACMASS can be modified using the namelist without the need to recompile theprogram. Each project has a namelist_CASE.in in the project folder. When TRACMASS is compileda copy of the namelistnamelist.incan be found in the main TRACMASS directory.The list of all the variables that can be changed in the namelist and their corresponding group canbe found in the section Namelist. "
+
+                } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "TRACMASS publications",
+            "category" : "basics",
+            "keywords" : "research papers, publications, literature",
+            "url"      : "/publications.html",
+            "content"  : "a non-exhaustive list MengZ.JiQ.ChenH. and LvG.2025 . Quantification of multi-sourcecontributions to volume transport in the Tsushima Strait. Ocean Modellingpage 102597.Link Categories OceanRegional ChafikL.EisbrennerE. and DöösK.2025 . Lagrangian View of Atlantic WaterPathways toward the North Sea. Tellus ADynamic Meteorology and Oceanography77 1 pages 151–159.Link Categories OceanRegional DeyD.MarshR.DrijfhoutS.JoseyS.A.SinhaB.GristJ. and DöösK. 2024 . Formation of the Atlantic Meridional Overturning Circulation lower limb is critically dependenton Atlantic-Arctic mixing. Nature Communications15 1 page 7341.Link Categories OceanRegional DeyD.GeenR.LambertF.H.AgrawalS.VallisG.MarshR.SklirisN.and DöösK.2024 . Identification of the atmospheric water sources and pathways responsible for theEast Asian summer monsoon rainfall. Quarterly Journal of the Royal Meteorological Society150 759pages 763-775.Link Categories OceanRegionalAtmosphereAtmospheric water AbdennadherJ.BoukthirM. and DöösK.2023 . Water Mass Transformation in aSecluded Bay of the Mediterranean Sea. Tellus ADynamic Meteorology and Oceanography75 1 .Link Categories OceanRegional BerglundS.DöösK.GroeskampS. and McDougallT.2023 . North AtlanticOcean circulation and related exchange of heat and salt between water masses. Geophysical ResearchLetters 50 13 page e2022GL100989.Link Categories OceanRegional DeyD.Aldama CampinoA. and DöösK.2023 . Atmospheric water transportconnectivity within and between ocean basins and land. Hydrology and Earth System Sciences27 2pages 481-493.Link Categories OceanAtmosphereAtmospheric water BerglundS.DöösK.GroeskampS. and McDougallT.J.2022 . The downwardspiralling nature of the North Atlantic Subtropical Gyre. Nature communications13 1 2000.Link Categories OceanRegional DeyD.and DöösK.2021 . Tracing the Origin of the South Asian Summer MonsoonPrecipitation and Its Variability Using a Novel Lagrangian Framework. Journal of Climate34 218655-8668.Link CategoriesAtmosphere Atmospheric water BerglundS.DöösK.Aldama CampinoA.NycanderJ.2021 . The water masstransformation in the upper limb of the overturning circulation in the Southern Hemisphere. Journal ofGeophysical ResearchOceans126e2021JC017330.Link CategoriesOcean DeyD.and DöösK.2020 . Atmospheric Freshwater Transport From the Atlantic tothe Pacific OceanA Lagrangian Analysis. Geophysical Research Letters47 6 e2019GL086176.LinkCategoriesAtmosphere Atmosphericwater LiangL.XueH.2020 . The reversal indian ocean waters. Geophysical ResearchLetters47e2020GL088269.LinkCategoriesOceanRegional JonssonPRMoksnesP-OCorellHBonsdorffENilsson JacobiM.2020 .Ecological coherence of Marine Protected AreasNew tools applied to the Baltic Sea network. AquaticConservMar Freshw Ecosyst. 30743– 760.Link CategoriesOcean Ecology Regional CimatoribusA.A.LemminU. and BarryD.A.2019 . Tracking Lagrangian transportin Lake GenevaA 3D numerical modeling investigation. Limnol Oceanogr641252-1269.LinkCategoriesOceanRegional Magne SimonsenHans-Christian TeienOle Christian LindØyvind SaetraJonAlbretsenBrit Salbu2019 . Modeling key processes affecting Al speciation and transport in estuaries Science of The Total EnvironmentVolume 687Pages 1147-1163.LinkCategoriesOceanEcologyRegional LiangL.XueH.ShuY.2019 . The Indonesian throughflow and thecirculation in the Banda SeaA modeling study. Journal of Geophysical ResearchOceans1243089–3106.LinkCategoriesOceanRegional VillarinoE.WatsonJ.R.JönssonB. et al2018 . Large-scale oceanconnectivity and planktonic body size. Nat Commun 9142.Link CategoriesOcean Biology BerglundS.DöösK.and NycanderJ.2017 . Lagrangian tracing of thewater–mass transformations in the Atlantic Ocean. Tellus ADynamic Meteorology and Oceanography69 11306311.LinkCategoriesOcean DöösK.B. F. Jönsson and J. Kjellsson2017 TRACMASS - Evaluation of oceanicand atmospheric trajectory schemes in the TRACMASS trajectory model v6.0.LinkCategoriesOceanAtmosphere JönssonB.WatsonJ.2016 . The timescales of global surface-oceanconnectivity. Nat Commun 711239.Link CategoriesOcean Colleen M. PetrikJanet T. Duffy-AndersonFrederic CastruccioEnrique N.CurchitserSeth L. DanielsonKatherine HedstromFranz Mueter2016 . Modelled connectivity betweenWalleye PollockGadus chalcogrammusspawning and age-0 nursery areas in warm and cold years withimplications for juvenile survivalICES Journal of Marine ScienceVolume 73Issue 7July 2016Pages1890–1900.LinkCategoriesOceanBiologyRegional JönssonB. F.and SalisburyJ. E.2016 Episodicity in phytoplankton dynamicsin a coastal regionGeophys. Res. Lett.435821– 5828.LinkCategoriesOceanBiologyRegional KleypasJ.A.ThompsonD.M.CastruccioF.S.CurchitserE.N.PinskyM. andWatsonJ.R.2016 . Larval connectivity across temperature gradients and its potential effect on heattolerance in coral populations. Glob Change Biol223539-3549.Link CategoriesOcean Biology Regional ViikmäeB.T. Soomere 2016 . Temporal scales for nearshore hits ofcurrent-driven pollution in the Gulf of Finland. Marine Pollution BulletinVolume 106Issues 1–2 pages 77-86.LinkCategoriesOceanPollutioncontrol Regional Colleen M. PetrikJanet T. Duffy-AndersonFranz MueterKatherine Hedstrom Enrique N. Curchitser2015 . Biophysical transport model suggests climate variability determinesdistribution of Walleye Pollock early life stages in the eastern Bering Sea through effects on spawning Progress in OceanographyVolume 138Part BPages 459-474.LinkCategoriesOceanBiologyRegional RothäuslerE.CorellH. and JormalainenV.2015 . Abundance and dispersaltrajectories of floating Fucus vesiculosus in the Northern Baltic Sea. Limnol. Oceanogr.602173-2184.LinkCategoriesOceanBiologyRegional ViikmäeB.T. Soomere 2014 . Spatial pattern of current-driven hits to thenearshore from a major marine fairway in the Gulf of Finland. Journal of Marine SystemsVolume 129 pages 106-117.LinkCategoriesOceanRegional MoksnesPer-OlavCorellHannaTrymanKentarooHordoirRobinsonJonssonPerR. 2014 . Larval behavior and dispersal mechanisms in shore crab larvaeCarcinus maenas Localadaptations to different tidal environments Limnology and Oceanography59.LinkCategoriesOceanBiologyRegional NilssonJ.A.U.K. DöösP. RutiV. ArtaleA. CowardL. Brodeau2013 .Observed and modeled global-ocean turbulence regimes as deduced from surface trajectory data. J. Phys.Oceanogr.LinkCategoriesOcean Delpeche–EllmannN.Soomere T.2013 . Using Lagrangian models to assist inmaritime management of Coastal and Marine Protected Areas. Journal of Coastal Research65 sp1 36-41.LinkCategoriesOceanPollutioncontrol Ecology Regional ViikmäeB.TorsvikT. SoomereT.2013 . Impact of horizontal eddydiffusivity on Lagrangian statistics for coastal pollution from a major marine fairway. Ocean Dynamics63589–597LinkCategoriesOceanPollutioncontrol Regional CorellH.DöösK.2013 . Difference in Particle Transport Between Two CoastalAreas in the Baltic Sea Investigated with High-Resolution Trajectory Modeling. AMBIO 42455–463.LinkCategoriesOceanSediments Regional KjellssonJ.K. DöösT. Soomere2013Preventive Methods for Coastal Pollution towards the Use of Ocean Dynamics for Pollution Control. Book Chapter 8Evaluation and Tuning of ModelTrajectories and Spreading Rates in the Baltic Sea using Surface-drifter Observations. SpringerInternational Publishing.LinkCategoriesOceanRegional DöösK.J. Kjellssonand B. F. Jönsson2013 TRACMASS - A LagrangianTrajectory Modelin Preventive Methods for Coastal Protectionedited by T. Soomere and E. Quak Springer International Publishing.LinkCategoriesOceanAtmosphere Regional Corell H.P.O. MoksnesA. EngqvistK. DöösP. R. Jonsson 2012 Depthdistribution of larvae critically affects their dispersal and the efficiency of marine protected areas Marine Ecology Progress Series467 29-46. Link CategoriesOcean Biology Regional KjellssonJ.and K. Döös2012a Lagrangian decomposition of the Hadley andFerrel CellsGeophys. Res. Lett.39 L15807 LinkCategoriesAtmosphere KjellssonJ.and K. Döös2012b Surface drifters and model trajectories in theBaltic SeaBoreal Environment Research17447–459.Link CategoriesOceanRegional DöösK.NilssonJ.NycanderJ.BrodeauL.BallarottaM.2012 . TheWorld Ocean Thermohaline CirculationJournal of Physical Oceanography42 9 1445-1460.Link CategoriesOcean JacobiM.AndréC.DöösK.JonssonP.2012 . Identification ofsubpopulations from connectivity matrices. Ecography35 11 .Link CategoriesOceanRegional SoomereT.DelpecheN.ViikmäeB.QuakE.MeierH. E. M. and Döös2011 .K. Patterns of current-induced transport in the surface layer of the Gulf of Finland. Boreal Env. Res. 16suppl. a 49-63. LinkCategoriesOcean Regional Döös K.V. RupoloL. Brodeau2011 . Dispersion of surface drifters andmodel-simulated trajectories. Ocean Modelling. Volume 39Issues 3-42011Pages 301-310 LinkCategoriesOceanTheoretical Jönsson BK. Döös P. Lundberg K. Myrberg2011 . A Lagrangian-trajectory studyof a gradually mixed estuary. Continental Shelf Research 311811-1817LinkCategoriesOceanRegional DöösK.J. Nycanderand A. C. Coward2008 Lagrangian decomposition of theDeacon CellJ. Geophys. Res.113C07028.LinkCategoriesOceanRegional Döös K.A. Engqvist 2007Assessment of water exchange between a dischargeregion and the open sea - A comparison of different methodological concepts. EstuarineCoastal andShelf Science. Es- tuarineCoastal and Shelf Science 742007585-597.LinkCategoriesOceanRegional Engqvist A.K. Döös and O. Andrejev 2006 . Modeling Water Exchange andContaminant Transport through a Baltic Coastal Region. Ambio Vol. 35No. 8.LinkCategoriesOceanRegional Drijfhout S.P. De VriesK. DöösA. Coward2003 . Impact of eddy-inducedtransport of the Lagrangian structure of the upper branch of the thermohaline circulation. J. Phys.Oceanogr. 33 3. 2141-2155.LinkCategoriesOcean Nycander J.K Döös and A. C. Coward2002 . Chaotic and regular trajectories inthe Antarctic Circumpolar. Tellus - Series AVol. 54issue 1p.99-106.LinkCategoriesOceanRegional VriesP. de and K. Döös2001 . Calculating Lagrangian trajectories usingtime-dependent velocity fields. J. Atmos. Oceanic Technology. Vol. 18No. 61092-1101.LinkCategoriesTheoretical Kimura SDöös KCoward AC1999Numerical simulation to resolve the issue ofdownstream migration of the Japanese eel. Marine Ecology Progress SeriesVol. 186p. 303-306.Link CategoriesOcean Biology RegionalDöösK.1995 Interocean exchange of water massesJ. Geophys. Res.100 13 499–13 514.LinkCategoriesOcean "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "pyTRAJ",
+            "category" : "documentation",
+            "keywords" : "",
+            "url"      : "/docs/tools/pytraj.html",
+            "content"  : " "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "How to set up an experiment",
+            "category" : "documentation",
+            "keywords" : "",
+            "url"      : "/docs/configuration/quick-start.html",
+            "content"  : "How to configure a customised experiment This is a basic guidance on how to implement a new setup from a GCM with a grid that does not existin the present TRACMASS projects list. This requires good knowledge in the numericaldiscretisation of your GCM and of Fortran programming.Make a new «project» which we call “mymodel” here.Copy the directory from an existing project that has a similar gridA B or C-gridor has asimilar formatnetcdfgribetc. . So thatcd projects cp -r NEMO mymodelorcp -r AVISO mymodelorcp -r IFS mymodelRename the namelist file to namelist_mymodel.in or namelist_mycase.in if youare using a case within the project. Find more information about the namelist here.Modify and adapt the files underprojects mymodelwhich are setup_grid.F90 read_field.F90and kill_zones.F90. Find more information about the subroutinessetup_grid.F90 and read_field.F90 here.Adapt the Makefile.prj to adjust the compiling flags. The list of possible flags can befound here.Adapt the Makefile in the main directory and set PROJECT = mymodel and CASE = mymodel.For more detailed examples refer to TRACMASS Tutorials "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "Reading in Variables",
+            "category" : "tutorials",
+            "keywords" : "",
+            "url"      : "/docs/tutorials/read_field.html",
+            "content"  : "UNDER CONSTRUCTION - draft TRACMASS can read in various variablessuch asvarious levels of velocity field resoluiton andtracers variableslike temperature and salinity. The function to read in variables is called everyglobal loop timestepintrun . Howeverthe user has high flexability avilable whenit comes to input data frequency reading in.In this chapter we will ilustrate the basics of file reading and the general logic behind it. All ofthese actions are done in the read_field.F90 filewhich is located inthe project folderread more about the project folder here . Furthermoreinstead of writing thefile yourself from scrathcit is recommended to use one of the files provided and modify it to yourneeds. This way you will save time and sanity.Structure of read_field.F90the file is called once before starting the TRACMASS loop interationsand every loop step. More infoon the 3 thingy in normal languageIn generalthe file will contain a section where all the variables are read into TRACMASSandpossibly some data processing that needs to be done on the dataso that TRACMASS can comfortably workwith it. As an example can be considered velocity field data on an Arakawa A-gridinstead of theC-gridthat TRACMASS uses. Thusthe file can be seperated in two parts - data reading and datatransformatoin. As there is no standardized method for data saving from model simulationsyou willmost likeley need to modify some of the data. This is a list of the data that is mandatory to have uflux - implies a velocity field and respective grid cell s wall areavfluxwfluxif explicitly stated With this datait is possible to calculate trajectories in the model. Butit is also possible to addsea surface heightSSH bathymetryand tracers.Reading in velocity fieldsEven though the horizontal velocity or flux fields are mandatorythe subgrid levels of these fieldsare optional. Thusueul_name and veul_name must be definedwhilethe other ones can be left empty or completely ommited from the namelist file. An example of settingup the namelist for TRACMASS to read in the velocity field is the followingINIT_GRID_DESCRIPTION Direction of the grid1 - E- WS- NB- Ugriddir = 1 1 -1 Does the netcdf data start with a zero indexzeroindx = .FALSE. Describe filenames physDataDir=directory of physical datau v T S MLD etcphysPrefixForm =ORCA1-N406_ dateformat =YYYYMMDDtGridName= name of Tgride.g. grid_T uGridName= name of Ugrid vGridName= name of Vgrid fileSuffix =.ncsuffix of filese.g. .nc Describe variable names hs_name=sossheigSea surface height ueul_name=vozocrtxname of resolved zonal velocity veul_name=vomecrty----------- meridional usgs_name=vozoeivuname of eddy induced zonal velocity vsgs_name=vomeeivv----------- meridional usub_name =name of eddy induced zonal velocity vsub_name =----------- meridional In this example we have our velocity data saved in the same file as our tracersthusthetGridNameuGridNameand vGridName fields havebeen left blank. In this casethese fields could have been completely been omitted.Here we have also defined the the location of our filethe various parts of the file format to merge ittogether and finally start the process of reading in the files. For thisthere are two functions thatyou will use for this - get2DfieldNC and get3DfieldNC. As can beseenboth have the same inputs.get3DfieldNC fieldFilevarNamestart3Dcount3Dstcase get2DfieldNC fieldFilevarNamestart2Dcount2Dstcase fieldFile - file name with the path to the filevarName - variable of the .nc file that will be read instart3D start2D - the starting index of reading in the file in 4 dimensionsx yzt count2D count3D - the number of indexes to read 4 dimensionsxyzt stcase - format in which the array is savedrefer to the documentationThis is how the code would look in our read_field.F90 file. In this case we read in the whole spacialdomain and only one timestepin this case the first time stepas our .nc file starts with index=1.Create a prefix that is used for the date formatting.dateprefix = filledFileName dateFormatcurrYearcurrMoncurrDay Create a path to the file from which the data will be readfieldFile = TRIM physDataDir TRIM physPrefixForm TRIM dateprefix TRIM fileSuffix Call a function that readsueul_namefrom the defined file and saved it in arrayuvel uvel 1 imt 1 jmt 1 km= get3DfieldNC fieldFileueul_name imindom jmindom 1 1imt jmt km 1stAnd do the same for the zonal velocity field. vvel 1 imt 1 jmt 1 km= get3DfieldNC fieldFileveul_name imindom jmindom 1 1imt jmt km 1stGreat advantage of TRACMASS structure is that the read_field.F90 file is called at the begining ofeach loop and at the very top of the file time stepping is enabled with function swap_timeThere is high flexability available to the frequency of reading in the velocity datathus great careshould be taken to ensure the read_field.F90 file algorithm matches the time stepping definitions inthe namelist file. Reading tracersReading in tracer data is essentially the same as the velocity field data. It s good practice toinclude the tracers in a IF-ELSE logical statmentwhich would allow to read in the tracer data onlywhen l_tracers is set to .TRUE This provides more flexablity ofthe data. Furthermorecare should be taken when setting up the tracersas they have 2 optionsavailable -readandcompute .Nextit is necessary to understand the frequency of the general loop and also the time resolution ofthe tracer data set itself. For exampleif we have a velocity field data with 15min resolutionwemight want to read it in every 15 minuteswhile a tracersuch as temperaturemight have only hourlyresolution. For thispurposeit is useful to use variablessuch as currYear currMoncurrDaycurrHour currMincurrSec. For examplethis is how conceptually the synthaxwould look likeIFl_tracers = .TRUE.THEN Go through all the tracers DO itrac = 1num_tracers Check if we are at hourly timesthat s when we have our dateFormat IFmod currHour =0THENCheck what dimension the tracers have2Dor3D IFtracers itracdimension ==3D THEN tracers itracdata = get3DfieldNC fieldFiletracers itracvarname imindom jmindom 1 1imt jmt km 1stELSE tracers itracdata = get2DfieldNC fieldFiletracers itracvarname imindom jmindom 1 1imt jmt 1 1stEND IF END IF END DO END IFHowevertake note that a more extensive and inclusive method is presented in the project folderread_field.F90 files.NoteIt is recomended to use read_field.F90 file as a template for reading in the necessary data.The main aspect that should be changed is the frequency and at which points in time what data shouldbe read in by the file. "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "References",
+            "category" : "documentation",
+            "keywords" : "",
+            "url"      : "/docs/references/references.html",
+            "content"  : "Berloff PMcWilliams J2002Material transport in oceanic gyres. Part IIHierarchy of stochasticmodels. Journal of Physical Oceanography 32 797–830.Berloff PMcWilliams JBracco A2002Material transport in oceanic gyres. Part IPhenomenology.Journal of Physical Oceanography 32 764–796.BlankeB and Raynaud S1997. Kinematics of the Pacific Equatorial Undercurrenta Eulerian andLagrangian approach from GCM results. J. Phys. Oceanogr.271038- 1053.BlankeB.M. ArhanG. Madecand S. Roche1999Warm water paths in the equat- orial Atlantic asdiagnosed with a general circulation model. J. Phys. Oceanogr.292753-2768.Blanke B. S.Speich G.Madec and K.Döös 2001A Global Diagnostic of Interocean Mass Transfers. J.Phys. Oceanogr. vol. 31No. 61623-1642.Bracco ALaCasce JProvenzale A2000aVelocity probability density functions for oceanic floats.Journal of Physical Oceanography 30 461–474.Bracco ALaCasce JPasquero CProvenzale A2000bVelocity PDFs in barotropic turbulence. Physicsof Fluids 12 2478–2488.Bracco AChassignet EPGarraffo ZProvenzale A2003Lagrangian velocity distri- butions in ahigh resolution numerical simulation of the North Atlantic. Journal of Atmospheric and OceanicTechnology 8 1212–1220.Butcher JC2008Numerical methods for ordinary differential equations2nd ed. John Wileyamp Sons Ltd.Corell H.K. Döös2013Difference in Particle Transport between Two Coastal Areas in the BalticSea Investigated with High-Resolution Trajectory Modeling. Ambio. DOI 10.1007 s13280-013-0397-3.Corell H.P.O. MoksnesA. EngqvistK. DöösP. R. Jonsson2012Larval depth distributioncritically affects dispersal and the efficiency of marine protected areasMarine Ecology ProgressSeriesdoi10.3354 meps09963.DöösK. 1995. Inter-ocean exchange of water masses. J. Geophys. Res. 100C7 13499- 13514.Döös K. and A.C. Coward 1997The Southern Ocean as the major upwelling zone of the North AtlanticDeep Water. WOCE NewsletterNo. 27July 19973-17.DöösK.M. Meier and R. Döscher2004The Baltic Haline Conveyor Belt or The OverturningCirculation and Mixing in the Baltic. AmbioVol 23No 4-5261-266.Döös K.A.Engqvist2007Assessment of water exchange between a discharge region and the open sea- A comparison of different methodological concepts. EstuarineCoastal and Shelf Science. Estuarine Coastal and Shelf Science 742007585-597.DöösK.J. Nycander and A.C. Coward2008Lagrangian decomposition of the Dea- con Cell. J.Geophys. Res.DOI10.10292007JC004351Döös KRupolo VBrodeau L2011Dispersion of surface drifters and model-simulated trajectories.Ocean Modelling 39 3-4301–310 doi 10.1016 j.ocemod.2011.05.005Drijfhout S.P. De VriesK. DöösA. Coward 2003Impact of eddy-induced transport of theLagrangian structure of the upper branch of the thermohaline circulation. J. Phys. Oceanogr. 33 2141-2155.Engqvist A.K. Döös and O. Andrejev2006Modeling Water Exchange and Contam- inant Transportthrough a Baltic Coastal Region. Ambio Vol. 35No. 8.Fabbroni N2009Numerical simulations of passive tracers dispersion in the sea. Alma MaterStudiorum – Universita di BolognaPhD Thesis164 pphttp en.scientificcommons.org 55512002.Griffa A1996Applications of stochastic particle models to ocean- ographic problems. InAdler RJ Müller PRozovoskii BLEds Stochastic Modelling in Physical Ocean- ographyBirkhäuserpp114–140.Huber M.H. BrinkhuisC. StickleyK. DöösA. SluijsJ. WarnaarS. SchellenbergG. Williams 2004Eocene circulation of the Southern Oceanwas Antarctica kept warm by subtropical waters Paleoceanography Vol. 19. PA4026.JönssonB Lundberg P. and Döös K2004. Baltic Sub-Basin Turnover Times Examined Using theRossby Centre Ocean Model. AmbioVol 23No 4-52257-260.Kimura SDöös KCoward AC1999Numerical simulation to resolve the issue of downstreammigration of the Japanese eel. Marine Ecology Progress Series 186 303–306.Kjellsson JDöös K2012Lagrangian decomposition of the Hadley and Ferrel Cells. GeophysicalResearch Letters 39 L15807 doi 10.1029 2012GL052420Koch-Larrouy AMadec GBlanke BMolcard R2008Water mass transformation along the Indonesianthroughflow in an OGCM. Ocean Dynamics 58 3-4289–309doi10.1007 s10236-008-0155-4.LevineR.C. 2005. Changes in shelf waters due to air-sea fluxes and their influence on the ArcticOcean circulation as simulated in the OCCAM global ocean model. University of SouthamptonFaculty ofEngineering Science and MathematicsSchool of Ocean and Earth SciencePhD Thesis225pp.MarshR. and A. P. Megann2002Tracing water masses with particle trajectories in anisopycnic-coordinate model of the global ocean. Ocean Modelling427-53.MesingerF. and ArakawaA.1976. Numerical methods used in atmospheric models. GARP publicationsseries 17 I 64 pp.Nilsson Jacobi M.André C.Döös K.Jonsson PR2012Identification of subpopula- tions fromconnectivity matrices. Ecography 35001-0132012doi10.1111 j.1600- 0587.2012.07281.xNycander JDöös KCoward AC2002Chaotic and regular trajectories in the Antarctic Circumpolar.Tellus A 54 199–106.Pasquero CProvenzale ABabiano A2001Parameterization of dispersion in two- dimensionalturbulence. Journal of Fluid Mechanics 439 279–303.Rupolo V2007Observing turbulence regimes and Lagrangian dispersal properties in the ocean. In Griffa AKirwan ADMariano AJOzgokmen TMRossby TEds Lagrangian analysis and prediction ofcoastal and ocean dynamicsLAPCOD . Cam- bridge University Presspp 423–479.SimmonsA.J. and D.M. Burridge1981. An Energy and Angular-Momentum Con- serving VerticalFinite-Difference Scheme and Hybrid Vertical Coordinates. Monthly Weather Review. 1094758-766.Soomere TDelpeche NViikmäe BQuak EMeier HEMDöös K2011Patterns of current-inducedtransport in the surface layer of the Gulf of Finland. Boreal Environ- ment Reseasrch 16 SupplA49–63.Speich S.B. BlankeP. de Vries K. DöösS. Drijfhout A. Ganachaud and R. Marsh 2002Tasmanleakagea new route in the global ocean conveyor belt. Geophysical Res. LettersVOL. 29NO. 10.VriesP. de and K. Döös2001. Calculating Lagrangian trajectories using time- dependent velocityfields. J. Atmos. Oceanic Technology. Vol. 18No. 61092-1101. "
+          } 
+      
+      ,
+  
+  
+    
+    
+
+      
+      {
+            "title"    : "ROMS",
+            "category" : "examples",
+            "keywords" : "",
+            "url"      : "/blog/roms.html",
+            "content"  : "3D datasetsThe ROMS data is defined on the same grid as the TRACMASS grid. Thereforethere is no need tointerpolate velocities or tracer on the TRACMASS grid. Howeverghosts u and v points are defined aroundthe frame to adjust to the TRACMASS grid. The default setup of this project initialises trajectories westof Sri Lanka only for northward fluxessolid blue line . The seeding takes place every month12 seedingstepsand one trajectory is initialised in the location. Trajectories are terminated when exiting theROMS domainthe maximum time for trajectories is 100 years.TRACMASS features online offline calculation of stream functionsl_offline Stream functions can be calculated in two ways in TRACMASS either online l_offline=FALSE while trajectories are computedor offline l_offline=TRUEas a part of the postprocessing of the results. The online case is thesame regardless of the choice of write_frec. Howeverfor the offline case the choice ofwrite_frec is relevant. For low writing frequencies write_frec=1 andwrite_frec=2 the online calculation is less accurate. The figure below shows an exampleof different calculations of the barotropic stream function for different writing frequencies. 9888WarningOffline calculation of stream functions may give a wrong result for write_frec=1 andwrite_frec=2. For an accurate calculation of stream functions usewrite_frec=3 or write_frec=4 or an online calculation. Previous gallerynbsp nbsp nbspnbsp nbsp nbspNext gallery "
+          } 
+      
+      ,
+  
+  
+    
     
   
   
-    {
-      "title"    : "Components",
-      "category" : "documentation",
-      "keywords" : "",
-      "url"      : "/docs/components/components.html",
-      "content"  : " TRACMASS Components Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Type..."
-    } ,
+    
     
   
   
-    {
-      "title"    : "Configuration",
-      "category" : "documentation",
-      "keywords" : "",
-      "url"      : "/docs/configuration/configuration.html",
-      "content"  : " Configuration  Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Types Str..."
-    } ,
+    
     
   
   
-    {
-      "title"    : "Contact Information",
-      "category" : "basics",
-      "keywords" : "contacts, information, faq, developers",
-      "url"      : "/contact.html",
-      "content"  : " Contact FAQ  Search Contact FAQContact Kristofer D%C3%B6%C3%B6s doos-at-misu.su.se Aitor Aldama Campino Joakin Kjellsson Bror J%C3%B6nsson Sara BerglundFAQ copy "
-    } ,
     
-  
-  
-    {
-      "title"    : "Custom Tracers",
-      "category" : "tutorials",
-      "keywords" : "tracers",
-      "url"      : "/docs/tutorials/custom_tracers.html",
-      "content"  : " Custom Tracers Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Types Str..."
-    } ,
     
+
+      
+      {
+            "title"    : "Seeding Locations",
+            "category" : "tutorials",
+            "keywords" : "",
+            "url"      : "/docs/tutorials/seeding_file.html",
+            "content"  : "UNDER CONSTRUCTION - spelling and grammar check In this chapter we will take a closer look at how trajectory seedinginitilizationis done inTRACMASS. Two types of seeding are possible - from boxes defined in the namelist file andfrom seeding files. It is recomended to first try out seeding from the namelist fileto getan idea of how it worksbefore starting with the seeding files.In these example we will be considering a case where only a single trajectory is initilized fromeach grid-cellnqua=1 and partquant=1and only the trajectorieswith positive fluxidir=1 forward in timenff and onmeridionalisec=2grid cell s face. Seeding from namelist boxesIn this examplethe namelist has set up seeding location as three boxes. site.data.tutorial_examples.seed_file_first_type Seeding from a fileA personal preference of the author is to keep the files relating to a simulation in the project sfolder. In this casemy project is called global_model in which I have a folder calledseed_dir with two files seed_condition.txt - contains the positioncell s wall and direction of the seedingtrajectoryseed_time.txt - contains the time when trajectory seeding takes placeThe setup of the namelist can be found in the code sample below.NoteThe .txt extension has been tested and work for the model as seeding input files. Otherformatssuch as .csv.ncetc.might work as well. site.data.tutorial_examples.seed_file_second_type File seed_condition.txtThe seeding file contains sets up the seeding condition with three parts 1st2nd3rd column - grid cell s location in the form of model index in xyand z direction4th collumn - which grid wall is used for seedingisec 5th column - flux directionidir For more information on the isec and idir parameters refer to thenamelist documentation here. An example on how theseeding file is formatted is in the code snippet below. site.data.tutorial_examples.seed_file_seed_conditions File seed_time.txtFor the time filethere is only one column present and it determines in which global iterations intrunseeding should take place. The time steps need to be organized in a column similarly to the seeding condition input file. include footer.html"
+          } 
+      
+      ,
   
   
-    {
-      "title"    : "Documentation",
-      "category" : "basics",
-      "keywords" : "documentation, instructions",
-      "url"      : "/docs.html",
-      "content"  : " TRACMASS documentation Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding T..."
-    } ,
     
-  
-  
-    {
-      "title"    : "TRACMASS Examples",
-      "category" : "basics",
-      "keywords" : "videos, NEMO, AVISO, IFS, examples, ROMS",
-      "url"      : "/examples.html",
-      "content"  : " Example Gallery  Search Example gallery Video and Image galleries of different results computed with TRACMASS Video Gallery Some trajectory examples computed using TRACMASS Conveyor belt Particles in the Agulhas current system. Image gallery Includes examples of different TRACMASS features Theoretical case The theoretical is the default project of TRACMASS and describes the flow on a s..."
-    } ,
     
+
+      
+      {
+            "title"    : "Seeding Types",
+            "category" : "tutorials",
+            "keywords" : "",
+            "url"      : "/docs/tutorials/seeding_types.html",
+            "content"  : "UNDER CONSTRUCTION - outline A chapter about initilizing a different number of trajectoriesnot the spatial and temporalconditions.  include footer.html"
+          } 
+      
+      ,
   
   
-    {
-      "title"    : "IFS Case Example",
-      "category" : "examples",
-      "keywords" : "",
-      "url"      : "/blog/ifs.html",
-      "content"  : " IFS-ECMWF  Search IFS-ECMWF 3D datasetsThe IFS data is stored on a Arakawas A-grid while TRACMASS is defined on a Arakawas C-grid. Therefore both zonal and meridional fluxes are computed interpolating the velocity fields on the TRACMASS grid. This is done on the read_field subroutine. The default setup of this project initialises trajectories in an area that covers south Asia. The seed..."
-    } ,
     
-  
-  
-    {
-      "title"    : "Homepage",
-      "category" : "basics",
-      "keywords" : "about",
-      "url"      : "/",
-      "content"  : " TRACMASS Search TRACMASS TRACMASS is a Lagrangian trajectory code for ocean and atmospheric general circulationmodels. The code makes it possible to estimate water paths Lagrangian stream functions barotropicoverturning etc. exchange times etc. Get code Documentation Learn about how to set up TRACMASS. how to design your own experiment. how the different components of TRACMASS work. ho..."
-    } ,
     
+
+      
+      {
+            "title"    : "Grid Setup",
+            "category" : "tutorials",
+            "keywords" : "",
+            "url"      : "/docs/tutorials/setup_grid.html",
+            "content"  : "UNDER CONSTRUCTION - outline In this section we are going to present how to set up the grid for Tracmass and how to transfrom themfrom typically used grids in climate modelling. It is essential to set up the grid correctlythusgreat care needs to be taken into this. TRACMASS gridTRACMASS is built on Arakawa C-gridwhich keeps thetracer valuessuch as temperaturesalinityoxygen concentration in the center of the grid cell while the velocity values are set in the center of the cell s faces. The east-west velocities typically denoted u are located on the east and west faces of the cell. Etcfor the rest of thevelocities. Right below is an ilustration in 3D of Arakawa-C grid setup.The algorithm for setting up the grid is located in the project s folder in the filesetup_grid.F90. The default projects present various method s for setting up the grid forvarious options. Thusit is recommended to modifyif necessarythe grid setup algorithm that mostcloseley resembles the needed grid setup.Transforming between Arakawa gridsConceptuallytransforming from one grid to another is simple procedure if the original data s gridis knownhoweverit can be confusing to do it in an efficient way and correctly. Because of this the more comon transformations from different grids is provided. In the figure below are presentedArakawa-A and B grid layout in 2D.It is recommended that vertical velocity is calculated by TRACMASS itselfhoweverit is possible toassign explicitly the valueswhich would require to read them in as well. It would be necessary totransform them in the same manner as the horizontal velocity values. Thushere we present themathematical expression for transforming the tracers and the horizontal velocity onto the C-grid.Transformation from A to C gridThis is how we do the tracersThis is how we do the horizontal velocity values Transformation from B to C gridFirst step is to transform the tracers from the cell s corners to the cell s centerswhich means weneed to find the average value of all the cell s corner tracers. Mathematicallyin 3D this would bedone like this Nextwe need to transform the horizontal velocity fieldwhich is located in the center of the cellin ArakawaB-grid. Grid setup in projectsIn the following subsections the various project s gridsetups are looked at in more detail. In generalthese three are mandatory to populate dxdy - Area of horizontal cell-walls.dzt - Height of k-cells in 4 dim.kmt - Number of k-cells from surface to seafloor.dyu - length of dy for u flux calculationsdxv - length of dx for v flux calculationswhile the rest of the variables might be needed. On what basis this worksI am not sure.The following project exaples are ordered from the most basic to the most complex to get a betteridea of grid building process. Instead of writing the code from scrathcit is recomended to find thegrid setup that most closeley resembles your model grid setup and use that project as a basis. Makenecessary modification and you should be good. TheoreticalThe simplest grid setup is for the Theoretical case. Each of the grid cell s has the size of 250m inhorizontal directiondxdyand have a vertical resolution of 10mdzt . From the grid celldimensions it is possible to calculate the horizontal grid cell s wall area. FInallywe apply a maskand enable all the points in the grid as avialable for trajectories. AVISOHere we manually create the grid with a quarter degree resolutionno bathymetry data is usedIthink. We have these variableskmu kmvdx - length of a cell in x directiondy - length of a cell in y directio dxv needed- length of each v-gridcell in x directiondyu needed- lenfth of each u-gridcell in y directiondxdy needed- horizontal area of the cell wallsdzt needed- depth or thickness of the vertical cellWe define the grid with quarter degree resolution in horizontal planedlon=0.25dlat=0.25and wefill in the dxv and dyuwhich are used for mass transport calculatoins later on.IFSIn Progress The procedure is nearly identical to the AVISO project grid setupwith a slight differencethat weread in some additional aa and bb variable datathat is later on used for calculatiosn.ROMSIn this casemost of the grid data is read into TRACMASS. These are the variables that are beingpopulated mask from kmt_namedy_t from dy_namedx_t from dx_namedxdy = dx_t dy_tdyu = dy_tdxv =dx_t dy_t dx_t dy_t dy_t dy_twith weird shiftsdepth from dep_nameNEMOIn this case all of the data about the grid is read into TRACMASS. Other grid setupsUNDER CONSTRUCTION include footer.html"
+          } 
+      
+      ,
   
   
-    {
-      "title"    : "Insitu",
-      "category" : "documentation",
-      "keywords" : "",
-      "url"      : "/docs/tools/insitu.html",
-      "content"  : " In situ postprocessing  Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding ..."
-    } ,
     
-  
-  
-    {
-      "title"    : "Installation",
-      "category" : "documentation",
-      "keywords" : "",
-      "url"      : "/docs/configuration/installation.html",
-      "content"  : " Installation Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Types Strea..."
-    } ,
     
+
+      
+      {
+            "title"    : "Streamfunctions",
+            "category" : "tutorials",
+            "keywords" : "",
+            "url"      : "/docs/tutorials/streamfunctions.html",
+            "content"  : "UNDER CONSTRUCTION - outline Streamfunctions are a powerfull tool of TRACMASS that has high utility. in determining overall image of water flow through the oceans. Setting up streamfunctionsInfo about the namelist with explanationshow to set them up. include footer.html"
+          } 
+      
+      ,
   
   
-    {
-      "title"    : "Kill zones",
-      "category" : "tutorials",
-      "keywords" : "",
-      "url"      : "/docs/tutorials/kill_zones.html",
-      "content"  : " Killing trajectories Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Typ..."
-    } ,
     
-  
-  
-    {
-      "title"    : "Main Modules",
-      "category" : "documentation",
-      "keywords" : "",
-      "url"      : "/docs/components/main_modules.html",
-      "content"  : " Main modules  Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Types Stre..."
-    } ,
     
+
+      
+      {
+            "title"    : "Theoretical case",
+            "category" : "examples",
+            "keywords" : "",
+            "url"      : "/blog/theoretical.html",
+            "content"  : "The theoretical is the default project of TRACMASS and describes the flow on a spatial homogeneous andtime dependent two dimensional velocity field. The velocities are described by We used the same coefficients as Fabbroni2009with 0.3 m s0.04 m sand a damping time 2.89 days and 28.9 days. The latitude was set toN. The velocities are read into TRACMASS every hour. TRACMASS wasintegrated forward in time using the time step method with intermediate steps so that the velocities wereupdated with linear interpolation between two time steps. The results are shown in the figure belowthesmall differences between the results from the truly analytical solution and the TRACMASS solution arelikely due to the velocities are read every hour and not continuously.TRACMASS featuresiter choiceThe results of TRACMASS are sensitive to the choice of iter. The higher value ofiterthe more accurate the result of TRACMASShowever it will increase the computationtime. The theoretical case is run with different iter values. As expected the highestvalue of iter is closer to the analytical solution while the deviation to the analyticalsolution becomes largest to the coarser case. nbsp nbsp nbspNext gallery include footer.html "
+          } 
+      
+      ,
   
   
-    {
-      "title"    : "Configuration",
-      "category" : "documentation",
-      "keywords" : "",
-      "url"      : "/docs/components/main_program.html",
-      "content"  : " Main program  Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Types Stre..."
-    } ,
     
-  
-  
-    {
-      "title"    : "Namelist",
-      "category" : "documentation",
-      "keywords" : "namelist",
-      "url"      : "/docs/components/namelist.html",
-      "content"  : " Namelist Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Types Streamfun..."
-    } ,
     
+
+      
+      {
+            "title"    : "Tools",
+            "category" : "documentation",
+            "keywords" : "",
+            "url"      : "/docs/tools/tools.html",
+            "content"  : "In this section different tools to analyse and postprocess TRACMASS output data aredescribed.Here are the articles in this section In situpostprocessingpyTRAJ include footer.html"
+          } 
+      
+      ,
   
   
-    {
-      "title"    : "NEMO Case Example",
-      "category" : "examples",
-      "keywords" : "",
-      "url"      : "/blog/nemo.html",
-      "content"  : " NEMO-ORCA1  Search NEMO-ORCA1 3D datasetsThe NEMO data is defined on the same grid as the TRACMASS grid. Therefore there is no need to interpolate velocities or tracer on the TRACMASS grid. The default setup of this project initialises trajectories in the North Atlantic Ocean only for southward fluxes marked in black in the figure. The seeding takes place every month 24 seeding steps a..."
-    } ,
     
-  
-  
-    {
-      "title"    : "NetCDF setup",
-      "category" : "documentation",
-      "keywords" : "",
-      "url"      : "/docs/configuration/netcdf-setup.html",
-      "content"  : " NetCDF setup Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Types Strea..."
-    } ,
     
-  
-  
-    {
-      "title"    : "News",
-      "category" : "basics",
-      "keywords" : "news, updates",
-      "url"      : "/news.html",
-      "content"  : " TRACMASS news updates Search TRACMASS news updatesTRACMASS version renaming20102021 For simplifying the different version numbers of TRACMASS from now the different versions will be a combination of the year and the month when the changes were committed vYYYY.MM Version 7.0 will be known as v2020.12.Version 7.1 will be known as v2021.10.Any future version will be described using the ne..."
-    } ,
-    
-  
-  
-    {
-      "title"    : "Output",
-      "category" : "documentation",
-      "keywords" : "",
-      "url"      : "/docs/output/output.html",
-      "content"  : " TRACMASS output  Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Types S..."
-    } ,
-    
-  
-  
-    {
-      "title"    : "The Projects folder",
-      "category" : "documentation",
-      "keywords" : "",
-      "url"      : "/docs/components/project.html",
-      "content"  : " The Projects folder Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Type..."
-    } ,
-    
-  
-  
-    {
-      "title"    : "Publications",
-      "category" : "basics",
-      "keywords" : "research papers, publications, literature",
-      "url"      : "/publications.html",
-      "content"  : " TRACMASS publications Search TRACMASS publications a non-exhaustive list Meng Z. Ji Q. Chen H. and Lv G. 2025. Quantification of multi-source contributions to volume transport in the Tsushima Strait. Ocean Modelling page 102597. Link Categories Ocean Regional Chafik L. Eisbrenner E. and D%C3%B6%C3%B6s K. 2025. Lagrangian View of Atlantic Water Pathways toward the North Sea. Tellus A Dy..."
-    } ,
-    
-  
-  
-    {
-      "title"    : "PyTraj",
-      "category" : "documentation",
-      "keywords" : "",
-      "url"      : "/docs/tools/pytraj.html",
-      "content"  : " pyTRAJ  Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Types Streamfunc..."
-    } ,
-    
-  
-  
-    {
-      "title"    : "Quick-start",
-      "category" : "documentation",
-      "keywords" : "",
-      "url"      : "/docs/configuration/quick-start.html",
-      "content"  : " How to set an experiment Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding..."
-    } ,
-    
-  
-  
-    {
-      "title"    : "Read fields",
-      "category" : "tutorials",
-      "keywords" : "",
-      "url"      : "/docs/tutorials/read_field.html",
-      "content"  : " Reading in Variables Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Typ..."
-    } ,
-    
-  
-  
-    {
-      "title"    : "References",
-      "category" : "documentation",
-      "keywords" : "",
-      "url"      : "/docs/references/references.html",
-      "content"  : " References  Search Navigate Docs Welcome to TRACMASS documentationAbout Configuration SubmenuInstallation and Theoretical Run How to set up an experiment NetCDF set up TRACMASS Components SubmenuMain program Main modules Namelist The Projects folder TRACMASS Tutorials SubmenuAdding Custom Tracers Grid Setup Killing Trajectories Reading in Variables Seeding LocationsSeeding Types Stream..."
-    } ,
-    
-  
-  
-    {
-      "title"    : "ROMS Case Example",
-      "category" : "examples",
-      "keywords" : "",
-      "url"      : "/blog/roms.html",
-      "content"  : " ROMS  Search ROMS 3D datasetsThe ROMS data is defined on the same grid as the TRACMASS grid. Therefore there is no need to interpolate velocities or tracer on the TRACMASS grid. However ghosts u and v points are defined around the frame to adjust to the TRACMASS grid. The default setup of this project initialises trajectories west of Sri Lanka only for northward fluxes solid blue line...."
-    } ,
-    
-  
-  
-    {
-      "title"    : "Search Results",
-      "category" : "basics",
-      "keywords" : "search",
-      "url"      : "/search-results.html",
-      "content"  : " Search Results  Search Search our WebsiteSearchSearch Resultscopy "
-    } ,
-    
-  
-  
-    {
-      "title"    : "",
-      "category" : "",
-      "keywords" : "",
-      "url"      : "/assets/js/search-script.js",
-      "content"  : "function const SEARCH_PHRASE_PARAM search-phrase const INPUT_ID search-input-page function getUrlParamname  const params new URLSearchParamswindow.location.search return params.getname const searchPhrase getUrlParamSEARCH_PHRASE_PARAM const searchInput document.getElementByIdINPUT_ID const resultsContainer document.getElementByIdresults-container if %21searchInput %7C%7C %21resultsContainer  return  const options  searchInput searchInputresultsContainer resultsContainer json search.jsonsearch..."
-    } ,
-    
-  
-  
-  
-  
-    {
-      "title"    : "Seeding Locations",
-      "category" : "tutorials",
-      "keywords" : "",
-      "url"      : "/docs/tutorials/seeding_file.html",
-      "content"  : " Seeding  include doc_navigation.html Seeding Locations UNDER CONSTRUCTION - spelling and grammar check Introduction In this chapter we will take a closer look at how trajectory seeding initilization is done inTRACMASS. Two types of seeding are possible - from boxes defined in the namelist file andfrom seeding files. It is recomended to first try out seeding from the namelist file to getan idea of how it works before starting with the seeding files. In these example we will be considering a c..."
-    } ,
-    
-  
-  
-    {
-      "title"    : "Seeding Types",
-      "category" : "tutorials",
-      "keywords" : "",
-      "url"      : "/docs/tutorials/seeding_types.html",
-      "content"  : " Seeding  include doc_navigation.html Seeding Types UNDER CONSTRUCTION - outline Introduction A chapter about initilizing a different number of trajectories not the spatial and temporalconditions. Jump to Section "
-    } ,
-    
-  
-  
-    {
-      "title"    : "Setup Grid",
-      "category" : "tutorials",
-      "keywords" : "",
-      "url"      : "/docs/tutorials/setup_grid.html",
-      "content"  : " Grid Setup  include doc_navigation.html Grid Setup UNDER CONSTRUCTION - outline Introduction In this section we are going to present how to set up the grid for Tracmass and how to transfrom themfrom typically used grids in climate modelling. It is essential to set up the grid correctly thusgreat care needs to be taken into this. TRACMASS grid TRACMASS is built on Arakawa C-grid which keeps thetracer values such as temperature salinity oxygen concentration in the center of the grid cellwhile ..."
-    } ,
-    
-  
-  
-    {
-      "title"    : "Streamfunctions",
-      "category" : "tutorials",
-      "keywords" : "",
-      "url"      : "/docs/tutorials/streamfunctions.html",
-      "content"  : " Streamfunctions   include doc_navigation.html Streamfunctions UNDER CONSTRUCTION - outline Introduction Streamfunctions are a powerfull tool of TRACMASS that has high utility. in determining overall image of water flow through the oceans. Setting up streamfunctions Info about the namelist with explanations how to set them up.Jump to Section"
-    } ,
-    
-  
-  
-    {
-      "title"    : "Theoretical Case Example",
-      "category" : "examples",
-      "keywords" : "",
-      "url"      : "/blog/theoretical.html",
-      "content"  : " Theoretical case  Theoretical caseThe theoretical is the default project of TRACMASS and describes the flow on a spatial homogeneous and time dependent two dimensional velocity field. The velocities are described byWe used the same coefficients as Fabbroni 2009 with0.3 ms0.04 ms and a damping time2.89 days and28.9 days. The latitude was set to N. The velocities are read into TRACMASS every hour. TRACMASS was integrated forward in time using the time step method with intermediate steps so tha..."
-    } ,
-    
-  
-  
-    {
-      "title"    : "",
-      "category" : "",
-      "keywords" : "",
-      "url"      : "/docs/tools/tools.html",
-      "content"  : " Tools  include doc_navigation.html Tools In this section different tools to analyse and postprocess TRACMASS output data aredescribed. Here are the articles in this section In situ postprocessingpyTRAJ Jump to Section "
-    } ,
-    
-  
-  
-    {
-      "title"    : "Tutorials",
-      "category" : "basics",
-      "keywords" : "tracers",
-      "url"      : "/docs/tutorials/tutorials.html",
-      "content"  : " TRACMASS Tutorials  include doc_navigation.html TRACMASS Tutorials Under constructionHere are the articles in this section Adding Custom Tracers Grid Setup Killing trajectories Reading in Variables Seeding Locations Seeding Types StreamfunctionsJump to Section "
-    } 
-    
-  
+
+      
+      {
+            "title"    : "TRACMASS Tutorials",
+            "category" : "basics",
+            "keywords" : "tracers",
+            "url"      : "/docs/tutorials/tutorials.html",
+            "content"  : "Under construction Here are the articles in this section Adding Custom TracersGrid SetupKilling trajectoriesReading in VariablesSeeding LocationsSeeding TypesStreamfunctions include footer.html"
+          } 
+      
+      
   
 ]
