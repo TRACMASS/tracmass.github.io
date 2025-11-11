@@ -1,6 +1,6 @@
 ---
-title: Seeding Locations
-keywords: 
+title: Seeding Trajectories
+keywords:
 category: tutorials
 url: seeding_file.html
 ---
@@ -9,7 +9,7 @@ url: seeding_file.html
 
 <head>
 
-  <title>Seeding Locations</title>
+  <title>Seeding Trajectories</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="" />
@@ -38,7 +38,8 @@ url: seeding_file.html
             <div class="post-inside">
 
               <header class="post-header">
-                <h1 class="post-title line-left">Seeding Locations (UNDER CONSTRUCTION - spelling and grammar check)</h1>
+                <h1 class="post-title line-left">Seeding Trajectories (UNDER CONSTRUCTION - spelling and grammar check)
+                </h1>
               </header><!-- .post-header -->
 
               <div class="post-content">
@@ -51,21 +52,22 @@ url: seeding_file.html
                   an idea of how it works, before starting with the seeding files.</p>
 
                 <p>In these example we will be considering a case where only a single trajectory is initilized from
-                  each grid-cell (<strong>nqua=1</strong> and <strong>partquant=1</strong>) and only the trajectories
-                  with positive flux (<strong>idir=1</strong>), forward in time (<strong>nff</strong>), and on
-                  meridional (<strong>isec=2</strong>) grid cell's face. </p>
+                  each grid-cell (<em>nqua</em>=1 and <em>partquant</em>=1) and only the trajectories
+                  with positive flux (<em>idir</em>=1), forward in time (<em>nff</em>=1), and on
+                  meridional (<em>isec=2</em>) grid cell's face. </p>
 
                 <h2 id="Seeding from namelist boxes">Seeding from namelist boxes</h2>
 
-                <p>In this example, the namelist has set up seeding location as three boxes.</p>
+                <p>In this example, the namelist has set up seeding location as three boxes. The namelist sample is
+                  self-explanatory. </p>
 
                 {{ site.data.tutorial_examples.seed_file_first_type }}
 
                 <h2 id="Seeding from a file">Seeding from a file</h2>
 
-                <p>A personal preference of the author is to keep the files relating to a simulation in the project's
-                  folder. In this case, my project is called <em>global_model</em> in which I have a folder called
-                  <em>seed_dir</em> with two files:
+                <p>An option to keep files organized is to keep the files relating to a simulation in the project's
+                  folder. In this case, the project is called <em>global_model</em> in which a folder called
+                  <em>seed_dir</em> is located and holds two files:
                 <ul>
                   <li><em>seed_condition.txt</em> - contains the position, cell's wall and direction of the seeding
                     trajectory</li>
@@ -88,10 +90,10 @@ url: seeding_file.html
                 <ul>
                   <li>1st, 2nd, 3rd column - grid cell's location in the form of model index in x, y, and z direction
                   </li>
-                  <li>4th collumn - which grid wall is used for seeding (<strong>isec</strong>)</li>
-                  <li>5th column - flux direction (<strong>idir</strong>)</li>
+                  <li>4th collumn - which grid wall is used for seeding (<em>isec</em>)</li>
+                  <li>5th column - flux direction (<em>idir</em>)</li>
                 </ul>
-                For more information on the <strong>isec</strong> and <strong>idir</strong> parameters refer to the
+                For more information on the <em>isec</em> and <em>idir</em> parameters refer to the
                 namelist documentation <a href="/docs/components/namelist.html">here</a>. An example on how the
                 seeding file is formatted is in the code snippet below.</p>
 
@@ -101,9 +103,53 @@ url: seeding_file.html
                 <h3 id="File seed_time.txt">File <em>seed_time.txt</em></h3>
 
                 <p>For the time file, there is only one column present and it determines in which global iterations
-                  (<strong>intrun</strong>) seeding should take place. The time steps need to be organized in a column,
+                  (<em>intrun</em>) seeding should take place. The time steps need to be organized in a column,
                   similarly to the seeding condition input file.
                 </p>
+
+                <h2 id="Number of Trajectories">Number of Trajectories</h2>
+
+                <p>In this subchapter, a closer look at initilizing different number of trajectories is considered. In
+                  general there are 3 types:
+                <ul>
+                  <li><em>nqua=1</em>: constant number in particles in all seeding cells</li>
+                  <li><em>nqua=2</em>: Proportional to the mass/volune transport at seeding</li>
+                  <li><em>nqua=3</em>: Proportional to mass/volume in the seeding cell</li>
+                </ul>
+
+                </p>
+
+                <h3 id="nqua=1">nqua=1</h3>
+
+                <p>
+                  As the description states, with this method a constant number of particles are seeded at every defined
+                  grid cell's face. In this example, we seed 10 trajectories and we present a namelist snippet
+                  containing only the variables that are needed for this setup.
+                </p>
+
+                {{ site.data.tutorial_examples.seed_type_constant_number }}
+
+                <h3 id="nqua=2">nqua=2</h3>
+
+                <p>In this case, the number of particles in a grid cell is defined with the volume/mass transport
+                  throught the face and the volume/mass that is defined to represent a single trajectory. For example,
+                  if total volume transport is 10 m3/s and <em>partQuant</em>=5, we get <em>subvol/partQuant</em>=2
+                  trajectory seeding locations in that grid cell.
+                </p>
+
+                {{ site.data.tutorial_examples.seed_type_prop_mass_trans }}
+
+                <h3 id="nqua=3">nqua=3</h3>
+
+                <p>For <em>nqua</em>=3 case, the cell's volume/mass is used for calculating the number of
+                  seeding points, by using a constant <em>parQuant</em> value for each trajectory's seeding
+                  point. In this example, we set <em>partQuant</em>=0.1, which states that each trajectory will
+                  represent 0.1 m3 of volume of the starting grid cell. If we have a grid cell with the volume 1 m3,
+                  then we will have seeded 10 trajectories in the grid cell.
+                </p>
+
+                {{ site.data.tutorial_examples.seed_type_prop_mass }}
+
 
               </div><!-- .post-content -->
 

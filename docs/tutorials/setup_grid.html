@@ -1,6 +1,6 @@
 ---
 title: Grid Setup
-keywords: 
+keywords:
 category: tutorials
 url: setup_grid.html
 ---
@@ -38,7 +38,7 @@ url: setup_grid.html
             <div class="post-inside">
 
               <header class="post-header">
-                <h1 class="post-title line-left">Grid Setup (UNDER CONSTRUCTION - outline)</h1>
+                <h1 class="post-title line-left">Grid Setup (UNDER CONSTRUCTION - spelling and grammar check)</h1>
               </header><!-- .post-header -->
 
               <div class="post-content">
@@ -47,24 +47,38 @@ url: setup_grid.html
 
                 <h2 id="Introduction">Introduction</h2>
 
-                <p>In this section we are going to present how to set up the grid for Tracmass and how to transfrom them
-                  from typically used grids in climate modelling. It is essential to set up the grid correctly, thus
-                  great care needs to be taken into this. </p>
+                <p>In this section we are going to attempt to show how grid setup is carried out for TRACMASS and will
+                  show how to tranform data from typically used grids in climate modelling to Arakawa C-grid. It is
+                  essential to set up the grid correctly, thus great care needs to be taken into this. Furthermore, the
+                  grid setup can be carried out with two files - <em>setup_grid.F90</em> and <em>read_field.F90</em>.
+                  THis is necessary if there are time variations in the sea surface height/pressure, which affect the
+                  depth of the cell's.
+
+                </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  There are many local and global climate models available that makes it complicated to give a full
+                  guide on how to set up the grid data for all possible cases. Hopefully, the information presented in
+                  this chapter will give some clarity and if not, feel free to check discussions on Github, maybe
+                  someone has had the same problem or someone can help you out!
+                </div>
 
                 <h2 id="TRACMASS grid">TRACMASS grid</h2>
 
-                <p>TRACMASS is built on Arakawa C-grid, which keeps the
-                  tracer values, such as temperature, salinity, oxygen concentration in the center of the grid cell,
-                  while the velocity values are set in the center of the cell's faces. The east-west velocities,
-                  typically denoted u are located on the east and west faces of the cell. Etc, for the rest of the
-                  velocities. Right below is an ilustration in 3D of Arakawa-C grid setup.</p>
+                <p>TRACMASS is built on "staggered" Arakawa C-grid, which keeps the tracer values, such as, temperature,
+                  salinity, oxygen concentration in the center of the grid cell, while the velocity values are located
+                  at the center of each grid's face. For example, the east-west (<em>u</em>) velocity field's
+                  components are located on the left-right face's center, while the north-south (<em>v</em>) components
+                  on the forward-backward grid's face center. An ilustration in 3D of "staggered" Arakawa C-grid is
+                  shown below.
 
-                <img width="100%" src="../../../images/tutorials/fig_tutorial_arakawa-c.png" />
+                  <img width="100%" src="../../../images/tutorials/fig_tutorial_arakawa-c.png" />
 
-                <p>The algorithm for setting up the grid is located in the <em>project's</em> folder in the file
-                  <em>setup_grid.F90</em>. The default projects present various method's for setting up the grid for
-                  various options. Thus, it is recommended to modify (if necessary) the grid setup algorithm that most
-                  closeley resembles the needed grid setup.
+                <p>The algorithm for setting up the grid is located in the <em>project's</em> folder in the
+                  <em>setup_grid.F90</em> file. The example projects present various options for setting up the grid.
+                  Thus, it is recommended to modify (if necessary) the grid setup algorithm that
+                  most closeley resembles the needed grid setup.
                 </p>
 
                 <h2 id="Transforming between Arakawa grids">Transforming between Arakawa grids</h2>
@@ -72,8 +86,13 @@ url: setup_grid.html
                 <p>Conceptually, transforming from one grid to another is simple procedure if the original data's grid
                   is known; however, it can be confusing to do it in an efficient way and correctly. Because of this,
                   the more comon transformations from different grids is provided. In the figure below are presented
-                  Arakawa-A and B grid layout in 2D.</p>
+                  Arakawa-A and B grid layout in 2D. The idea is to take the necessary data points and between them find
+                  the average value, which would represent the center location between those data points. For example,
+                  if we have a square and we want to find the value in the center, we would simply average the data
+                  points that are at the corners of the square. This principle is further extended for a cube shape, for
+                  example. </p>
 
+                <!-- For this one add the C grid as well -->
                 <img width="100%" src="../../../images/tutorials/fig_tutorial_arakawa-ab.png" />
 
                 <p>It is recommended that vertical velocity is calculated by TRACMASS itself; however, it is possible to
@@ -83,113 +102,212 @@ url: setup_grid.html
 
                 <h3 id="Transformation from A to C grid">Transformation from A to C grid</h3>
 
-                <p>This is how we do the tracers: </p>
+                <p>For Arakawa C-grid, the tracer is located in the center of the grid cell. Thus, we need to average
+                  all the tracer values located on the 8 vertices of the grid cell to find the center value.
+                  Mathematically, this transformation would be the following: </p>
 
                 <script
                   type="math/tex; mode=display">T_{(i,j,k)} = \frac{1}{8}\left[T_{(i,j,k)} + T_{(i+1,j,k)} + T_{(i,j+1,k)} + T_{(i+1,j+1,k)}+\\
                                                       \quad + T_{(i,j,k+1)} + T_{(i+1,j,k+1)} + T_{(i,j+1,k+1)} + T_{(i+1,j+1,k+1)}  \right]</script>
 
-                <p>This is how we do the horizontal velocity values:</p>
+                <p>The velocities in A-grid are located on the grid's vertices, while in C-grid in the center of grid's
+                  faces. Thus, to find a velocity value on grid's face, we need to average the values found on that
+                  face's vertices. Mathematically, this would be the transformation:</p>
 
                 <script
                   type="math/tex; mode=display">u_{(i,j,k)} = 0.25\left[u_{(i,j,k)} + u_{(i,j+1,k)} + u_{(i,j,k+1)} + u_{(i,j+1,k+1)}\right] \\
                                                       v_{(i,j,k)} = 0.25\left[v_{(i,j,k)} + v_{(i+1,j,k)} + v_{(i,j,k+1)} + v_{(i+1,j,k+1)}\right]</script>
 
+                <p>In FORTRAN programming language, these expressions would be done in the following manner:</p>
+
+                {{ site.data.tutorial_examples.setup_grid_a2c_transform }}
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  Tracers and velocity flux has a spatial and temporal dimensions, which results in 4D arrays. Here in
+                  the example are only presented the spatial transform between the grids.
+                </div>
+
 
                 <h3 id="Transformation from B to C grid">Transformation from B to C grid</h3>
 
-                <p>First step is to transform the tracers from the cell's corners to the cell's centers, which means we
-                  need to find the average value of all the cell's corner tracers. Mathematically, in 3D this would be
-                  done like this:</p>
+                <p>The tracer transformation from B-grid to C-grid is the same as for A-grid to C_grid. See the
+                  subsection <a
+                    href="../../../docs/tutorials/setup_grid.html#Transformation%20from%20A%20to%20C%20grid">Tranformation
+                    from A to C grid</a> for detailed explanation.
+                </p>
 
-                <script
-                  type="math/tex; mode=display">T_{(i,j,k)} = \frac{1}{8}\left[T_{(i,j,k)} + T_{(i+1,j,k)} + T_{(i,j+1,k)} + T_{(i+1,j+1,k)}+\\
-                                                      \quad + T_{(i,j,k+1)} + T_{(i+1,j,k+1)} + T_{(i,j+1,k+1)} + T_{(i+1,j+1,k+1)}  \right]</script>
-
-                <p>Next, we need to transform the horizontal velocity field, which is located in the center of the cell
-                  in Arakawa
-                  B-grid. </p>
+                <p>The velocities on B-grid are located in the center of the grid cell. To tranform them to C-grid, we
+                  average the values from two subsequent cells, between which we want to find the velocity. In the case
+                  of <em>u</em> velocity, we take grid cells with index (<em>i,j,k</em>) and (<em>i+1,j,k</em>) and
+                  average their velocity values (that are located in the center) and average them. Mathematically, the
+                  tranformation for the velocities would be the following:
+                </p>
 
                 <script type="math/tex; mode=display">u_{(i,j,k)} = 0.5\left[u_{(i,j,k)} + u_{(i+1,j,k)}\right] \\
                                                 v_{(i,j,k)} = 0.5\left[v_{(i,j,k)} + v_{(i,j+1,k)}\right]</script>
 
+                <p>And in FORTRAN code it would be:</p>
 
+                {{ site.data.tutorial_examples.setup_grid_b2c_transform }}
 
                 <h2 id="grid setup in projects">Grid setup in projects</h2>
 
-                <p>In the following subsections the various project's grid
-                  setups are looked at in more detail. In general, these three are mandatory to populate:
+                <p>In the following section the various project's grid setups are looked at in more detail. In
+                  general, these three are mandatory datasets to populate:
                 <ul>
-                  <li><em>dxdy</em> - Area of horizontal cell-walls.</li>
-                  <li><em>dzt</em> - Height of k-cells in 4 dim.</li>
-                  <li><em>kmt</em> - Number of k-cells from surface to seafloor.</li>
-                  <li><em>dyu</em> - length of dy for u flux calculations</li>
-                  <li><em>dxv</em> - length of dx for v flux calculations</li>
+                  <li><strong>dyu</strong> [<em>mandatory</em>] - length of dy for u flux calculations</li>
+                  <li><strong>dxv</strong> [<em>mandatory</em>] - length of dx for v flux calculations</li>
+                  <li><strong>dxdy</strong> [<em>mandatory</em>] - Area of horizontal cell-walls.</li>
+                  <li><strong>dzt</strong> [<em>mandatory</em>] - Height of k-cells in 4 dim.</li>
                 </ul>
-                while the rest of the variables might be needed. On what basis this works, I am not sure.
+                while the rest of the variables might be needed, depending on the available grid data. Some of the
+                mandatory grid data is presented in the figure below to get a better idea of it. This is done, because
+                the grid cell's might not be perfectly rectangular, thus, this provides the necessary additional data
+                (if needed) to do the calculations.
                 </p>
+
+                <img width="100%" src="../../../images/tutorials/fig_tutorial_dxv_dyu.png" />
+
+                <p>Similarly as <strong>dyu</strong> and <strong>dxv</strong> parameters, the <strong>dzt</strong>
+                  mesures the cell's depth at the tracer's location. Finally, the cell face's horizontal area
+                  <strong>dxdy</strong> is calculated by simply multiplying the lengths of the cell at velocity points
+                </p>
+
+                <script type="math/tex; mode=display">dxdy_{(i,j)} = dyu_{(i,j)} \cdot dxv_{(i,j)} </script>
 
                 <p>The following project exaples are ordered from the most basic to the most complex to get a better
                   idea of grid building process. Instead of writing the code from scrathc, it is recomended to find the
                   grid setup that most closeley resembles your model grid setup and use that project as a basis. Make
-                  necessary modification and you should be good. </p>
+                  the necessary modification and you should be good to go. </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  You might need to make modifications in the <em>setup_grid.F90</em>, even if you are using a model we
+                  have made an example for. The climate models keep changing and, currently, we can't provide example
+                  for all cases and keep them up to date.
+                </div>
 
                 <h3 id="Theoretical">Theoretical</h3>
 
-                <p>The simplest grid setup is for the Theoretical case. Each of the grid cell's has the size of 250m in
-                  horizontal direction (dx, dy) and have a vertical resolution of 10m (dzt). From the grid cell
-                  dimensions it is possible to calculate the horizontal grid cell's wall area. FInally, we apply a mask
-                  and enable all the points in the grid as avialable for trajectories. </p>
+                <p>The simplest grid setup is for the Theoretical case. Each of the grid cell's has the size of 250 m in
+                  horizontal direction (<em>dx</em>, <em>dy</em>) and have a vertical resolution of 10 m (<em>dzt</em>).
+                  From the grid cell's dimensions it is possible to calculate the horizontal grid cell's wall area
+                  (<em>dxdy</em>). Finally, we apply a mask and enable all the points in the grid as avialable to
+                  travel through for trajectories.
+                </p>
+
+                {{ site.data.tutorial_examples.setup_grid_theoretical }}
 
                 <h3 id="AVISO">AVISO</h3>
 
-                <p>Here we manually create the grid with a quarter degree resolution, no bathymetry data is used, I
-                  think. We have these variables:
+                <p>Similarly as in the theoretical case, here we set up the grid manually with a quarter degree
+                  resolution. We have these variables:
                 <ul>
-                  <li><em>!kmu</em></li>
-                  <li><em>!kmv</em></li>
                   <li><em>dx</em> - length of a cell in x direction</li>
                   <li><em>dy</em> - length of a cell in y directio </li>
-                  <li><em>dxv</em>(needed) - length of each v-gridcell in x direction</li>
-                  <li><em>dyu</em>(needed) - lenfth of each u-gridcell in y direction</li>
-                  <li><em>dxdy</em>(needed) - horizontal area of the cell walls</li>
-                  <li><em>dzt</em>(needed) - depth or thickness of the vertical cell</li>
+                  <li><em>dxv</em> - length of each v-gridcell in x direction</li>
+                  <li><em>dyu</em> - lenfth of each u-gridcell in y direction </li>
+                  <li><em>dzt</em> - depth or thickness of the vertical cell at tracer point</li>
+                  <li><em>dxdy</em> - horizontal area of the cell walls</li>
                 </ul>
                 </p>
 
-                <p>We define the grid with quarter degree resolution in horizontal plane (dlon=0.25, dlat=0.25) and we
-                  fill in the <em>dxv</em> and <em>dyu</em>, which are used for mass transport calculatoins later on.
+                <p>We define the grid with quarter degree resolution in horizontal plane (<em>dlon</em>=0.25,
+                  <em>dlat</em>=0.25) and we populate the <em>dxv</em> and <em>dyu</em> arrays, which are used for mass
+                  transport calculatoins later on.
                 </p>
 
-                <h3 id="IFS">IFS (In Progress)</h3>
+                {{ site.data.tutorial_examples.setup_grid_aviso_1 }}
 
-                <p>The procedure is nearly identical to the AVISO project grid setup, with a slight difference, that we
-                  read in some additional aa and bb variable data, that is later on used for calculatiosn.
+                <p>In the douple <strong>DO-LOOP</strong> we iterate through the 2D arrays of <em>dxv</em> and
+                  <em>dyu</em> each element and define the distance between two consecutive points, where velocity
+                  values will reside on the grid. As it can be seen, in the east-west direction the grid size is
+                  changingin size. A visual representation of the grid that this code set's up in horizontal direction
+                  is presented in the figure below. It's an exaggerated example, but it paints a clear picture.
                 </p>
 
-                <h3 id="ROMS">ROMS</h3>
+                <img width="100%" src="../../../images/tutorials/fig_tutorial_aviso_grid.png" />
 
-                <p>In this case, most of the grid data is read into TRACMASS. These are the variables that are being
-                  populated:
+                {{ site.data.tutorial_examples.setup_grid_aviso_2 }}
+
+                <p>Finally, the vertical cell depth is defined at the tracer points, with variable <em>dzt</em>. As can
+                  be seen, it has four dimensions, which indicates it will change in time; it is closer looked at in the
+                  following examples.
+                </p>
+
+                <h3 id="IFS">IFS </h3>
+
+                <p>The procedure is nearly identical to the AVISO project grid setup, in the horizontal directions, but
+                  there are slight changes in the vertical direction:
+                </p>
+
+                {{ site.data.tutorial_examples.setup_grid_ifs1 }}
+
+                <p>We don't use the <em>aa</em> and <em>bb</em> data sets directly in <em>setup_grid.F90</em>
+                  file, but we use them later on in the <em>read_field.F90</em> file, to accurately calculate the
+                  dimensions of each grid cell. This is essential, as it is used for velocity flux calculations. In this
+                  case, the original dataset is set on Arakawa A-grid, which means it is necessary to transform the
+                  values onto Arakawa C-grid. The whole procedure of it can be found in the project's
+                  <em>read_field.F90</em> file and will not be looked at in more detail here.
+                </p>
+
+                <h3 id="ROMS">ROMS (IN PROGRESS)</h3>
+
+                <p>In this case, a different set of data and a different approach is used to set up the grid. Four data
+                  sets are read:
                 <ul>
-                  <li>mask from kmt_name</li>
-                  <li>dy_t from dy_name</li>
-                  <li>dx_t from dx_name</li>
-                  <li>dxdy = dx_t*dy_t</li>
-                  <li>dyu = dy_t</li>
-                  <li>dxv = (dx_t*dy_t + dx_t*dy_t)/(dy_t+dy_t) with weird shifts</li>
-                  <li>depth from dep_name</li>
+                  <li><em>mask</em> is populated with the bayhtmetry data in model's levels (<em>kmt_name</em>)</li>
+                  <li><em>dy_t</em> is populated with cell's width at tracer points (<em>dy_name</em>)</li>
+                  <li><em>dx_t</em> same as <em>dy_t</em>, but in x direction (<em>dx_name</em>)</li>
+                  <li><em>depth</em> is populated with bathymetry's depth in physical units (<em>dep_name</em>)</li>
                 </ul>
+                In the code below a shortened version of the code with comments is presented, to allow for better
+                understanding of the code's functionality:
                 </p>
+
+                {{ site.data.tutorial_examples.setup_grid_roms }}
+
+                <p></p>
 
                 <h3 id="NEMO">NEMO</h3>
 
-                <p>In this case all of the data about the grid is read into TRACMASS. </p>
+                <p>In this case the grid setup is most extensive. So we will go through the code in parts to
+                  understand what is being done and why, wihtout getting into Fortran's sepcifics, but keeping to the
+                  main logic.
+                </p>
 
+                <p>First, we populate the <em>kmt</em> array, which holds 2D data of bathymetry in model
+                  levels. Next, we set up the <em>mask</em> depending on the seeding location
+                  <em>isec</em> - north (<em>isec</em>=1), east (<em>isec</em>=2) or top (<em>isec</em>=3) grid cell's
+                  face.
+                </p>
 
-                <h2 id="Other grid setups">Other grid setups</h2>
+                <p>In the douple DO-loop we iterate through every cell in horizontal plane and look for the cell's depth
+                  at the tracer's location in two consequtive cells in <em>x</em> or <em>y</em> direction. We compare
+                  these two values to the total grid depth and look for the minimum value between the three values. This
+                  is done to set up the <em>kmu</em> and <em>kmv</em> datasets.</p>
 
-                <p>UNDER CONSTRUCTION</p>
+                {{ site.data.tutorial_examples.setup_grid_nemo1 }}
+
+                <p>Finally, the <em>mask</em> for seeding is set up by checking if the cell's face is between two active
+                  grid cell's. If it is, then this wall is marked as a seeding location, but, if the face is not between
+                  two active cell's, the location is disabled for seeding.</p>
+
+                <p>Next part of the code reads in the grid sizes at tracer locations in <em>x</em> and <em>y</em>
+                  direction, and the cell's size at <em>u</em> and <em>v</em> locations in <em>y</em> and <em>x</em>
+                  directions accordingly. We end this snippet, by calculating the horizontal area of grid cell's:
+                </p>
+
+                {{ site.data.tutorial_examples.setup_grid_nemo2 }}
+
+                <p>In the section below, we set up the grid sizes in the <em>z</em> direction for tracers and horizontal
+                  velocities. To not repeat the same code over multiple times, the case for <em>dzt</em> is presented,
+                  but for <em>dzu</em> and <em>dzv</em> the principle is the same. We set the grid cell sizes for all
+                  three timesteps, because the surface height or pressure can change in our model data. The rest of the
+                  modifications are done in the <em>read_field.F90</em> file, which are not explored here.</p>
+
+                {{ site.data.tutorial_examples.setup_grid_nemo3 }}
 
               </div><!-- .post-content -->
 

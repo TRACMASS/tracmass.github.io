@@ -1,6 +1,6 @@
 ---
 title: Reading in Variables
-keywords: 
+keywords:
 category: tutorials
 url: read_field.html
 ---
@@ -38,7 +38,7 @@ url: read_field.html
             <div class="post-inside">
 
               <header class="post-header">
-                <h1 class="post-title line-left">Reading in Variables (UNDER CONSTRUCTION - draft)</h1>
+                <h1 class="post-title line-left">Reading in Variables (UNDER CONSTRUCTION - spelling and grammar check)</h1>
               </header><!-- .post-header -->
 
               <div class="post-content">
@@ -46,44 +46,57 @@ url: read_field.html
                 <h2 id="Introduction">Introduction</h2>
 
                 <p>TRACMASS can read in various variables, such as, various levels of velocity field resoluiton and
-                  tracers variables, like temperature and salinity. The function to read in variables is called every
-                  global loop timestep (<strong>intrun</strong>). However, the user has high flexability avilable when
-                  it comes to input data frequency reading in.
+                  tracers variables, like temperature and salinity. The user has high flexability avialable when it
+                  comes to input data reading. However, the process is not straighforward, thus, a short guide is
+                  presented here in hopes to clear up some of confusion.
                 </p>
 
-                <p>In this chapter we will ilustrate the basics of file reading and the general logic behind it. All of
-                  these actions are done in the <em>read_field.F90</em> file, which is located in
-                  the project folder (read more about the project folder <a
-                    href="../../../docs/components/project.html">here</a>). Furthermore, instead of writing the
-                  file yourself from scrathc, it is recommended to use one of the files provided and modify it to your
-                  needs. This way you will save time and sanity.
+                <p>In this chapter we will ilustrate the basics of file reading and the general logic behind it. This
+                  chapter is mainly written for the setup of <em>read_field.F90</em>, but the methods are same for
+                  <em>setup_grid.F90</em> (and <em>kill_zones.F90</em>). ALl of these files are located in the project
+                  folder (read more about the project folder <a href="../../../docs/components/project.html">here</a>).
+                  Furthermore, instead of writing the algorithm yourself from scrathc, it is recommended to use one of
+                  the files provided and modify it to your needs. This way you will save time and your sanity.
                 </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  It is recomended to use <em>read_field.F90</em> file as a template for reading in the necessary data,
+                  by finding a file that fits most to your project's needs and modifying it, where necessary.
+                </div>
 
                 <h2 id="Structure of read_field.F90">Structure of read_field.F90</h2>
 
-                <p>the file is called once before starting the TRACMASS loop interations, and every loop step. More info
-                  on the 3 thingy in normal language</p>
-
-                <p>In general, the file will contain a section where all the variables are read into TRACMASS, and
-                  possibly some data processing that needs to be done on the data, so that TRACMASS can comfortably work
-                  with it. As an example can be considered velocity field data on an Arakawa A-grid, instead of the
-                  C-grid, that TRACMASS uses. Thus, the file can be seperated in two parts - data reading and data
-                  transformatoin. As there is no standardized method for data saving from model simulations, you will
-                  most likeley need to modify some of the data. </p>
-
-                <p>This is a list of the data that is mandatory to have:
-                <ul>
-                  <li>uflux - implies a velocity field and respective grid cell's wall area</li>
-                  <li>vflux</li>
-                  <li>wflux (if explicitly stated)</li>
-                </ul>
-                With this data, it is possible to calculate trajectories in the model. But, it is also possible to add
-                sea surface height (SSH), bathymetry, and tracers.
+                <p>The function to read in variables is called every global time iteration. In general, the file can be
+                  split up in two parts - data reading into TRACMASS and data transofrmation/processing so that the data
+                  fits TRACMASS' framework. As an example can be considered velocity field data on an Arakawa A-grid.
+                  TRACMASS carries out its calculations with data distributed on Arakawa C-grid, thus, to accurateley
+                  run the simulation, it is necessary to transform the data set from Arakawa A-grid to C-grid. As every
+                  dataset will differ, there is no standardized method for reading in the data from global climate model
+                  simulations, thus, you will most likeley need to modify some of the data for TRACMASS to work with it
+                  in the <em>read_field.F90</em> file.
                 </p>
+
+                <p>This is a list of variables that is <strong>mandatory</strong> to be populated:
+                <ul>
+                  <li><strong>uflux</strong> - volume/mass flux through a grid's face in x direction</li>
+                  <li><strong>vflux</strong> - same as <strong>uflux</strong> but in y direction</li>
+                </ul>
+                This is the bare minimum data needed in <em>read_field.F90</em> file for calculating trajectories.
+                </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  The file <em>read_field.F90</em> is called every global time step and at the very top of the file,
+                  subroutine <em>swap_time()</em>is called that does the velocity and tracer field time stepping for
+                  you.
+                </div>
+
 
                 <h2 id="Reading in velocity fields">Reading in velocity fields</h2>
 
-                <p>Even though the horizontal velocity or flux fields are mandatory, the subgrid levels of these fields
+                <p>Even though the horizontal velocity (or flux fields) are mandatory, the subgrid levels of these
+                  fields
                   are optional. Thus, <strong>ueul_name</strong> and <strong>veul_name</strong> must be defined, while
                   the other ones can be left empty or completely ommited from the namelist file. An example of setting
                   up the namelist for TRACMASS to read in the velocity field is the following:
@@ -96,7 +109,8 @@ url: read_field.html
                   been left blank. In this case, these fields could have been completely been omitted.
                 </p>
 
-                <p>Here we have also defined the the location of our file, the various parts of the file format to merge it
+                <p>Here we have also defined the the location of our file, the various parts of the file format to merge
+                  it
                   together and finally start the process of reading in the files. For this, there are two functions that
                   you will use for this - <strong>get2DfieldNC</strong> and <strong>get3DfieldNC</strong>. As can be
                   seen, both have the same inputs.</p>
@@ -105,37 +119,35 @@ url: read_field.html
                 <p>
                 <ul>
                   <li><strong>fieldFile</strong> - file name with the path to the file</li>
-                  <li><strong>varName</strong> - variable of the .nc file that will be read in</li>
-                  <li><strong>start3D/start2D</strong> - the starting index of reading in the file in 4 dimensions [x,
+                  <li><strong>varName</strong> - variable name that will be read in from the file</li>
+                  <li><strong>start2D/start3D</strong> - the starting index of reading in the file in 4 dimensions [x,
                     y, z, t]</li>
-                  <li><strong>count2D/count3D</strong> - the number of indexes to read 4 dimensions [x, y, z, t]</li>
+                  <li><strong>count2D/count3D</strong> - the number of indexes to read in 4 dimensions [x, y, z, t]</li>
                   <li><strong>stcase</strong> - format in which the array is saved, refer to the <a
                       href="docs/components/main_modules.html#mod_getfilef90">documentation</a></li>
                 </ul>
                 </p>
 
-                <p>This is how the code would look in our read_field.F90 file. In this case we read in the whole spacial
+                <p>This is how the code would look in our <em>read_field.F90</em> file. In this case we read in the whole spatial
                   domain and only one timestep, in this case the first time step, as our .nc file starts with index=1.
                 </p>
 
                 {{ site.data.tutorial_examples.read_field_read_file }}
 
-                <p>Great advantage of TRACMASS structure is that the read_field.F90 file is called at the begining of
-                  each loop and at the very top of the file time stepping is enabled with function <em>swap_time()</em>
-                </p>
-
-                <p>There is high flexability available to the frequency of reading in the velocity data, thus great care
-                  should be taken to ensure the read_field.F90 file algorithm matches the time stepping definitions in
-                  the namelist file. </p>
+                <p>There is high flexibility available to the frequency of reading in data, thus great care
+                  should be taken to ensure the <em>read_field.F90</em> file algorithm matches the time stepping definition in
+                  the namelist file of the global time step. </p>
 
                 <h2 id="Reading tracers">Reading tracers</h2>
 
-                <p>Reading in tracer data is essentially the same as the velocity field data. It's good practice to
-                  include the tracers in a IF-ELSE logical statment, which would allow to read in the tracer data only
-                  when <strong>l_tracers</strong> is set to <strong>.TRUE.</strong>. This provides more flexablity of
-                  the data. Furthermore, care should be taken when setting up the tracers, as they have 2 options
-                  available - <strong>'read'</strong> and <strong>'compute'</strong>.
+                <p>Reading in tracer data is essentially the same as the velocity field data and it is recomended to use
+                  the code for tracer reading found in project <strong>NEMO</strong>. Every <strong>iter</strong> iteration, the file
+                  reads in the next dataset or computes it. If it neads to read it, the code checks if the dataset is 2D
+                  or 3D and reads the according shape into the file. Finally, the dataset is saved in the correct
+                  timestep and can be used for future calculations.
                 </p>
+
+                {{ site.data.tutorial_examples.read_field_tracers }}
 
                 <p>Next, it is necessary to understand the frequency of the general loop and also the time resolution of
                   the tracer data set itself. For example, if we have a velocity field data with 15min resolution, we
@@ -146,18 +158,12 @@ url: read_field.html
                   would look like:
                 </p>
 
-                {{ site.data.tutorial_examples.read_field_tracers }}
+                {{ site.data.tutorial_examples.read_field_tracer_frequency}}
 
-                <p>However, take note that a more extensive and inclusive method is presented in the project folder
-                  <em>read_field.F90</em> files.
+                <p>If you would like to learn how to set up a custom tracer, check out this tutorial -> <a
+                    href="../../../docs/tutorials/custom_tracers.html">Add a Custom Tracer</a>.
                 </p>
 
-                <div class="note">
-                  <strong>Note:</strong> <br />
-                  It is recomended to use <em>read_field.F90</em> file as a template for reading in the necessary data.
-                  The main aspect that should be changed is the frequency and at which points in time what data should
-                  be read in by the file.
-                </div>
 
               </div><!-- .post-content -->
 

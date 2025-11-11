@@ -1,25 +1,24 @@
 ---
 title: Namelist
 keywords: break namelist break
-            griddir zeroindex trunit l_onestep physDataDir physPrefixForm dateFormat tGridName uGridName
-            vGridName wGridName fileSuffix hs_name ueul_name veul_name usgs_name vsgs_name usub_name 
-            vsub_name w_name break
-            imt jmt km iperio jperio topoDataDir hgridFile dy_name dyu_name dx_name dxv_name zgridFile 
-            dzt_name dzu_name dzv_name dep_name bathyFile kmt_name break
-            l_subdom imindom imaxdom jmindom jmaxdom break
-            ngcm_step ngcm_unit iter break
-            startSec startMin startHour startDay startMonth startYear noleap mon30day break
-            loopYears loopStartYear loopEndYear log_level intrun break
-            write_frec write_form outDataDir outDataFile timeformat l_compress break
-            nff isec idir nqua partQuant loneparticle SeedType ist1 ist2 jst1 jst2 kst1 kst2 seeddir
-            seedfile maskfile seedTime tst1 tst2 timeFile break
-            l_tracers l_swtraj tracertrajscale tracername tracershift tracerscale tracerunit tracervarname 
-            traceraction tracerdimension tracermin tracermax break
-            tracer0min tracer0max break
-            timax l_nosurface exitType ienw iene jens jenn tracerchoice tracere maxormin break
-            l_psi l_offline dirpsi xyflux l_divergence divconst break
-            l_diffusion ah av break
-
+  griddir zeroindex trunit l_onestep physDataDir physPrefixForm dateFormat tGridName uGridName
+  vGridName wGridName fileSuffix hs_name ueul_name veul_name usgs_name vsgs_name usub_name
+  vsub_name w_name break
+  imt jmt km iperio jperio topoDataDir hgridFile dy_name dyu_name dx_name dxv_name zgridFile
+  dzt_name dzu_name dzv_name dep_name bathyFile kmt_name break
+  l_subdom imindom imaxdom jmindom jmaxdom break
+  ngcm_step ngcm_unit iter break
+  startSec startMin startHour startDay startMonth startYear noleap mon30day break
+  loopYears loopStartYear loopEndYear log_level intrun break
+  write_frec write_form outDataDir outDataFile timeformat l_compress break
+  nff isec idir nqua partQuant loneparticle SeedType ist1 ist2 jst1 jst2 kst1 kst2 seeddir
+  seedfile maskfile seedTime tst1 tst2 timeFile break
+  l_tracers l_swtraj tracertrajscale tracername tracershift tracerscale tracerunit tracervarname
+  traceraction tracerdimension tracermin tracermax break
+  tracer0min tracer0max break
+  timax l_nosurface exitType ienw iene jens jenn tracerchoice tracere maxormin break
+  l_psi l_offline dirpsi xyflux l_divergence divconst break
+  l_diffusion ah av break
 category: documentation
 url: namelist.html
 ---
@@ -453,14 +452,15 @@ url: namelist.html
                   </li>
                   <li>
                     <p><strong>nqua</strong> [<em>integer</em>]: defines how many particles are initiliased per grid
-                      cell (<strong>nqua</strong>=1) constant number set by <strong>partQuant</strong>,
+                      cell. (<strong>nqua</strong>=1) constant number set by <strong>partQuant</strong>,
                       (<strong>nqua</strong>=2) all trajectories reflect the same
-                      transport set by <strong>partQuant</strong>.</p>
+                      transport set by <strong>partQuant</strong>, (<strong>nqua</strong>=3) constant initial volume of the
+                      trajectory set by <strong>partQuant</strong> in the seeding grid cell.</p>
                   </li>
                   <li>
-                    <p><strong>partQuant</strong> [<em>integer</em>]: number of trajectories per grid cell (if
-                      <strong>nqua</strong>=1)
-                      or the mass/volume transport per trajectory (if <strong>nqua</strong>=2).
+                    <p><strong>partQuant</strong> [<em>real</em>]: number of trajectories per grid cell (if
+                      <strong>nqua</strong>=1), the mass/volume transport per trajectory (if <strong>nqua</strong>=2),
+                      or a trajectory's initial volume in a grid cell (<strong>nqua</strong>=3).
                     </p>
                   </li>
                   <li>
@@ -510,7 +510,8 @@ url: namelist.html
 
                 <h3 id="init_tracers">INIT_TRACERS</h3>
                 <p>Here you can activate tracers, define their names and properties, as well as set some modifications
-                  (more info can be found <a href="../../docs/components/main_modules.html#mod_tracersf90">here</a>).</p>
+                  (more info can be found <a href="../../docs/components/main_modules.html#mod_tracersf90">here</a>).
+                </p>
                 <!-- TODO: Add more practical examples to how add different tracers-->
                 <ul>
                   <li>
@@ -617,7 +618,8 @@ url: namelist.html
                 <p>Here you can define the maximum time limit, as well as define the regions where trajectories are
                   terminated (some examples are shown <a href="../../../blog/nemo.html">here</a> and <a
                     href="../../../blog/aviso.html">here</a>). For a detail description on how the kill zones work check
-                  the <a href="../../docs/components/project.html#kill_zonesf90"><em>projets</em> folder</a> section.</p>
+                  the <a href="../../docs/components/project.html#kill_zonesf90"><em>projets</em> folder</a> section.
+                </p>
 
                 <ul>
                   <li>
@@ -680,9 +682,11 @@ url: namelist.html
                 <p>Here you can activate the stream function and/or the tracer divergence calculation (some examples are
                   shown <a href="../../../blog/nemo.html">here</a> and <a href="../../../blog/aviso.html">here</a>). For
                   a detail description on how the stream functions are computed check the <a
-                    href="../../docs/components/main_modules.html#mod_streamf90"><em>mod_stream.F90</em></a>) section. For
+                    href="../../docs/components/main_modules.html#mod_streamf90"><em>mod_stream.F90</em></a>) section.
+                  For
                   information about the divergence calculation check <a
-                    href="../../docs/components/main_modules.html#mod_divergencef90"><em>mod_divergence.F90</em></a>) section
+                    href="../../docs/components/main_modules.html#mod_divergencef90"><em>mod_divergence.F90</em></a>)
+                  section
                   instead.</p>
 
                 <ul>

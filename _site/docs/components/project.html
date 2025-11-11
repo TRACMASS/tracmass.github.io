@@ -126,7 +126,7 @@
     </div><!-- .site-header-inside -->
   </div><!-- .inner -->
 </header><!-- .site-header -->
-    
+
     <main id="content" class="site-content">
       <div class="inner outer">
         <div class="docs-content">
@@ -247,12 +247,7 @@
 
             <!--  -->
             <li class="docs-menu-item ">
-              <a href="../../../docs/tutorials/seeding_file.html">Seeding Locations</a>
-            </li>
-
-             <!--  -->
-            <li class="docs-menu-item ">
-              <a href="../../../docs/tutorials/seeding_types.html">Seeding Types</a>
+              <a href="../../../docs/tutorials/seeding_file.html">Seeding Trajectories</a>
             </li>
 
             <!--  -->
@@ -294,7 +289,12 @@
 
         <!-- References -->
         <li class="docs-menu-item ">
-          <a href="../../../docs/references/index.html">References</a>
+          <a href="../../../docs/references/references.html">References</a>
+        </li>
+
+        <!-- How to contribute -->
+        <li class="docs-menu-item ">
+          <a href="../../../docs/contribute/contribute.html">Contribute</a>
         </li>
 
       </ul><!-- .docs-menu -->
@@ -312,6 +312,21 @@
               <div class="post-content">
                 <p>The present chapter will introduce all the files in the <em>projects</em> folder. Currently four
                   projects are available: <strong>Theoretical, NEMO, AVISO, IFS, ROMS</strong>.</p>
+
+                <p>In these files it is expected for the user to make changes when creating their own project. The most
+                  extensive changes will be in the <em>namelist</em> file, where all the parameters for the project are
+                  set. Next in importance is the <em>read_field.F90</em> file, which is responsible for setting up the
+                  frequency of data input into the model and input data processing, if necessary (read more <a
+                    href="../../../docs/tutorials/read_field.html">here</a>). Next, the <em>grid_setup.F90</em> file
+                  might also be needed to modify, as the grid in different models tends to differ. You can read more
+                  about grid setup <a href="../../../docs/tutorials/setup_grid.html">here</a>. Finally, in very rare
+                  case you might need to change the <em>Makefile.prj</em> file, which is explained in this susection. 
+                </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  The user is expected to make changes in the files located in the project's folder!
+                </div>
 
                 <hr />
                 <h3 id="setup_gridf90">setup_grid.F90</h3>
@@ -342,7 +357,9 @@
                   </li>
                 </ul>
 
-                <div class="note">
+                <p>More information on the <em>setup_grid.F90</em> is </p>
+
+                <div class="important">
                   &#9888; <strong>Warning:</strong> <br />
                   <strong>dzt</strong> is a mandatory variable that needs to be defined either in
                   <strong>setup_grid.F90</strong> or in <strong>read_field.F90</strong>.
@@ -376,7 +393,8 @@
                     “next” time step (1). The data is read and stored in index <strong>1</strong>, in the following time
                     step the subroutine <strong>swap_time</strong> will reassign the former “current” time step into the
                     new “previous” time step, and the former “next” into the new “current” time step. In the first
-                    iteration of TRACMASS (<strong>ints</strong> equals to zero) the three time steps are read.</li>
+                    iteration of TRACMASS (<strong>ints</strong> equals to zero) the three time steps are read.
+                  </li>
                 </ul>
 
                 <p align="center">
@@ -422,11 +440,13 @@
                   <li>
                     <p><strong>exitType=1</strong> : killing zone defined by a geographical domain given by [
                       <strong>iene, ienw</strong> ]x[ <strong>jens, jenn</strong> ]. If a trajectory is within those
-                      indexes it will be terminated.</p>
+                      indexes it will be terminated.
+                    </p>
                   </li>
                   <li>
                     <p><strong>exitType=2</strong> : killing zone defined by a tracer value <strong>tracere</strong>. If
-                      <strong>maxormin</strong> = 1 (-1) the isoline is the maximum (minimum) value of the tracer.</p>
+                      <strong>maxormin</strong> = 1 (-1) the isoline is the maximum (minimum) value of the tracer.
+                    </p>
                   </li>
                   <li>
                     <p><strong>exitType=3</strong> : killing zone defined by both a geographical domain and tracer
