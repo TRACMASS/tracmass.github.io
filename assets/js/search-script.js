@@ -4,6 +4,7 @@ keywords:
 category: website code
 url: search - script.js
 ---
+//Search engine uses Simple-Jekyll-Search plugin, look it up on github
     (function () {
 
         const SEARCH_PHRASE_PARAM = 'search-phrase';
@@ -21,6 +22,7 @@ url: search - script.js
         if (!searchInput || !resultsContainer) {
             return;
         }
+        
 
         const options = {
             searchInput: searchInput,

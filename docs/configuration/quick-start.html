@@ -1,6 +1,6 @@
 ---
 title: How to set up an experiment
-keywords: 
+keywords:
 category: documentation
 url: quick-start.html
 ---
@@ -36,10 +36,16 @@ url: quick-start.html
 
           <article class="post type-docs">
             <div class="post-inside">
-
-              <header class="post-header">
-                <h1 class="post-title line-left">How to set up an experiment</h1>
+              <header class="post-header-wdate">
+                <h1 class="post-title line-left">
+                  <p>How to set up an experiment</p>
+                </h1>
+                <p class="header-metadata-wdate"><strong>Last updated:</strong><br> <em>{{ page.last_modified_at | date:
+                    "%B %-d, %Y" }}</em></p>
               </header><!-- .post-header -->
+              <!--<header class="post-header">
+                <h1 class="post-title line-left">How to set up an experiment</h1>
+              </header> .post-header -->
 
               <div class="post-content">
                 <!-- 
@@ -144,7 +150,7 @@ url: quick-start.html
                 <hr />
                 -->
                 <h2 id="how-to-configure-a-customised-experiment">How to configure a customised experiment </h2>
-                <p>This is a basic guidance on how to implement a new setup from a GCM with a grid that does not exist
+                <p>This is a basic guide on how to implement a new setup from a GCM with a grid that does not exist
                   in the present <strong>TRACMASS</strong> projects list. This requires good knowledge in the numerical
                   discretisation of your GCM and of Fortran programming.</p>
 
@@ -158,8 +164,7 @@ url: quick-start.html
                     <div class="highlighter-rouge">
                       <div class="highlight">
                         <pre class="highlight"><code> cd projects
- cp -r NEMO mymodel
-</code></pre>
+ cp -r NEMO mymodel</code></pre>
                       </div>
                     </div>
 
@@ -167,8 +172,7 @@ url: quick-start.html
 
                     <div class="highlighter-rouge">
                       <div class="highlight">
-                        <pre class="highlight"><code> cp -r AVISO mymodel
-</code></pre>
+                        <pre class="highlight"><code> cp -r AVISO mymodel</code></pre>
                       </div>
                     </div>
 
@@ -176,34 +180,27 @@ url: quick-start.html
 
                     <div class="highlighter-rouge">
                       <div class="highlight">
-                        <pre class="highlight"><code> cp -r IFS mymodel
-</code></pre>
+                        <pre class="highlight"><code> cp -r IFS mymodel</code></pre>
                       </div>
                     </div>
                   </li>
                   <li>
                     <p>Rename the namelist file to <em>namelist_mymodel.in</em> or <em>namelist_mycase.in</em> if you
-                      are using a case within the project. Find more information about the <em>namelist</em> <a
+                      are using a case within the project. Remember, the name of the namelist has to match with the case
+                      name that is set in the <strong>Makefile.prj</strong>, located in the TRACMASS' root directory.
+                      Find more information about the <em>namelist</em>, its components and how to set it up <a
                         href="../../docs/components/namelist.html">here</a>.</p>
                   </li>
                   <li>
                     <p>Modify and adapt the files under <em>/projects/mymodel</em>, which are <em>setup_grid.F90</em>,
-                      <em>read_field.F90</em>, and <em>kill_zones.F90</em>. Find more information about the subroutines
-                      <em>setup_grid.F90</em> and <em>read_field.F90</em> <a
-                        href="../../docs/components/project.html">here</a>.
-                    </p>
-                  </li>
-                  <li>
-                    <p>Adapt the <em>Makefile.prj</em> to adjust the compiling flags. The list of possible flags can be
-                      found <a href="../../docs/components/project.html#makefileprj">here</a>.</p>
-                  </li>
-                  <li>
-                    <p>Adapt the <em>Makefile</em> in the main directory and set PROJECT = mymodel and CASE = mymodel.
+                      <em>read_field.F90</em>, <em>kill_zones.F90</em> and <em>Makefile</em>. You can find more information about these
+                      files here <a href="../../docs/components/project.html">here</a>.
                     </p>
                   </li>
                 </ol>
 
-                <p>For more detailed examples refer to <a href="../../docs/tutorials/tutorials.html">TRACMASS Tutorials</a></p>
+                <p>For more detailed examples refer to <a href="../../docs/tutorials/tutorials.html">TRACMASS
+                    Tutorials</a></p>
 
               </div><!-- .post-content -->
             </div><!-- .post-inside -->

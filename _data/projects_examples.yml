@@ -1,0 +1,32 @@
+# File with examples for the namelist file. Just to make it a little bit more tidy
+# To add a snippet, simply add the variable with name var_name here and in the file you want to show it, ad the following line:
+
+#   {{ site.data.projects_examples.var_name }}
+
+# and at the top of the file in which you add the line above, at the very top you need to add two lines of triple dashes, as such (with no hashtag)
+
+#---
+#---
+
+projects_makefile: |
+ <pre class='highlight'><code># Makefile for my custom run
+ #========================================================================
+
+ # Vertical velocities
+ #------------------------------------------------------------------------
+ #fl01  = -Dw_2dim       # Turn off vertical velocities.
+ fl01  = -Dw_3dim       # Compute 3D vertical velocities.
+ 
+ #fl04 = -Dw_explicit   # Provide vertical velcotiy data
+
+ # Time integration scheme
+ #------------------------------------------------------------------------
+ #fl02 = -Dtime_analytical   # Analytically calculate trajectories
+
+ 
+
+ #========================================================================
+
+ ORM_FLAGS= -D$(PROJECT) \
+ $(fl01)$(fl02)$(fl04)</code></pre>
+

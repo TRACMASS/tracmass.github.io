@@ -72,6 +72,10 @@
             </li>
 
             <li class="menu-item ">
+              <a href="../../../docs/contribute/contribute.html" class="">Contribute</a>
+            </li>
+
+            <li class="menu-item ">
               <a href="../../../news.html" class="">News</a>
             </li>
 
@@ -95,31 +99,6 @@
               </a>
             </li>
 
-            <!--
-            <li class="menu-item search-bar">
-              <a href="../../../search-results.html" class="">Search</a>
-              <svg class="icon" viewBox="0 0 1024 1024">
-                <path class="path1"
-                  d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
-                </path>
-              </svg>
-            </li>
-            
-            <li class="menu-item search-bar">
-              <form id="form" action="../../../search-results.html" role="search" method="GET">
-                <input type="text" id="query" name="search-phrase" placeholder="Search..." aria-label="Search through site content">
-
-                <button id="search-button">
-                  <svg class="icon" viewBox="0 0 1024 1024">
-                    <path class="path1"
-                      d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
-                    </path>
-                  </svg>
-                </button>
-
-              </form>
-            </li>
-            -->
           </ul>
         </div>
       </nav><!--.site-navigation -->
@@ -172,10 +151,11 @@
             </li>
 
 
-            <!-- Setting up NetCDF -->
+            <!-- Setting up NetCDF 
             <li class="docs-menu-item ">
               <a href="../../../docs/configuration/netcdf-setup.html">NetCDF set up</a>
             </li>
+            -->
 
           </ul>
         </li>
@@ -250,11 +230,11 @@
               <a href="../../../docs/tutorials/seeding_file.html">Seeding Trajectories</a>
             </li>
 
-            <!--  -->
+            <!-- 
             <li class="docs-menu-item ">
               <a href="../../../docs/tutorials/streamfunctions.html">Streamfunctions</a>
             </li>
-
+             -->
           </ul>
         </li>
 
@@ -304,41 +284,45 @@
 
           <article class="post type-docs">
             <div class="post-inside">
-
-              <header class="post-header">
-                <h1 class="post-title line-left">Killing trajectories (UNDER CONSTRUCTION - spelling and grammar check)</h1>
+              <header class="post-header-wdate">
+                  <h1 class="post-title line-left">
+                      <p>Killing Trajectories</p>
+                  </h1>
+                  <p class="header-metadata-wdate"><strong>Last updated:</strong><br>  <em>November 11, 2025</em></p>
               </header><!-- .post-header -->
+
+              <!--<header class="post-header">
+                <h1 class="post-title line-left">Killing trajectories</h1>
+              </header> .post-header -->
 
               <div class="post-content">
 
-                <h2 id="Introduction">Introduction</h2>
-
-                <p>In TRACMASS, there are 4 types of terminating or "killing" trajectories. Here we will breifly present
-                  how to set them up. In general, trajectory killing is done by file <em>kill_zones.F90</em>, but in
-                  most cases, no modifications need to be made there. The only exception is when
+                <p>In TRACMASS, there are four available options of terminating or "killing" trajectories. Here we will briefly
+                  present how to set them up. In general, trajectory killing is handled by the file <strong>kill_zones.F90</strong>, but
+                  in most cases, no modifications need to be made there. The only exception is when
                   <strong>exitType=4</strong>, in which case the user needs to write FORTRAN code in
-                  <em>kill_zones.F90</em> that will terminate trajectories in some locations. The file itself is located
-                  in the project's folder, which you can read more about <a
-                    href="../../../docs/components/project.html">here</a>.
+                  <strong>kill_zones.F90</strong> that will terminate trajectories in some locations. The file itself is located
+                  in the project's folder, which you can read more about <a href="../../../docs/components/project.html">here</a>.
                 </p>
 
                 <h2 id="Various exit types">Various exit types (exitType)</h2>
 
-                <h3 id="exiType=1">exitType=1: BOX</h3>
+                <h3 id="exitType=1">exitType=1: BOX</h3>
 
                 <p>This trajectory killer is the simplest to implement, as it requires only the coordinates of the box
-                  that would reperesent the killzone.</p>
+                  that would represent the kill zone.</p>
 
-                <p>Here is shown an example of how to set up kill zones with
+                <p>Here is an example showing how to set up kill zones with
                   <strong>exitType</strong>=<strong>1</strong>, which is a
-                  regular box. Similarly as with tracer set up, a maximum of 10 killzone boxes can be set with this
-                  option. Here we have set up 2 boxes, first acting as a line and the second as a rectangular box. The
-                  first box has the dimensions from 200-<em>th</em> to 300-<em>th</em> index in the west-east direction
-                  and is set to 150-<em>th</em> index in the north-south direction. Looking form a bird eye view that
-                  would be a horizontal line across the grid. The second killzone box is truly a box with size from
-                  50-<em>th</em> to 250-<em>th</em> index in west-east direction and from 350-<em>th</em> to
-                  450-<em>th</em> index in the north-south direction. Once the box line is crossed, the trajectory is
-                  terminated; it does not matter from which side the trajectory crosses.
+                  regular box. Similarly as with tracer setup, a maximum of 10 kill zone boxes can be set with this
+                  option. Here, we have set up two boxes: the first acting as a line and the second as a rectangular
+                  box. The
+                  first box has the dimensions from 200th to 300th index in the west-east direction
+                  and is set to 150th index in the north-south direction. Looking from a bird's-eye view, that
+                  would be a horizontal line across the grid. The second kill zone box is truly a box with a size from
+                  50th to 250th index in the west-east direction and from 350th to
+                  450th index in the north-south direction. Once the boundary is crossed, the trajectory is
+                  terminated, regardless of the direction of crossing.
                 </p>
                 <pre class='highlight'><code> INIT_KILLZONES
      ! Maximum time for which trajectories will run
@@ -361,27 +345,28 @@
 
                 <div class="note">
                   <strong>Note:</strong> <br />
-                  The kill zone box is implemented in all model levels, it is not possible to specify in which heights
+                  The kill zone box is implemented in all model levels; it is not possible to specify at which heights
                   the termination should occur.
                 </div>
 
 
-                <h3 id="exiType=2">exitType=2: TRACER VALUE</h3>
+                <h3 id="exitType=2">exitType=2: TRACER VALUE</h3>
 
-                <p>This exit type kills trajectories once a maximum or minimum value has been reached by a tracer that
-                  is measured along the trajectory. In this example we will implement two tracers that will be used to
-                  terminate the trajectories - temperature and salinity. First, it is necessary to enable tracers,
-                  otherwise, when running TRACMASS an error will appear saying that <em>'Fortran runtime error: Index
-                    '1' of dimension 1 of array 'tracervalue' above upper bound of 0'</em> which means that there are no
-                  tracers available fro TRACMASS. Thus, the tracers need to be set up as usual, some of the values
-                  mgight be different for your case, such as the <strong>tracervarname</strong>.</p>
+                <p>This exit type terminates trajectories once a maximum or minimum tracer value is reached along the
+                  trajectory. In this example, we will implement two tracers — temperature and salinity — that will be used
+                  to terminate the trajectories. First, it is necessary to enable tracers. Otherwise, when running
+                  TRACMASS, an error will appear (e.g., *'Fortran runtime error: Index
+                  '1' of dimension 1 of array 'tracervalue' above upper bound of 0'*) indicating that no tracers are
+                  available for TRACMASS. Thus, the tracers need to be set up as usual. Some values, such as the
+                  <strong>tracervarname</strong>, might be different for your specific case.
+                </p>
 
-                <p>Next, the kill zones need to be set up, here we enable both temperature and salinity values of the
-                  tracers to kill trajectories. In this case, we set up so that the temperature of tracers does not
-                  exceed 25 degrees; this is done by setting the variable <strong>maxormin</strong>=1. To set up a
-                  minimum value that tracers need to be, <strong>maxormin</strong> must be set to <strong>-1</strong>,
-                  as shown with salinity - it has been set to have a minimum value of 35 PSU. If any of the trajectories
-                  reach a value that is lower than 35 PSU, it will be terminated.
+                <p>Next, the kill zones need to be set up. Here, we enable both temperature and salinity tracer values
+                  for trajectory termination. In this case, we set up the system so that the temperature tracer value
+                  does not exceed 25 degrees; this is done by setting the variable <strong>maxormin</strong>=1. To set
+                  up a minimum value threshold for tracers, <strong>maxormin</strong> must be set to
+                  <strong>-1</strong>. This is shown with salinity, which has been set to have a minimum value of 35
+                  PSU. If any trajectory reaches a value lower than 35 PSU, it will be terminated.
                 </p>
 
                 <pre class='highlight'><code>&INIT_TRACERS
@@ -424,29 +409,30 @@
                   Tracers must be enabled and provided for the model! Otherwise, it won't work!
                 </div>
 
-                <h3 id="exiType=3">exitType=3: BOX & TRACER VALUE</h3>
+                <h3 id="exitType=3">exitType=3: BOX & TRACER VALUE</h3>
 
-                <p>In this case, a kill zone is defined with a geographic location and the tracer values. For this, the
+                <p>In this case, a kill zone is defined by both a geographic location and the tracer values. For this,
+                  the
                   namelist code presented in the other two sections needs to be used. It is essentially the same, but
-                  with a possability to have more restraining and precise kill zone definitions.</p>
+                  with the possibility to have more constraining and precise kill zone definitions.</p>
 
-                <h3 id="exiType=4">exitType=4: HARD CODED</h3>
+                <h3 id="exitType=4">exitType=4: HARD CODED</h3>
 
-                <p>To set up your own termination zones </p>
+                <p>This section is still in development.  </p>
                 <!--TODO: FINISH THIS SECTION :)-->
                 <!--Need to ask Kristofer-->
 
                 <h2 id="maxtime">Maximum trajectory runtime</h2>
 
-                <p>It is also possible to set a maximum time for trajectories to run in namelist with
-                  <strong>timax</strong>. This sets the maximum trajectory runtime in days and it will terminate the
-                  simulation itself, once all the trajectories are terminated. The simulation will be terminated, even
-                  if in the future timesteps more trajectories will be added.
+                <p>It is also possible to set a maximum runtime for trajectories in the namelist using
+                  <strong>timax</strong>. This sets the maximum trajectory runtime in days. It will terminate the
+                  simulation itself once all trajectories have been terminated. The simulation will be terminated, even
+                  if more trajectories are scheduled to be added in future timesteps.
                 </p>
 
                 <div class="important"> &#9888; <strong>Warning:</strong> <br />
-                  If the simulation runs out of trajectories, even though more trajectories will be added in the future
-                  timesteps, the simulation will terminate!
+                  If the simulation runs out of active trajectories, the simulation will terminate, even if more
+                  trajectories are scheduled to be added in future timesteps!
                 </div>
               </div><!-- .post-content -->
 

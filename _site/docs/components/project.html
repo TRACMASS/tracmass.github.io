@@ -72,6 +72,10 @@
             </li>
 
             <li class="menu-item ">
+              <a href="../../docs/contribute/contribute.html" class="">Contribute</a>
+            </li>
+
+            <li class="menu-item ">
               <a href="../../news.html" class="">News</a>
             </li>
 
@@ -95,31 +99,6 @@
               </a>
             </li>
 
-            <!--
-            <li class="menu-item search-bar">
-              <a href="../../search-results.html" class="">Search</a>
-              <svg class="icon" viewBox="0 0 1024 1024">
-                <path class="path1"
-                  d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
-                </path>
-              </svg>
-            </li>
-            
-            <li class="menu-item search-bar">
-              <form id="form" action="../../../search-results.html" role="search" method="GET">
-                <input type="text" id="query" name="search-phrase" placeholder="Search..." aria-label="Search through site content">
-
-                <button id="search-button">
-                  <svg class="icon" viewBox="0 0 1024 1024">
-                    <path class="path1"
-                      d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
-                    </path>
-                  </svg>
-                </button>
-
-              </form>
-            </li>
-            -->
           </ul>
         </div>
       </nav><!--.site-navigation -->
@@ -172,10 +151,11 @@
             </li>
 
 
-            <!-- Setting up NetCDF -->
+            <!-- Setting up NetCDF 
             <li class="docs-menu-item ">
               <a href="../../../docs/configuration/netcdf-setup.html">NetCDF set up</a>
             </li>
+            -->
 
           </ul>
         </li>
@@ -250,11 +230,11 @@
               <a href="../../../docs/tutorials/seeding_file.html">Seeding Trajectories</a>
             </li>
 
-            <!--  -->
+            <!-- 
             <li class="docs-menu-item ">
               <a href="../../../docs/tutorials/streamfunctions.html">Streamfunctions</a>
             </li>
-
+             -->
           </ul>
         </li>
 
@@ -304,227 +284,270 @@
 
           <article class="post type-docs">
             <div class="post-inside">
+              <header class="post-header-wdate">
+                  <h1 class="post-title line-left">
+                      <p>The <em>Projects </em>folder</p>
+                  </h1>
+                  <p class="header-metadata-wdate"><strong>Last updated:</strong><br>  <em>November 11, 2025</em></p>
+              </header><!-- .post-header -->
+              <!-- 
               <header class="post-header">
                 <h1 class="post-title line-left">
                   <p>The <em>Projects </em>folder</p>
                 </h1>
-              </header><!-- .post-header -->
+              </header>.post-header -->
+
               <div class="post-content">
-                <p>The present chapter will introduce all the files in the <em>projects</em> folder. Currently four
-                  projects are available: <strong>Theoretical, NEMO, AVISO, IFS, ROMS</strong>.</p>
+                <div class="search-content"></div>
+                  <p>The present chapter will introduce all the files in the <em>projects</em> folder. Currently four
+                    projects are available: <strong>Theoretical, NEMO, AVISO, IFS, ROMS</strong>.</p>
 
-                <p>In these files it is expected for the user to make changes when creating their own project. The most
-                  extensive changes will be in the <em>namelist</em> file, where all the parameters for the project are
-                  set. Next in importance is the <em>read_field.F90</em> file, which is responsible for setting up the
-                  frequency of data input into the model and input data processing, if necessary (read more <a
-                    href="../../../docs/tutorials/read_field.html">here</a>). Next, the <em>grid_setup.F90</em> file
-                  might also be needed to modify, as the grid in different models tends to differ. You can read more
-                  about grid setup <a href="../../../docs/tutorials/setup_grid.html">here</a>. Finally, in very rare
-                  case you might need to change the <em>Makefile.prj</em> file, which is explained in this susection. 
-                </p>
+                  <p>The files located in the project's folder are expected to be modified by the user when creating thier
+                    onw project. The most extensive changes will be in the <em>namelist</em> file, where all the
+                    parameters for the project are set. Next in importance is the <em>read_field.F90</em> file, which is
+                    responsible for setting up the frequency of data input into the model and input data processing, if
+                    necessary (read more <a href="../../../docs/tutorials/read_field.html">here</a>). Next, the
+                    <em>grid_setup.F90</em> file might also be needed to modify, as the grid in different models tends to
+                    differ. You can read more about grid setup <a href="../../../docs/tutorials/setup_grid.html">here</a>.
+                    Finally, in very rare case you might need to change the <em>Makefile.prj</em> file, which is explained
+                    in this subsection.
+                  </p>
 
-                <div class="note">
-                  <strong>Note:</strong> <br />
-                  The user is expected to make changes in the files located in the project's folder!
-                </div>
+                  <div class="note">
+                    <strong>Note:</strong> <br />
+                    The user is expected to make changes in the files located in the project's folder!
+                  </div>
 
-                <hr />
-                <h3 id="setup_gridf90">setup_grid.F90</h3>
-                <p>This subroutine defines all the variables linked to the grid such as the horizontal resolution or the
-                  grid area. The following variables are initialised in this subroutine:</p>
+                  <hr />
 
-                <ul>
-                  <li>
-                    <p><strong>dxdy</strong> [<em>mandatory</em>]: the area of horizontal cell-walls.</p>
-                  </li>
-                  <li>
-                    <p><strong>dxv</strong>: size of the zonal wall computed in V points.</p>
-                  </li>
-                  <li>
-                    <p><strong>dyu</strong>: size of the meridional wall computed in U points.</p>
-                  </li>
-                  <li>
-                    <p><strong>kmt</strong>: number of vertical level from surface to bottom topography.</p>
-                  </li>
-                  <li>
-                    <p><strong>dzu</strong>: size of the vertical wall computed in U points.</p>
-                  </li>
-                  <li>
-                    <p><strong>dzv</strong>: size of the vertical wall computed in V points.</p>
-                  </li>
-                  <li>
-                    <p><strong>dzt</strong> [<em>mandatory</em>]: size of the vertical wall computed in T points.</p>
-                  </li>
-                </ul>
+                <div class="search-content"></div>
+                  <h2 id="setup_gridf90">setup_grid.F90</h2>
+                  <p>This subroutine defines all the variables linked to the grid such as the horizontal resolution or the
+                    grid area. The following variables are initialised in this subroutine:</p>
 
-                <p>More information on the <em>setup_grid.F90</em> is </p>
+                  <ul>
+                    <li><strong>dxdy</strong> [<em>mandatory</em>]: the area of horizontal cell-walls. </li>
+                    <li><strong>dzt</strong> [<em>mandatory</em>]: size of the vertical wall (<em>dz</em>) computed in T
+                      points.</li>
+                    <li><strong>dxv</strong>: size of the zonal wall (<em>dx</em>) computed at V points.</li>
+                    <li><strong>dyu</strong>: size of the meridional wall (<em>dy</em>) computed at U points.</li>
+                    <li><strong>kmt</strong>: number of vertical model levels from surface to bottom topography.</li>
+                    <li><strong>dzu</strong>: size of the vertical wall (<em>dz</em>) computed at U points.</li>
+                    <li><strong>dzv</strong>: size of the vertical wall (<em>dz</em>) computed at V points.</li>
+                  </ul>
 
-                <div class="important">
-                  &#9888; <strong>Warning:</strong> <br />
-                  <strong>dzt</strong> is a mandatory variable that needs to be defined either in
-                  <strong>setup_grid.F90</strong> or in <strong>read_field.F90</strong>.
-                </div>
-                <hr />
-                <h3 id="read_fieldf90">read_field.F90</h3>
-                <p>This subroutine reads velocities and optionally some tracers from netCDF files and computes the
-                  mass/volume fluxes for TRACMASS.</p>
+                  <p>More information on the <em>setup_grid.F90</em> can be found <a
+                      href="../../../docs/tutorials/setup_grid.html">here</a></p>
 
-                <p>There are two kind of variables that are stored at different time steps: 2-step variables and 3-step
-                  variables:</p>
+                  <div class="important">
+                    &#9888; <strong>Warning:</strong> <br />
+                    <strong>dzt</strong> is a mandatory variable that needs to be defined either in
+                    <strong>setup_grid.F90</strong> or in <strong>read_field.F90</strong>.
+                  </div>
+                  <hr />
 
-                <ul>
-                  <li>The 2-step variables are those used to compute the time interpolation in between two time steps.
-                    These variables include all the mass/volume fluxes, tracer values, grid mass/volume tendecies, or
-                    scale factors. These variables have two time steps that represent: the “previous” time step (1) and
-                    the “current” time step (2). The data is read and stored in index <strong>2</strong>, in the
-                    following time step the subroutine <strong>swap_time</strong> will reassign the former “current”
-                    time step into the new “previous” time step.</li>
-                </ul>
+                <div class="search-content"></div>
+                  <h2 id="read_fieldf90">read_field.F90</h2>
+                  <p>This subroutine reads velocities and optionally some tracers from netCDF files and computes the
+                    mass/volume fluxes for TRACMASS.</p>
 
-                <p align="center">
+                  <p>There are two kind of variables that are stored at different time steps: 2-step variables and 3-step
+                    variables:</p>
+
+                  <ul>
+                    <li>The 2-step variables are those used to compute the time interpolation in between two time steps.
+                      These variables include all the mass/volume fluxes, tracer values, grid mass/volume tendecies, or
+                      scale factors. These variables have two time steps that represent: the “previous” time step (1) and
+                      the “current” time step (2). The data is read and stored in index <strong>2</strong>, in the
+                      following time step the subroutine <strong>swap_time</strong> will reassign the former “current”
+                      time step into the new “previous” time step.</li>
+                  </ul>
+
                   <img width="100%" src="../../../images/fig_swap_1.png" />
-                </p>
 
-                <ul>
-                  <li>The 3-step variables are those used to compute the mass/volume change <strong>dzdt</strong>. These
-                    variables include the size of the vertical grid <strong>dzt</strong>, surface boundary
-                    <strong>hs</strong>, or the tracer value <strong>tracertraj</strong>. These variables have there
-                    time steps that represent: the “previous” time step (-1), the “current” time step (0), and the
-                    “next” time step (1). The data is read and stored in index <strong>1</strong>, in the following time
-                    step the subroutine <strong>swap_time</strong> will reassign the former “current” time step into the
-                    new “previous” time step, and the former “next” into the new “current” time step. In the first
-                    iteration of TRACMASS (<strong>ints</strong> equals to zero) the three time steps are read.
-                  </li>
-                </ul>
+                  <ul>
+                    <li>The 3-step variables are those used to compute the mass/volume change <strong>dzdt</strong>. These
+                      variables include the size of the vertical grid <strong>dzt</strong>, surface boundary
+                      <strong>hs</strong>, or the tracer value <strong>tracertraj</strong>. These variables have three
+                      time steps that represent: the “previous” time step (-1), the “current” time step (0), and the
+                      “next” time step (1). The data is read and stored in index <strong>1</strong>, in the following time
+                      step the subroutine <strong>swap_time</strong> will reassign the former “current” time step into the
+                      new “previous” time step, and the former “next” into the new “current” time step. In the first
+                      iteration of TRACMASS (<strong>ints</strong>=0) all three time steps are read.
+                    </li>
+                  </ul>
 
-                <p align="center">
+
                   <img width="100%" src="../../../images/fig_swap_2.png" />
-                </p>
 
-                <p>The following variables are initialised in this subroutine:</p>
 
-                <ul>
-                  <li>
-                    <p><strong>uflux</strong> [<em>mandatory</em>, 2-step variable]: zonal volume/mass flux.</p>
-                  </li>
-                  <li>
-                    <p><strong>vflux</strong> [<em>mandatory</em>, 2-step variable]: meridional volume/mass flux.</p>
-                  </li>
-                  <li>
-                    <p><strong>dzt</strong> [<em>mandatory</em>, see warning in <strong>setup_grid</strong>, 3-step
-                      variable]: size of the vertical wall computed in T points.</p>
-                  </li>
-                  <li>
-                    <p><strong>dzdt</strong> [2-step variable]: time derivate of the vertical grid.</p>
-                  </li>
-                  <li>
-                    <p><strong>tracers(:)%data</strong> [2-step variable] and <strong>tracertraj</strong> [3-step
-                      variable]: tracer values if <strong>l_tracers</strong> is <strong>TRUE</strong>.</p>
-                  </li>
-                </ul>
+                  <p>The following variables are initialised in this subroutine:</p>
 
-                <hr />
-                <h3 id="kill_zonesf90">kill_zones.F90</h3>
-                <p>This subroutine defines the limits of the domain. If a trajectory is outside the domain the
-                  subroutine will identify it with a flag (<strong>nend</strong>). <strong>nend</strong> = 0 is reserved
-                  to the time exceeding case and <strong>nend</strong> = 1 is reserved to the trajectories reach the
-                  surface (<strong>z1</strong> == <strong>km</strong>).</p>
+                  <ul>
+                    <li><strong>uflux</strong> [<em>mandatory</em>, 2-step variable]: zonal volume/mass flux.</li>
+                    <li><strong>vflux</strong> [<em>mandatory</em>, 2-step variable]: meridional volume/mass flux. </li>
+                    <li><strong>dzt</strong> [<em>mandatory</em>, see warning in <strong>setup_grid</strong>, 3-step
+                      variable]: size of the vertical wall computed at T points.</li>
+                    <li><strong>dzdt</strong> [2-step variable]: time derivate of the vertical grid.</li>
+                    <li><strong>tracers( : )%data</strong> [2-step variable] and <strong>tracertraj</strong> [3-step
+                      variable]: tracer values if <strong>l_tracers</strong> is <strong>TRUE</strong>.</li>
+                  </ul>
 
-                <p>There are four types of killing zones defined by <strong>exitType</strong> :</p>
+                  <hr />
 
-                <p align="center">
+                <div class="search-content"></div>
+                  <h2 id="kill_zonesf90">kill_zones.F90</h2>
+                  <p>This subroutine defines the limits of the domain. If a trajectory is outside the domain the
+                    subroutine will identify it with a flag (<strong>nend</strong>). <strong>nend</strong> = 0 is reserved
+                    to the time exceeding case and <strong>nend</strong> = 1 is reserved to the trajectories reach the
+                    surface (<strong>z1</strong> == <strong>km</strong>).</p>
+
+                  <p>There are four types of killing zones defined by <strong>exitType</strong> :</p>
+
                   <img width="100%" src="../../../images/fig_kzone.png" />
-                </p>
 
-                <ul>
-                  <li>
-                    <p><strong>exitType=1</strong> : killing zone defined by a geographical domain given by [
+                  <ul>
+                    <li><strong>exitType=1</strong> : killing zone defined by a geographical domain given by [
                       <strong>iene, ienw</strong> ]x[ <strong>jens, jenn</strong> ]. If a trajectory is within those
-                      indexes it will be terminated.
-                    </p>
-                  </li>
-                  <li>
-                    <p><strong>exitType=2</strong> : killing zone defined by a tracer value <strong>tracere</strong>. If
+                      indexes it will be terminated. It is not possible to add height range to these kill zones, so the
+                      kill zone will be active in the whole model's depth.
+                    </li>
+                    <li><strong>exitType=2</strong> : killing zone defined by a tracer value <strong>tracere</strong>. If
                       <strong>maxormin</strong> = 1 (-1) the isoline is the maximum (minimum) value of the tracer.
-                    </p>
-                  </li>
-                  <li>
-                    <p><strong>exitType=3</strong> : killing zone defined by both a geographical domain and tracer
-                      isolines.</p>
-                  </li>
-                  <li>
-                    <p><strong>exitType=4</strong> : the killing zone is hard coded by the user.</p>
-                  </li>
-                </ul>
+                    </li>
+                    <li><strong>exitType=3</strong> : killing zone defined by both a geographical domain and tracer
+                      isolines.</li>
+                    <li><strong>exitType=4</strong> : the killing zone is hard coded by the user.</li>
+                  </ul>
 
-                <hr />
-                <h3 id="makefileprj">Makefile.prj</h3>
-                <p>This makefile sets the chosen pre-processing options. Before compiling the main program make sure to
-                  check the pre-processing options.</p>
+                  <p>More detailed information about the kill zones can be found <a
+                      href="../../../docs/tutorials/kill_zones.html">here</a>.</p>
 
-                <p>This is a list of the current pre-processing options:</p>
+                  <hr />
 
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Compilation flag</th>
-                      <th> </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><strong>time_analytical</strong></td>
-                      <td>Turn on time analytical scheme</td>
-                    </tr>
-                  </tbody>
-                  <tbody>
-                    <tr>
-                      <td><strong>w_2dim</strong></td>
-                      <td>Turn off vertical fluxes</td>
-                    </tr>
-                  </tbody>
-                  <tbody>
-                    <tr>
-                      <td><strong>w_3dim</strong></td>
-                      <td>Compute 3D vertical velocities</td>
-                    </tr>
-                  </tbody>
-                  <tbody>
-                    <tr>
-                      <td><strong>w_explicit</strong></td>
-                      <td>Read 3D vertical velocities from input files</td>
-                    </tr>
-                  </tbody>
-                  <tbody>
-                    <tr>
-                      <td><strong>no_netcdf</strong></td>
-                      <td>Run TRACMASS without netcdf libraries</td>
-                    </tr>
-                  </tbody>
-                  <tbody>
-                    <tr>
-                      <td><strong>A_grid</strong></td>
-                      <td>Original dataset on a A grid</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="search-content"></div>
+                  <h2 id="makefileprj">Makefile.prj</h2>
+                  <p>This makefile sets the chosen pre-processing options. Before compiling the main program make sure to
+                    check the pre-processing options.</p>
 
-                <hr />
-                <h3 id="namelist">Namelist</h3>
-                <p>Many variables at TRACMASS can be modified using the namelist without the need to recompile the
-                  program. Each project has a <em>namelist_CASE.in</em> in the project folder. When TRACMASS is compiled
-                  a copy of the namelist (<em>namelist.in</em>) can be found in the main TRACMASS directory.</p>
+                  <p>This is a list of the current pre-processing options:</p>
 
-                <p>The list of all the variables that can be changed in the namelist and their corresponding group can
-                  be found in the section <a href="../../docs/components/namelist.html"><em>Namelist</em></a>.</p>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Compilation flag</th>
+                        <th> </th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td><strong>time_analytical</strong></td>
+                        <td>Turn on time analytical scheme (in development, not extensively tested)</td>
+                      </tr>
+                    </tbody>
+                    <tbody>
+                      <tr>
+                        <td><strong>w_2dim</strong></td>
+                        <td>Turn off vertical fluxes</td>
+                      </tr>
+                    </tbody>
+                    <tbody>
+                      <tr>
+                        <td><strong>w_3dim</strong></td>
+                        <td>Compute 3D vertical velocities</td>
+                      </tr>
+                    </tbody>
+                    <tbody>
+                      <tr>
+                        <td><strong>w_explicit</strong></td>
+                        <td>Read 3D vertical velocities from input files - <strong>not recomended</strong></td>
+                      </tr>
+                    </tbody>
+                    <tbody>
+                      <tr>
+                        <td><strong>no_netcdf</strong></td>
+                        <td>Run TRACMASS without netcdf libraries</td>
+                      </tr>
+                    </tbody>
+                    <tbody>
+                      <tr>
+                        <td><strong>A_grid</strong></td>
+                        <td>Original dataset on a A grid</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <div class="note">
+                    <strong>Note:</strong> <br />
+                    It is recommended to let TRACMASS calculate the vertical velocity flux, but it is possible to also
+                    implicitly define the vertical flux with <strong>w_explicit</strong>.
+                  </div>
+
+                  <div class="important">
+                    &#9888; <strong>Warning:</strong> <br />
+                    <strong>time_analytical</strong> has not been explicitly tested and is still in development stage. Use
+                    it with caution.
+                  </div>
+
+                  <p>When setting up the <strong>Makefile.prj</strong>, use an already existing file from one of the
+                    projects, that most closeley matches your model setup. When setting up a variable, for example,
+                    <strong>time_analytical</strong> option, before the variable add caputal letter <strong>D</strong> so
+                    that the <strong>Makefile</strong> in the root folder can process it properly:
+                  </p>
+                  <pre class='highlight'><code>fl02 = -Dtime_analytical</code></pre>
+
+                  <p>If you wish to add another option that has not been already declared in the
+                    <strong>Makefile.prj</strong>, you need to define it as a new flag. For example, we want to explicitly
+                    provide the vertical velocity/flux data:
+                  </p>
+                  <pre class='highlight'><code>fl04 = -Dw_explicit</code></pre>
+
+                  <p>And we need to add this new flag to be sent to the <strong>Makefile</strong> in the root directory of
+                    TRACMASS, so we add the new flag <strong>fl04</strong> to the string <strong>ORM_FLAGS</strong> at the
+                    end of the file like this:
+                  </p>
+                  <pre class='highlight'><code>ORM_FLAGS= -D$(PROJECT) \
+  $(fl01)$(fl02)$(fl04)</code></pre>
+
+                  <p>A typical file, where we allow movement between the vertical layers and allow TRACMASS to compute the
+                    vertical flux would look like the following code snippet:</p>
+
+                  <pre class='highlight'><code># Makefile for my custom run
+#========================================================================
+
+# Vertical velocities
+#------------------------------------------------------------------------
+#fl01  = -Dw_2dim       # Turn off vertical velocities.
+fl01  = -Dw_3dim       # Compute 3D vertical velocities.
+
+#fl04 = -Dw_explicit   # Provide vertical velcotiy data
+
+# Time integration scheme
+#------------------------------------------------------------------------
+#fl02 = -Dtime_analytical   # Analytically calculate trajectories
 
 
 
+#========================================================================
+
+ORM_FLAGS= -D$(PROJECT) \
+$(fl01)$(fl02)$(fl04)</code></pre>
 
 
+                  <p>Notice that the options that I don't need in this run have been commented out with <strong>#</strong>
+                    symbol.</p>
 
+                  <hr />
 
+                <div class="search-content"></div>
+                  <h2 id="namelist">Namelist</h2>
+                  <p>Many variables at TRACMASS can be modified using the namelist without the need to recompile the
+                    program. Each project has a <em>namelist_CASE.in</em> in the project folder. When TRACMASS is compiled
+                    a copy of the namelist (<em>namelist.in</em>) can be found in the main TRACMASS directory.</p>
 
+                  <p>The list of all the variables that can be changed in the namelist and their corresponding group can
+                    be found in the section <a href="../../docs/components/namelist.html"><em>Namelist</em></a>.</p>
 
 
               </div><!-- .post-content -->

@@ -6,44 +6,49 @@ layout: none
 [
   {% for post in site.pages %}
   
-    {% comment %} Check for excluded files first {% endcomment %}
-    {% unless post.url contains "404.html" or post.url contains "search.json" or post.url contains "search-script.js" 
-                        or post.url contains "search-results.html" %}
+    {% comment %} 
+      (A) Here we can define files to exclude:
+    {% endcomment %}
+    {% unless post.url contains "404.html" 
+                        or post.url contains "search.json" 
+                        or post.url contains "search-script.js" 
+                        or post.url contains "search-results.html" 
+                        or post.url contains "search_original.json" 
+                        or post.url contains "streamfunctions.html"
+                        or post.url contains "html_template.html" %}
 
-      {% comment %} 
-        CRITICAL: Use a 'capture' block to hold the JSON for the post. 
-        This allows us to conditionally output the JSON later, ensuring 
-        no blank entries and correct comma placement.
-      {% endcomment %}
       {%- capture item_json -%}
       
+        {% comment %} 
+          (B) Here we define pages that have multiple components that we want to separate 
+          in more sections. 
+        {% endcomment %}
         {% if post.url contains "main_modules.html" or
               post.url contains "namelist.html" or 
-              post.url contains "project.html" %}
+              post.url contains "project.html" or
+              post.url contains "setup_grid.html" or
+              post.url contains "seeding_file.html" or
+              post.url contains "read_field.html"%}
           
-          {%- assign page_sections = post.content | split: '<h3' -%}
+          {%- assign page_sections = post.content | split: '<div class="search-content"></div>' -%}
           {%- assign section_count = page_sections | size | minus: 1 -%}
           
           {%- assign section_keywords = post.keywords | split: 'break,' -%}
 
           {%- assign index_count = 0 -%}
 
-          {% for single_section in page_sections %}
+          {% for single_section in page_sections offset: 1 %}
 
             {% if forloop.index != 1 or forloop.index != section_count %} 
               {%- assign index_count = index_count | plus: 1 -%}
-              {%- assign section_title =  single_section | truncate: 50 | strip_html | url_encode| split: '%22' | slice: 1 -%}
 
+              {%- assign section_title =  single_section | split: '</h2>' | slice: 0 | strip_html
+                                                         | remove: '["' | remove: '"]' | replace: '\n', ' '| strip -%}
 
-              {%- assign section_title_upp = section_title | upcase | url_encode | remove: '%5B' | remove: '%22' | remove: '%5D' | url_decode -%}
-              {%- assign remove_title = section_title | append: ' ' | append: section_title_upp | url_encode | remove: '%5B' | remove: '%22' | remove: '%5D' | url_decode -%}
-              
-              {%- assign temp_var = section_title | url_encode | remove: '%5B' | remove: '%22' | remove: '%5D' | url_decode | capitalize | replace: '-', ' ' -%}
-              {%- assign remove_title2 = section_title | append: ' ' | append: temp_var | url_encode | remove: '%5B' | remove: '%22' | remove: '%5D' | url_decode -%}
-              
-              {%- assign remove_title3 = post.title | append: ' ' | append: post.title-%}
-
-              {%- assign cleaned_section = single_section | strip_html | strip_newlines | remove: 'id='
+              {%- assign cleaned_section = single_section | strip_html 
+                                                          | strip_newlines 
+                                                          | replace: '    ', '' | replace: '    ', '' | replace: '  ', ' '  
+                                                          | remove: section_title 
                                                           | url_encode | remove: '%22' | remove: '%23' | replace: '%3A', ' ' 
                                                           | replace: '%2C', ' ' | replace: '%28', ' ' | replace: '%29', ' ' | replace: '%5B', ' ' 
                                                           | replace: '%5D', ' ' | replace: '%7B', ' ' | replace: '%7D', ' ' | replace: '%3B', ' '
@@ -51,34 +56,10 @@ layout: none
                                                           | replace: '%3E', ' ' | replace: '%25', ' ' | replace: '%09', ' ' | replace: '%21', ' ' 
                                                           | replace: '%2A', ' ' | replace: '%2B', ' ' | replace: '%40', ' ' | replace: '%5E', ' ' 
                                                           | replace: '%7E', ' ' | replace: '%27', ' ' | replace: '%3F', ' ' | url_decode 
-                                                          | remove: '  ' | remove: '  ' 
-                                                          | remove: remove_title
-                                                          | remove: remove_title2 
-                                                          | remove: 'Jump to Section' 
-                                                          | remove: 'copyStackbit. All rights reserved. This Jamstack site was originally created byStackbit and modified by the TRACMASS team.'
-                                                          | remove: 'Open Menu Home DocumentationPublications ExamplesSub-menuPublications Example Gallery ContactFAQ NewsGitHubSearch nbsp'
-                                                          | remove: 'OpenMenuHomeDocumentationPublicationsExamplesSub-menuPublicationsExampleGalleryContactFAQNewsGitHubSearchnbspNavigateDocsWelcometoTRACMASSdocumentationAboutConfigurationSubmenuInstallationandTheoreticalRunHowtosetupanexperimentNetCDFsetupTRACMASSComponentsSubmenuMainprogramMainmodulesNamelistTheProjectsfolderTRACMASSTutorialsSubmenuAddingCustomTracersGridSetupKillingTrajectoriesReadinginVariablesSeedingLocationsSeedingTypesStreamfunctionsTRACMASSoutputToolsSubmenuInsitupostprocessingpyTRAJReferences'
-                                                          | remove: 'Navigate DocsWelcome to TRACMASS documentationAboutConfigurationSubmenuInstallation and Theoretical RunHow to set up an experimentNetCDF set upTRACMASS ComponentsSubmenuMain programMain modulesNamelistThe Projects folderTRACMASS TutorialsSubmenuAdding Custom TracersGrid SetupKilling TrajectoriesReading in VariablesSeeding Locations Seeding TypesStreamfunctionsTRACMASS outputToolsSubmenuIn situ postprocessingpyTRAJReferences'
-                                                          | remove: 'setup_gridf90 setup_grid.F90' | remove: 'read_fieldf90 read_field.F90' | remove: 'kill_zonesf90 kill_zones.F90' 
-                                                          | remove: 'makefileprj Makefile.prj' 
-                                                          | remove: section_title
-                                                          | remove: remove_title3 
-                                                          | remove: 'integerarray' 
-                                                          | remove: 'logical'
-                                                          | remove: 'real'
-                                                          | remove: 'character'
-                                                          | remove: section_title
-                                                          | remove: 'mod_swapf90 mod_swap.F90' | remove: 'mod_varsf90 mod_vars.F90' | remove: 'mod_printf90 mod_print.F90'
-                                                          | remove: 'mod_tracersf90 mod_tracers.F90' | remove: 'mod_vertvelf90 mod_vertvel.F90' | remove: 'mod_seedf90 mod_seed.F90'
-                                                          | remove: 'mod_writef90 mod_write.F90' | remove: 'mod_subdomainf90 mod_subdomain.F90' | remove: 'mod_streamf90 mod_stream.F90'
-                                                          | remove: 'mod_postprocessf90 mod_postprocess.F90' | remove: 'mod_pos_tstepf90--mod_pos_tanalyticalf90 mod_pos_tstep.F90 mod_pos_tanalytical.F90'
-                                                          | remove: 'mod_loopf90 mod_loop.F90' | remove: 'mod_initf90 mod_init.F90' | remove: 'mod_getfilef90 mod_getfile.F90' | remove: 'mod_errorf90 mod_error.F90'
-                                                          | remove: 'mod_divergencef90 mod_divergence.F90' | remove: 'mod_diffusionf90 mod_diffusion.F90' | remove: 'mod_clockf90 mod_clock.F90' 
-                                                          | remove: 'mod_calendarf90 mod_calendar.F90'
-                                                          -%}
+                                                          | remove: '  ' | remove: '  ' -%}
               
 
-              {% if section_title.size == 0 %}
+              {% if forloop.first %}
                 {
                 "title"    : "{{ post.title | escape }}",
                 "category" : "{{ post.category }}",
@@ -86,7 +67,7 @@ layout: none
                 "url"      : "{{ site.baseurl }}{{ post.url }}",
                 "content"  : "{{ cleaned_section | strip_newlines }}"
 
-              } {%- unless forloop.last -%},{%- endunless -%}
+              } 
               {% else %}
                 {
                   "title"    : "{{ post.title }}{{ ' - ' }}{{ section_title }}",
@@ -95,55 +76,34 @@ layout: none
                   "url"      : "{{ site.baseurl }}{{ post.url }}{{ '#' }}{{  section_title }}",
                   "content"  : "{{ cleaned_section | strip_newlines }}"
 
-                } {%- unless forloop.last -%},{%- endunless -%}
-              {% endif %}
+                } 
+              {% endif %} ,
+
+
+            
             {% endif %}
+          
           {% endfor %}
           
         {% else %}
           {%- assign index_count = index_count | plus: 1 -%}
-          
-          {%- assign remove_title = post.title | append: ' ' | append: post.title -%}
-          {%- assign remove_title2 = post.title | append: '  ' | append: post.title -%}
-          {%- assign remove_title3 = post.title | append: ' ' | append: post.title | remove: ' (' | remove: ')'-%}
 
-          {%- assign cleaned_section = post.content | strip_html | strip_newlines | remove: 'id='
-                                                      | url_encode | remove: '%22' | remove: '%23' | replace: '%3A', ' ' 
-                                                      | replace: '%2C', ' ' | replace: '%28', ' ' | replace: '%29', ' ' | replace: '%5B', ' ' 
-                                                      | replace: '%5D', ' ' | replace: '%7B', ' ' | replace: '%7D', ' ' | replace: '%3B', ' '
-                                                      | replace: '%2F', ' ' | replace: '%5C', ' ' | replace: '%26', ' ' | replace: '%3C', ' ' 
-                                                      | replace: '%3E', ' ' | replace: '%25', ' ' | replace: '%09', ' ' | replace: '%21', ' ' 
-                                                      | replace: '%2A', ' ' | replace: '%2B', ' ' | replace: '%40', ' ' | replace: '%5E', ' ' 
-                                                      | replace: '%7E', ' ' | replace: '%27', ' ' | replace: '%3F', ' ' | url_decode 
-                                                      | remove: '  ' | remove: '  ' 
-                                                      | remove: 'copy Stackbit. All rights reserved. This Jamstack site was originally created byStackbit and modified by the TRACMASS team.'
-                                                      | remove: 'include header.html pre_link='
-                                                      | remove: 'Open Menu Home DocumentationPublications ExamplesSub-menuPublications Example Gallery Contact FAQ NewsGitHubSearch nbsp'
-                                                      | replace: 'Navigate DocsWelcome to TRACMASSdocumentationAboutConfigurationSubmenuInstallation and Theoretical RunHow to set up an experimentNetCDF set upTRACMASS ComponentsSubmenuMain programMain modulesNamelistThe Projects folderTRACMASS TutorialsSubmenuAdding Custom TracersGrid SetupKilling TrajectoriesReading in VariablesSeeding Locations Seeding TypesStreamfunctionsTRACMASS outputToolsSubmenuIn situ postprocessingpyTRAJReferences', ' '
-                                                      | remove: '..'
-                                                      | replace: '  ', ' ' | replace: '  ', ' '
-                                                      | remove: 'include doc_navigation.html'
-                                                      | remove: 'Introduction'
-                                                      | remove: 'Jump to Section'
-                                                      | remove: 'copyStackbit. All rights reserved. This Jamstack site was originally created byStackbit and modified by the TRACMASS team.'
-                                                      | remove: remove_title
-                                                      | remove: remove_title2
-                                                      | remove: remove_title3
-                                                      | remove: 'ContactFAQContactFAQ'
-                                                      | remove: 'TRACMASSTRACMASS'
-                                                      | remove: 'TRACMASSdocumentation Welcome to TRACMASSdocumentation'
-                                                      -%}
+          {%- assign single_section = post.content | split: 'post-content' | slice: 1-%}
 
-
+          {%- assign cleaned_section = single_section | strip_html | replace: '\n', ' '| strip_newlines | remove: '["\">' | remove: '<!-- ."]' 
+                                                      | strip_newlines | remove: '    ' | replace: '  ', ' ' | replace: '  ', ' '
+                                                       -%}
           {
             "title"    : "{{ post.title | escape }}",
             "category" : "{{ post.category }}",
             "keywords" : "{{ post.keywords | join: ', ' }}",
             "url"      : "{{ site.baseurl }}{{ post.url | default: 'index.html' }}",
-            "content"  : "{{ cleaned_section | strip_newlines }}"
+            "content"  : "{{ cleaned_section }}"
           }
+          {%- unless forloop.last -%},{%- endunless -%}
           
         {% endif %}
+        
         
       {%- endcapture -%}
       
@@ -159,7 +119,7 @@ layout: none
         It checks if the current post is NOT the last one in the main list.
         It might still result in a trailing comma if the last item is filtered out. 
       {% endcomment %}
-      {%- unless forloop.last -%},{%- endunless -%}
+      
 
     {% endunless %}
   {% endfor %}

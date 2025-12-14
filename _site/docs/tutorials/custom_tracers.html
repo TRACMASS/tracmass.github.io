@@ -72,6 +72,10 @@
             </li>
 
             <li class="menu-item ">
+              <a href="../../../docs/contribute/contribute.html" class="">Contribute</a>
+            </li>
+
+            <li class="menu-item ">
               <a href="../../../news.html" class="">News</a>
             </li>
 
@@ -95,31 +99,6 @@
               </a>
             </li>
 
-            <!--
-            <li class="menu-item search-bar">
-              <a href="../../../search-results.html" class="">Search</a>
-              <svg class="icon" viewBox="0 0 1024 1024">
-                <path class="path1"
-                  d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
-                </path>
-              </svg>
-            </li>
-            
-            <li class="menu-item search-bar">
-              <form id="form" action="../../../search-results.html" role="search" method="GET">
-                <input type="text" id="query" name="search-phrase" placeholder="Search..." aria-label="Search through site content">
-
-                <button id="search-button">
-                  <svg class="icon" viewBox="0 0 1024 1024">
-                    <path class="path1"
-                      d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
-                    </path>
-                  </svg>
-                </button>
-
-              </form>
-            </li>
-            -->
           </ul>
         </div>
       </nav><!--.site-navigation -->
@@ -172,10 +151,11 @@
             </li>
 
 
-            <!-- Setting up NetCDF -->
+            <!-- Setting up NetCDF 
             <li class="docs-menu-item ">
               <a href="../../../docs/configuration/netcdf-setup.html">NetCDF set up</a>
             </li>
+            -->
 
           </ul>
         </li>
@@ -250,11 +230,11 @@
               <a href="../../../docs/tutorials/seeding_file.html">Seeding Trajectories</a>
             </li>
 
-            <!--  -->
+            <!-- 
             <li class="docs-menu-item ">
               <a href="../../../docs/tutorials/streamfunctions.html">Streamfunctions</a>
             </li>
-
+             -->
           </ul>
         </li>
 
@@ -304,31 +284,38 @@
 
           <article class="post type-docs">
             <div class="post-inside">
-
-              <header class="post-header">
-                <h1 class="post-title line-left">Adding Custom Tracers (UNDER CONSTRUCTION - spelling and grammar check)</h1>
+              <header class="post-header-wdate">
+                  <h1 class="post-title line-left">
+                      <p>Adding Custom Tracers</p>
+                  </h1>
+                  <p class="header-metadata-wdate"><strong>Last updated:</strong><br>  <em>November 6, 2025</em></p>
               </header><!-- .post-header -->
+              <!--<header class="post-header">
+                <h1 class="post-title line-left">Adding Custom Tracers
+                </h1>
+              </header> .post-header -->
 
               <div class="post-content">
                 <!-- For mathematical equations -->
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default"></script>
 
-                <h2 id="Introduction">Introduction</h2>
-
+                
                 <p>Besides calculating the trajectory a parcel will take in space and time, TRACMASS can also calculate
                   the characteristic values of its trajectories, which are known as <em>tracers</em>. This allows to see
                   how a trajectory's tracer values, such as temperature and salinity, change along the way. For more
-                  detailed information on tracers themsevles refer to the documentation <a
-                    href="../../../docs/components/main_modules.html#mod_tracersf90">here</a>.
+                  detailed information on tracers themselves refer to the documentation
+                  <a href="../../../docs/components/main_modules.html#mod_tracersf90">here</a>.
                 </p>
 
-                <p>In this example we present the procedure of adding an additional tracer that is calulated from
+                <p>In this example, we present the procedure of adding an additional tracer that is calculated from
                   already presented variables. We will have potential temperature (<em>To</em>) and salinity
-                  (<em>S</em>) as input data, and we will write a tracer function that converts temperature from Celsius
-                  to Kelvin degrees. Even though this example is a primitive unit conversion, the aim of this is to
-                  bring attention to the procedure of adding additional custom tracers in the code itself.
+                  (<em>S</em>) as input data, and we will write a tracer function that converts temperature from
+                  degrees Celsius to degrees Kelvin. Even though this example is a primitive unit
+                  conversion, the aim of this is to bring attention to the procedure of adding additional custom tracers
+                  in the code itself.
                 </p>
 
+                <div class="search-content"></div>
                 <h2 id="Adding extra tracer function">Adding extra tracer function</h2>
 
                 <p>There are two files that would be necessary to modify to add an additional tracer:
@@ -338,36 +325,41 @@
                   <li><strong>mod_tracers.F90</strong> - contains support functions for a specific tracer's
                     calculations, for example, a function for density calculations</li>
                 </ul>
-                Of course, there are many ways how to implement additional tracers into the code, but this method is
-                recommended, as it seamessly integrates into the already existing source code.
+                Of course, there are many ways to implement additional tracers into the code, but this
+                method is recommended, as it seamlessly integrates into the already existing
+                source code.
                 </p>
 
                 <p>
-                  First we will write a function that will convert from Celsius to Kelvin degrees, after which we will
-                  add a few extra lines in another function so that our tracer can be callable. Finally, we will add
-                  out newly created tracer category in the namelist and test if it is working correctly.
+                  First, we will write a function that will convert from degrees Celsius to
+                  degrees Kelvin, after which we will add a few extra lines in another function so that our tracer can
+                  be callable. Finally, we will add our newly created tracer category in the namelist and test if it is
+                  working correctly.
                 </p>
 
                 <h3 id="Setting up mod_tracerf.F90">Setting up <em>mod_tracerf.F90</em></h3>
 
                 <p>
-                  First we will create a function that carries out the calculations of converting from Celsius to Kevlin
-                  degrees. Mathemtaically, very simple operation, done the following way:</p>
+                  First, we will create a function that carries out the calculations of converting from
+                  degrees Celsius to degrees Kelvin. Mathematically, this is a very simple operation,
+                  done the following way:
+                </p>
 
                 <script type="math/tex; mode=display">\textbf{T}[degK] = \textbf{T}[degC] + 273.15</script>
 
-                <p>We will call the function <em>celsius2kelvin</em> and we will send one variable over to the function,
-                  when we call it. The function itself needs to declare any varibales we might be using, in this case,
-                  we have
+                <p>We will call the function <em>celsius2kelvin</em> and we will send one variable over to the function
+                  when we call it. The function itself needs to declare any variables we
+                  might be using which in this case, we have
                 <ul>
-                  <li> <em>T</em> - input temperature in Celsius, which we want to convert to Kelvin degrees </li>
-                  <li> <em>celsius2kelvin</em> - output variable holding temperature in Kelvin degrees</li>
-                  <li> <em>nx, ny, nz</em> - variables to hold the input array's <em>T</em> shape in <em>x, y, z</em>
-                    dirrectoin accordingly</li>
+                  <li> <em>T</em> - input temperature in Celsius, which we want to convert to degrees Kelvin
+                  </li>
+                  <li> <em>celsius2kelvin</em> - output variable holding temperature in degrees Kelvin</li>
+                  <li> <em>nx, ny, nz</em> - variables to hold the input array's <em>T</em> shape in the x, y, and z
+                    directions accordingly</li>
                 </ul>
                 We create the array <em>celsius2kelvin</em> to have the same shape as the input array <em>T</em> with
-                the function <em>ALLOCATE</em>. Finally, we carry out the transofrmation from Celsius to Kelvin degrees.
-                The function written in Fortran is in the following code segment:
+                the function <em>ALLOCATE</em>. Finally, we carry out the transformation from degrees Celsius to
+                degrees Kelvin. The function written in Fortran is in the following code segment:
                 </p>
 
                 <pre class='highlight'><code>FUNCTION celsius2kelvin(T)
@@ -410,9 +402,9 @@
 
                 <div class="note">
                   <strong>Note:</strong> <br />
-                  It is good practice to document your code with adding a commented section with a short description of
+                  It is good practice to document your code by adding a comment section with a short description of
                   the function's purpose and the method used. Furthermore, it is good to write readable code, or at the
-                  very least, adding comments to your code when the various <em>functions</em>, <em>loops</em> and
+                  very least, add comments to your code when the various <em>functions</em>, <em>loops</em> or
                   <em>if</em>-statements start growing in complexity. The future you will thank you for it later when
                   you review your code.
                 </div>
@@ -421,10 +413,10 @@
                 <h3 id="Setting up mod_tracers.F90">Setting up <em>mod_tracers.F90</em></h3>
 
                 <p>Next step is adding a few lines in the <em>mod_tracers.F90</em> file. Find the <em>SUBROUTINE</em>
-                  called
-                  <strong>compute_tracers(tracname, var3d)</strong>. This function is responsible for redirecting
-                  tracer to the correct function for it to be calculated. In our case, we will call our tracer
-                  '<strong>c2k</strong>', so we add an additional IF-ELSE branch to the IF-ELSE structure, which is the
+                  called <strong>compute_tracers(tracname, var3d)</strong>. This function is responsible for redirecting
+                  the tracer to the correct function for it to be calculated. In our case, we will call our
+                  tracer '<strong>c2k</strong>', so we add an additional IF-ELSE branch to the IF-ELSE structure, which
+                  is the
                   last branch in the code below:
                 </p>
 
@@ -480,15 +472,17 @@ var3d = REAL( celsius2kelvin( REAL( tracers(1)%data(:,:,:,2) ,4) ), 8)
 
 
                 In general, tracer data has 4-dimensions (x, y, z, t) with two possible time steps -
-                <strong>1</strong> is for the past and <strong>2</strong> is for current time step. Depending on the
-                tracer, there may be variations in which time step is chosen for other tracer calculations, but in
-                general, the current data (<strong>2</strong>) is used to calculate other derivative tracers.
+                <strong>1</strong> is for the past and <strong>2</strong> is for the current time step.
+                Depending on the tracer, there may be variations in which time step is chosen for other
+                tracer calculations, but in general, the current data (<strong>2</strong>) is used to calculate other
+                derivative tracers.
                 </p>
 
                 <p>After the code has been modified, attempt to compile the code and run a test simulation without
-                  making changes to the namelist file. If everythinging has been set up correctly, there should be no
+                  making changes to the namelist file. If everything has been set up correctly, there should be no
                   error and no changes to the output data. </p>
 
+                <div class="search-content"></div>
                 <h2 id="Setting up the namelist">Setting up the namelist</h2>
 
                 <p>Finally, now that we have set up the code and tested it, we can make changes to the <em>namelist</em>
@@ -499,10 +493,10 @@ var3d = REAL( celsius2kelvin( REAL( tracers(1)%data(:,:,:,2) ,4) ), 8)
 
                 <div class="note">
                   <strong>Note:</strong> <br />
-                  It is recomended to keep the potential temperature (<em>To</em>) and salinity (<em>S</em>) tracers in
-                  the first and second index
-                  position. Some in-built functions rely on them being in these position, so, to not cause extra
-                  problems and ensure that the calculatiosn are correct, do not remove or replace them.
+                  It is recommended to keep the potential temperature (<em>To</em>) and salinity (<em>S</em>) tracers in
+                  the first and second index position. Some in-built functions rely on them being in these
+                  positions, so, to not cause extra problems and ensure that the calculations are correct, do not
+                  remove or replace them.
                 </div>
 
                 <pre class='highlight'><code>&INIT_TRACERS
@@ -535,7 +529,8 @@ var3d = REAL( celsius2kelvin( REAL( tracers(1)%data(:,:,:,2) ,4) ), 8)
                   either try to debug the code or carefully go through these instructions again. Using this as a guide,
                   it is possible to add various other tracers to TRACMASS. </p>
 
-                
+
+
 
               </div><!-- .post-content -->
 
