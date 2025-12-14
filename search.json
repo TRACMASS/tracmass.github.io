@@ -73,7 +73,7 @@ layout: none
                   "title"    : "{{ post.title }}{{ ' - ' }}{{ section_title }}",
                   "category" : "{{ post.category }}",
                   "keywords" : "{{ post.keywords | split: 'break' | slice: index_count }}",
-                  "url"      : "{{ site.baseurl }}{{ post.url }}{{ '#' }}{{  section_title }}",
+                  "url"      : "{{ site.baseurl }}{{ post.url }}{{ '#' }}{{  section_title | remove: '.' | downcase }}",
                   "content"  : "{{ cleaned_section | strip_newlines }}"
 
                 } 
