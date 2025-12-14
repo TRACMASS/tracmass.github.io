@@ -1,0 +1,126 @@
+---
+layout: none
+---
+{%- assign page_count = site.pages | size -%}
+{%- assign index_count = 0 -%}
+[
+  {% for post in site.pages %}
+  
+    {% comment %} 
+      (A) Here we can define files to exclude:
+    {% endcomment %}
+    {% unless post.url contains "404.html" 
+                        or post.url contains "search.json" 
+                        or post.url contains "search-script.js" 
+                        or post.url contains "search-results.html" 
+                        or post.url contains "search_original.json" 
+                        or post.url contains "streamfunctions.html"
+                        or post.url contains "html_template.html" %}
+
+      {%- capture item_json -%}
+      
+        {% comment %} 
+          (B) Here we define pages that have multiple components that we want to separate 
+          in more sections. 
+        {% endcomment %}
+        {% if post.url contains "main_modules.html" or
+              post.url contains "namelist.html" or 
+              post.url contains "project.html" or
+              post.url contains "setup_grid.html" or
+              post.url contains "seeding_file.html" or
+              post.url contains "read_field.html"%}
+          
+          {%- assign page_sections = post.content | split: '<div class="search-content"></div>' -%}
+          {%- assign section_count = page_sections | size | minus: 1 -%}
+          
+          {%- assign section_keywords = post.keywords | split: 'break,' -%}
+
+          {%- assign index_count = 0 -%}
+
+          {% for single_section in page_sections offset: 1 %}
+
+            {% if forloop.index != 1 or forloop.index != section_count %} 
+              {%- assign index_count = index_count | plus: 1 -%}
+
+              {%- assign section_title =  single_section | split: '</h2>' | slice: 0 | strip_html
+                                                         | remove: '["' | remove: '"]' | replace: '\n', ' '| strip -%}
+
+              {%- assign cleaned_section = single_section | strip_html 
+                                                          | strip_newlines 
+                                                          | replace: '    ', '' | replace: '    ', '' | replace: '  ', ' '  
+                                                          | remove: section_title 
+                                                          | url_encode | remove: '%22' | remove: '%23' | replace: '%3A', ' ' 
+                                                          | replace: '%2C', ' ' | replace: '%28', ' ' | replace: '%29', ' ' | replace: '%5B', ' ' 
+                                                          | replace: '%5D', ' ' | replace: '%7B', ' ' | replace: '%7D', ' ' | replace: '%3B', ' '
+                                                          | replace: '%2F', ' ' | replace: '%5C', ' ' | replace: '%26', ' ' | replace: '%3C', ' ' 
+                                                          | replace: '%3E', ' ' | replace: '%25', ' ' | replace: '%09', ' ' | replace: '%21', ' ' 
+                                                          | replace: '%2A', ' ' | replace: '%2B', ' ' | replace: '%40', ' ' | replace: '%5E', ' ' 
+                                                          | replace: '%7E', ' ' | replace: '%27', ' ' | replace: '%3F', ' ' | url_decode 
+                                                          | remove: '  ' | remove: '  ' -%}
+              
+
+              {% if forloop.first %}
+                {
+                "title"    : "{{ post.title | escape }}",
+                "category" : "{{ post.category }}",
+                "keywords" : "{{ post.keywords | split: 'break' | slice: index_count }}",
+                "url"      : "{{ site.baseurl }}{{ post.url }}",
+                "content"  : "{{ cleaned_section | strip_newlines }}"
+
+              } 
+              {% else %}
+                {
+                  "title"    : "{{ post.title }}{{ ' - ' }}{{ section_title }}",
+                  "category" : "{{ post.category }}",
+                  "keywords" : "{{ post.keywords | split: 'break' | slice: index_count }}",
+                  "url"      : "{{ site.baseurl }}{{ post.url }}{{ '#' }}{{  section_title }}",
+                  "content"  : "{{ cleaned_section | strip_newlines }}"
+
+                } 
+              {% endif %} ,
+
+
+            
+            {% endif %}
+          
+          {% endfor %}
+          
+        {% else %}
+          {%- assign index_count = index_count | plus: 1 -%}
+
+          {%- assign single_section = post.content | split: 'post-content' | slice: 1-%}
+
+          {%- assign cleaned_section = single_section | strip_html | replace: '\n', ' '| strip_newlines | remove: '["\">' | remove: '<!-- ."]' 
+                                                      | strip_newlines | remove: '    ' | replace: '  ', ' ' | replace: '  ', ' '
+                                                       -%}
+          {
+            "title"    : "{{ post.title | escape }}",
+            "category" : "{{ post.category }}",
+            "keywords" : "{{ post.keywords | join: ', ' }}",
+            "url"      : "{{ site.baseurl }}{{ post.url | default: 'index.html' }}",
+            "content"  : "{{ cleaned_section }}"
+          }
+          {%- unless forloop.last -%},{%- endunless -%}
+          
+        {% endif %}
+        
+        
+      {%- endcapture -%}
+      
+      {% comment %} 
+        Output the JSON only if it's not empty, 
+        and conditionally add a comma AFTER the item.
+        NOTE: This still requires manually counting items or testing to fix the last comma.
+      {% endcomment %}
+      {{ item_json | strip }} 
+      
+      {% comment %} 
+        This is the most reliable comma placement for complex loops.
+        It checks if the current post is NOT the last one in the main list.
+        It might still result in a trailing comma if the last item is filtered out. 
+      {% endcomment %}
+      
+
+    {% endunless %}
+  {% endfor %}
+]

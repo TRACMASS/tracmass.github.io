@@ -1,0 +1,94 @@
+---
+title: Configuration
+keywords: 
+category: documentation
+url: configuration.html
+---
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>Configuration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="shortcut icon" href="../../images/headers_footer/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../images/headers_footer/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="palette-navy">
+
+  <div id="page" class="site">
+    
+    {%include header.html pre_link="../../" %}
+
+    <main id="content" class="site-content">
+      <div class="inner outer">
+        <div class="docs-content">
+
+          {% include doc_navigation.html %}
+
+          <article class="post type-docs">
+            <div class="post-inside">
+              <header class="post-header-wdate">
+                  <h1 class="post-title line-left">
+                      <p>Configuration</p>
+                  </h1>
+                  <p class="header-metadata-wdate"><strong>Last updated:</strong><br>  <em>{{ page.last_modified_at | date: "%B %-d, %Y" }}</em></p>
+              </header><!-- .post-header -->
+              <!--<header class="post-header">
+                <h1 class="post-title line-left">Configuration</h1>
+              </header> .post-header -->
+              <div class="post-content">
+                <p>The present chapter will present how to configure and run the <strong>TRACMASS</strong> Lagrangian
+                  trajectory model, as well as how to configure a customised experiment.</p>
+
+                <hr />
+
+                <p>Here are the articles in this section:</p>
+
+
+                <ul id="docs-section-items" class="docs-section-items">
+
+                  <li class="docs-section-item"><a href="installation.html"
+                      class="docs-item-link">Installation and Theoretical Run<span class="icon-angle-right" aria-hidden="true"></span></a>
+                  </li>
+
+                  <li class="docs-section-item"><a href="quick-start.html" class="docs-item-link">How to set up an
+                      experiment<span class="icon-angle-right" aria-hidden="true"></span></a>
+                  </li>
+                  <!--
+                  <li class="docs-section-item"><a href="netcdf-setup.html" class="docs-item-link">NetCDF Set up
+                    <span class="icon-angle-right" aria-hidden="true"></span></a>
+                  </li>
+                  -->
+                </ul><!-- .docs-section-pages -->
+
+
+              </div><!-- .post-content -->
+            </div><!-- .post-inside -->
+          </article><!-- .post -->
+          <nav id="page-nav" class="page-nav">
+            <div id="page-nav-inside" class="page-nav-inside sticky">
+              <h2 class="page-nav-title">Jump to Section</h2>
+              <div id="page-nav-link-container"></div>
+            </div><!-- .page-nav-inside -->
+          </nav><!-- .page-nav -->
+        </div><!-- .docs-content -->
+      </div><!-- .inner-->
+
+    </main><!-- .site-content -->
+
+    {% include footer.html%}
+
+  </div><!-- .site -->
+
+</body>
+
+</html>

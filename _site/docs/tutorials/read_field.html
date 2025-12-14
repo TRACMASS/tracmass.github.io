@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>Reading in Variables</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="shortcut icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="palette-navy">
+
+  <div id="page" class="site">
+
+    <header id="masthead" class="site-header outer">
+  <div class="inner">
+    <div class="site-header-inside">
+
+      <div class="site-branding">
+        <p class="site-logo"><a href="../../../index.html">
+            <img src="../../../images/headers_footer/fig_tracmass.png" alt="TRACMASS logo" /></a></p>
+      </div><!-- .site-branding -->
+
+      <nav id="main-navigation" class="site-navigation" aria-label="Main Navigation">
+        <div class="site-nav-inside">
+
+          <button id="menu-close" class="menu-toggle">
+            <span class="screen-reader-text">Open Menu</span>
+            <span class="icon-close" aria-hidden="true"></span>
+          </button>
+
+          <ul class="menu">
+            <li class="menu-item ">
+              <a href="../../../index.html" class=""> Home </a>
+            </li>
+
+            <li class="menu-item  current active ">
+              <a href="../../../docs.html" class="">Documentation</a>
+            </li>
+
+
+            <li class="menu-item
+                          has-children">
+              <a href="../../../index.html" class="">Publications & Examples</a>
+              <button class="submenu-toggle">
+                <span class="icon-angle-right" aria-hidden="true"></span>
+                <span class="screen-reader-text">Sub-menu</span>
+              </button>
+
+              <ul class="submenu">
+                <li class="menu-item ">
+                  <a href="../../../publications.html" class="">Publications </a>
+                </li>
+
+                <li class="menu-item ">
+                  <a href="../../../examples.html" class="">Example Gallery </a>
+                </li>
+
+              </ul>
+            </li>
+
+            <li class="menu-item ">
+              <a href="../../../contact.html" class="">Contact & FAQ </a>
+            </li>
+
+            <li class="menu-item ">
+              <a href="../../../docs/contribute/contribute.html" class="">Contribute</a>
+            </li>
+
+            <li class="menu-item ">
+              <a href="../../../news.html" class="">News</a>
+            </li>
+
+            <li class="menu-item menu-button">
+              <a href="https://github.com/TRACMASS/tracmass" class="button button-icon">
+                <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                </svg>
+                <span class="screen-reader-text">GitHub</span>
+              </a>
+            </li>
+
+            <li class="menu-item ">
+              <a href="../../../search-results.html" class="button button-icon">Search&nbsp;
+                <svg class="icon" viewBox="0 0 1024 1024">
+                  <path class="path1"
+                    d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
+                  </path>
+                </svg>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </nav><!--.site-navigation -->
+    </div><!-- .site-header-inside -->
+  </div><!-- .inner -->
+</header><!-- .site-header -->
+
+    <main id="content" class="site-content">
+      <div class="inner outer">
+        <div class="docs-content">
+
+          <nav id="docs-nav" class="docs-nav">
+  <div id="docs-nav-inside" class="docs-nav-inside sticky">
+
+    <button id="docs-nav-toggle" class="docs-nav-toggle">Navigate Docs<span class="icon-angle-right"
+        aria-hidden="true"></span></button>
+    <div class="docs-nav-menu">
+      
+      <!-- Here the navigation part starts-->
+      <ul id="docs-menu" class="docs-menu">
+        
+        <!-- Welcome to TRACMASS' documentation -->
+        <li class="docs-menu-item ">
+          <a href="../../../../docs.html">Welcome to TRACMASS' documentation</a>
+        </li>
+        
+        <!-- About -->
+        <li class="docs-menu-item ">
+          <a href="../../docs/about/about.html">About</a>
+        </li>
+
+        <!-- Configuration (submenu) -->
+        <li class="docs-menu-item
+                   
+                   has-children">
+          <a href="../../../docs/configuration/configuration.html">Configuration</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+            <!-- Installation -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/configuration/installation.html">Installation and Theoretical Run</a>
+            </li>
+
+            <!-- How to set up an experiment -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/configuration/quick-start.html">How to set up an experiment</a>
+            </li>
+
+
+            <!-- Setting up NetCDF 
+            <li class="docs-menu-item ">
+              <a href="../../../docs/configuration/netcdf-setup.html">NetCDF set up</a>
+            </li>
+            -->
+
+          </ul>
+        </li>
+
+        <!-- TRACMASS Components (submenu) -->
+        <li class="docs-menu-item
+                   
+                   has-children">
+          <a href="../../../docs/components/components.html">TRACMASS Components</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!-- Main Program -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/components/main_program.html">Main program</a>
+            </li>
+
+            <!-- Main modules -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/components/main_modules.html">Main modules</a>
+            </li>
+
+            <!-- Namelist -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/components/namelist.html">Namelist</a>
+            </li>
+
+            <!-- The projects folder -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/components/project.html">The <em>Projects </em>folder</a>
+            </li>
+
+          </ul>
+        </li>
+        
+        <!-- TRACMASS Tutorials -->
+        <li class="docs-menu-item
+                    current active 
+                   has-children">
+          <a href="../../../docs/tutorials/tutorials.html">TRACMASS Tutorials</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tutorials/custom_tracers.html">Adding Custom Tracers</a>
+            </li>
+            
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tutorials/setup_grid.html">Grid Setup</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tutorials/kill_zones.html">Killing Trajectories</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item  current active ">
+              <a href="../../../docs/tutorials/read_field.html">Reading in Variables</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tutorials/seeding_file.html">Seeding Trajectories</a>
+            </li>
+
+            <!-- 
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tutorials/streamfunctions.html">Streamfunctions</a>
+            </li>
+             -->
+          </ul>
+        </li>
+
+        <!-- TRACMASS output -->
+        <li class="docs-menu-item ">
+          <a href="../../../docs/output/output.html">TRACMASS output</a>
+        </li>
+
+        <!-- Tools (Submenu) -->
+        <li class="docs-menu-item 
+                   
+                   has-children">
+          <a href="../../../docs/tools/tools.html">Tools</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!-- In situ postprocessing -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tools/insitu.html"><em>In situ</em> postprocessing</a>
+            </li>
+
+            <!-- pyTRAJ -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tools/pytraj.html">pyTRAJ</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- References -->
+        <li class="docs-menu-item ">
+          <a href="../../../docs/references/references.html">References</a>
+        </li>
+
+        <!-- How to contribute -->
+        <li class="docs-menu-item ">
+          <a href="../../../docs/contribute/contribute.html">Contribute</a>
+        </li>
+
+      </ul><!-- .docs-menu -->
+    </div><!-- .docs-nav-menu -->
+  </div><!-- .docs-nav-inside -->
+</nav><!-- .docs-nav -->
+
+          <article class="post type-docs">
+            <div class="post-inside">
+              <header class="post-header-wdate">
+                  <h1 class="post-title line-left">
+                      <p>Reading in Variables</p>
+                  </h1>
+                  <p class="header-metadata-wdate"><strong>Last updated:</strong><br>  <em>November 11, 2025</em></p>
+              </header><!-- .post-header -->
+
+              <!--<header class="post-header">
+                <h1 class="post-title line-left">Reading in Variables</h1>
+              </header> .post-header -->
+
+              <div class="post-content">
+
+                <h2 id="Introduction">Introduction</h2>
+                <div class="search-content"></div>
+                <p>TRACMASS can read in various variables, such as different levels of velocity field resolution and
+                  tracer variables like temperature and salinity. The user has high flexibility available when it
+                  comes to input data reading. However, the process is not straightforward, thus, a short guide is
+                  presented here in hopes to clear up some of the confusion.
+                </p>
+
+                <p>In this chapter, we will illustrate the basics of file reading and the general logic behind it. This
+                  chapter is mainly written for the setup of <strong>read_field.F90</strong>, but the methods are the same for
+                  <strong>setup_grid.F90</strong> (and <strong>kill_zones.F90</strong>). All of these files are located in the project
+                  folder (read more about the project folder <a href="../../../docs/components/project.html">here</a>).
+                  Furthermore, instead of writing the algorithm yourself from scratch, it is recommended to use one of
+                  the provided files and modify it to your needs. This way you will save time and your sanity.
+                </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  It is recommended to use the <strong>read_field.F90</strong> file as a template for reading in the necessary
+                  data,
+                  by finding a file that best fits your project's needs and modifying it where necessary.
+                </div>
+
+                <div class="search-content"></div>
+                <h2 id="Structure of read_field.F90">Structure of read_field.F90</h2>
+
+                <p>The function to read in variables is called every global time iteration. In general, the file can be
+                  split up in two parts: data reading into TRACMASS, and data transformation/processing so that the data
+                  fits TRACMASS' framework. An example of this is velocity field data on an Arakawa A-grid.
+                  TRACMASS carries out its calculations with data distributed on an Arakawa C-grid, thus, to accurately
+                  run the simulation, it is necessary to transform the dataset from Arakawa A-grid to C-grid. As every
+                  dataset will differ, there is no standardized method for reading in the data from global climate model
+                  simulations. Thus, you will most likely need to modify some of the data for TRACMASS to work with it
+                  in the <strong>read_field.F90</strong> file.
+                </p>
+
+                <p>This is a list of variables that are <strong>mandatory</strong> to be populated:
+                <ul>
+                  <li><strong>uflux</strong> - volume/mass flux through a grid face in the x direction</li>
+                  <li><strong>vflux</strong> - same as <strong>uflux</strong> but in the y direction</li>
+                  <li><strong>dzt</strong> - size of the vertical wall computed at T points.</li>
+                </ul>
+                This is the bare minimum data needed in the <strong>read_field.F90</strong> file for calculating trajectories.
+                </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  The file <strong>read_field.F90</strong> is called every global time step and at the very top of the file,
+                  subroutine <code>swap_time()</code> is called, which handles the velocity and tracer field time
+                  stepping for
+                  you.
+                </div>
+
+                <div class="search-content"></div>
+                <h2 id="Reading in velocity fields">Reading in velocity fields</h2>
+
+                <p>Even though the horizontal velocity (or flux fields) are mandatory, the subgrid level data for these
+                  fields
+                  are optional. Thus, <strong>ueul_name</strong> and <strong>veul_name</strong> must be defined, while
+                  the other ones can be left empty or completely omitted from the namelist file. An example of setting
+                  up the namelist for TRACMASS to read in the velocity field is the following:
+                </p>
+
+                <pre class='highlight'><code>&INIT_GRID_DESCRIPTION
+       !   Direction of the grid (1 - E->W, S->N, B->U)
+       griddir = 1,1,-1
+
+       !   Does the netcdf data start with a zero index?
+       zeroindx = .FALSE.
+
+       !   Directory of physical data (u,v,T,S,MLD,etc)
+       physDataDir    = '',
+       !   Physical data file prefix         
+       physPrefixForm = 'ORCA1-N406_',
+       !   Date format for physical data
+       dateformat     = 'YYYYMMDD'
+       !   Name of Tgrid, Ugrid and Vgrid
+       tGridName      = '',
+       uGridName      = '',
+       vGridName      = '',
+
+       !   Suffix of files, e.g. ".nc"
+       fileSuffix     = '.nc',
+
+       !   Variable names in the physical data file
+       !   Sea surface height
+       hs_name        = 'sossheig'
+       !   Name of resolved zonal (u) velocity and
+       !   ------//------ meridional (v) velocity
+       ueul_name      = 'vozocrtx',
+       veul_name      = 'vomecrty',
+
+       !   Name of eddy induced zonal (u) velocity
+       !   -----//----- meridional (v) velocity
+       usgs_name      = 'vozoeivu', 
+       vsgs_name      = 'vomeeivv',
+
+       !   Name of secondary subgrid zonal (u) velocity
+       !   -----//----- meridional (v) velocity
+       usub_name       = '',
+       vsub_name       = '',
+/</code></pre>
+
+
+                <p>In this example, we have our velocity data saved in the same file as our tracers, thus, the
+                  <strong>tGridName</strong>, <strong>uGridName</strong>, and <strong>vGridName</strong> fields have
+                  been left blank. In this case, these variables could have been completely omitted.
+                </p>
+
+                <p>Here we have also defined the location of our file, the various parts of the file format to merge
+                  it
+                  together, and finally, start the process of reading in the files. For this, there are two functions
+                  that
+                  you will use: <code>get2DfieldNC()</code> and <code>get3DfieldNC()</code>. As can be
+                  seen, both have the same inputs.</p>
+
+                <pre class='highlight'><code>get2DfieldNC(fieldFile ,varName, start2D, count2D, stcase)
+
+get3DfieldNC(fieldFile ,varName, start3D, count3D, stcase)
+</code></pre>
+
+                <p>
+                <ul>
+                  <li><strong>fieldFile</strong> - file name with the path to the file</li>
+                  <li><strong>varName</strong> - variable name that will be read in from the file</li>
+                  <li><strong>start2D/start3D</strong> - the starting index for reading the file in four dimensions [x,
+                    y, z, t]</li>
+                  <li><strong>count2D/count3D</strong> - the number of indexes to read in four dimensions [x, y, z, t]
+                  </li>
+                  <li><strong>stcase</strong> - the storage format of the array (refer to the <a
+                      href="docs/components/main_modules.html#mod_getfilef90">documentation</a>)</li>
+                </ul>
+                </p>
+
+                <p>This is how the code would look in our <strong>read_field.F90</strong> file. In this case, we read in the
+                  whole spatial
+                  domain and only one timestep, specifically the first time step, as our <em>`.nc`</em> file starts with index=1.
+                </p>
+
+                <pre class='highlight'><code>! Create a prefix that is used for the date formatting.
+dateprefix = filledFileName(dateFormat, currYear, currMon, currDay)
+
+! Create a path to the file from which the data will be read
+fieldFile = TRIM(physDataDir)//TRIM(physPrefixForm)//TRIM(dateprefix)//TRIM(fileSuffix)
+
+! Call a function that reads 'ueul_name' from the defined file and saved it in array 'uvel'
+uvel(1:imt,1:jmt,1:km) = get3DfieldNC(fieldFile, ueul_name, [imindom,jmindom,1,1], [imt,jmt,km,1], 'st')
+
+! And do the same for the zonal velocity field. 
+vvel(1:imt,1:jmt,1:km) = get3DfieldNC(fieldFile, veul_name, [imindom,jmindom,1,1], [imt,jmt,km,1], 'st')
+</code></pre>
+
+
+                <p>There is high flexibility in the frequency of reading in data, thus great care
+                  should be taken to ensure the <strong>read_field.F90</strong> file algorithm matches the time stepping
+                  definition in the namelist file of the global time step. </p>
+
+                <div class="search-content"></div>
+                <h2 id="Reading tracers">Reading tracers</h2>
+
+                <p>Reading in tracer data is essentially the same as the velocity field data, and it is recommended to
+                  use
+                  the code for tracer reading found in project <strong>NEMO</strong>. Every <strong>iter</strong> iteration, the file
+                  reads in the next dataset or computes it. If reading from a file is necessary, the code checks if the
+                  dataset is 2D
+                  or 3D and reads the corresponding shape into the file. Finally, the dataset is saved in the correct
+                  timestep and can be used for future calculations.
+                </p>
+
+                <pre class='highlight'><code> !! Tracers
+ IF (l_tracers) THEN
+   ! Go throgh the tracers
+   DO itrac = 1, numtracers
+     ...
+     ...
+     ...
+   END DO    
+ END IF
+</code></pre>
+
+
+                <p>Next, it is necessary to understand the frequency of the general loop and also the time resolution of
+                  the tracer dataset itself. For example, if we have velocity field data with 15-minute resolution, we
+                  might want to read it in every 15 minutes, while a tracer, such as temperature, might only have hourly
+                  resolution. For this purpose, it is useful to use variables, such as <strong>currYear</strong>,
+                  <strong>currMon</strong>, <strong>currDay</strong>, <strong>currHour</strong>,
+                  <strong>currMin</strong>, <strong>currSec</strong>. For example, this is how the syntax would look
+                  conceptually:
+                </p>
+
+                <pre class='highlight'><code> !! Tracers
+ IF (l_tracers) THEN
+   ! Check if we are on the hour (10:00, 14:00, 00:00, etc...):
+   IF (currMin .EQ. 0) THEN
+     ! Go throgh the tracers
+     DO itrac = 1, numtracers
+       ! Read in or compute the tracers
+       ...
+       ...
+     END DO    
+   END IF
+ END IF
+</code></pre>
+
+
+                <p>If you would like to learn how to set up a custom tracer, check out this tutorial -> <a
+                    href="../../../docs/tutorials/custom_tracers.html">Add a Custom Tracer</a>.
+                </p>
+
+
+              </div><!-- .post-content -->
+
+            </div><!-- .post-inside -->
+          </article><!-- .post -->
+          <nav id="page-nav" class="page-nav">
+            <div id="page-nav-inside" class="page-nav-inside sticky">
+              <h2 class="page-nav-title">Jump to Section</h2>
+              <div id="page-nav-link-container"></div>
+            </div><!-- .page-nav-inside -->
+          </nav><!-- .page-nav -->
+        </div><!-- .docs-content -->
+      </div><!-- .inner-->
+
+    </main><!-- .site-content -->
+
+    <footer id="colophon" class="site-footer outer">
+  <div class="inner">
+    <div class="site-footer-inside">
+
+      <p class="site-info">
+        <span class="copyright">&copy; Stackbit. All rights reserved. This Jamstack site was originally created by
+          Stackbit and modified by the TRACMASS team.</span>
+      </p>
+
+      <div class="social-links">
+
+      </div><!-- .social-links -->
+
+    </div><!-- .site-footer-inside -->
+  </div><!-- .inner -->
+</footer><!-- .site-footer -->
+
+<!-- Scripts -->
+<script src="../../../assets/js/plugins.js"></script>
+<script src="../../../assets/js/main.js"></script>
+<script src="../../../assets/js/page-load.js"></script>
+
+  </div><!-- .site -->
+
+</body>
+
+</html>

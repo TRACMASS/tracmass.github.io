@@ -1,0 +1,595 @@
+# COde examples for the tutorial section. 
+
+# File with examples for the namelist file. Just to make it a little bit more tidy
+# To add a snippet, simply add the variable with name var_name here and in the file you want to show it, ad the following line:
+
+#   {{ site.data.tutorial_examples.var_name }}
+
+# and at the top of the file in which you add the line above, at the very top you need to add two lines of triple dashes, as such (with no hashtag)
+
+#---
+#---
+
+# --------------------------------------------------------------------------------------
+# READ_FIELD
+
+read_field_velocity_namelist: |
+ <pre class='highlight'><code>&INIT_GRID_DESCRIPTION
+        !   Direction of the grid (1 - E->W, S->N, B->U)
+        griddir = 1,1,-1
+
+        !   Does the netcdf data start with a zero index?
+        zeroindx = .FALSE.
+
+        !   Directory of physical data (u,v,T,S,MLD,etc)
+        physDataDir    = '',
+        !   Physical data file prefix         
+        physPrefixForm = 'ORCA1-N406_',
+        !   Date format for physical data
+        dateformat     = 'YYYYMMDD'
+        !   Name of Tgrid, Ugrid and Vgrid
+        tGridName      = '',
+        uGridName      = '',
+        vGridName      = '',
+
+        !   Suffix of files, e.g. ".nc"
+        fileSuffix     = '.nc',
+
+        !   Variable names in the physical data file
+        !   Sea surface height
+        hs_name        = 'sossheig'
+        !   Name of resolved zonal (u) velocity and
+        !   ------//------ meridional (v) velocity
+        ueul_name      = 'vozocrtx',
+        veul_name      = 'vomecrty',
+
+        !   Name of eddy induced zonal (u) velocity
+        !   -----//----- meridional (v) velocity
+        usgs_name      = 'vozoeivu', 
+        vsgs_name      = 'vomeeivv',
+
+        !   Name of secondary subgrid zonal (u) velocity
+        !   -----//----- meridional (v) velocity
+        usub_name       = '',
+        vsub_name       = '',
+ /</code></pre>
+
+read_field_read_file: |
+ <pre class='highlight'><code>! Create a prefix that is used for the date formatting.
+ dateprefix = filledFileName(dateFormat, currYear, currMon, currDay)
+
+ ! Create a path to the file from which the data will be read
+ fieldFile = TRIM(physDataDir)//TRIM(physPrefixForm)//TRIM(dateprefix)//TRIM(fileSuffix)
+
+ ! Call a function that reads 'ueul_name' from the defined file and saved it in array 'uvel'
+ uvel(1:imt,1:jmt,1:km) = get3DfieldNC(fieldFile, ueul_name, [imindom,jmindom,1,1], [imt,jmt,km,1], 'st')
+
+ ! And do the same for the zonal velocity field. 
+ vvel(1:imt,1:jmt,1:km) = get3DfieldNC(fieldFile, veul_name, [imindom,jmindom,1,1], [imt,jmt,km,1], 'st')
+ </code></pre>
+
+read_field_tracers: |
+ <pre class='highlight'><code> !! Tracers
+  IF (l_tracers) THEN
+    ! Go throgh the tracers
+    DO itrac = 1, numtracers
+      ...
+      ...
+      ...
+    END DO    
+  END IF
+ </code></pre>
+
+read_field_tracer_frequency: |
+ <pre class='highlight'><code> !! Tracers
+  IF (l_tracers) THEN
+    ! Check if we are on the hour (10:00, 14:00, 00:00, etc...):
+    IF (currMin .EQ. 0) THEN
+      ! Go throgh the tracers
+      DO itrac = 1, numtracers
+        ! Read in or compute the tracers
+        ...
+        ...
+      END DO    
+    END IF
+  END IF
+ </code></pre>
+
+read_field_get_file_function: |
+ <pre class='highlight'><code>get2DfieldNC(fieldFile ,varName, start2D, count2D, stcase)
+
+ get3DfieldNC(fieldFile ,varName, start3D, count3D, stcase)
+ </code></pre>
+
+# --------------------------------------------------------------------------------------
+# KILL_ZONES
+
+kill_zones_exitType2: |
+ <pre class='highlight'><code>&INIT_TRACERS
+      l_tracers = .TRUE.
+
+      ! Tracer name (description)
+      tracername =   'To',         'S',
+      ! Tracer unit (description)
+      tracerunit =   'degC',       'PSU',
+
+      ! Name of the variable in the netcdf (if it's read)
+      tracervarname ='votemper',   'vosaline',
+
+      ! Action (read or compute)
+      traceraction = 'read',       'read',
+
+      ! Minimum and maximum value of the binning
+      tracermin =    -3,           32,
+      tracermax =    33,           38,
+
+      ! Dimension of the tracer
+      tracerdimension = 3D,        3D,
+ /
+ &INIT_KILLZONES
+      timax = 75000 ! time limit for traj [days]
+
+      exitType = 2
+
+      ! Choose which tracers will beused for kill zones, here we have
+      !              temperature   salinity
+      tracerchoice = 1,            2
+      tracere      = 25,           35
+      maxormin     =  1,           -1
+      
+ /</code></pre>
+
+# --------------------------------------------------------------------------------------
+# CUSTOM_TRACERS
+ 
+custom_tracers_tracerf_function: |
+ <pre class='highlight'><code>FUNCTION celsius2kelvin(T)
+  ! --------------------------------------------------
+  !
+  ! Purpose:
+  ! Transform temperature from Celsius to Kelvin units
+  !
+  ! Method:
+  ! T(K) = T(C) + 273.15
+  !
+  ! --------------------------------------------------
+      IMPLICIT NONE
+
+      ! Input data, Temperature [degC]
+      REAL, INTENT(IN)                         :: T(:,:,:)
+
+      ! Output data, Temperature [degK]
+      REAL, ALLOCATABLE, DIMENSION (:,:,:)     :: celsius2kelvin
+      ! Dimensions of the Temperature array
+      INTEGER                                  :: nx, ny, nz
+
+      ! Assigne dimension sizes
+      nx = SIZE(T,1); ny = SIZE(T,2); nz = SIZE(T,3);
+
+      ! Create the array with the correct shape
+      ALLOCATE(celsius2kelvin(nx,ny,nz))
+
+      ! Carry out calculations
+      celsius2kelvin(:,:,:) = T(:,:,:) + 273.15
+
+  END FUNCTION celsius2kelvin</code></pre>
+
+custom_tracers_mod_lines: |
+ <pre class='highlight'><code>MODULE mod_tracerf
+ !!----------------------------------------------
+ ...
+ !!----------------------------------------------
+
+ IMPLICIT NONE
+
+ CONTAINS
+
+ .............................
+ ...(ADD THE FUNCTION HERE)...
+ .............................
+
+ END MODULE mod_tracerf</code></pre>
+
+custom_tracers_tracers_compute: |
+ <pre class='highlight'><code>SUBROUTINE compute_tracer(tracname, var3d)
+   ! --------------------------------------------------
+   !
+   ! Purpose:
+   ! Compute tracer according to different functions
+   !
+   ! --------------------------------------------------
+
+   CHARACTER(len=100)          :: tracname
+   REAL(DP), DIMENSION(:,:,:)  :: var3d
+
+   ! Sigma 0 calculation (using T (degC) and S(g/kg))
+   IF (TRIM(tracname) == 'sigma0') THEN
+      var3d = REAL(thermo_dens0(... , ...),8)
+      var3d = var3d - 1000.d0
+
+   ! Sigma 0 calculation (using T (K) and S(g/kg))
+   ELSE IF (TRIM(tracname) == 'sigma0_K') THEN
+      var3d = REAL(thermo_dens0(..., ...),8)
+      var3d = var3d - 1000.d0
+
+   ! Conservative temperatue (CTo) calculation 
+   ! (using T (degC) and S(g/kg))
+   ELSE IF (TRIM(tracname) == 'CTo') THEN
+      var3d = REAL(thermo_pt2ct(..., ...),8)
+
+   ! Function we added, from degC to degK
+   ELSE IF (TRIM(tracname) == 'c2k') THEN
+      var3d = REAL(celsius2kelvin(REAL(tracers(1)%data(:,:,:,2),4)), 8)
+
+   END IF
+
+ END SUBROUTINE compute_tracer</code></pre>
+
+custom_tracers_tracers_breakdown: |
+ <pre class='highlight'><code> Format of the output tracer (double precision)
+          |   Function, for tracer calculations
+          |          |    Format of input variable (single precision)
+          |          |          |      Input variable (T, degC)
+          |          |          |              |
+ var3d = REAL( celsius2kelvin( REAL( tracers(1)%data(:,:,:,2) ,4) ), 8)
+ </code></pre>
+
+custom_tracers_namelist: |
+ <pre class='highlight'><code>&INIT_TRACERS
+      ! Should we evaluate tracers along the trajectories?
+      l_tracers = .TRUE.               
+
+      !      Temperature(C),       Salinity,    Temperature(K)
+      ! Tracer name (description)
+      tracername =    'To',        'S',          'c2k'
+      
+      ! Tracer unit (description)
+      tracerunit =    'degC',      'PSU',        'degK'
+
+      ! Name of the variable in the netcdf (if it's read)
+      tracervarname = 'thetao',    'so',         ' ',
+
+      ! Action (read or compute)
+      traceraction =  'read',      'read',       'compute'
+
+      ! Dimension of the tracer
+      tracerdimension = 3D,        3D,           3D,
+
+      ! Minimum and maximum value of the binning
+      tracermin =      -3,         32,           250,
+      tracermax =      33,         38,           330,
+ /</code></pre>
+
+# --------------------------------------------------------------------------------------
+# SEED_TRAJECTORIES
+
+seed_file_first_type: |
+ <pre class='highlight'><code>&INIT_SEEDING
+      ! (1)  forward in time
+      ! (-1) backward in time
+      nff            = 1,
+      
+      ! (1) zonal cell's wall     
+      ! (2) meridional cell's wall
+      ! (3) vertical cell's wall
+      isec           = 2,
+
+      ! (1)  start when flux > 0
+      ! (-1) start when flux < 0 
+      idir           = 1,
+
+      ! number of trajectories can be set by
+      ! (1) constant number of particles in all seeding cells
+      !     set by partQuant (particles / gridcell)
+      ! (2) Each particle reflects mass transport at seeding.
+      !     set by partQuant (m3/s or kg/s per particle)
+      ! (3) Each particle reflects air/water mass/volume at seeding.
+      !     set by partQuant in m3 or kg per particle
+      nqua           = 1,
+       
+      ! (if nqua=1) particles/gridcell
+      ! (if nqua=2) m3s-1/particle
+      ! (if nqua=3) m3/particle
+      partquant      = 1,
+
+      ! (1) seed using ist,jst,kst (below)
+      ! (2) seed using file with start positions
+      seedtype       = 1,
+
+
+      ! seed in box in range i = [ist1,ist2]
+      !                      j = [jst1,jst2]
+      !                      k = [kst1,kst2]
+
+      !                box1,  box2,  box3
+      ist1           = 285,   200,   400, 
+      ist2           = 325,   250,   500,
+      
+      jst1           = 270,   150,   1,
+      jst2           = 330,   170,   100,  
+      
+      kst1           = 1,     1,     10,
+      kst2           = 1,     100,   20,  
+
+      ! (1) seed only for specific times
+      ! (2) seed using file with start positions
+      seedtime       =  1, 
+ 
+      ! (if seedtime=1) seed only between tst1 and tst2
+      tst1           = 1,
+      tst2           = 1,
+ /</code></pre>
+
+seed_file_second_type: |
+ <pre class='highlight'><code>&INIT_SEEDING
+      ...
+      ...
+      
+      ! (1) seed using ist,jst,kst (below)
+      ! (2) seed using file with start positions
+      seedtype       = 2,
+
+      ! (if seedtype=2) directory of seed files
+      seeddir        = 'projects/global_model/seed_dir/',
+      
+      ! (if seedtype=2) name of seed START CONDITION file
+      seedfile       = 'seed_condition.txt',
+
+      ! (1) seed only for specific times
+      ! (2) seed using file with start positions
+      seedtime       =  1, 
+
+      ! (if seedtime = 2) name of seed TIME file
+      timefile       = 'seed_time.txt',
+ /</code></pre>
+
+seed_file_seed_conditions: |
+ <pre class='highlight'><code>! x_ind, y_ind, z_ind, isec, idir
+   200,   250,   10,    1,    1,    ! First seeding condition
+   200,   250,   10,    2,    1,    ! Second --//--
+   200,   250,   10,    3,    1,    ! Third  --//--
+    10,    12,    1,    1,    1,    ! Fourth --//--
+    10,    12,    1,    1,   -1,    ! Fifth  --//--
+ </code></pre>
+
+seed_type_constant_number: |
+ <pre class='highlight'><code>&INIT_SEEDING
+      ...
+      ...
+      ...
+
+      ! number of trajectories can be set by
+      ! (1) constant number of particles in all seeding cells
+      !     set by partQuant (particles / gridcell)
+      ! (2) Each particle reflects mass transport at seeding.
+      !     set by partQuant (m3/s or kg/s per particle)
+      ! (3) Each particle reflects air/water mass/volume at seeding.
+      !     set by partQuant in m3 or kg per particle
+      nqua           = 1,
+
+      ! (if nqua=1) particles/gridcell
+      ! (if nqua=2) m3s-1/particle
+      ! (if nqua=3) m3/particle
+      partquant      = 10,
+
+      ...
+      ...
+      ...
+ /</code></pre>
+
+seed_type_prop_mass_trans: |
+ <pre class='highlight'><code>&INIT_SEEDING
+      ...
+      ...
+      nqua           = 2,
+      partquant      = 6,
+      ...
+      ...
+ /</code></pre>
+
+seed_type_prop_mass: |
+ <pre class='highlight'><code>&INIT_SEEDING
+      ...
+      ...
+      nqua           = 3,
+      partquant      = 0.1,
+      ...
+      ...
+ /</code></pre>
+
+# --------------------------------------------------------------------------------------
+# SETUP_GRID
+setup_grid_a2c_transform: | 
+ <pre class='highlight'><code>! Set up the shapes of A and C grid arrays
+ ALLOCATE( tracer_A(imt+1, jmt+1, km+1), tracer_C(imt, jmt, km))
+
+ ! Arrays start with index=1 in FORTRAN unless stated otherwise
+ tracer_C(1:imt,1:jmt,1:kmt) = 0.125*( &
+            tracer_A(1:imt, 1:jmt,   1:km)  +  tracer_A(2:imt+1, 1:jmt,   1:km) + & 
+            tracer_A(1:imt, 2:jmt+1, 1:km)  +  tracer_A(2:imt+1, 2:jmt+1, 1:km) + &
+            tracer_A(1:imt, 1:jmt,   2:km+1) + tracer_A(2:imt+1, 1:jmt,   2:km+1) + & 
+            tracer_A(1:imt, 2:jmt+1, 2:km+1) + tracer_A(2:imt+1, 2:jmt+1, 2:km+1) ) 
+
+ ALLOCATE( uvel_A(imt, jmt+1, km+1), uvel_C(imt, jmt, km) )
+ uvel_C(1:imt,1:jmt,1:km) = 0.25*( &
+            uvel_A(1:imt, 1:jmt, 1:km)  +  uvel_A(1:imt, 2:jmt+1, 1:km) + &
+            uvel_A(1:imt, 1:jmt, 2:km+1) + uvel_A(1:imt, 2:jmt+1, 2:km+1) )
+
+ ALLOCATE( vvel_A(imt+1, jmt, km+1), vvel_C(imt, jmt, km))
+ vvel_C(1:imt,1:jmt,1:kmt) = 0.25*( &
+            vvel_A(1:imt, 1:jmt, 1:km)  +  vvel_A(2:imt+1, 1:jmt, 1:km) + &
+            vvel_A(1:imt, 1:jmt, 2:km+1) + vvel_A(2:imt+1, 1:jmt, 2:km+1) )
+ </code></pre>
+
+setup_grid_b2c_transform: | 
+ <pre class='highlight'><code>ALLOCATE( uvel_B(imt+1, jmt, km), uvel_C(imt, jmt, km) )
+ uvel_C(1:imt,1:jmt,1:km) = 0.5*( &
+            uvel_B(1:imt, 1:jmt, 1:km) + uvel_B(2:imt+1, 1:jmt, 1:km) )
+
+ ALLOCATE( vvel_B(imt, jmt+1, km), vvel_C(imt, jmt, km))
+ vvel_C(1:imt,1:jmt,1:kmt) = 0.25*( &
+            vvel_B(1:imt, 1:jmt, 1:km) + vvel_B(1:imt, 2:jmt+1, 1:km) )
+ </code></pre>
+
+
+setup_grid_theoretical: | 
+ <pre class='highlight'><code>! Dx and Dy in [m]
+  dxv(:,:) = 250.d0
+  dyu(:,:) = 250.d0
+
+  ! Vertical resolution
+  dzt(:,:,:,:) = 10.d0
+
+  ! Total area
+  dxdy(:,:) = dxv(:,:)*dyu(:,:)
+
+  ! Mask
+  mask(:,:) = 1
+ </code></pre>
+
+setup_grid_aviso_1: | 
+ <pre class='highlight'><code>! dx and dy in u and v points & grid area
+ DO jj = 1, jmt
+    DO ii = 1, imt
+
+       dx = dlon * deg * COS( (-90.+dlat*(jj-0.5))*radian )
+       dy = dlat * deg
+
+       dxv(ii,jj) = dlon * deg * COS( (-90.+dlat*jj)*radian )
+       dyu(ii,jj) = dy
+
+       dxdy(ii,jj) = dx * dy
+
+    END DO
+ END DO
+ </code></pre>
+
+setup_grid_aviso_2: | 
+ <pre class='highlight'><code>! Depth of the vertical cells
+ dzt(:,:,:,:) = 1.d0
+ </code></pre>
+
+setup_grid_ifs1: | 
+ <pre class='highlight'><code>! Read A(k) and B(k) to determine hybrid coordinate levels.
+  ! p(k) = A(k) + B(k) * p_surface
+  ALLOCATE ( aa(0:KM), bb(0:KM) )
+
+  OPEN (12,FILE=trim(topoDataDir)//trim(zgridFile) )
+
+  DO kk = 0, KM
+    READ (12,'(10x,F12.6,4x,F10.8)') aa(kk), bb(kk)
+  END DO
+
+  CLOSE (12)
+ </code></pre>
+
+setup_grid_ifs2: | 
+ <pre class='highlight'><code> ! da/db values
+  da(1:km) = aa(1:km)-aa(0:km-1)
+  db(1:km) = bb(1:km)-bb(0:km-1)
+ </code></pre>
+
+setup_grid_roms: |
+ <pre class='highlight'><code>! Allocate and define mask
+  mask(:,:) = INT(get2DfieldNC( ...kmt_name... ))
+
+  ! dx and dy in T points
+  dy_t = get2DfieldNC( ...dy_name... )
+  dx_t = get2DfieldNC( ...dx_name... )
+
+  ! if dx_t not equal to 0, then dx_t = 1/dx_t
+  WHERE(dx_t/=0.) dx_t = 1./dx_t
+  WHERE(dy_t/=0.) dy_t = 1./dy_t
+
+  ! Grid area
+  dxdy(1:imt,1:jmt) = dx_t(1:imt,1:jmt) * dy_t(1:imt,1:jmt)
+
+  ! dx in V points and dy in U points
+  dyu(1:imt,1:jmt) = dy_t(1:imt,1:jmt)
+  
+  ! Transformation from given data
+  dxv(1:imt,1:jmt-1) = (dx_t(1:imt,1:jmt-1)*dy_t(1:imt,2:jmt) + dx_t(1:imt,2:jmt)*dy_t(1:imt,1:jmt-1))&
+                  /(dy_t(1:imt,1:jmt-1) + dy_t(1:imt,2:jmt))
+
+  ! Total depth
+  ALLOCATE(depth(imt,jmt))
+  depth(:,:) = INT(get2DfieldNC( ...dep_name... )
+ </code></pre>
+
+setup_grid_nemo1: |
+ <pre class='highlight'><code>! Read in the bathemtery in model levels
+ kmt(:,:) = INT(get2DfieldNC( ...kmt_name... ) )
+ 
+ ! If cell present in kmt, set tmp2d=1
+ WHERE (kmt>0)
+   tmp2d(:,:) = 1
+ END WHERE
+
+ ! If we seed on cell's top face, mask(:,:) = tmp2d(:,:)
+ IF (isec == 3) mask(:,:) = tmp2d(:,:)
+ 
+ ! Set up temporary values to be filled
+ kmu(:,:)=0 ; kmv(:,:)=0
+
+ ! Iterate though j direction (y direction)
+ DO jj=1, jmt
+    jp = jj + 1
+ 
+    ! Check if jp gos out of bounds of jmt (jp>jmt)
+    IF(jp == jmt+1) jp = jmt
+    
+    ! Iterate through i direction (x direction)
+    DO ii=1, imt
+      ip = ii + 1
+
+      ! Check if ip goes out of bounds of imt (ip>imt)
+      IF(ip == imt+1) ip = 1
+
+      ! Set the number of cell's in u and v locations
+      kmu(ii,jj) = MIN(kmt(ii,jj), kmt(ip,jj), km)
+      kmv(ii,jj) = MIN(kmt(ii,jj), kmt(ii,jp), km)
+
+      ! Define the mask for zonal and meridional seeding locations
+      ! (if set to that)
+      IF (isec == 1) THEN
+         mask(ii,jj) = tmp2d(ii,jj)*tmp2d(ip,jj)
+      ELSE IF (isec == 2) THEN
+         mask(ii,jj) = tmp2d(ii,jj)*tmp2d(ii,jp)
+      END IF
+
+    END DO
+ END DO
+ </code></pre>
+
+setup_grid_nemo2: |
+ <pre class='highlight'><code> ! dx and dy in T points
+  dy_t  = get2DfieldNC( ...dy_name... )
+  dx_t  = get2DfieldNC( ...dx_name... )
+
+  ! dx and dy in u and v points
+  dyu = get2DfieldNC( ...dyu_name.. )
+  dxv = get2DfieldNC( ...dxv_name... )
+
+  ! Grid area
+  dxdy(1:imt,1:jmt) = dx_t(1:imt,1:jmt) * dy_t(1:imt,1:jmt)
+ </code></pre>
+
+setup_grid_nemo3: |
+ <pre class='highlight'><code>! Sensitivity to dz value
+  ALLOCATE(tmp3d(imt,jmt,km))
+  tmp3d(:,:,:) = get3DfieldNC( ...dzt_name... )
+
+  DO kk = 1, km
+    ! Set the dzt values in all three timesteps
+    dzt(:,:,km-kk+1,1) = tmp3d(:,:,kk)
+    dzt(:,:,km-kk+1,2) = tmp3d(:,:,kk)
+    dzt(:,:,km-kk+1,3) = tmp3d(:,:,kk)
+
+    ! If kk is out of bounds for kmt, then set to zero
+    WHERE (kk > kmt(1:imt,1:jmt))
+      dzt(:,:,km-kk+1,1) = 0.
+      dzt(:,:,km-kk+1,2) = 0.
+      dzt(:,:,km-kk+1,3) = 0.
+    END WHERE
+  END DO
+ </code></pre>

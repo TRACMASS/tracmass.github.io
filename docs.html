@@ -1,4 +1,7 @@
 ---
+title: Documentation
+keywords: documentation, instructions
+category: basics
 ---
 <!doctype html>
 <html lang="en">
@@ -26,110 +29,20 @@
       <div class="inner outer">
         <div class="docs-content">
 
-          <nav id="docs-nav" class="docs-nav">
-            <div id="docs-nav-inside" class="docs-nav-inside sticky">
-
-              <button id="docs-nav-toggle" class="docs-nav-toggle">Navigate Docs<span class="icon-angle-right"
-                  aria-hidden="true"></span></button>
-              <div class="docs-nav-menu">
-
-                <ul id="docs-menu" class="docs-menu">
-                  <li class="docs-menu-item current">
-                    <a href="docs.html">Welcome to TRACMASS' documentation</a>
-                  </li>
-
-                  <li class="docs-menu-item">
-                    <a href="docs/about/index.html">About</a>
-                  </li>
-
-                  <li class="docs-menu-item has-children">
-                    <a href="docs/configuration/index.html">Configuration</a>
-
-                    <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
-                        class="icon-angle-right" aria-hidden="true"></span></button>
-
-                    <ul class="docs-submenu">
-
-                      <li class="docs-menu-item">
-                        <a href="docs/configuration/installation/index.html">Installation</a>
-                      </li>
-
-                      <li class="docs-menu-item">
-                        <a href="docs/configuration/quick-start.html">How to set an experiment</a>
-                      </li>
-
-                    </ul>
-                  </li>
-
-                  <li class="docs-menu-item has-children">
-                    <a href="docs/components/index.html">TRACMASS Components</a>
-
-
-                    <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
-                        class="icon-angle-right" aria-hidden="true"></span></button>
-
-                    <ul class="docs-submenu">
-
-                      <li class="docs-menu-item">
-                        <a href="docs/components/main_program/index.html">Main program</a>
-                      </li>
-
-                      <li class="docs-menu-item">
-                        <a href="docs/components/main_modules/index.html">Main modules</a>
-                      </li>
-
-                      <li class="docs-menu-item">
-                        <a href="docs/components/namelist/index.html">
-                          <p>Namelist</p>
-                        </a>
-                      </li>
-
-                      <li class="docs-menu-item">
-                        <a href="docs/components/project/index.html">
-                          <p>The <em>Projects </em>folder</p>
-                        </a>
-                      </li>
-
-                    </ul>
-                  </li>
-
-                  <li class="docs-menu-item">
-                    <a href="docs/output/index.html">TRACMASS output</a>
-                  </li>
-
-                  <li class="docs-menu-item has-children">
-                    <a href="docs/tools/index.html">Tools</a>
-
-                    <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
-                        class="icon-angle-right" aria-hidden="true"></span></button>
-
-                    <ul class="docs-submenu">
-
-                      <li class="docs-menu-item">
-                        <a href="docs/tools/insitu/index.html"><em>In situ</em> postprocessing</a>
-                      </li>
-
-                      <li class="docs-menu-item">
-                        <a href="docs/tools/pytraj/index.html">pyTRAJ</a>
-                      </li>
-                    </ul>
-
-                  </li>
-
-                  <li class="docs-menu-item">
-                    <a href="docs/references/index.html">References</a>
-                  </li>
-
-                </ul><!-- .docs-menu -->
-              </div><!-- .docs-nav-menu -->
-            </div><!-- .docs-nav-inside -->
-          </nav><!-- .docs-nav -->
+          {% include doc_navigation.html %}
 
           <article class="post type-docs">
             <div class="post-inside">
-              <header class="post-header">
-                <h1 class="post-title line-left">Welcome to TRACMASS' documentation</h1>
+              <header class="post-header-wdate">
+                  <h1 class="post-title line-left">
+                      <p>Welcome to TRACMASS' documentation</p>
+                  </h1>
+                  <p class="header-metadata-wdate"><strong>Last updated:</strong><br> <em>{{ page.last_modified_at | date: "%B %-d, %Y" }}</em></p>
               </header><!-- .post-header -->
+              <!--<header class="post-header">
+                <h1 class="post-title line-left">Welcome to TRACMASS' documentation</h1>
+              </header> .post-header -->
+              
               <div class="post-content">
                 <p><strong>TRACMASS</strong> is a Lagrangian trajectory code for ocean and atmospheric general
                   circulation models. The code makes it possible to estimate water paths, Lagrangian stream functions
@@ -230,12 +143,6 @@
 
     {% include footer.html %}
 
-  </div><!-- .site -->
-
-  <!-- Scripts -->
-  <script src="assets/js/plugins.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/page-load.js"></script>
 </body>
 
 </html>

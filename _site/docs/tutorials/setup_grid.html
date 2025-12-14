@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>Grid Setup</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="shortcut icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="palette-navy">
+
+  <div id="page" class="site">
+
+    <header id="masthead" class="site-header outer">
+  <div class="inner">
+    <div class="site-header-inside">
+
+      <div class="site-branding">
+        <p class="site-logo"><a href="../../../index.html">
+            <img src="../../../images/headers_footer/fig_tracmass.png" alt="TRACMASS logo" /></a></p>
+      </div><!-- .site-branding -->
+
+      <nav id="main-navigation" class="site-navigation" aria-label="Main Navigation">
+        <div class="site-nav-inside">
+
+          <button id="menu-close" class="menu-toggle">
+            <span class="screen-reader-text">Open Menu</span>
+            <span class="icon-close" aria-hidden="true"></span>
+          </button>
+
+          <ul class="menu">
+            <li class="menu-item ">
+              <a href="../../../index.html" class=""> Home </a>
+            </li>
+
+            <li class="menu-item  current active ">
+              <a href="../../../docs.html" class="">Documentation</a>
+            </li>
+
+
+            <li class="menu-item
+                          has-children">
+              <a href="../../../index.html" class="">Publications & Examples</a>
+              <button class="submenu-toggle">
+                <span class="icon-angle-right" aria-hidden="true"></span>
+                <span class="screen-reader-text">Sub-menu</span>
+              </button>
+
+              <ul class="submenu">
+                <li class="menu-item ">
+                  <a href="../../../publications.html" class="">Publications </a>
+                </li>
+
+                <li class="menu-item ">
+                  <a href="../../../examples.html" class="">Example Gallery </a>
+                </li>
+
+              </ul>
+            </li>
+
+            <li class="menu-item ">
+              <a href="../../../contact.html" class="">Contact & FAQ </a>
+            </li>
+
+            <li class="menu-item ">
+              <a href="../../../docs/contribute/contribute.html" class="">Contribute</a>
+            </li>
+
+            <li class="menu-item ">
+              <a href="../../../news.html" class="">News</a>
+            </li>
+
+            <li class="menu-item menu-button">
+              <a href="https://github.com/TRACMASS/tracmass" class="button button-icon">
+                <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                </svg>
+                <span class="screen-reader-text">GitHub</span>
+              </a>
+            </li>
+
+            <li class="menu-item ">
+              <a href="../../../search-results.html" class="button button-icon">Search&nbsp;
+                <svg class="icon" viewBox="0 0 1024 1024">
+                  <path class="path1"
+                    d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
+                  </path>
+                </svg>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </nav><!--.site-navigation -->
+    </div><!-- .site-header-inside -->
+  </div><!-- .inner -->
+</header><!-- .site-header -->
+
+    <main id="content" class="site-content">
+      <div class="inner outer">
+        <div class="docs-content">
+
+          <nav id="docs-nav" class="docs-nav">
+  <div id="docs-nav-inside" class="docs-nav-inside sticky">
+
+    <button id="docs-nav-toggle" class="docs-nav-toggle">Navigate Docs<span class="icon-angle-right"
+        aria-hidden="true"></span></button>
+    <div class="docs-nav-menu">
+      
+      <!-- Here the navigation part starts-->
+      <ul id="docs-menu" class="docs-menu">
+        
+        <!-- Welcome to TRACMASS' documentation -->
+        <li class="docs-menu-item ">
+          <a href="../../../../docs.html">Welcome to TRACMASS' documentation</a>
+        </li>
+        
+        <!-- About -->
+        <li class="docs-menu-item ">
+          <a href="../../docs/about/about.html">About</a>
+        </li>
+
+        <!-- Configuration (submenu) -->
+        <li class="docs-menu-item
+                   
+                   has-children">
+          <a href="../../../docs/configuration/configuration.html">Configuration</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+            <!-- Installation -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/configuration/installation.html">Installation and Theoretical Run</a>
+            </li>
+
+            <!-- How to set up an experiment -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/configuration/quick-start.html">How to set up an experiment</a>
+            </li>
+
+
+            <!-- Setting up NetCDF 
+            <li class="docs-menu-item ">
+              <a href="../../../docs/configuration/netcdf-setup.html">NetCDF set up</a>
+            </li>
+            -->
+
+          </ul>
+        </li>
+
+        <!-- TRACMASS Components (submenu) -->
+        <li class="docs-menu-item
+                   
+                   has-children">
+          <a href="../../../docs/components/components.html">TRACMASS Components</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!-- Main Program -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/components/main_program.html">Main program</a>
+            </li>
+
+            <!-- Main modules -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/components/main_modules.html">Main modules</a>
+            </li>
+
+            <!-- Namelist -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/components/namelist.html">Namelist</a>
+            </li>
+
+            <!-- The projects folder -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/components/project.html">The <em>Projects </em>folder</a>
+            </li>
+
+          </ul>
+        </li>
+        
+        <!-- TRACMASS Tutorials -->
+        <li class="docs-menu-item
+                    current active 
+                   has-children">
+          <a href="../../../docs/tutorials/tutorials.html">TRACMASS Tutorials</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tutorials/custom_tracers.html">Adding Custom Tracers</a>
+            </li>
+            
+            <!--  -->
+            <li class="docs-menu-item  current active ">
+              <a href="../../../docs/tutorials/setup_grid.html">Grid Setup</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tutorials/kill_zones.html">Killing Trajectories</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tutorials/read_field.html">Reading in Variables</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tutorials/seeding_file.html">Seeding Trajectories</a>
+            </li>
+
+            <!-- 
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tutorials/streamfunctions.html">Streamfunctions</a>
+            </li>
+             -->
+          </ul>
+        </li>
+
+        <!-- TRACMASS output -->
+        <li class="docs-menu-item ">
+          <a href="../../../docs/output/output.html">TRACMASS output</a>
+        </li>
+
+        <!-- Tools (Submenu) -->
+        <li class="docs-menu-item 
+                   
+                   has-children">
+          <a href="../../../docs/tools/tools.html">Tools</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!-- In situ postprocessing -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tools/insitu.html"><em>In situ</em> postprocessing</a>
+            </li>
+
+            <!-- pyTRAJ -->
+            <li class="docs-menu-item ">
+              <a href="../../../docs/tools/pytraj.html">pyTRAJ</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- References -->
+        <li class="docs-menu-item ">
+          <a href="../../../docs/references/references.html">References</a>
+        </li>
+
+        <!-- How to contribute -->
+        <li class="docs-menu-item ">
+          <a href="../../../docs/contribute/contribute.html">Contribute</a>
+        </li>
+
+      </ul><!-- .docs-menu -->
+    </div><!-- .docs-nav-menu -->
+  </div><!-- .docs-nav-inside -->
+</nav><!-- .docs-nav -->
+
+          <article class="post type-docs">
+            <div class="post-inside">
+              <header class="post-header-wdate">
+                  <h1 class="post-title line-left">
+                      <p>Grid Setup</p>
+                  </h1>
+                  <p class="header-metadata-wdate"><strong>Last updated:</strong><br>  <em>November 11, 2025</em></p>
+              </header><!-- .post-header -->
+              <!--<header class="post-header">
+                <h1 class="post-title line-left">Grid Setup</h1>
+              </header> .post-header -->
+
+              <div class="post-content">
+                <!-- For mathematical equations -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default"></script>
+
+                <p>In this section, we show how grid setup is carried out for TRACMASS and will
+                  show how to transform data from typically used grids in climate modeling to the Arakawa C-grid. It is
+                  essential to set up the grid correctly, thus great care needs to be taken. Furthermore, the
+                  grid setup can be carried out with two files: <strong>setup_grid.F90</strong> and
+                  <strong>read_field.F90</strong>.
+                  This is necessary if there are time variations in the sea surface height/pressure, which affect the
+                  depth of the cells.
+                </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  There are many local and global climate models available, which makes it challenging to provide a
+                  comprehensive guide on how to set up the grid data for all possible cases. Hopefully, the information
+                  presented in this chapter will give some clarity and, if not, feel free to check discussions on
+                  Github — maybe someone has had the same problem or someone can help you out!
+                </div>
+
+                <h2 id="TRACMASS grid">TRACMASS grid</h2>
+
+                <p>TRACMASS is built on the "staggered" Arakawa C-grid, which keeps the tracer values (such as
+                  temperature,
+                  salinity, oxygen concentration) in the center of the grid cell, while the velocity values are located
+                  at the center of each grid face. For example, the east-west (<strong>u</strong>) velocity field
+                  components are located at the center of the left-right faces, while the north-south
+                  (<strong>v</strong>)
+                  components
+                  are at the center of the forward-backward grid faces. An illustration in 3D of the "staggered" Arakawa
+                  C-grid is
+                  shown below.
+
+                  <img width="100%" src="../../../images/tutorials/fig_tutorial_arakawa-c.png" />
+
+                <p>The algorithm for setting up the grid is located in the project folder in the
+                  <strong>setup_grid.F90</strong> file. The example projects present various options for setting up the
+                  grid. Thus, it is recommended to modify (if necessary) the grid setup algorithm that
+                  most closely resembles the needed grid setup.
+                </p>
+                <div class="search-content"></div>
+                <h2 id="Transforming between Arakawa grids">Transforming between Arakawa grids</h2>
+
+                <p>Conceptually, transforming from one grid to another is a simple procedure if the original data grid
+                  is known; however, it can be confusing to do it in an efficient and correct way. Because of this,
+                  the more common transformations from different grids are provided. The figure below presents the
+                  Arakawa A, B and C grid layouts in 2D. The idea is to take the necessary data points and between them
+                  find
+                  the average value, which would represent the center location between those data points. For example,
+                  if we have a square and we want to find the value in the center, we would simply average the data
+                  points that are at the corners of the square. This principle is further extended for a cube shape, for
+                  example. </p>
+
+                <!-- For this one add the C grid as well -->
+                <img width="100%" src="../../../images/tutorials/fig_tutorial_arakawa-ab.png" />
+
+                <p>It is recommended that vertical velocity is calculated by TRACMASS itself; however, it is possible to
+                  assign explicitly the values, which would require reading them in as well. It would be necessary to
+                  transform them in the same manner as the horizontal velocity values. Thus, here we present the
+                  mathematical expression for transforming the tracers and the horizontal velocity onto the C-grid.</p>
+
+                <h3 id="Transformation from A to C grid">Transformation from A to C grid</h3>
+
+                <p>For the Arakawa C-grid, the tracer is located in the center of the grid cell. Thus, we need to
+                  average
+                  all the tracer values located on the 8 vertices of the grid cell to find the center value.
+                  Mathematically, this transformation would be the following: </p>
+
+                <script
+                  type="math/tex; mode=display">T_{(i,j,k)} = \frac{1}{8}\left[T_{(i,j,k)} + T_{(i+1,j,k)} + T_{(i,j+1,k)} + T_{(i+1,j+1,k)}+\\
+                                                      \quad + T_{(i,j,k+1)} + T_{(i+1,j,k+1)} + T_{(i,j+1,k+1)} + T_{(i+1,j+1,k+1)}  \right]</script>
+
+                <p>The velocities in A-grid are located on the grid vertices, while in C-grid they are in the center of
+                  the grid
+                  faces. Thus, to find a velocity value on a grid face, we need to average the values found on that
+                  face's vertices. Mathematically, this would be the transformation:</p>
+
+                <script
+                  type="math/tex; mode=display">u_{(i,j,k)} = 0.25\left[u_{(i,j,k)} + u_{(i,j+1,k)} + u_{(i,j,k+1)} + u_{(i,j+1,k+1)}\right] \\
+                                                      v_{(i,j,k)} = 0.25\left[v_{(i,j,k)} + v_{(i+1,j,k)} + v_{(i,j,k+1)} + v_{(i+1,j,k+1)}\right]</script>
+
+                <p>In FORTRAN programming language, these expressions would be done in the following manner:</p>
+
+                <pre class='highlight'><code>! Set up the shapes of A and C grid arrays
+ALLOCATE( tracer_A(imt+1, jmt+1, km+1), tracer_C(imt, jmt, km))
+
+! Arrays start with index=1 in FORTRAN unless stated otherwise
+tracer_C(1:imt,1:jmt,1:kmt) = 0.125*( &
+           tracer_A(1:imt, 1:jmt,   1:km)  +  tracer_A(2:imt+1, 1:jmt,   1:km) + & 
+           tracer_A(1:imt, 2:jmt+1, 1:km)  +  tracer_A(2:imt+1, 2:jmt+1, 1:km) + &
+           tracer_A(1:imt, 1:jmt,   2:km+1) + tracer_A(2:imt+1, 1:jmt,   2:km+1) + & 
+           tracer_A(1:imt, 2:jmt+1, 2:km+1) + tracer_A(2:imt+1, 2:jmt+1, 2:km+1) ) 
+
+ALLOCATE( uvel_A(imt, jmt+1, km+1), uvel_C(imt, jmt, km) )
+uvel_C(1:imt,1:jmt,1:km) = 0.25*( &
+           uvel_A(1:imt, 1:jmt, 1:km)  +  uvel_A(1:imt, 2:jmt+1, 1:km) + &
+           uvel_A(1:imt, 1:jmt, 2:km+1) + uvel_A(1:imt, 2:jmt+1, 2:km+1) )
+
+ALLOCATE( vvel_A(imt+1, jmt, km+1), vvel_C(imt, jmt, km))
+vvel_C(1:imt,1:jmt,1:kmt) = 0.25*( &
+           vvel_A(1:imt, 1:jmt, 1:km)  +  vvel_A(2:imt+1, 1:jmt, 1:km) + &
+           vvel_A(1:imt, 1:jmt, 2:km+1) + vvel_A(2:imt+1, 1:jmt, 2:km+1) )
+</code></pre>
+
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  Tracers and velocity flux have spatial and temporal dimensions, which results in 4D arrays. Here in
+                  the example are only presented the spatial transforms between the grids.
+                </div>
+
+
+                <h3 id="Transformation from B to C grid">Transformation from B to C grid</h3>
+
+                <p>The tracer transformation from B-grid to C-grid is the same as for A-grid to C_grid. See the
+                  subsection <a
+                    href="../../../docs/tutorials/setup_grid.html#Transformation%20from%20A%20to%20C%20grid">Tranformation
+                    from A to C grid</a> for detailed explanation.
+                </p>
+
+                <p>The velocities on B-grid are located in the center of the grid cell. To transform them to C-grid, we
+                  average the values from two subsequent cells, between which we want to find the velocity. In the case
+                  of <strong>u</strong> velocity, we take grid cells with index (<strong>i,j,k</strong>) and
+                  (<strong>i+1,j,k</strong>) and
+                  average their velocity values (that are located in the center) and average them. Mathematically, the
+                  transformation for the velocities would be the following:
+                </p>
+
+                <script type="math/tex; mode=display">u_{(i,j,k)} = 0.5\left[u_{(i,j,k)} + u_{(i+1,j,k)}\right] \\
+                                                v_{(i,j,k)} = 0.5\left[v_{(i,j,k)} + v_{(i,j+1,k)}\right]</script>
+
+                <p>And in FORTRAN code it would be:</p>
+
+                <pre class='highlight'><code>ALLOCATE( uvel_B(imt+1, jmt, km), uvel_C(imt, jmt, km) )
+uvel_C(1:imt,1:jmt,1:km) = 0.5*( &
+           uvel_B(1:imt, 1:jmt, 1:km) + uvel_B(2:imt+1, 1:jmt, 1:km) )
+
+ALLOCATE( vvel_B(imt, jmt+1, km), vvel_C(imt, jmt, km))
+vvel_C(1:imt,1:jmt,1:kmt) = 0.25*( &
+           vvel_B(1:imt, 1:jmt, 1:km) + vvel_B(1:imt, 2:jmt+1, 1:km) )
+</code></pre>
+
+
+                <div class="search-content"></div>
+                <h2 id="grid setup in projects">Grid setup in projects</h2>
+
+                <p>In the following section, the various project grid setups are looked at in more detail. Here is a
+                  list of variables typically initialized in the <strong>grid_setup.F90</strong> file:
+                <ul>
+                  <li><strong>dxdy</strong> [<em>mandatory</em>] - Area of horizontal cell walls.</li>
+                  <li><strong>dzt</strong> [<em>mandatory</em>] - Height of k-cells (in 4 dimensions).</li>
+                  <li><strong>dyu</strong> - Length of dy for u flux calculations</li>
+                  <li><strong>dxv</strong> - Length of dx for v flux calculations</li>
+                </ul>
+                while the rest of the variables might be needed, depending on the available grid data. Some of the
+                mandatory grid data is presented in the figure below to get a better idea of it. This is done because
+                the grid cells might not be perfectly rectangular; thus, this provides the necessary additional data
+                (if needed) for the calculations.
+                </p>
+
+                <img width="100%" src="../../../images/tutorials/fig_tutorial_dxv_dyu.png" />
+
+                <p>Similarly, as <strong>dyu</strong> and <strong>dxv</strong> parameters, the <strong>dzt</strong>
+                  measures the cell depth at the tracer's location. Finally, the cell face's horizontal area
+                  <strong>dxdy</strong> is calculated by simply multiplying the lengths of the cell at velocity points
+                </p>
+
+                <script type="math/tex; mode=display">dxdy_{(i,j)} = dyu_{(i,j)} \cdot dxv_{(i,j)} </script>
+
+                <p>The following project examples are ordered from the most basic to the most complex to get a better
+                  idea of the grid building process. Instead of writing the code from scratch, it is recommended to find
+                  the
+                  grid setup that most closely resembles your model grid setup and use that project as a basis. Make
+                  the necessary modifications and you should be good to go. </p>
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  You might need to make modifications in the <strong>setup_grid.F90</strong>, even if you are using a
+                  model we
+                  have made an example for. The climate models keep changing and, currently, we can't provide examples
+                  for all cases and keep them up to date.
+                </div>
+
+                <h3 id="Theoretical">Theoretical</h3>
+
+                <p>The simplest grid setup is for the Theoretical case. Each of the grid cells has the size of 250 m in
+                  the horizontal direction (<strong>dx</strong>, <strong>dy</strong>) and has a vertical resolution of
+                  10 m
+                  (<strong>dzt</strong>).
+                  From the grid cell dimensions it is possible to calculate the horizontal grid cell wall area
+                  (<strong>dxdy</strong>). Finally, we apply a mask and enable all the points in the grid as available
+                  to
+                  travel through for trajectories.
+                </p>
+
+                <pre class='highlight'><code>! Dx and Dy in [m]
+ dxv(:,:) = 250.d0
+ dyu(:,:) = 250.d0
+
+ ! Vertical resolution
+ dzt(:,:,:,:) = 10.d0
+
+ ! Total area
+ dxdy(:,:) = dxv(:,:)*dyu(:,:)
+
+ ! Mask
+ mask(:,:) = 1
+</code></pre>
+
+
+                <h3 id="AVISO">AVISO</h3>
+
+                <p>Similarly as in the theoretical case, here we set up the grid manually with a quarter-degree
+                  resolution. We have these variables:
+                <ul>
+                  <li><strong>dx</strong> - length of a cell in x direction</li>
+                  <li><strong>dy</strong> - length of a cell in y directio </li>
+                  <li><strong>dxv</strong> - length of each v-gridcell in x direction</li>
+                  <li><strong>dyu</strong> - lenfth of each u-gridcell in y direction </li>
+                  <li><strong>dzt</strong> - depth or thickness of the vertical cell at tracer point</li>
+                  <li><strong>dxdy</strong> - horizontal area of the cell walls</li>
+                </ul>
+                </p>
+
+                <p>We define the grid with quarter-degree resolution in the horizontal plane
+                  (<strong>dlon</strong>=0.25,
+                  <strong>dlat</strong>=0.25) and we populate the <strong>dxv</strong> and <strong>dyu</strong> arrays,
+                  which are used for mass
+                  transport calculations later on.
+                </p>
+
+                <pre class='highlight'><code>! dx and dy in u and v points & grid area
+DO jj = 1, jmt
+   DO ii = 1, imt
+
+      dx = dlon * deg * COS( (-90.+dlat*(jj-0.5))*radian )
+      dy = dlat * deg
+
+      dxv(ii,jj) = dlon * deg * COS( (-90.+dlat*jj)*radian )
+      dyu(ii,jj) = dy
+
+      dxdy(ii,jj) = dx * dy
+
+   END DO
+END DO
+</code></pre>
+
+
+                <p>In the double <strong>DO-LOOP</strong>, we iterate through each element of the 2D arrays of
+                  <strong>dxv</strong> and
+                  <strong>dyu</strong> and define the distance between two consecutive points, where velocity
+                  values will reside on the grid. As can be seen, in the east-west direction the grid size is
+                  changing in size. A visual representation of the grid that this code sets up in the horizontal
+                  direction
+                  is presented in the figure below. It's an exaggerated example, but it paints a clear picture.
+                </p>
+
+                <img width="100%" src="../../../images/tutorials/fig_tutorial_aviso_grid.png" />
+
+                <pre class='highlight'><code>! Depth of the vertical cells
+dzt(:,:,:,:) = 1.d0
+</code></pre>
+
+
+                <p>Finally, the vertical cell depth is defined at the tracer points, with variable <strong>dzt</strong>.
+                  As can
+                  be seen, it has four dimensions, which indicates it will change in time; it is closer looked at in the
+                  following examples.
+                </p>
+
+                <h3 id="IFS">IFS </h3>
+
+                <p>The procedure is nearly identical to the AVISO project grid setup, in the horizontal directions, but
+                  there are slight changes in the vertical direction:
+                </p>
+
+                <pre class='highlight'><code>! Read A(k) and B(k) to determine hybrid coordinate levels.
+ ! p(k) = A(k) + B(k) * p_surface
+ ALLOCATE ( aa(0:KM), bb(0:KM) )
+
+ OPEN (12,FILE=trim(topoDataDir)//trim(zgridFile) )
+
+ DO kk = 0, KM
+   READ (12,'(10x,F12.6,4x,F10.8)') aa(kk), bb(kk)
+ END DO
+
+ CLOSE (12)
+</code></pre>
+
+
+                <p>We don't use the <strong>aa</strong> and <strong>bb</strong> datasets directly in the
+                  <strong>setup_grid.F90</strong>
+                  file, but we use them later on in the <strong>read_field.F90</strong> file, to accurately calculate
+                  the
+                  dimensions of each grid cell. This is essential, as it is used for velocity flux calculations. In this
+                  case, the original dataset is set on Arakawa A-grid, which means it is necessary to transform the
+                  values onto Arakawa C-grid. The whole procedure of it can be found in the project's
+                  <strong>read_field.F90</strong> file and will not be looked at in more detail here.
+                </p>
+
+                <h3 id="ROMS">ROMS</h3>
+
+                <p>In this case, a different set of data and a different approach is used to set up the grid. Four data
+                  sets are read:
+                <ul>
+                  <li><strong>mask</strong> is populated with the bathymetry data in model levels
+                    (<strong>kmt_name</strong>)</li>
+                  <li><strong>dy_t</strong> is populated with cell width at tracer points (<strong>dy_name</strong>)
+                  </li>
+                  <li><strong>dx_t</strong> same as <strong>dy_t</strong>, but in the x direction
+                    (<strong>dx_name</strong>)</li>
+                  <li><strong>depth</strong> is populated with bathymetry depth in physical units
+                    (<strong>dep_name</strong>)</li>
+                </ul>
+                A shortened version of the code with comments is presented below for better
+                understanding of its functionality:
+                </p>
+
+                <pre class='highlight'><code>! Allocate and define mask
+ mask(:,:) = INT(get2DfieldNC( ...kmt_name... ))
+
+ ! dx and dy in T points
+ dy_t = get2DfieldNC( ...dy_name... )
+ dx_t = get2DfieldNC( ...dx_name... )
+
+ ! if dx_t not equal to 0, then dx_t = 1/dx_t
+ WHERE(dx_t/=0.) dx_t = 1./dx_t
+ WHERE(dy_t/=0.) dy_t = 1./dy_t
+
+ ! Grid area
+ dxdy(1:imt,1:jmt) = dx_t(1:imt,1:jmt) * dy_t(1:imt,1:jmt)
+
+ ! dx in V points and dy in U points
+ dyu(1:imt,1:jmt) = dy_t(1:imt,1:jmt)
+ 
+ ! Transformation from given data
+ dxv(1:imt,1:jmt-1) = (dx_t(1:imt,1:jmt-1)*dy_t(1:imt,2:jmt) + dx_t(1:imt,2:jmt)*dy_t(1:imt,1:jmt-1))&
+                 /(dy_t(1:imt,1:jmt-1) + dy_t(1:imt,2:jmt))
+
+ ! Total depth
+ ALLOCATE(depth(imt,jmt))
+ depth(:,:) = INT(get2DfieldNC( ...dep_name... )
+</code></pre>
+
+
+
+
+                <h3 id="NEMO">NEMO</h3>
+
+                <p>In this case the grid setup is the most extensive. So we will go through the code in parts to
+                  understand what is being done and why, without getting into Fortran specifics, but keeping to the
+                  main logic.
+                </p>
+
+                <p>First, we populate the <strong>kmt</strong> array, which holds 2D data of bathymetry in model
+                  levels. Next, we set up the <strong>mask</strong> depending on the seeding location
+                  <strong>isec</strong>: north (<strong>isec</strong>=1), east (<strong>isec</strong>=2) or top (<strong>isec</strong>=3) grid cell
+                  face.
+                </p>
+
+                <p>In the double <strong>DO-loop</strong>, we iterate through every cell in the horizontal plane and look for the cell
+                  depth
+                  at the tracer's location in two consecutive cells in the <strong>x</strong> or <strong>y</strong> direction. We
+                  compare
+                  these two values to the total grid depth and look for the minimum value between the three values. This
+                  is done to set up the <strong>kmu</strong> and <strong>kmv</strong> datasets.</p>
+
+                <pre class='highlight'><code>! Read in the bathemtery in model levels
+kmt(:,:) = INT(get2DfieldNC( ...kmt_name... ) )
+
+! If cell present in kmt, set tmp2d=1
+WHERE (kmt>0)
+  tmp2d(:,:) = 1
+END WHERE
+
+! If we seed on cell's top face, mask(:,:) = tmp2d(:,:)
+IF (isec == 3) mask(:,:) = tmp2d(:,:)
+
+! Set up temporary values to be filled
+kmu(:,:)=0 ; kmv(:,:)=0
+
+! Iterate though j direction (y direction)
+DO jj=1, jmt
+   jp = jj + 1
+
+   ! Check if jp gos out of bounds of jmt (jp>jmt)
+   IF(jp == jmt+1) jp = jmt
+   
+   ! Iterate through i direction (x direction)
+   DO ii=1, imt
+     ip = ii + 1
+
+     ! Check if ip goes out of bounds of imt (ip>imt)
+     IF(ip == imt+1) ip = 1
+
+     ! Set the number of cell's in u and v locations
+     kmu(ii,jj) = MIN(kmt(ii,jj), kmt(ip,jj), km)
+     kmv(ii,jj) = MIN(kmt(ii,jj), kmt(ii,jp), km)
+
+     ! Define the mask for zonal and meridional seeding locations
+     ! (if set to that)
+     IF (isec == 1) THEN
+        mask(ii,jj) = tmp2d(ii,jj)*tmp2d(ip,jj)
+     ELSE IF (isec == 2) THEN
+        mask(ii,jj) = tmp2d(ii,jj)*tmp2d(ii,jp)
+     END IF
+
+   END DO
+END DO
+</code></pre>
+
+
+                <p>Finally, the <strong>mask</strong> for seeding is set up by checking if the cell face is between two active
+                  grid cells. If it is, then this wall is marked as a seeding location, but, if the face is not between
+                  two active cells, the location is disabled for seeding.</p>
+
+                <p>The next part of the code reads in the grid sizes at tracer locations in <strong>x</strong> and <strong>y</strong>
+                  directions, and the cell sizes at <strong>u</strong> and <strong>v</strong> locations in <strong>y</strong> and <strong>x</strong>
+                  directions accordingly. This snippet ends by calculating the horizontal area of the grid cells:
+                </p>
+
+                <pre class='highlight'><code> ! dx and dy in T points
+ dy_t  = get2DfieldNC( ...dy_name... )
+ dx_t  = get2DfieldNC( ...dx_name... )
+
+ ! dx and dy in u and v points
+ dyu = get2DfieldNC( ...dyu_name.. )
+ dxv = get2DfieldNC( ...dxv_name... )
+
+ ! Grid area
+ dxdy(1:imt,1:jmt) = dx_t(1:imt,1:jmt) * dy_t(1:imt,1:jmt)
+</code></pre>
+
+
+                <p>In the section below, we set up the grid sizes in the <strong>z</strong> direction for tracers and horizontal
+                  velocities. To not repeat the same code multiple times, the case for <strong>dzt</strong> is presented,
+                  but for <strong>dzu</strong> and <strong>dzv</strong> the principle is the same. We set the grid cell sizes for all
+                  three timesteps, because the surface height or pressure can change in our model data. The remaining
+                  modifications are handled in the <strong>read_field.F90</strong> file, which will not be explored here.</p>
+
+                <pre class='highlight'><code>! Sensitivity to dz value
+ ALLOCATE(tmp3d(imt,jmt,km))
+ tmp3d(:,:,:) = get3DfieldNC( ...dzt_name... )
+
+ DO kk = 1, km
+   ! Set the dzt values in all three timesteps
+   dzt(:,:,km-kk+1,1) = tmp3d(:,:,kk)
+   dzt(:,:,km-kk+1,2) = tmp3d(:,:,kk)
+   dzt(:,:,km-kk+1,3) = tmp3d(:,:,kk)
+
+   ! If kk is out of bounds for kmt, then set to zero
+   WHERE (kk > kmt(1:imt,1:jmt))
+     dzt(:,:,km-kk+1,1) = 0.
+     dzt(:,:,km-kk+1,2) = 0.
+     dzt(:,:,km-kk+1,3) = 0.
+   END WHERE
+ END DO
+</code></pre>
+
+              </div><!-- .post-content -->
+
+            </div><!-- .post-inside -->
+          </article><!-- .post -->
+          <nav id="page-nav" class="page-nav">
+            <div id="page-nav-inside" class="page-nav-inside sticky">
+              <h2 class="page-nav-title">Jump to Section</h2>
+              <div id="page-nav-link-container"></div>
+            </div><!-- .page-nav-inside -->
+          </nav><!-- .page-nav -->
+        </div><!-- .docs-content -->
+      </div><!-- .inner-->
+
+    </main><!-- .site-content -->
+
+    <footer id="colophon" class="site-footer outer">
+  <div class="inner">
+    <div class="site-footer-inside">
+
+      <p class="site-info">
+        <span class="copyright">&copy; Stackbit. All rights reserved. This Jamstack site was originally created by
+          Stackbit and modified by the TRACMASS team.</span>
+      </p>
+
+      <div class="social-links">
+
+      </div><!-- .social-links -->
+
+    </div><!-- .site-footer-inside -->
+  </div><!-- .inner -->
+</footer><!-- .site-footer -->
+
+<!-- Scripts -->
+<script src="../../../assets/js/plugins.js"></script>
+<script src="../../../assets/js/main.js"></script>
+<script src="../../../assets/js/page-load.js"></script>
+
+  </div><!-- .site -->
+
+</body>
+
+</html>

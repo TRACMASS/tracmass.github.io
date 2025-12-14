@@ -1,0 +1,132 @@
+---
+title: How to contribute
+keywords:
+category: tutorials
+url: contribute.html
+---
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>How to contribute</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="shortcut icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="palette-navy">
+
+  <div id="page" class="site">
+
+    {% include header.html pre_link="../../../"%}
+
+    <main id="content" class="site-content">
+      <div class="inner outer">
+        <div class="docs-content">
+
+          {% include doc_navigation.html %}
+
+          <article class="post type-docs">
+            <div class="post-inside">
+              <header class="post-header-wdate">
+                <h1 class="post-title line-left">
+                  <p>How to contribute</p>
+                </h1>
+                <p class="header-metadata-wdate"><strong>Last updated:</strong><br> <em>{{ page.last_modified_at | date:
+                    "%B %-d, %Y" }}</em></p>
+              </header>
+
+              <div class="post-content">
+
+                <p>Thank you for your interest in helping to improve TRACMASS!</p>
+
+                <p>Currently, there is not a core team dedicated to TRACMASS development; instead, a few passionate
+                  researchers manage this platform in their free time. Nevertheless, there are multiple ways you
+                  can contribute to TRACMASS, including: new feature additions, code optimization, documentation
+                  updates, reporting and fixing bugs, and graphical interface development.</p>
+
+                <p>Here we provide basic <strong>instructions</strong> on how you can become a TRACMASS
+                  <strong>contributor</strong>!
+                </p>
+
+                <p>Our software is hosted on GitHub, and you can find it <a href="https://github.com/TRACMASS">here</a>.
+                  There are multiple repositories, but the currently used TRACMASS version is version 7 <a
+                    href="https://github.com/TRACMASS/Tracmass"></a>. The repository for <strong>our</strong> website
+                  can be found <a href="https://github.com/TRACMASS/tracmass.github.io"></a>. Feel free to look at both
+                  of them; we always welcome contributions from people who use our software!
+                </p>
+
+                <h2 id="Github issue tracker">Github issue tracker</h2>
+
+                <p>It is possible to submit issues on Github, so that we can see and address the bugs in TRACMASS
+                  codebase and our website:
+                </p>
+
+                <ul id="docs-section-items" class="docs-section-items">
+                  <li class="docs-section-item"><a target="_blank"
+                      href="https://github.com/TRACMASS/Tracmass/issues/new" class="docs-item-link">Submit a bug report
+                      for TRACMASS!
+                      <span class="icon-angle-right" aria-hidden="true"></span></a></li>
+                  <li class="docs-section-item"><a target="_blank"
+                      href="https://github.com/TRACMASS/tracmass.github.io/issues/new" class="docs-item-link">Submit a
+                      bug report for the website!
+                      <span class="icon-angle-right" aria-hidden="true"></span></a></li>
+                </ul>
+
+                <h2 id="New feature addition">New feature addition</h2>
+
+                <p>If you're ready to contribute to the TRACMASS code, please follow these steps:</p>
+
+                <p>
+                  First, create a fork of our most recent repository (which is the <strong>main</strong> branch and can
+                  be found <a target="_blank" href="https://github.com/TRACMASS/Tracmass">here</a>). For detailed instructions on how to
+                  fork a repository, please refer to the official <strong>GitHub guidelines</strong> <a target="_blank"
+                    href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">here</a>.
+                  Once forked, you can implement the changes you are interested in, whether that involves adding new
+                  features, fixing bugs, or other improvements.
+                </p>
+
+                <p>
+                  Once your changes are complete, please submit a pull request (you can learn more about this process
+                  <a target="_blank"
+                    href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">here</a>).
+                  As we do not have a core team dedicated to TRACMASS
+                  development, please be patient; it may take some time for your pull request to be reviewed. We also
+                  encourage you to announce your new features or contributions in our <a target="_blank" href="https://github.com/TRACMASS/Tracmass/discussions/11">GitHub community discussion
+                  area</a> so other users can see and benefit from your work!
+                </p>
+
+
+              </div><!-- .post-content -->
+
+            </div>
+          </article>
+
+
+          <nav id="page-nav" class="page-nav">
+            <div id="page-nav-inside" class="page-nav-inside sticky">
+              <h2 class="page-nav-title">Jump to Section</h2>
+              <div id="page-nav-link-container"></div>
+            </div>
+          </nav>
+
+        </div><!-- .docs-content -->
+      </div><!-- .inner-->
+
+    </main><!-- .site-content -->
+
+    {% include footer.html%}
+
+  </div><!-- .site -->
+
+</body>
+
+</html>

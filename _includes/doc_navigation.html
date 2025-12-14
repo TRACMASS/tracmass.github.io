@@ -10,19 +10,19 @@
         
         <!-- Welcome to TRACMASS' documentation -->
         <li class="docs-menu-item {%if page.url contains 'docs.html' %} current active {% endif %}">
-          <a href="{{include.pre_link}}../../docs.html">Welcome to TRACMASS' documentation</a>
+          <a href="../../../../docs.html">Welcome to TRACMASS' documentation</a>
         </li>
         
         <!-- About -->
         <li class="docs-menu-item {%if page.url contains 'about' %} current active {% endif %}">
-          <a href="{{include.pre_link}}../about/index.html">About</a>
+          <a href="../../docs/about/about.html">About</a>
         </li>
 
         <!-- Configuration (submenu) -->
         <li class="docs-menu-item
                    {%if page.url contains 'configuration' %} current active {% endif %}
                    has-children">
-          <a href="{{include.pre_link}}../configuration/index.html">Configuration</a>
+          <a href="../../../docs/configuration/configuration.html">Configuration</a>
 
           <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
               class="icon-angle-right" aria-hidden="true"></span></button>
@@ -30,13 +30,20 @@
           <ul class="docs-submenu">
             <!-- Installation -->
             <li class="docs-menu-item {%if page.url contains 'installation' %} current active {% endif %}">
-              <a href="{{include.pre_link}}../configuration/installation/index.html">Installation and Theoretical Run</a>
+              <a href="../../../docs/configuration/installation.html">Installation and Theoretical Run</a>
             </li>
 
             <!-- How to set up an experiment -->
             <li class="docs-menu-item {%if page.url contains 'quick-start' %} current active {% endif %}">
-              <a href="{{include.pre_link}}../configuration/quick-start/index.html">How to set up an experiment</a>
+              <a href="../../../docs/configuration/quick-start.html">How to set up an experiment</a>
             </li>
+
+
+            <!-- Setting up NetCDF 
+            <li class="docs-menu-item {%if page.url contains 'netcdf-setup' %} current active {% endif %}">
+              <a href="../../../docs/configuration/netcdf-setup.html">NetCDF set up</a>
+            </li>
+            -->
 
           </ul>
         </li>
@@ -45,7 +52,7 @@
         <li class="docs-menu-item
                    {%if page.url contains 'components' %} current active {% endif %}
                    has-children">
-          <a href="{{include.pre_link}}../components/index.html">TRACMASS Components</a>
+          <a href="../../../docs/components/components.html">TRACMASS Components</a>
 
           <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
               class="icon-angle-right" aria-hidden="true"></span></button>
@@ -54,39 +61,81 @@
 
             <!-- Main Program -->
             <li class="docs-menu-item {%if page.url contains 'main_program' %} current active {% endif %}">
-              <a href="{{include.pre_link}}../components/main_program/index.html">Main program</a>
+              <a href="../../../docs/components/main_program.html">Main program</a>
             </li>
 
             <!-- Main modules -->
             <li class="docs-menu-item {%if page.url contains 'main_modules' %} current active {% endif %}">
-              <a href="{{include.pre_link}}../components/main_modules/index.html">Main modules</a>
+              <a href="../../../docs/components/main_modules.html">Main modules</a>
             </li>
 
             <!-- Namelist -->
             <li class="docs-menu-item {%if page.url contains 'namelist' %} current active {% endif %}">
-              <a href="{{include.pre_link}}../components/namelist/index.html">Namelist</a>
+              <a href="../../../docs/components/namelist.html">Namelist</a>
             </li>
 
             <!-- The projects folder -->
             <li class="docs-menu-item {%if page.url contains 'project' %} current active {% endif %}">
-              <a href="{{include.pre_link}}../components/project/index.html">The <em>Projects </em>folder</a>
+              <a href="../../../docs/components/project.html">The <em>Projects </em>folder</a>
             </li>
 
           </ul>
         </li>
-
         
+        <!-- TRACMASS Tutorials -->
+        <li class="docs-menu-item
+                   {%if page.url contains 'tutorials' %} current active {% endif %}
+                   has-children">
+          <a href="../../../docs/tutorials/tutorials.html">TRACMASS Tutorials</a>
+
+          <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
+              class="icon-angle-right" aria-hidden="true"></span></button>
+
+          <ul class="docs-submenu">
+
+            <!--  -->
+            <li class="docs-menu-item {%if page.url contains 'custom_tracers' %} current active {% endif %}">
+              <a href="../../../docs/tutorials/custom_tracers.html">Adding Custom Tracers</a>
+            </li>
+            
+            <!--  -->
+            <li class="docs-menu-item {%if page.url contains 'setup_grid' %} current active {% endif %}">
+              <a href="../../../docs/tutorials/setup_grid.html">Grid Setup</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item {%if page.url contains 'kill_zones' %} current active {% endif %}">
+              <a href="../../../docs/tutorials/kill_zones.html">Killing Trajectories</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item {%if page.url contains 'read_field' %} current active {% endif %}">
+              <a href="../../../docs/tutorials/read_field.html">Reading in Variables</a>
+            </li>
+
+            <!--  -->
+            <li class="docs-menu-item {%if page.url contains 'seeding_file' %} current active {% endif %}">
+              <a href="../../../docs/tutorials/seeding_file.html">Seeding Trajectories</a>
+            </li>
+
+            <!-- 
+            <li class="docs-menu-item {%if page.url contains 'streamfunctions' %} current active {% endif %}">
+              <a href="../../../docs/tutorials/streamfunctions.html">Streamfunctions</a>
+            </li>
+             -->
+          </ul>
+        </li>
 
         <!-- TRACMASS output -->
         <li class="docs-menu-item {%if page.url contains 'output' %} current active {% endif %}">
-          <a href="{{include.pre_link}}../output/index.html">TRACMASS output</a>
+          <a href="../../../docs/output/output.html">TRACMASS output</a>
         </li>
 
         <!-- Tools (Submenu) -->
         <li class="docs-menu-item 
                    {%if page.url contains 'tools' %} current active {% endif %}
                    has-children">
-          <a href="{{include.pre_link}}../tools/index.html">Tools</a>
+          <a href="../../../docs/tools/tools.html">Tools</a>
 
           <button class="docs-submenu-toggle"><span class="screen-reader-text">Submenu</span><span
               class="icon-angle-right" aria-hidden="true"></span></button>
@@ -95,12 +144,12 @@
 
             <!-- In situ postprocessing -->
             <li class="docs-menu-item {%if page.url contains 'insitu' %} current active {% endif %}">
-              <a href="{{include.pre_link}}../tools/insitu/index.html"><em>In situ</em> postprocessing</a>
+              <a href="../../../docs/tools/insitu.html"><em>In situ</em> postprocessing</a>
             </li>
 
             <!-- pyTRAJ -->
             <li class="docs-menu-item {%if page.url contains 'pytraj' %} current active {% endif %}">
-              <a href="{{include.pre_link}}../tools/pytraj/index.html">pyTRAJ</a>
+              <a href="../../../docs/tools/pytraj.html">pyTRAJ</a>
             </li>
 
           </ul>
@@ -108,7 +157,12 @@
 
         <!-- References -->
         <li class="docs-menu-item {%if page.url contains 'references' %} current active {% endif %}">
-          <a href="{{include.pre_link}}../references/index.html">References</a>
+          <a href="../../../docs/references/references.html">References</a>
+        </li>
+
+        <!-- How to contribute -->
+        <li class="docs-menu-item {%if page.url contains 'contribute' %} current active {% endif %}">
+          <a href="../../../docs/contribute/contribute.html">Contribute</a>
         </li>
 
       </ul><!-- .docs-menu -->

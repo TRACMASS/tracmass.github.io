@@ -1,0 +1,227 @@
+---
+title: How to set up an experiment
+keywords:
+category: documentation
+url: quick-start.html
+---
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>How to set up an experiment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="shortcut icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="palette-navy">
+
+  <div id="page" class="site">
+
+    {% include header.html pre_link="../../../"%}
+
+    <main id="content" class="site-content">
+      <div class="inner outer">
+        <div class="docs-content">
+
+          {% include doc_navigation.html %}
+
+          <article class="post type-docs">
+            <div class="post-inside">
+              <header class="post-header-wdate">
+                <h1 class="post-title line-left">
+                  <p>How to set up an experiment</p>
+                </h1>
+                <p class="header-metadata-wdate"><strong>Last updated:</strong><br> <em>{{ page.last_modified_at | date:
+                    "%B %-d, %Y" }}</em></p>
+              </header><!-- .post-header -->
+              <!--<header class="post-header">
+                <h1 class="post-title line-left">How to set up an experiment</h1>
+              </header> .post-header -->
+
+              <div class="post-content">
+                <!-- 
+                <p>We recommend testing that TRACMASS was properly compiled by letting PROJECT and CASE be
+                  <strong>“Theoretical”</strong> in the <em>Makefile</em> (which is the default). In this case, TRACMASS
+                  will use a simple oscillating velocity field to trace trajectories.
+                </p>
+
+                <ol>
+                  <li>
+                    <p>Make sure in <em>Makefile</em> both PROJECT and CASE are set to Theoretical.</p>
+                  </li>
+
+                  <li>
+                    <p>Recompile the code</p>
+
+                    <div class="highlighter-rouge">
+                      <div class="highlight">
+                        <pre class="highlight"><code>   make clean
+   make
+</code></pre>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <p>Run the code by typing</p>
+
+                    <div class="highlighter-rouge">
+                      <div class="highlight">
+                        <pre class="highlight"><code>   ./runtracmass
+</code></pre>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <p>If everything went without an error, you will get the following output in the terminal:</p>
+
+                    <div class="highlighter-rouge">
+                      <div class="highlight">
+                        <pre class="highlight"><code>
+ ===============================================================================
+              TRACMASS Lagrangian off-line particle tracking
+ ===============================================================================
+
+ Start date  : 2020-06-30
+ Start time  : 20:57:55
+ -------------------------------------------------------------------------------
+
+ Model information:
+ Project code  : Theoretical
+ Case name     : Theoretical
+ Namelist file : projects/Theoretical/namelist_Theoretical.in
+ -------------------------------------------------------------------------------
+
+ Output information:
+ Directory for output files : /Users/user/Tracmass_output
+ Prefix for output files    : test
+ -------------------------------------------------------------------------------
+
+ Configuration options:
+  - Two-dimensional trajectories, no change in depth
+ -------------------------------------------------------------------------------
+
+ Start date in model-time     : 2000-01-01 12:00
+ End date in model-time       : 2000-01-01 21:00
+ Length of run in timesteps   :     10
+ Number of seeding timesteps  :      1
+ Steps between two GCM fields :    100
+
+ -------------------------------------------------------------------------------
+ t-step        run        out        err        tot                 model date
+ -------------------------------------------------------------------------------
+      1 |        1 |        0 |        0 |        1 |   2000-01-01    12:00:00
+      2 |        1 |        0 |        0 |        1 |   2000-01-01    13:00:00
+      3 |        1 |        0 |        0 |        1 |   2000-01-01    14:00:00
+      4 |        1 |        0 |        0 |        1 |   2000-01-01    15:00:00
+      5 |        1 |        0 |        0 |        1 |   2000-01-01    16:00:00
+      6 |        1 |        0 |        0 |        1 |   2000-01-01    17:00:00
+      7 |        1 |        0 |        0 |        1 |   2000-01-01    18:00:00
+      8 |        1 |        0 |        0 |        1 |   2000-01-01    19:00:00
+      9 |        1 |        0 |        0 |        1 |   2000-01-01    20:00:00
+     10 |        1 |        0 |        0 |        1 |   2000-01-01    21:00:00
+ ===============================================================================
+           1  particles calculated
+           0  particles exited the space and time domain
+           0  particles flagged with errors
+           1  particles in domain
+ -------------------------------------------------------------------------------
+
+ ===============================================================================
+ End date  : 2020-06-30
+ End time  : 20:57:55
+ ===============================================================================
+</code></pre>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <p>You can rerun the code by modifying the <em>namelist.in</em> in the main directory.</p>
+                  </li>
+                </ol>
+                <hr />
+                -->
+                <h2 id="how-to-configure-a-customised-experiment">How to configure a customised experiment </h2>
+                <p>This is a basic guide on how to implement a new setup from a GCM with a grid that does not exist
+                  in the present <strong>TRACMASS</strong> projects list. This requires good knowledge in the numerical
+                  discretisation of your GCM and of Fortran programming.</p>
+
+                <ol>
+                  <li>
+                    <p>Make a new <em>«project»</em> which we call “mymodel” here.</p>
+
+                    <p>Copy the directory from an existing project that has a similar grid (A,B or C-grid) or has a
+                      similar format (netcdf, grib, etc.). So that:</p>
+
+                    <div class="highlighter-rouge">
+                      <div class="highlight">
+                        <pre class="highlight"><code> cd projects
+ cp -r NEMO mymodel</code></pre>
+                      </div>
+                    </div>
+
+                    <p>or:</p>
+
+                    <div class="highlighter-rouge">
+                      <div class="highlight">
+                        <pre class="highlight"><code> cp -r AVISO mymodel</code></pre>
+                      </div>
+                    </div>
+
+                    <p>or:</p>
+
+                    <div class="highlighter-rouge">
+                      <div class="highlight">
+                        <pre class="highlight"><code> cp -r IFS mymodel</code></pre>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <p>Rename the namelist file to <em>namelist_mymodel.in</em> or <em>namelist_mycase.in</em> if you
+                      are using a case within the project. Remember, the name of the namelist has to match with the case
+                      name that is set in the <strong>Makefile.prj</strong>, located in the TRACMASS' root directory.
+                      Find more information about the <em>namelist</em>, its components and how to set it up <a
+                        href="../../docs/components/namelist.html">here</a>.</p>
+                  </li>
+                  <li>
+                    <p>Modify and adapt the files under <em>/projects/mymodel</em>, which are <em>setup_grid.F90</em>,
+                      <em>read_field.F90</em>, <em>kill_zones.F90</em> and <em>Makefile</em>. You can find more information about these
+                      files here <a href="../../docs/components/project.html">here</a>.
+                    </p>
+                  </li>
+                </ol>
+
+                <p>For more detailed examples refer to <a href="../../docs/tutorials/tutorials.html">TRACMASS
+                    Tutorials</a></p>
+
+              </div><!-- .post-content -->
+            </div><!-- .post-inside -->
+          </article><!-- .post -->
+
+          <nav id="page-nav" class="page-nav">
+            <div id="page-nav-inside" class="page-nav-inside sticky">
+              <h2 class="page-nav-title">Jump to Section</h2>
+              <div id="page-nav-link-container"></div>
+            </div><!-- .page-nav-inside -->
+          </nav><!-- .page-nav -->
+
+        </div><!-- .docs-content -->
+      </div><!-- .inner-->
+
+    </main><!-- .site-content -->
+
+    {% include footer.html%}
+
+  </div><!-- .site -->
+
+</body>
+
+</html>

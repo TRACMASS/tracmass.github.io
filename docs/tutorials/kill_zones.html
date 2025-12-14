@@ -1,0 +1,162 @@
+---
+title: Killing trajectories
+keywords: killing trajectories termination
+category: tutorials
+url: kill_zones.html
+---
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>Killing trajectories</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="shortcut icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../../images/headers_footer/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body class="palette-navy">
+
+  <div id="page" class="site">
+
+    {% include header.html pre_link="../../../"%}
+
+    <main id="content" class="site-content">
+      <div class="inner outer">
+        <div class="docs-content">
+
+          {% include doc_navigation.html %}
+
+          <article class="post type-docs">
+            <div class="post-inside">
+              <header class="post-header-wdate">
+                  <h1 class="post-title line-left">
+                      <p>Killing Trajectories</p>
+                  </h1>
+                  <p class="header-metadata-wdate"><strong>Last updated:</strong><br>  <em>{{ page.last_modified_at | date: "%B %-d, %Y" }}</em></p>
+              </header><!-- .post-header -->
+
+              <!--<header class="post-header">
+                <h1 class="post-title line-left">Killing trajectories</h1>
+              </header> .post-header -->
+
+              <div class="post-content">
+
+                <p>In TRACMASS, there are four available options of terminating or "killing" trajectories. Here we will briefly
+                  present how to set them up. In general, trajectory killing is handled by the file <strong>kill_zones.F90</strong>, but
+                  in most cases, no modifications need to be made there. The only exception is when
+                  <strong>exitType=4</strong>, in which case the user needs to write FORTRAN code in
+                  <strong>kill_zones.F90</strong> that will terminate trajectories in some locations. The file itself is located
+                  in the project's folder, which you can read more about <a href="../../../docs/components/project.html">here</a>.
+                </p>
+
+                <h2 id="Various exit types">Various exit types (exitType)</h2>
+
+                <h3 id="exitType=1">exitType=1: BOX</h3>
+
+                <p>This trajectory killer is the simplest to implement, as it requires only the coordinates of the box
+                  that would represent the kill zone.</p>
+
+                <p>Here is an example showing how to set up kill zones with
+                  <strong>exitType</strong>=<strong>1</strong>, which is a
+                  regular box. Similarly as with tracer setup, a maximum of 10 kill zone boxes can be set with this
+                  option. Here, we have set up two boxes: the first acting as a line and the second as a rectangular
+                  box. The
+                  first box has the dimensions from 200th to 300th index in the west-east direction
+                  and is set to 150th index in the north-south direction. Looking from a bird's-eye view, that
+                  would be a horizontal line across the grid. The second kill zone box is truly a box with a size from
+                  50th to 250th index in the west-east direction and from 350th to
+                  450th index in the north-south direction. Once the boundary is crossed, the trajectory is
+                  terminated, regardless of the direction of crossing.
+                </p>
+                {{ site.data.namelist_examples.init_killzones_box }}
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  The kill zone box is implemented in all model levels; it is not possible to specify at which heights
+                  the termination should occur.
+                </div>
+
+
+                <h3 id="exitType=2">exitType=2: TRACER VALUE</h3>
+
+                <p>This exit type terminates trajectories once a maximum or minimum tracer value is reached along the
+                  trajectory. In this example, we will implement two tracers — temperature and salinity — that will be used
+                  to terminate the trajectories. First, it is necessary to enable tracers. Otherwise, when running
+                  TRACMASS, an error will appear (e.g., *'Fortran runtime error: Index
+                  '1' of dimension 1 of array 'tracervalue' above upper bound of 0'*) indicating that no tracers are
+                  available for TRACMASS. Thus, the tracers need to be set up as usual. Some values, such as the
+                  <strong>tracervarname</strong>, might be different for your specific case.
+                </p>
+
+                <p>Next, the kill zones need to be set up. Here, we enable both temperature and salinity tracer values
+                  for trajectory termination. In this case, we set up the system so that the temperature tracer value
+                  does not exceed 25 degrees; this is done by setting the variable <strong>maxormin</strong>=1. To set
+                  up a minimum value threshold for tracers, <strong>maxormin</strong> must be set to
+                  <strong>-1</strong>. This is shown with salinity, which has been set to have a minimum value of 35
+                  PSU. If any trajectory reaches a value lower than 35 PSU, it will be terminated.
+                </p>
+
+                {{ site.data.tutorial_examples.kill_zones_exitType2 }}
+
+                <div class="note">
+                  <strong>Note:</strong> <br />
+                  Tracers must be enabled and provided for the model! Otherwise, it won't work!
+                </div>
+
+                <h3 id="exitType=3">exitType=3: BOX & TRACER VALUE</h3>
+
+                <p>In this case, a kill zone is defined by both a geographic location and the tracer values. For this,
+                  the
+                  namelist code presented in the other two sections needs to be used. It is essentially the same, but
+                  with the possibility to have more constraining and precise kill zone definitions.</p>
+
+                <h3 id="exitType=4">exitType=4: HARD CODED</h3>
+
+                <p>This section is still in development.  </p>
+                <!--TODO: FINISH THIS SECTION :)-->
+                <!--Need to ask Kristofer-->
+
+                <h2 id="maxtime">Maximum trajectory runtime</h2>
+
+                <p>It is also possible to set a maximum runtime for trajectories in the namelist using
+                  <strong>timax</strong>. This sets the maximum trajectory runtime in days. It will terminate the
+                  simulation itself once all trajectories have been terminated. The simulation will be terminated, even
+                  if more trajectories are scheduled to be added in future timesteps.
+                </p>
+
+                <div class="important"> &#9888; <strong>Warning:</strong> <br />
+                  If the simulation runs out of active trajectories, the simulation will terminate, even if more
+                  trajectories are scheduled to be added in future timesteps!
+                </div>
+              </div><!-- .post-content -->
+
+            </div><!-- .post-inside -->
+          </article><!-- .post -->
+
+          <nav id="page-nav" class="page-nav">
+            <div id="page-nav-inside" class="page-nav-inside sticky">
+              <h2 class="page-nav-title">Jump to Section</h2>
+              <div id="page-nav-link-container"></div>
+            </div><!-- .page-nav-inside -->
+          </nav><!-- .page-nav -->
+
+        </div><!-- .docs-content -->
+      </div><!-- .inner-->
+
+    </main><!-- .site-content -->
+
+    {% include footer.html%}
+
+  </div><!-- .site -->
+
+</body>
+
+</html>

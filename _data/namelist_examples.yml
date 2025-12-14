@@ -37,7 +37,7 @@ init_grid_description_file: |
 
 init_grid_time: | 
  <pre class='highlight'><code> &INIT_GRID_TIME
-     ngcm_step      = 6, 
+     ngcm_step      = 2, 
      ngcm_unit      = 3, 
      iter           = 12,
  /</code></pre>
